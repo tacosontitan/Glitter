@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glitter", "Glitter\Glitter.csproj", "{A327EA06-4867-4D25-9B6E-268693190EAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glitter", "src\Glitter\Glitter.csproj", "{A327EA06-4867-4D25-9B6E-268693190EAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
