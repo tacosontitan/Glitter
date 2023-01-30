@@ -3,7 +3,6 @@
 Named after the second largest mountain in Norway, Glitter is a simple framework to jump start your projects while keeping them clean, concise, and optimized.
 
 ![License](https://img.shields.io/github/license/tacosontitan/Glitter?logo=github&style=for-the-badge)
-![Downloads](https://img.shields.io/nuget/dt/glitter?logo=nuget&style=for-the-badge)
 
 ## 💁‍♀️ Getting Started
 
@@ -18,7 +17,6 @@ Get started by reviewing the answers to the following questions:
 Glitter employs workflows for continuous integration to ensure the repository is held to industry standards; here's the current state of those workflows:
 
 ![.NET Workflow](https://img.shields.io/github/actions/workflow/status/tacosontitan/Glitter/dotnet.yml?label=Build%20and%20Test&logo=dotnet&style=for-the-badge)
-![Analysis Workflow](https://img.shields.io/github/actions/workflow/status/tacosontitan/Glitter/codeql.yml?label=Analysis&logo=dotnet&style=for-the-badge)
 
 ### 💎 A few more gems
 
