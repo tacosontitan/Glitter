@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace Glitter.Sql;
+﻿namespace Glitter.Sql;
 
 /// <summary>
 /// Represents a stored procedure within SQL.
