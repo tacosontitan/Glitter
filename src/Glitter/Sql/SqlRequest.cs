@@ -1,6 +1,3 @@
-using System.Data;
-using System.Diagnostics.CodeAnalysis;
-
 namespace Glitter.Sql;
 
 /// <summary>
