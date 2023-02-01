@@ -5,7 +5,11 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Glitter", "src\Glitter\Glitter.csproj", "{A327EA06-4867-4D25-9B6E-268693190EAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glitter.Tests", "test\Glitter.Tests\Glitter.Tests.csproj", "{0858ED2F-E509-4AEB-B1E4-AE1E2EBF9313}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Glitter.Tests", "test\Glitter.Tests\Glitter.Tests.csproj", "{0858ED2F-E509-4AEB-B1E4-AE1E2EBF9313}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{31ACAAAC-38E7-4121-989E-F8B22DD810BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1E50AE95-EFED-448E-916D-5B4FE4FE346C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +28,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A327EA06-4867-4D25-9B6E-268693190EAC} = {31ACAAAC-38E7-4121-989E-F8B22DD810BC}
+		{0858ED2F-E509-4AEB-B1E4-AE1E2EBF9313} = {1E50AE95-EFED-448E-916D-5B4FE4FE346C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A2CC85D-B6DE-4BE8-ACA6-B2EBACAA58B6}
