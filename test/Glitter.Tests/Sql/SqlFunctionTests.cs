@@ -8,10 +8,10 @@ public class SqlFunctionTests
     public void Query()
     {
         var request = new SqlFunction("SELECT * FROM [dbo].[dummy]");
-        var provider = new MockService();
+        var service = new MockService();
         try
         {
-            _ = provider.Query<object>(request);
+            _ = service.Query<object>(request);
         }
         catch (Exception e)
         {
@@ -22,10 +22,10 @@ public class SqlFunctionTests
     public void Scalar()
     {
         var request = new SqlFunction("SELECT * FROM [dbo].[dummy]");
-        var provider = new MockService();
+        var service = new MockService();
         try
         {
-            _ = provider.ExecuteScalar<object>(request);
+            _ = service.ExecuteScalar<object>(request);
         }
         catch (Exception e)
         {
@@ -36,10 +36,10 @@ public class SqlFunctionTests
     public void Execute()
     {
         var request = new SqlFunction("SELECT * FROM [dbo].[dummy]");
-        var provider = new MockService();
+        var service = new MockService();
         try
         {
-            provider.Execute(request);
+            service.Execute(request);
         }
         catch (Exception e)
         {
