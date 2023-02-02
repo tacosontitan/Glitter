@@ -1,4 +1,4 @@
-namespace Glitter.Samples.Sql;
+namespace Glitter.Samples.Sql.Models;
 
 /// <summary>
 /// Represents a user.
