@@ -5,9 +5,9 @@ namespace Glitter.Tests.Sql;
 /// <summary>
 /// Represents a mocked <see cref="ISqlProvider"/> for testing purposes.
 /// </summary>
-public class MockProvider : SqlService
+public class MockService : SqlService
 {
-    public MockProvider() :
+    public MockService() :
         base(new ConnectionInformation())
     { }
     public override Task Execute(SqlRequest request) => Task.CompletedTask;

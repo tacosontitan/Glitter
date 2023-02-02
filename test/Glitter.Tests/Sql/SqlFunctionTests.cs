@@ -8,7 +8,7 @@ public class SqlFunctionTests
     public void Query()
     {
         var request = new SqlFunction("SELECT * FROM [dbo].[dummy]");
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             _ = provider.Query<object>(request);
@@ -22,7 +22,7 @@ public class SqlFunctionTests
     public void Scalar()
     {
         var request = new SqlFunction("SELECT * FROM [dbo].[dummy]");
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             _ = provider.ExecuteScalar<object>(request);
@@ -36,7 +36,7 @@ public class SqlFunctionTests
     public void Execute()
     {
         var request = new SqlFunction("SELECT * FROM [dbo].[dummy]");
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             provider.Execute(request);

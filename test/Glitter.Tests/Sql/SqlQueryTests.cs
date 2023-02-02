@@ -8,7 +8,7 @@ public class SqlQueryTests
     public void Query()
     {
         var request = new SqlQuery("SELECT * FROM [dbo].[dummy]");
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             _ = provider.Query<object>(request);
@@ -22,7 +22,7 @@ public class SqlQueryTests
     public void Scalar()
     {
         var request = new SqlQuery("SELECT * FROM [dbo].[dummy]");
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             _ = provider.ExecuteScalar<object>(request);
@@ -36,7 +36,7 @@ public class SqlQueryTests
     public void Execute()
     {
         var request = new SqlQuery("SELECT * FROM [dbo].[dummy]");
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             provider.Execute(request);

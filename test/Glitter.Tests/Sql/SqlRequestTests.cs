@@ -8,7 +8,7 @@ public class SqlRequestTests
     public void TextQuery()
     {
         var request = new SqlRequest("SELECT * FROM [dbo].[dummy]", System.Data.CommandType.Text);
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             _ = provider.Query<object>(request);
@@ -22,7 +22,7 @@ public class SqlRequestTests
     public void TableDirectQuery()
     {
         var request = new SqlRequest("[dbo].[dummy]", System.Data.CommandType.TableDirect);
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             _ = provider.Query<object>(request);
@@ -36,7 +36,7 @@ public class SqlRequestTests
     public void ProcedureQuery()
     {
         var request = new SqlRequest("[dummy]", System.Data.CommandType.StoredProcedure);
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             _ = provider.Query<object>(request);
@@ -50,7 +50,7 @@ public class SqlRequestTests
     public void TextScalar()
     {
         var request = new SqlRequest("SELECT * FROM [dbo].[dummy]", System.Data.CommandType.Text);
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             _ = provider.ExecuteScalar<object>(request);
@@ -64,7 +64,7 @@ public class SqlRequestTests
     public void TableDirectScalar()
     {
         var request = new SqlRequest("[dbo].[dummy]", System.Data.CommandType.TableDirect);
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             _ = provider.ExecuteScalar<object>(request);
@@ -78,7 +78,7 @@ public class SqlRequestTests
     public void ProcedureScalar()
     {
         var request = new SqlRequest("[dummy]", System.Data.CommandType.StoredProcedure);
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             _ = provider.ExecuteScalar<object>(request);
@@ -92,7 +92,7 @@ public class SqlRequestTests
     public void TextExecute()
     {
         var request = new SqlRequest("SELECT * FROM [dbo].[dummy]", System.Data.CommandType.Text);
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             provider.Execute(request);
@@ -106,7 +106,7 @@ public class SqlRequestTests
     public void TableDirectExecute()
     {
         var request = new SqlRequest("[dbo].[dummy]", System.Data.CommandType.TableDirect);
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             provider.Execute(request);
@@ -120,7 +120,7 @@ public class SqlRequestTests
     public void ProcedureExecute()
     {
         var request = new SqlRequest("[dummy]", System.Data.CommandType.StoredProcedure);
-        var provider = new MockProvider();
+        var provider = new MockService();
         try
         {
             provider.Execute(request);
