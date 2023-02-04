@@ -20,9 +20,6 @@ public class IEnumerableForEachTests
     public void EachElementIsUtilized()
     {
         IEnumerable<int>? source = Enumerable.Range(0, 10);
-        if (source is null)
-            Assert.Fail("Source is null.");
-
         source.ForEach(i => Assert.Equal(i, source.ElementAt(i)));
     }
 }
