@@ -20,6 +20,7 @@ public class SqlFunction : SqlRequest
         if (string.IsNullOrWhiteSpace(functionName))
             throw new ArgumentException("The function name cannot be null or whitespace.");
 
+        _schema = "dbo";
         _functionName = functionName;
         _parameterNames = new List<string>();
     }
@@ -34,7 +35,14 @@ public class SqlFunction : SqlRequest
         _schema = schema;
     /// <inheritdoc/>
     /// <exception cref="ArgumentException"><paramref name="name"/> is <see langword="null"/>, whitespace, or already specified.</exception>
-    public override void AddParameter<T>(string name, T value, DbType? type = null, ParameterDirection? direction = null, int? size = null, byte? precision = null, byte? scale = null)
+    public override SqlRequest AddParameter<T>(
+        string name,
+        T? value,
+        DbType? type = null,
+        ParameterDirection? direction = null,
+        int? size = null,
+        byte? precision = null,
+        byte? scale = null) where T : default
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException($"The name of the parameter cannot be null or whitespace.");
@@ -45,9 +53,10 @@ public class SqlFunction : SqlRequest
 
         _parameterNames.Add(name);
         base.AddParameter(name, value, type, direction, size, precision, scale);
+        return this;
     }
     /// <inheritdoc/>
-    public override bool TryBuildCommand(out string command)
+    public override bool TryBuildCommand([NotNullWhen(true)] out string? command)
     {
         string parameters = string.Join(", ", _parameterNames.Select(x => $"@{x}"));
         Command = $"SELECT * FROM [{_schema}].[{_functionName}] ({parameters})";

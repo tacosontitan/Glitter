@@ -5,6 +5,7 @@
 /// </summary>
 public abstract class SqlService : IDisposable
 {
+    private bool _isDisposed;
     /// <summary>
     /// The <see cref="Sql.ConnectionInformation"/> used by this service for interacting with SQL.
     /// </summary>
@@ -20,9 +21,10 @@ public abstract class SqlService : IDisposable
     /// </summary>
     public virtual void Dispose()
     {
-        if (ConnectionInformation is null)
+        if (_isDisposed)
             throw new ObjectDisposedException(nameof(SqlService));
 
+        _isDisposed = true;
         ConnectionInformation = null;
     }
     /// <summary>

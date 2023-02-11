@@ -46,15 +46,18 @@ public class SqlRequest
     /// <param name="precision">The precision of the parameter.</param>
     /// <param name="scale">The scale of the parameter.</param>
     /// <typeparam name="T">The type of the parameter.</typeparam>
-    public virtual void AddParameter<T>(
+    public virtual SqlRequest AddParameter<T>(
         string name,
         T? value,
         DbType? type = null,
         ParameterDirection? direction = null,
         int? size = null,
         byte? precision = null,
-        byte? scale = null) =>
+        byte? scale = null)
+    {
         Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
+        return this;
+    }
     /// <summary>
     /// Attempts to build the command for the request.
     /// </summary>
