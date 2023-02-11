@@ -35,7 +35,14 @@ public class SqlFunction : SqlRequest
         _schema = schema;
     /// <inheritdoc/>
     /// <exception cref="ArgumentException"><paramref name="name"/> is <see langword="null"/>, whitespace, or already specified.</exception>
-    public override void AddParameter<T>(string name, T value, DbType? type = null, ParameterDirection? direction = null, int? size = null, byte? precision = null, byte? scale = null)
+    public override void AddParameter<T>(
+        string name,
+        T? value,
+        DbType? type = null,
+        ParameterDirection? direction = null,
+        int? size = null,
+        byte? precision = null,
+        byte? scale = null) where T : default
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException($"The name of the parameter cannot be null or whitespace.");
