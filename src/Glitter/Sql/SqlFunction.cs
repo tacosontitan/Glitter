@@ -35,7 +35,7 @@ public class SqlFunction : SqlRequest
         _schema = schema;
     /// <inheritdoc/>
     /// <exception cref="ArgumentException"><paramref name="name"/> is <see langword="null"/>, whitespace, or already specified.</exception>
-    public override void AddParameter<T>(
+    public override SqlRequest AddParameter<T>(
         string name,
         T? value,
         DbType? type = null,
@@ -53,6 +53,7 @@ public class SqlFunction : SqlRequest
 
         _parameterNames.Add(name);
         base.AddParameter(name, value, type, direction, size, precision, scale);
+        return this;
     }
     /// <inheritdoc/>
     public override bool TryBuildCommand([NotNullWhen(true)] out string? command)
