@@ -9,7 +9,7 @@ internal sealed class User
     /// <summary>
     /// The ID of the user.
     /// </summary>
-    [SqlColumn("ID", DbType.Int32)]
+    [SqlColumn("Id", DbType.Int32)]
     public int Id { get; set; }
     /// <summary>
     /// The name of the user.
