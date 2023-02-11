@@ -38,9 +38,35 @@ public sealed class SqlColumnAttribute : Attribute
     /// <param name="name">The name of the column.</param>
     /// <param name="type">The type of the column.</param>
     /// <param name="size">The size of the column.</param>
+    public SqlColumnAttribute(string name, DbType type, int size) :
+        this(name)
+    {
+        Type = type;
+        Size = size;
+    }
+    /// <summary>
+    /// Creates a new <see cref="SqlColumnAttribute"/> instance.
+    /// </summary>
+    /// <param name="name">The name of the column.</param>
+    /// <param name="type">The type of the column.</param>
     /// <param name="precision">The precision of the column.</param>
     /// <param name="scale">The scale of the column.</param>
-    public SqlColumnAttribute(string name, DbType type, int? size = null, byte? precision = null, byte? scale = null) :
+    public SqlColumnAttribute(string name, DbType type, byte precision, byte scale) :
+        this(name)
+    {
+        Type = type;
+        Precision = precision;
+        Scale = scale;
+    }
+    /// <summary>
+    /// Creates a new <see cref="SqlColumnAttribute"/> instance.
+    /// </summary>
+    /// <param name="name">The name of the column.</param>
+    /// <param name="type">The type of the column.</param>
+    /// <param name="size">The size of the column.</param>
+    /// <param name="precision">The precision of the column.</param>
+    /// <param name="scale">The scale of the column.</param>
+    public SqlColumnAttribute(string name, DbType type, int size, byte precision, byte scale) :
         this(name)
     {
         Type = type;
