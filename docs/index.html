@@ -3,11 +3,13 @@
   <head>
     <title>✨ Glitter Docs</title>
     <style>
-        body {
+        html, body {
         	background: #445;
         	color: #FFF;
+            margin: 0;
+            padding: 0;
         }
-        
+
         #main {
         	background: linear-gradient(to bottom, rgba(0,0,0,0.66) 100%, transparent), url(https://www.glittertind.no/wp-content/uploads/2021/05/glittertind_desktop_HD.jpg);
         	background-size: cover, cover;
@@ -19,12 +21,12 @@
         	justify-content: center;
         	align-items: center;
         }
-        
+
         h1 {
         		font-size: 5rem;
         		font-weight: 300;
         }
-        
+
         h3 {
         	margin: 0;
         	font-size: 2rem;
@@ -38,12 +40,12 @@
         	min-width: 250px;
         	text-align: center;
         }
-        
+
         .is-loading h3 {
         	transform: scale(0.9);
         	opacity: 0;
         }
-        
+
         h3:before,
         h3:after {
         	height: 2px;
@@ -55,17 +57,17 @@
         	transition: width 0.4s ease;
         	transition-delay: 0.25s;
         }
-        
+
         h3:before {
         	top: 0;
         	left: 0;
         }
-        
+
         h3:after {
         	bottom: 0;
         	right: 0;
         }
-        
+
         .is-loading h3:before,
         .is-loading h3:after {
         	width: 0;
