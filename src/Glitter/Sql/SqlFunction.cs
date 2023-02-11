@@ -20,6 +20,7 @@ public class SqlFunction : SqlRequest
         if (string.IsNullOrWhiteSpace(functionName))
             throw new ArgumentException("The function name cannot be null or whitespace.");
 
+        _schema = "dbo";
         _functionName = functionName;
         _parameterNames = new List<string>();
     }
