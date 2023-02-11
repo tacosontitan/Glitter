@@ -3,7 +3,7 @@ namespace Glitter.Samples.Sql.Models;
 /// <summary>
 /// Represents a user.
 /// </summary>
-[SqlTarget(SqlTargetType.Table, "Users")]
+[SqlTable("Users")]
 internal sealed class User
 {
     /// <summary>
