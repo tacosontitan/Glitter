@@ -8,6 +8,7 @@ Named after the second largest mountain in Norway, Glitter is a simple framework
 
 Get started by reviewing the answers to the following questions:
 
+- [How do I navigate the codebase with confidence?](http://tacosontitan.github.io/Glitter)
 - [How can I help?](./CONTRIBUTING.md)
 - [How should I behave here?](./CODE_OF_CONDUCT.md)
 - [How do I report security concerns?](./SECURITY.md)
