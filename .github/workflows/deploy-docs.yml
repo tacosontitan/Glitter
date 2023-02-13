@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: 📄 Deploy Documentation
 
 on:
   push:
@@ -16,7 +16,7 @@ concurrency:
 jobs:
   deploy:
     environment:
-      name: github-pages
+      name: GitHub Pages 📄
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
