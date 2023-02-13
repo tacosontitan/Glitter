@@ -8,7 +8,7 @@ body {
 }
 
 #main {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.66) 100%, transparent), url(https://github.com/tacosontitan/Glitter/blob/main/resources/glittertind.jpg?raw=true);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 100%, transparent), url(https://github.com/tacosontitan/Glitter/blob/main/resources/glittertind.jpg?raw=true);
     background-size: cover, cover;
     background-position: center, center;
     height: 100vh;
@@ -27,7 +27,6 @@ h1 {
 
 h3 {
     font-family: 'Quicksand', sans-serif;
-    margin: 0;
     font-size: 2rem;
     display: inline-block;
     padding: 1rem;
@@ -70,4 +69,18 @@ h3:after {
 .is-loading h3:before,
 .is-loading h3:after {
     width: 0;
+}
+
+.build-status {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.gems {
+    margin-top: 15px;
+    display: inline-flex;
+}
+
+.gems>img {
+    margin: 5px;
 }
