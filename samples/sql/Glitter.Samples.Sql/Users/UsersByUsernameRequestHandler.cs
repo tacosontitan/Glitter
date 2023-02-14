@@ -43,7 +43,6 @@ internal sealed class UsersByUsernameRequestHandler : IRequestHandler<UsersByUse
 
         try
         {
-
             var function = new UsersByUsernameFunction(request);
             return _sqlService.Query<User>(function);
         } catch (Exception e)
