@@ -17,5 +17,6 @@ BEGIN
            U.GivenName,
            U.Surname
     FROM [dbo].[Users] U
+    WHERE U.Username LIKE '%' + @Username + '%'
     RETURN
 END
