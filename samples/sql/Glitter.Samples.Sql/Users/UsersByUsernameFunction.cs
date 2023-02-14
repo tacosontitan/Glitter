@@ -22,7 +22,7 @@ namespace Glitter.Samples.Sql.Users
                 throw new ArgumentNullException(nameof(request));
 
             if (string.IsNullOrWhiteSpace(request.Username))
-                throw new ArgumentException($"The specified username `{request.Username}` is invalid.");
+                throw new ArgumentException($"The specified username `{request.Username}` cannot be `null` or whitespace.");
 
             _ = AddParameter("Username", request.Username, DbType.String, size: 50);
         }
