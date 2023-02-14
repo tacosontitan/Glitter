@@ -63,6 +63,6 @@
   <ItemGroup>
     <Build Include="Tables\Users.sql" />
     <Build Include="Stored Procedures\UserInsert.sql" />
-    <Build Include="Functions\UsersQueryByUsername.sql" />
+    <Build Include="Functions\UsersByUsernameQuery.sql" />
   </ItemGroup>
 </Project>

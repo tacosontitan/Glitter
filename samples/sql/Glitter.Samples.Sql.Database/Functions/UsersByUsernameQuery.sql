@@ -1,4 +1,4 @@
-﻿CREATE FUNCTION [dbo].[UsersQueryByUsername]
+﻿CREATE FUNCTION [dbo].[UsersByUsernameQuery]
 (
     @Username VARCHAR(50)
 )
