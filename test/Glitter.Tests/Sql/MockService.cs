@@ -15,5 +15,4 @@ public class MockService : SqlService
         Task.FromResult(default(T)!);
     public override Task<IEnumerable<T>> Query<T>(SqlRequest request) =>
         Task.FromResult(Enumerable.Empty<T>());
-    public override bool TryEstablishConnection() => true;
 }
