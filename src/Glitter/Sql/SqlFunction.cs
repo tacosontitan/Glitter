@@ -56,7 +56,7 @@ public class SqlFunction : SqlRequest
         return this;
     }
     /// <inheritdoc/>
-    public override bool TryBuildCommand([NotNullWhen(true)] out string? command)
+    public override bool TryBuildCommand(out string? command)
     {
         string parameters = string.Join(", ", _parameterNames.Select(x => $"@{x}"));
         Command = $"SELECT * FROM [{_schema}].[{_functionName}] ({parameters})";

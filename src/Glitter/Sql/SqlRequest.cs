@@ -63,7 +63,7 @@ public class SqlRequest
     /// </summary>
     /// <param name="command"></param>
     /// <returns></returns>
-    public virtual bool TryBuildCommand([NotNullWhen(true)] out string? command)
+    public virtual bool TryBuildCommand(out string? command)
     {
         command = Command;
         return !string.IsNullOrWhiteSpace(command);
