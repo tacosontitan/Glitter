@@ -53,22 +53,6 @@ internal sealed class SampleSqlService : SqlService
 
         _connectionString = connectionStringBuilder.ConnectionString;
     }
-    /// <summary>
-    /// Attempts to establish a connection to the database.
-    /// </summary>
-    /// <returns><see langword="true"/> if the connection succeeded, otherwise <see langword="false"/>.</returns>
-    public override bool TryEstablishConnection()
-    {
-        try
-        {
-            using var connection = new SqlConnection(_connectionString);
-            connection.Open();
-            return true;
-        } catch
-        {
-            return false;
-        }
-    }
     public override Task Execute(SqlRequest request) => throw new NotImplementedException();
     public override Task<T> ExecuteScalar<T>(SqlRequest request) => throw new NotImplementedException();
     public override Task<IEnumerable<T>> Query<T>(SqlRequest request) => throw new NotImplementedException();
