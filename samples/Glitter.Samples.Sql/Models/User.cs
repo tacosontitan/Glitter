@@ -1,3 +1,7 @@
+using System.Data;
+
+using Glitter.Sql;
+
 namespace Glitter.Samples.Sql.Models;
 
 /// <summary>
