@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Glitter\Glitter.csproj" />
     <ProjectReference Include="..\..\src\Glitter\Glitter.csproj" />
   </ItemGroup>
 

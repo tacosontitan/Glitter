@@ -2,7 +2,7 @@ using System.Data;
 
 using Glitter.Sql;
 
-namespace Glitter.Samples.Sql.Models;
+namespace Glitter.Samples.Sql.Users;
 
 /// <summary>
 /// Represents a user.
