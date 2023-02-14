@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1E50AE95-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{23BE6F3C-9E27-40F8-810C-AA97AEDFA38C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Glitter.Samples.Sql", "samples\Glitter.Samples.Sql\Glitter.Samples.Sql.csproj", "{E0142E0D-499D-4610-AFBD-8AD609B40E5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Glitter.Samples.Sql", "samples\sql\Glitter.Samples.Sql\Glitter.Samples.Sql.csproj", "{E0142E0D-499D-4610-AFBD-8AD609B40E5A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{C1642536-222C-46EE-9037-F00284CBB844}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Glitter.Samples.Sql.Database", "samples\Glitter.Samples.Sql.Database\Glitter.Samples.Sql.Database.sqlproj", "{7F5C0474-F133-4507-959A-32F72AD33A8A}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Glitter.Samples.Sql.Database", "samples\sql\Glitter.Samples.Sql.Database\Glitter.Samples.Sql.Database.sqlproj", "{7F5C0474-F133-4507-959A-32F72AD33A8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
