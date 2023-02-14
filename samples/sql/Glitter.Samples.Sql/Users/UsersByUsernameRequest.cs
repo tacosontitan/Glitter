@@ -19,7 +19,7 @@ internal sealed class UsersByUsernameRequest : IRequest<IEnumerable<User>>
     public UsersByUsernameRequest(string username)
     {
         if (string.IsNullOrWhiteSpace(username))
-            throw new ArgumentException($"The specified username `{username}` is invalid.");
+            throw new ArgumentException($"The specified username `{Username}` cannot be `null` or whitespace.");
 
         Username = username;
     }
