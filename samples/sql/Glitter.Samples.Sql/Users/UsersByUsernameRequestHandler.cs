@@ -1,4 +1,5 @@
-﻿using Glitter.Sql;
+﻿using Glitter.Samples.Sql.Sql;
+using Glitter.Sql;
 
 using MediatR;
 
@@ -18,7 +19,7 @@ internal sealed class UsersByUsernameRequestHandler : IRequestHandler<UsersByUse
     /// </summary>
     /// <param name="sqlService">The <see cref="SqlService"/> to handle the request with.</param>
     /// <param name="logger">The <see cref="ILogger"/> for recording information about processing.</param>
-    public UsersByUsernameRequestHandler(SqlService sqlService, ILogger<UsersByUsernameRequestHandler> logger)
+    public UsersByUsernameRequestHandler(SampleSqlService sqlService, ILogger<UsersByUsernameRequestHandler> logger)
     {
         _logger = logger;
         _sqlService = sqlService;
