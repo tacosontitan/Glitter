@@ -1,6 +1,6 @@
 # 🗻 Glitter
 
-Named after the second largest mountain in Norway, Glitter is a simple framework to jump start your projects while keeping them clean, concise, and optimized.
+Named after the second largest mountain in Norway, Glitter is a simple framework for encapsulating functionality to keep implementations clean, concise, and optimized.
 
 ![License](https://img.shields.io/github/license/tacosontitan/Glitter?logo=github&style=for-the-badge)
 
