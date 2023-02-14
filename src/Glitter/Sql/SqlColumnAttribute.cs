@@ -37,6 +37,14 @@ public sealed class SqlColumnAttribute : Attribute
     /// </summary>
     /// <param name="name">The name of the column.</param>
     /// <param name="type">The type of the column.</param>
+    public SqlColumnAttribute(string name, DbType type) :
+        this(name) =>
+        Type = type;
+    /// <summary>
+    /// Creates a new <see cref="SqlColumnAttribute"/> instance.
+    /// </summary>
+    /// <param name="name">The name of the column.</param>
+    /// <param name="type">The type of the column.</param>
     /// <param name="size">The size of the column.</param>
     public SqlColumnAttribute(string name, DbType type, int size) :
         this(name)
