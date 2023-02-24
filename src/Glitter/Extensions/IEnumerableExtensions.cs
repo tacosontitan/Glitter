@@ -198,5 +198,4 @@ public static class IEnumerableExtensions
             ? Enumerable.Empty<TResult>()
             : selection.Distinct();
     }
-    
 }
