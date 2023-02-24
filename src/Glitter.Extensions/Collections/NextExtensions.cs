@@ -1,5 +1,8 @@
 namespace Glitter.Extensions.Collections;
 
+/// <summary>
+/// Defines a collection of extension methods.
+/// </summary>
 public static class NextExtensions
 {
     /// <summary>
