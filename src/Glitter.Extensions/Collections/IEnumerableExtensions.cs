@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Glitter.Extensions;
+namespace Glitter.Extensions.Collections;
 
 /// <summary>
 /// Defines a collection of extension methods for the <see cref="IEnumerable{T}"/> interface.
