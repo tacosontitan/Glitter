@@ -1,9 +1,9 @@
 namespace Glitter.Extensions.Collections;
 
 /// <summary>
-/// Defines a collection of extension methods for the <see cref="IEnumerable{T}"/> interface.
+/// Defines a collection of extension methods.
 /// </summary>
-public static class IEnumerableExtensions
+public static class SelectDistinctExtensions
 {
     /// <summary>
     /// Returns a collection of distinct elements from the specified collection, using the specified selector function to determine equality.
