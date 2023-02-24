@@ -1,4 +1,4 @@
-namespace Glitter.Validation;
+namespace Glitter;
 
 /// <summary>
 /// Represents an exception that is thrown when a resource is not found.
