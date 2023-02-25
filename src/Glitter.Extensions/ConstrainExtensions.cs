@@ -16,6 +16,9 @@ public static class ConstrainExtensions
     /// <exception cref="ArgumentNullException">
     /// Thrown if <paramref name="input"/>, <paramref name="lowerBound"/>, or <paramref name="upperBound"/> is <see langword="null"/>.
     /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown if <paramref name="lowerBound"/> is greater than <paramref name="upperBound"/>.
+    /// </exception>
     public static T Constrain<T>(this T input, T lowerBound, T upperBound) where T : IComparable
     {
         if (input is null)
@@ -26,6 +29,9 @@ public static class ConstrainExtensions
 
         if (upperBound is null)
             throw new ArgumentNullException(nameof(upperBound));
+
+        if (lowerBound.CompareTo(upperBound) > 0)
+            throw new ArgumentException("The lower bound must be less than or equal to the upper bound.", nameof(lowerBound));
 
         if (input.CompareTo(lowerBound) < 0)
             input = lowerBound;
