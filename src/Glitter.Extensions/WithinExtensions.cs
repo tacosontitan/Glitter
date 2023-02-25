@@ -27,6 +27,9 @@ public static class WithinExtensions
         if (upperBound is null)
             throw new ArgumentNullException(nameof(upperBound));
 
+        if (lowerBound.CompareTo(upperBound) > 0)
+            throw new ArgumentException("The lower bound must be less than or equal to the upper bound.", nameof(lowerBound));
+
         return input.CompareTo(lowerBound) >= 0 && input.CompareTo(upperBound) <= 0;
     }
 }
