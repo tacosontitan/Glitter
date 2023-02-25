@@ -9,7 +9,7 @@ public class ConstrainsExtensionsTests
         string? input = null;
 
         // Assert
-        _ = Assert.Throws<ArgumentNullException>(() => input!.Constrain("a", "z"));
+        _ = Assert.Throws<ArgumentNullException>(() => input!.Constrain(lowerBound: "a", upperBound: "z"));
     }
 
 #pragma warning disable CS8631 // Not all consumers care and will invoke anyways. Unit tests must handle this case.
@@ -21,7 +21,7 @@ public class ConstrainsExtensionsTests
         string input = "b";
 
         // Assert
-        _ = Assert.Throws<ArgumentNullException>(() => input.Constrain(null, "z"));
+        _ = Assert.Throws<ArgumentNullException>(() => input.Constrain(lowerBound: null, upperBound: "z"));
     }
     [Fact]
     public void UpperBoundIsNull()
@@ -30,7 +30,7 @@ public class ConstrainsExtensionsTests
         string? input = "b";
 
         // Assert
-        _ = Assert.Throws<ArgumentNullException>(() => input.Constrain("a", null));
+        _ = Assert.Throws<ArgumentNullException>(() => input.Constrain(lowerBound: "a", upperBound: null));
     }
 
 #pragma warning restore CS8631 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match constraint type.
