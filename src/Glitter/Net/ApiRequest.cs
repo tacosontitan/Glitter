@@ -26,7 +26,7 @@ public class ApiRequest
         Endpoint = endpoint;
         Headers = new Dictionary<string, object>();
     }
-        /// <summary>
+    /// <summary>
     /// Adds a header to the request with the specified key and value.
     /// </summary>
     /// <param name="key">The key for the header.</param>
