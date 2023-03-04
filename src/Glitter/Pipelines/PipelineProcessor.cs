@@ -11,5 +11,5 @@ public abstract class PipelineProcessor<T>
     /// <param name="input">The input to the pipeline.</param>
     /// <param name="next">The next action in the pipeline.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    public abstract Task Invoke(T input, PipelineProcessor<T> next, CancellationToken cancellationToken);
+    public abstract Task Invoke(T input, PipelineProcessor<T>? next, CancellationToken cancellationToken);
 }
