@@ -23,17 +23,5 @@ public interface IPipeline<T>
     /// </summary>
     /// <typeparam name="TProcessor">The type of the processor to add.</typeparam>
     /// <returns>The pipeline.</returns>
-    IPipeline<T> With<TProcessor>() where TProcessor : PipelineProcessor<T>;
-    /// <summary>
-    /// Adds a condition that must be met for the next processor to be executed.
-    /// </summary>
-    /// <param name="condition">The condition to add.</param>
-    /// <returns>The pipeline.</returns>
-    IPipeline<T> When(Func<T, bool> condition);
-    /// <summary>
-    /// Provides an alternative processor to execute if the previously specified condition is not met.
-    /// </summary>
-    /// <typeparam name="TProcessor">The type of the processor to add.</typeparam>
-    /// <returns>The pipeline.</returns>
-    IPipeline<T> Else<TProcessor>() where TProcessor : PipelineProcessor<T>;
+    IPipeline<T> Using<TProcessor>() where TProcessor : PipelineProcessor<T>;
 }
