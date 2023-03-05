@@ -6,10 +6,14 @@ namespace Glitter.Pipelines;
 public abstract class PipelineProcessor<T>
 {
     /// <summary>
+    /// The next processor in the pipeline.
+    /// </summary>
+    public PipelineProcessor<T>? Next { get; set; }
+    /// <summary>
     /// Executes the processor.
     /// </summary>
     /// <param name="input">The input to the pipeline.</param>
     /// <param name="next">The next action in the pipeline.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    public abstract Task Invoke(T input, PipelineProcessor<T>? next, CancellationToken cancellationToken);
+    public abstract Task Invoke(T input, CancellationToken cancellationToken);
 }
