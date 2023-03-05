@@ -24,23 +24,11 @@ public class Pipeline<T> : IPipeline<T>
     /// <returns>A task that represents the asynchronous operation.</returns>
     public async Task Process(T input, CancellationToken cancellationToken)
     {
-        if (_steps?.Any() != true)
+        PipelineProcessor<T>? head = CreateProcessorChain(input);
+        if (head is null)
             return;
 
-        PipelineStep<T>? firstStep = _steps?.FirstOrDefault();
-        if (firstStep is null)
-            return;
-
-        var processor = (PipelineProcessor<T>?)Activator.CreateInstance(firstStep.ProcessorType);
-        if (processor is null)
-            return;
-
-        PipelineStep<T>? secondStep = _steps?.Count > 1 ? _steps[1] : null;
-        PipelineProcessor<T>? nextProcessor = null;
-        if (secondStep is not null)
-            nextProcessor = (PipelineProcessor<T>?)Activator.CreateInstance(secondStep.ProcessorType);
-
-        await processor.Invoke(input, nextProcessor, cancellationToken);
+        await head.Invoke(input, cancellationToken);
     }
     /// <summary>
     /// Adds an processor to the pipeline.
@@ -53,5 +41,37 @@ public class Pipeline<T> : IPipeline<T>
         var step = new PipelineStep<T>(typeof(TProcessor), conditions);
         _steps.Add(step);
         return this;
+    }
+    private PipelineProcessor<T>? CreateProcessorChain(T input)
+    {
+        if (_steps?.Any() != true)
+            return null;
+
+        PipelineStep<T> firstStep = _steps.First();
+        if (firstStep is null)
+            return null;
+
+        if (!firstStep.Conditions.All(condition => condition(input)))
+            return null;
+
+        PipelineProcessor<T>? head = (PipelineProcessor<T>?)Activator.CreateInstance(_steps.First().ProcessorType);
+        if (head is null)
+            return null;
+
+        PipelineProcessor<T>? previous = head;
+        foreach (var step in _steps.Skip(1))
+        {
+            if (!step.Conditions.All(condition => condition(input)))
+                break;
+                
+            var processor = (PipelineProcessor<T>?)Activator.CreateInstance(step.ProcessorType);
+            if (processor is null)
+                break;
+
+            previous.Next = processor;
+            previous = processor;
+        }
+
+        return head;
     }
 }
