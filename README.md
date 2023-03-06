@@ -35,10 +35,10 @@ Glitter offers a way to encapsulate the chain of responsibility pattern in a way
 
 ```csharp
 IPipeline<int> fizzBuzzPipeline = Pipeline.CreateFor<int>(optimize: true)
-    .Using(new FizzBuzzProcessor())
-    .Using(new FizzProcessor())
-    .Using(new BuzzProcessor())
-    .Using(new DefaultProcessor());
+    .Using<FizzBuzzProcessor>()
+    .Using<FizzProcessor>()
+    .Using<BuzzProcessor>()
+    .Using<DefaultProcessor>();
 
 foreach (int number in Enumerable.Range(1, 100))
     await fizzBuzzPipeline.Process(number);
