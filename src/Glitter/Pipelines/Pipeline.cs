@@ -6,9 +6,15 @@ namespace Glitter.Pipelines;
 /// <typeparam name="T">Specifies the type of the input for the pipeline.</typeparam>
 public class Pipeline<T> : IPipeline<T>
 {
+    private bool _recompileNeeded;
+    private readonly bool _optimize;
     private readonly List<PipelineStep<T>> _steps;
-    internal Pipeline() =>
+    private readonly PipelineProcessor<T>? _head;
+    internal Pipeline(bool optimize)
+    {
+        _optimize = optimize;
         _steps = new List<PipelineStep<T>>();
+    }
     /// <summary>
     /// Processes the request.
     /// </summary>
@@ -24,7 +30,10 @@ public class Pipeline<T> : IPipeline<T>
     /// <returns>A task that represents the asynchronous operation.</returns>
     public async Task Process(T input, CancellationToken cancellationToken)
     {
-        PipelineProcessor<T>? head = CreateProcessorChain(input);
+        PipelineProcessor<T>? head = _head is null || _recompileNeeded || !_optimize
+            ? CompileProcessorChain(input)
+            : _head;
+
         if (head is null)
             return;
 
@@ -37,12 +46,13 @@ public class Pipeline<T> : IPipeline<T>
     /// <returns>The pipeline.</returns>
     public IPipeline<T> Using<TProcessor>() where TProcessor : PipelineProcessor<T>
     {
+        _recompileNeeded = true;
         var conditions = Array.Empty<Func<T, bool>>();
         var step = new PipelineStep<T>(typeof(TProcessor), conditions);
         _steps.Add(step);
         return this;
     }
-    private PipelineProcessor<T>? CreateProcessorChain(T input)
+    private PipelineProcessor<T>? CompileProcessorChain(T input)
     {
         if (_steps?.Any() != true)
             return null;
@@ -63,7 +73,7 @@ public class Pipeline<T> : IPipeline<T>
         {
             if (!step.Conditions.All(condition => condition(input)))
                 break;
-                
+
             var processor = (PipelineProcessor<T>?)Activator.CreateInstance(step.ProcessorType);
             if (processor is null)
                 break;
