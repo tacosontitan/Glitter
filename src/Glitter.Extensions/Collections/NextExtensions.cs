@@ -23,23 +23,20 @@ public static class NextExtensions
     /// <exception cref="IndexOutOfRangeException">
     /// The search value is at the end of the collection and <paramref name="wrapAround"/> is <see langword="false"/>.
     /// </exception>
-    public static T? Next<T>(this IEnumerable<T> collection, T searchValue, bool wrapAround = false)
+    public static T? Next<T>(this IEnumerable<T> source, T searchValue, bool wrapAround = false)
     {
-        if (collection is null)
-            throw new ArgumentNullException(nameof(collection));
+        if (source is null)
+            throw new ArgumentNullException(nameof(source));
 
         if (searchValue is null)
             throw new ArgumentNullException(nameof(searchValue));
 
-        int index = collection.IndexOf(searchValue);
-        if (index == -1)
-            return default;
-
-        if (index == collection.Count() - 1)
-            return wrapAround
-                ? collection.ElementAtOrDefault(0)
-                : throw new IndexOutOfRangeException("The search value is at the end of the collection and wrap around is disabled.");
-
-        return collection.ElementAtOrDefault(index + 1);
+        IEnumerable<T> elementsAfterSearchValue = source.After(searchValue);
+        if (elementsAfterSearchValue.Any())
+            return elementsAfterSearchValue.FirstOrDefault();
+        else if (wrapAround)
+            return source.FirstOrDefault();
+        else
+            throw new IndexOutOfRangeException("The search value is at the end of the collection and wrap around is disabled.");
     }
 }
