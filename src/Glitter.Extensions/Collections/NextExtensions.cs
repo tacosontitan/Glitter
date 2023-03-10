@@ -13,12 +13,12 @@ public static class NextExtensions
     /// Returns the next element in the collection after the specified search value.
     /// </summary>
     /// <typeparam name="T">The type of the elements in the collection.</typeparam>
-    /// <param name="collection">The collection to iterate over.</param>
+    /// <param name="source">The collection to iterate over.</param>
     /// <param name="searchValue">The value to search for.</param>
     /// <param name="wrapAround">Whether to wrap around to the first element if the search value is at the end of the collection.</param>
     /// <returns>The next element in the collection after the specified search value, or <see langword="null"/> if the search value is not found.</returns>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="collection"/> or <paramref name="searchValue"/> is <see langword="null"/>.
+    /// <paramref name="source"/> or <paramref name="searchValue"/> is <see langword="null"/>.
     /// </exception>
     /// <exception cref="IndexOutOfRangeException">
     /// The search value is at the end of the collection and <paramref name="wrapAround"/> is <see langword="false"/>.
@@ -32,6 +32,36 @@ public static class NextExtensions
             throw new ArgumentNullException(nameof(searchValue));
 
         IEnumerable<T> elementsAfterSearchValue = source.After(searchValue);
+        if (elementsAfterSearchValue.Any())
+            return elementsAfterSearchValue.FirstOrDefault();
+        else if (wrapAround)
+            return source.FirstOrDefault();
+        else
+            throw new IndexOutOfRangeException("The search value is at the end of the collection and wrap around is disabled.");
+    }
+    /// <summary>
+    /// Returns the next element in the collection after the specified search value.
+    /// </summary>
+    /// <typeparam name="T">The type of the elements in the collection.</typeparam>
+    /// <param name="source">The collection to iterate over.</param>
+    /// <param name="predicate">A function to test each element for a condition.</param>
+    /// <param name="wrapAround">Whether to wrap around to the first element if the search value is at the end of the collection.</param>
+    /// <returns>The next element in the collection after the specified search value, or <see langword="null"/> if the search value is not found.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="source"/> or <paramref name="predicate"/> is <see langword="null"/>.
+    /// </exception>
+    /// <exception cref="IndexOutOfRangeException">
+    /// The search value is at the end of the collection and <paramref name="wrapAround"/> is <see langword="false"/>.
+    /// </exception>
+    public static T? Next<T>(this IEnumerable<T> source, Func<T, bool> predicate, bool wrapAround = false)
+    {
+        if (source is null)
+            throw new ArgumentNullException(nameof(source));
+
+        if (predicate is null)
+            throw new ArgumentNullException(nameof(predicate));
+
+        IEnumerable<T> elementsAfterSearchValue = source.After(predicate);
         if (elementsAfterSearchValue.Any())
             return elementsAfterSearchValue.FirstOrDefault();
         else if (wrapAround)
