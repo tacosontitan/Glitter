@@ -42,6 +42,7 @@ public static class AfterExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> or <paramref name="searchValue"/> is <see langword="null"/>.
     /// </exception>
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static IEnumerable<T> After<T>(this IEnumerable<T> source, T searchValue)
     {
         if (source is null)
