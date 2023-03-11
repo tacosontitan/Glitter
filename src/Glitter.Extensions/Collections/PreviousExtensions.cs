@@ -36,7 +36,7 @@ public static class PreviousExtensions
             ? default
             : index == 0
                 ? wrapAround
-                    ? collection.ElementAtOrDefault(collection.Count() - 1)
+                    ? collection.LastOrDefault()
                     : throw new IndexOutOfRangeException("The search value is at the beginning of the collection and wrap around is disabled.")
                 : collection.ElementAtOrDefault(index - 1);
     }

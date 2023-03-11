@@ -31,12 +31,14 @@ public static class NextExtensions
         if (searchValue is null)
             throw new ArgumentNullException(nameof(searchValue));
 
-        IEnumerable<T> elementsAfterSearchValue = source.After(searchValue);
-        return elementsAfterSearchValue.Any()
-            ? elementsAfterSearchValue.FirstOrDefault()
-            : wrapAround
-                ? source.FirstOrDefault()
-                : throw new IndexOutOfRangeException("The search value is at the end of the collection and wrap around is disabled.");
+        int index = source.IndexOf(searchValue);
+        return index == -1
+            ? default
+            : index == 0
+                ? wrapAround
+                    ? source.FirstOrDefault()
+                    : throw new IndexOutOfRangeException("The search value is at the beginning of the collection and wrap around is disabled.")
+                : source.ElementAtOrDefault(index - 1);
     }
     /// <summary>
     /// Returns the next element in the collection after the specified search value.
@@ -60,11 +62,13 @@ public static class NextExtensions
         if (predicate is null)
             throw new ArgumentNullException(nameof(predicate));
 
-        IEnumerable<T> elementsAfterSearchValue = source.After(predicate);
-        return elementsAfterSearchValue.Any()
-            ? elementsAfterSearchValue.FirstOrDefault()
-            : wrapAround
-                ? source.FirstOrDefault()
-                : throw new IndexOutOfRangeException("The search value is at the end of the collection and wrap around is disabled.");
+        int index = source.IndexOf(predicate);
+        return index == -1
+            ? default
+            : index == 0
+                ? wrapAround
+                    ? source.FirstOrDefault()
+                    : throw new IndexOutOfRangeException("The search value is at the beginning of the collection and wrap around is disabled.")
+                : source.ElementAtOrDefault(index - 1);
     }
 }
