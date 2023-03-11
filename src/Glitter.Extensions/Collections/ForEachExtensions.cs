@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Glitter.Extensions.Collections;
 
 /// <summary>
@@ -27,6 +24,29 @@ public static class ForEachExtensions
 
         foreach (T? item in source)
             action(item);
+    }
+    /// <summary>
+    /// Executes the specified action on each element of the collection.
+    /// </summary>
+    /// <typeparam name="T">The type of the elements in the collection.</typeparam>
+    /// <param name="source">The collection to iterate over.</param>
+    /// <param name="action">The action to execute on each element.</param>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="source"/> or <paramref name="action"/> is <see langword="null"/>.
+    /// </exception>
+    public static async Task ForEach<T>(this IEnumerable<T> source, Action<T> action, CancellationToken cancellationToken, bool parallel) {
+        if (source is null)
+            throw new ArgumentNullException(nameof(source));
+        
+        if (action is null)
+            throw new ArgumentNullException(nameof(action));
+        
+        if (parallel)
+            _ = Parallel.ForEach(source, new ParallelOptions { CancellationToken = cancellationToken }, action);
+        else
+            await Task.Run(() => source.ForEach(action), cancellationToken);
+
+        await Task.CompletedTask;
     }
     /// <summary>
     /// Executes the specified action on each element of the collection.
