@@ -31,6 +31,8 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 
 ## Generic Extensions
 
+There is currently only one *purely* generic extension method available:
+
 ### `In`
 
 Returns a value indicating whether a specified search value is present in a given collection of params values:
@@ -43,7 +45,14 @@ Console.WriteLine(result);
 
 ## Extensions for `IEnumerable<T>`
 
-### `After`
+The following extension methods are available for `IEnumerable<T>`:
+
+- [`After`](#after)
+- [`ForEach`](#foreach)
+- [`IndexOf`](#indexof)
+- [`SelectDistinct`](#selectdistinct)
+
+### After
 
 Returns all elements after a specified search value or predicate:
 
@@ -63,7 +72,7 @@ The example above produces the following output in both use cases:
 
 > 3, 4, 5
 
-### `ForEach`
+### ForEach
 
 Provides a set of extension methods for iterating over a collection of elements:
 
@@ -80,7 +89,7 @@ values.ForEach((previous, current, next) => Console.WriteLine($"{previous}, {cur
 await values.ForEach(input => Console.WriteLine(input), cancellationToken, parallel: true);
 ```
 
-### `IndexOf`
+### IndexOf
 
 Returns the index of the first element that matches a specified search value or predicate:
 
@@ -100,7 +109,7 @@ The example above produces the following output in both use cases:
 
 > 1
 
-### `SelectDistinct`
+### SelectDistinct
 
 Returns a distinct set of elements based on a specified selector:
 
@@ -118,7 +127,12 @@ The example above produces the following output:
 
 ## Extensions for `IComparable`
 
-### `Constrain`
+The following extension methods are available for `IComparable`:
+
+- [`Constrain`](#constrain)
+- [`WithinRange`](#withinrange)
+
+### Constrain
 
 Returns a specified value, constrained to a given range:
 
@@ -132,7 +146,7 @@ The example above produces the following output:
 
 > 2
 
-### `WithinRange`
+### WithinRange
 
 Returns a value indicating whether a specified value is within a given range:
 
