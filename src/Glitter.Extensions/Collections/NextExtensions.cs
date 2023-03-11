@@ -23,6 +23,7 @@ public static class NextExtensions
     /// <exception cref="IndexOutOfRangeException">
     /// The search value is at the end of the collection and <paramref name="wrapAround"/> is <see langword="false"/>.
     /// </exception>
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static T? Next<T>(this IEnumerable<T> source, T searchValue, bool wrapAround = false)
     {
         if (source is null)
@@ -53,6 +54,7 @@ public static class NextExtensions
     /// <exception cref="IndexOutOfRangeException">
     /// The search value is at the end of the collection and <paramref name="wrapAround"/> is <see langword="false"/>.
     /// </exception>
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static T? Next<T>(this IEnumerable<T> source, Func<T, bool> predicate, bool wrapAround = false)
     {
         if (source is null)

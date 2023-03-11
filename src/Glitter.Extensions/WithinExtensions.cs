@@ -18,6 +18,7 @@ public static class WithinExtensions
     /// <exception cref="ArgumentNullException">
     /// Thrown if <paramref name="input"/>, <paramref name="lowerBound"/>, or <paramref name="upperBound"/> is <see langword="null"/>.
     /// </exception>
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static bool Within<T>(this T input, T lowerBound, T upperBound) where T : IComparable
     {
         if (input is null)

@@ -18,6 +18,7 @@ public static class IndexOfExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="collection"/> or <paramref name="predicate"/> is <see langword="null"/>.
     /// </exception>
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static int IndexOf<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
     {
         if (collection is null)
@@ -47,6 +48,7 @@ public static class IndexOfExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="collection"/> or <paramref name="searchValue"/> is <see langword="null"/>.
     /// </exception>
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static int IndexOf<T>(this IEnumerable<T> collection, T searchValue) {
         if (collection is null)
             throw new ArgumentNullException(nameof(collection));

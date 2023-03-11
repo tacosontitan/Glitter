@@ -17,6 +17,7 @@ public static class ForEachExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> or <paramref name="action"/> is <see langword="null"/>.
     /// </exception>
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
     {
         if (source is null)

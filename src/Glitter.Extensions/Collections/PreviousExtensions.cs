@@ -23,6 +23,7 @@ public static class PreviousExtensions
     /// <exception cref="IndexOutOfRangeException">
     /// The search value is at the beginning of the collection and <paramref name="wrapAround"/> is <see langword="false"/>.
     /// </exception>
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static T? Previous<T>(this IEnumerable<T> collection, T searchValue, bool wrapAround = false)
     {
         if (collection is null)
