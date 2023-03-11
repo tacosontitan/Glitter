@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Glitter.Extensions.Collections;
 
 /// <summary>
