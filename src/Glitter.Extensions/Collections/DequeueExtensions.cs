@@ -25,12 +25,11 @@ public static class DequeueExtensions
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="count"/> is negative.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static IEnumerable<T> Dequeue<T>(this Queue<T> source, int count)
     {
         if (source is null)
             throw new ArgumentNullException(nameof(source));
-        
+
         if (count < 0)
             throw new ArgumentOutOfRangeException(nameof(count), "The number of elements to dequeue cannot be negative.");
 

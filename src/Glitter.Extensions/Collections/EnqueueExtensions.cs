@@ -18,7 +18,6 @@ public static class EnqueueExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> or <paramref name="items"/> is <see langword="null"/>.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static Queue<T> Enqueue<T>(this Queue<T> source, IEnumerable<T> items)
     {
         if (source is null)
@@ -42,7 +41,6 @@ public static class EnqueueExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> or <paramref name="items"/> is <see langword="null"/>.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static Queue<T> Enqueue<T>(this Queue<T> source, params T[] items)
     {
         if (source is null)

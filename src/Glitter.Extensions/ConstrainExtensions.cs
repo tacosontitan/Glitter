@@ -21,12 +21,11 @@ public static class ConstrainExtensions
     /// <exception cref="ArgumentException">
     /// Thrown if <paramref name="lowerBound"/> is greater than <paramref name="upperBound"/>.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static T Constrain<T>(this T input, T lowerBound, T upperBound) where T : IComparable
     {
         if (input is null)
             throw new ArgumentNullException(nameof(input));
-        
+
         if (lowerBound is null)
             throw new ArgumentNullException(nameof(lowerBound));
 

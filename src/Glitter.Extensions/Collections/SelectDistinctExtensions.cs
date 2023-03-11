@@ -20,7 +20,6 @@ public static class SelectDistinctExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="collection"/> or <paramref name="selector"/> is <see langword="null"/>.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static IEnumerable<TResult> SelectDistinct<T, TResult>(this IEnumerable<T> collection, Func<T, TResult> selector)
     {
         if (collection is null)
