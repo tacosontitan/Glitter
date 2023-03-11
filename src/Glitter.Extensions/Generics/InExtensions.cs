@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Glitter.Extensions.Generics;
 
@@ -20,11 +19,12 @@ public static class InExtensions
     /// <exception cref="ArgumentException">
     /// <paramref name="values"/> is <see langword="null"/> or empty.
     /// </exception>
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static bool In<T>(this T value, params T[] values)
     {
         if (values?.Any() != true)
             throw new ArgumentException("At least one value is required to evaluate the in clause.", nameof(values));
-        
+
         return values.Contains(value);
     }
     /// <summary>
@@ -40,6 +40,7 @@ public static class InExtensions
     /// <exception cref="ArgumentException">
     /// <paramref name="values"/> is <see langword="null"/> or empty.
     /// </exception>
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static bool In<T>(this T value, IEqualityComparer<T> comparer, IEnumerable<T> values)
     {
         if (comparer is null)
@@ -47,7 +48,7 @@ public static class InExtensions
 
         if (values?.Any() != true)
             throw new ArgumentException("At least one value is required to evaluate the in clause.", nameof(values));
-        
+
         return values.Contains(value, comparer);
     }
 }
