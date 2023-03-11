@@ -56,15 +56,19 @@ public static class ForEachExtensions
         if (enumerator.MoveNext())
             current = enumerator.Current;
 
-        if (enumerator.MoveNext())
-            next = enumerator.Current;
-
-        while (current is not null)
+        while (true)
         {
+            bool hasNext = enumerator.MoveNext();
+            next = hasNext
+                ? enumerator.Current
+                : default;
+
             action(previous, current, next);
             previous = current;
             current = next;
-            next = enumerator.MoveNext() ? enumerator.Current : default;
+
+            if (!hasNext)
+                break;
         }
     }
 }
