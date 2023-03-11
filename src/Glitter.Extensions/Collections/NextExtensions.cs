@@ -23,7 +23,6 @@ public static class NextExtensions
     /// <exception cref="IndexOutOfRangeException">
     /// The search value is at the end of the collection and <paramref name="wrapAround"/> is <see langword="false"/>.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static T? Next<T>(this IEnumerable<T> source, T searchValue, bool wrapAround = false)
     {
         if (source is null)
@@ -33,12 +32,11 @@ public static class NextExtensions
             throw new ArgumentNullException(nameof(searchValue));
 
         IEnumerable<T> elementsAfterSearchValue = source.After(searchValue);
-        if (elementsAfterSearchValue.Any())
-            return elementsAfterSearchValue.FirstOrDefault();
-        else if (wrapAround)
-            return source.FirstOrDefault();
-        else
-            throw new IndexOutOfRangeException("The search value is at the end of the collection and wrap around is disabled.");
+        return elementsAfterSearchValue.Any()
+            ? elementsAfterSearchValue.FirstOrDefault()
+            : wrapAround
+                ? source.FirstOrDefault()
+                : throw new IndexOutOfRangeException("The search value is at the end of the collection and wrap around is disabled.");
     }
     /// <summary>
     /// Returns the next element in the collection after the specified search value.
@@ -54,7 +52,6 @@ public static class NextExtensions
     /// <exception cref="IndexOutOfRangeException">
     /// The search value is at the end of the collection and <paramref name="wrapAround"/> is <see langword="false"/>.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static T? Next<T>(this IEnumerable<T> source, Func<T, bool> predicate, bool wrapAround = false)
     {
         if (source is null)
@@ -64,11 +61,10 @@ public static class NextExtensions
             throw new ArgumentNullException(nameof(predicate));
 
         IEnumerable<T> elementsAfterSearchValue = source.After(predicate);
-        if (elementsAfterSearchValue.Any())
-            return elementsAfterSearchValue.FirstOrDefault();
-        else if (wrapAround)
-            return source.FirstOrDefault();
-        else
-            throw new IndexOutOfRangeException("The search value is at the end of the collection and wrap around is disabled.");
+        return elementsAfterSearchValue.Any()
+            ? elementsAfterSearchValue.FirstOrDefault()
+            : wrapAround
+                ? source.FirstOrDefault()
+                : throw new IndexOutOfRangeException("The search value is at the end of the collection and wrap around is disabled.");
     }
 }
