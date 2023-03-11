@@ -23,7 +23,6 @@ public static class PreviousExtensions
     /// <exception cref="IndexOutOfRangeException">
     /// The search value is at the beginning of the collection and <paramref name="wrapAround"/> is <see langword="false"/>.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static T? Previous<T>(this IEnumerable<T> collection, T searchValue, bool wrapAround = false)
     {
         if (collection is null)
@@ -33,14 +32,12 @@ public static class PreviousExtensions
             throw new ArgumentNullException(nameof(searchValue));
 
         int index = collection.IndexOf(searchValue);
-        if (index == -1)
-            return default;
-
-        if (index == 0)
-            return wrapAround
-                ? collection.ElementAtOrDefault(collection.Count() - 1)
-                : throw new IndexOutOfRangeException("The search value is at the beginning of the collection and wrap around is disabled.");
-
-        return collection.ElementAtOrDefault(index - 1);
+        return index == -1
+            ? default
+            : index == 0
+                ? wrapAround
+                    ? collection.ElementAtOrDefault(collection.Count() - 1)
+                    : throw new IndexOutOfRangeException("The search value is at the beginning of the collection and wrap around is disabled.")
+                : collection.ElementAtOrDefault(index - 1);
     }
 }
