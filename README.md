@@ -41,3 +41,6 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 - Extension methods for `IComparable`.
   - [`Constrain`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions#constrain)
   - [`WithinRange`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions#withinrange)
+- Extension methods for `Queue<T>`.
+  - [`Enqueue`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#enqueue)
+  - [`Dequeue`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#dequeue)
