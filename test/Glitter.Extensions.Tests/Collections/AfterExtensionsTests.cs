@@ -9,7 +9,7 @@ public class AfterExtensionsTests
         IEnumerable<int> source = null;
 
         // Assert
-        Assert.Throws<ArgumentNullException>(() => source.After(1));
+        _ = Assert.Throws<ArgumentNullException>(() => source.After(1));
     }
     [Fact]
     public void SearchValueIsNull()
@@ -18,7 +18,7 @@ public class AfterExtensionsTests
         IEnumerable<int?> source = new int?[] { 1, 2, 3 };
 
         // Assert
-        Assert.Throws<ArgumentNullException>(() => source.After(null));
+        _ = Assert.Throws<ArgumentNullException>(() => source.After(null));
     }
     [Fact]
     public void SearchValueIsNotFound()
