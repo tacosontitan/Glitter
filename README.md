@@ -31,8 +31,9 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 
 ## Generic Extensions
 
-- `In`
-  - Returns a value indicating whether a specified search value is present in a given collection of params values.
+### `In`
+
+Returns a value indicating whether a specified search value is present in a given collection of params values:
 
 ```csharp
 int value = 1;
