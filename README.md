@@ -59,15 +59,23 @@ IEnumerable<int> resultPredicate = values.After(x => x == 2);
 Console.WriteLine(string.Join(", ", resultPredicate));
 ```
 
-The example above will output `3, 4, 5` in both use cases.
+### `ForEach`
 
-- `ForEach`
-  - `ForEach<T>(this IEnumerable<T>, Action<T>)`
-    - Replicates the `ForEach` extension method for `List<T>`.
-  - `ForEach<T>(this IEnumerable<T>, Action<T?, T?, T?>)`
-    - Provides the previous and next elements.
-  - `ForEach<T>(this IEnumerable<T>, Action<T>, CancellationToken, bool)`
-    - Allows asynchronous iteration with cancellation and parallelism support.
+Provides a set of extension methods for iterating over a collection of elements:
+
+```csharp
+IEnumerable<int> values = new[] { 1, 2, 3, 4, 5 };
+
+// Using a synchronous action:
+values.ForEach(x => Console.WriteLine(x));
+
+// Using previous, current, and next elements:
+values.ForEach((previous, current, next) => Console.WriteLine($"{previous}, {current}, {next}"));
+
+// Using an asynchronous action with parallelism and cancellation support:
+await values.ForEach(input => Console.WriteLine(input), cancellationToken, parallel: true);
+```
+
 - `IndexOf`
   - Returns the index of the first element that matches a specified search value or predicate.
 - `SelectDistinct`
