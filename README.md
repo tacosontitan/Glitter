@@ -59,6 +59,10 @@ IEnumerable<int> resultPredicate = values.After(x => x == 2);
 Console.WriteLine(string.Join(", ", resultPredicate));
 ```
 
+The example above produces the following output in both use cases:
+
+> 3, 4, 5
+
 ### `ForEach`
 
 Provides a set of extension methods for iterating over a collection of elements:
@@ -76,8 +80,26 @@ values.ForEach((previous, current, next) => Console.WriteLine($"{previous}, {cur
 await values.ForEach(input => Console.WriteLine(input), cancellationToken, parallel: true);
 ```
 
-- `IndexOf`
-  - Returns the index of the first element that matches a specified search value or predicate.
+### `IndexOf`
+
+Returns the index of the first element that matches a specified search value or predicate:
+
+```csharp
+IEnumerable<int> values = new[] { 1, 2, 3, 4, 5 };
+
+// Using a search value:
+int resultDirect = values.IndexOf(2);
+Console.WriteLine(resultDirect);
+
+// Using a predicate:
+int resultPredicate = values.IndexOf(x => x == 2);
+Console.WriteLine(resultPredicate);
+```
+
+The example above produces the following output in both use cases:
+
+> 1
+
 - `SelectDistinct`
   - Returns a distinct set of elements based on a specified selector.
 
