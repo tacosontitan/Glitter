@@ -52,7 +52,7 @@ public static class AfterExtensions
             throw new ArgumentNullException(nameof(searchValue));
 
         return source
-            .SkipWhile(element => searchValue.Equals(element))
+            .SkipWhile(element => !searchValue.Equals(element))
             .Skip(1);
     }
 }
