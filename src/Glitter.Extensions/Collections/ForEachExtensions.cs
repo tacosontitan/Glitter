@@ -50,7 +50,7 @@ public static class ForEachExtensions
 
         T? previous = default;
         T? current = default;
-        T? next = default;
+        T? next;
 
         using IEnumerator<T> enumerator = source.GetEnumerator();
         if (enumerator.MoveNext())
