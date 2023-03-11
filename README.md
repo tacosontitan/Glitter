@@ -132,5 +132,16 @@ The example above produces the following output:
 
 > 2
 
-- `WithinRange`
-  - Returns a value indicating whether a specified value is within a given range.
+### `WithinRange`
+
+Returns a value indicating whether a specified value is within a given range:
+
+```csharp
+int value = 1;
+bool result = value.WithinRange(2, 4);
+Console.WriteLine(result);
+```
+
+The example above produces the following output:
+
+> False
