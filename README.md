@@ -118,7 +118,19 @@ The example above produces the following output:
 
 ## Extensions for `IComparable`
 
-- `Constrain`
-  - Returns a specified value, constrained to a given range.
+### `Constrain`
+
+Returns a specified value, constrained to a given range:
+
+```csharp
+int value = 1;
+int result = value.Constrain(2, 4);
+Console.WriteLine(result);
+```
+
+The example above produces the following output:
+
+> 2
+
 - `WithinRange`
   - Returns a value indicating whether a specified value is within a given range.
