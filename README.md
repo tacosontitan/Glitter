@@ -43,8 +43,24 @@ Console.WriteLine(result);
 
 ## Extensions for `IEnumerable<T>`
 
-- `After`
-  - Returns all elements after a specified search value or predicate.
+### `After`
+
+Returns all elements after a specified search value or predicate:
+
+```csharp
+IEnumerable<int> values = new[] { 1, 2, 3, 4, 5 };
+
+// Using a search value:
+IEnumerable<int> resultDirect = values.After(2);
+Console.WriteLine(string.Join(", ", resultDirect));
+
+// Using a predicate:
+IEnumerable<int> resultPredicate = values.After(x => x == 2);
+Console.WriteLine(string.Join(", ", resultPredicate));
+```
+
+The example above will output `3, 4, 5` in both use cases.
+
 - `ForEach`
   - `ForEach<T>(this IEnumerable<T>, Action<T>)`
     - Replicates the `ForEach` extension method for `List<T>`.
