@@ -44,9 +44,7 @@ public static class ForEachExtensions
         if (parallel)
             _ = Parallel.ForEach(source, new ParallelOptions { CancellationToken = cancellationToken }, action);
         else
-            await Task.Run(() => source.ForEach(action), cancellationToken);
-
-        await Task.CompletedTask;
+            await Task.Run(() => source.ForEach(action), cancellationToken).ConfigureAwait(false);
     }
     /// <summary>
     /// Executes the specified action on each element of the collection.
