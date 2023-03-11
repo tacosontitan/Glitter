@@ -100,8 +100,21 @@ The example above produces the following output in both use cases:
 
 > 1
 
-- `SelectDistinct`
-  - Returns a distinct set of elements based on a specified selector.
+### `SelectDistinct`
+
+Returns a distinct set of elements based on a specified selector:
+
+```csharp
+IEnumerable<int> values = new[] { 1, 2, 3, 4, 5 };
+
+// Using a selector:
+IEnumerable<int> resultDirect = values.SelectDistinct(x => x % 2 == 0 ? x : 0);
+Console.WriteLine(string.Join(", ", resultDirect));
+```
+
+The example above produces the following output:
+
+> 0, 2, 4
 
 ## Extensions for `IComparable`
 
