@@ -29,133 +29,15 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 ![Size](https://img.shields.io/github/languages/code-size/tacosontitan/Glitter.Extensions?logo=github&style=for-the-badge)
 ![Line Count](https://img.shields.io/tokei/lines/github/tacosontitan/Glitter.Extensions?logo=github&style=for-the-badge)
 
-## Generic Extensions
+## 🔥 What `Glitter.Extensions` has to offer
 
-There is currently only one *purely* generic extension method available:
-
-### `In`
-
-Returns a value indicating whether a specified search value is present in a given collection of params values:
-
-```csharp
-int value = 1;
-bool result = value.In(1, 2, 3);
-Console.WriteLine(result);
-```
-
-## Extensions for `IEnumerable<T>`
-
-The following extension methods are available for `IEnumerable<T>`:
-
-- [`After`](#after)
-- [`ForEach`](#foreach)
-- [`IndexOf`](#indexof)
-- [`SelectDistinct`](#selectdistinct)
-
-### After
-
-Returns all elements after a specified search value or predicate:
-
-```csharp
-IEnumerable<int> values = new[] { 1, 2, 3, 4, 5 };
-
-// Using a search value:
-IEnumerable<int> resultDirect = values.After(2);
-Console.WriteLine(string.Join(", ", resultDirect));
-
-// Using a predicate:
-IEnumerable<int> resultPredicate = values.After(x => x == 2);
-Console.WriteLine(string.Join(", ", resultPredicate));
-```
-
-The example above produces the following output in both use cases:
-
-> 3, 4, 5
-
-### ForEach
-
-Provides a set of extension methods for iterating over a collection of elements:
-
-```csharp
-IEnumerable<int> values = new[] { 1, 2, 3, 4, 5 };
-
-// Using a synchronous action:
-values.ForEach(x => Console.WriteLine(x));
-
-// Using previous, current, and next elements:
-values.ForEach((previous, current, next) => Console.WriteLine($"{previous}, {current}, {next}"));
-
-// Using an asynchronous action with parallelism and cancellation support:
-await values.ForEach(input => Console.WriteLine(input), cancellationToken, parallel: true);
-```
-
-### IndexOf
-
-Returns the index of the first element that matches a specified search value or predicate:
-
-```csharp
-IEnumerable<int> values = new[] { 1, 2, 3, 4, 5 };
-
-// Using a search value:
-int resultDirect = values.IndexOf(2);
-Console.WriteLine(resultDirect);
-
-// Using a predicate:
-int resultPredicate = values.IndexOf(x => x == 2);
-Console.WriteLine(resultPredicate);
-```
-
-The example above produces the following output in both use cases:
-
-> 1
-
-### SelectDistinct
-
-Returns a distinct set of elements based on a specified selector:
-
-```csharp
-IEnumerable<int> values = new[] { 1, 2, 3, 4, 5 };
-
-// Using a selector:
-IEnumerable<int> resultDirect = values.SelectDistinct(x => x % 2 == 0 ? x : 0);
-Console.WriteLine(string.Join(", ", resultDirect));
-```
-
-The example above produces the following output:
-
-> 0, 2, 4
-
-## Extensions for `IComparable`
-
-The following extension methods are available for `IComparable`:
-
-- [`Constrain`](#constrain)
-- [`WithinRange`](#withinrange)
-
-### Constrain
-
-Returns a specified value, constrained to a given range:
-
-```csharp
-int value = 1;
-int result = value.Constrain(2, 4);
-Console.WriteLine(result);
-```
-
-The example above produces the following output:
-
-> 2
-
-### WithinRange
-
-Returns a value indicating whether a specified value is within a given range:
-
-```csharp
-int value = 1;
-bool result = value.WithinRange(2, 4);
-Console.WriteLine(result);
-```
-
-The example above produces the following output:
-
-> False
+- Select extension methods for generic types.
+  - [`In`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Generics#in)
+- Extension methods for `IEnumerable<T>`.
+  - [`After`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#after)
+  - [`ForEach`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#foreach)
+  - [`IndexOf`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#indexof)
+  - [`SelectDistinct`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#selectdistinct)
+- Extension methods for `IComparable`.
+  - [`Constrain`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions#constrain)
+  - [`WithinRange`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions#withinrange)
