@@ -1,4 +1,5 @@
-namespace Glitter.Extensions.Collections.Tests;
+
+namespace Glitter.Extensions.Tests.Collections;
 
 public class SelectDistinctExtensionsTests
 {
@@ -24,7 +25,7 @@ public class SelectDistinctExtensionsTests
     public void SourceIsEmpty()
     {
         // Arrange
-        IEnumerable<int> source = new int[0];
+        IEnumerable<int> source = Array.Empty<int>();
 
         // Act
         IEnumerable<int> result = source.SelectDistinct(input => input);
@@ -42,7 +43,7 @@ public class SelectDistinctExtensionsTests
         IEnumerable<int> result = source.SelectDistinct(input => input);
 
         // Assert
-        var expected = new[] { 1 };
+        int[] expected = new[] { 1 };
         Assert.Equal(expected, result);
     }
     [Fact]
@@ -55,7 +56,7 @@ public class SelectDistinctExtensionsTests
         IEnumerable<int> result = source.SelectDistinct(input => input);
 
         // Assert
-        var expected = new[] { 1, 2, 3 };
+        int[] expected = new[] { 1, 2, 3 };
         Assert.Equal(expected, result);
     }
     [Fact]
@@ -68,7 +69,7 @@ public class SelectDistinctExtensionsTests
         IEnumerable<int> result = source.SelectDistinct(input => input % 2);
 
         // Assert
-        var expected = new[] { 1, 0 };
+        int[] expected = new[] { 1, 0 };
         Assert.Equal(expected, result);
     }
 }
