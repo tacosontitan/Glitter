@@ -40,7 +40,7 @@ public class ForEachExtensionsTests
         await source.ForEach(input => expected.Add(input), CancellationToken.None, parallel: true).ConfigureAwait(false);
 
         // Assert
-        var expectedList = new List<int> { 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3 };
-        Assert.Equal(expectedList, expected);
+        int testCount = 4;
+        Assert.True(source.All(x => expected.Count(y => y == x) == testCount));
     }
 }
