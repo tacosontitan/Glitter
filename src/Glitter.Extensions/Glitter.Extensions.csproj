@@ -36,6 +36,7 @@
     <FileVersion>2023.1.0.0</FileVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <Version>2023.1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
