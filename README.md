@@ -58,3 +58,42 @@ public void DoSomething(int? number)
         .Against(x => x % 2 == 0, "Number must be odd");
 }
 ```
+
+## 🛢️ SQL Encapsulation
+
+Glitter offers several ways to encapsulate SQL requests, including a fluent interface for building queries. The following example is the encapsulation of a function that returns a list of users based on a filter, page, and page size.
+
+```csharp
+internal sealed class UsersRequest : IRequest<IEnumerable<User>>
+{
+    public string Filter { get; set; }
+    public int? Page { get; set; }
+    public int? PageSize { get; set; }
+    public UsersRequest(string filter, int? page, int? pageSize)
+    {
+        Filter = filter;
+        Page = page;
+        PageSize = pageSize;
+    }
+}
+internal sealed class UsersQuery : SqlFunction
+{
+    public UsersQuery(UsersRequest request) :
+        base(schema: "Accounting", functionName: "UsersQuery")
+    {
+        AddParameter("Filter", request.Filter, DbType.String, size: 255);
+        AddParameter("Page", request.Page);
+        AddParameter("PageSize", request.PageSize);
+    }
+}
+internal sealed class UsersRequestHandler : IRequestHandler<UsersRequest, IEnumerable<User>>
+{
+    private readonly SqlService _sqlService;
+    public UsersQueryHandler(SqlService sqlService) => _sqlService = sqlService;
+    public async Task<IEnumerable<User>> Handle(UsersRequest request, CancellationToken cancellationToken)
+    {
+        var query = new UsersQuery(request);
+        return await _sqlService.Query<User>(query, cancellationToken);
+    }
+}
+```
