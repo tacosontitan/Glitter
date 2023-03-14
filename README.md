@@ -64,36 +64,21 @@ public void DoSomething(int? number)
 Glitter offers several ways to encapsulate SQL requests, including a fluent interface for building queries. The following example is the encapsulation of a function that returns a list of users based on a filter, page, and page size.
 
 ```csharp
-internal sealed class UsersRequest : IRequest<IEnumerable<User>>
+internal sealed class UsersQuery : SqlFunction : IRequest<IEnumerable<User>>
 {
-    public string Filter { get; set; }
-    public int? Page { get; set; }
-    public int? PageSize { get; set; }
-    public UsersRequest(string filter, int? page, int? pageSize)
-    {
-        Filter = filter;
-        Page = page;
-        PageSize = pageSize;
-    }
-}
-internal sealed class UsersQuery : SqlFunction
-{
-    public UsersQuery(UsersRequest request) :
+    public UsersQuery(string filter = null, int? page = null, int? pageSize = null) :
         base(schema: "Accounting", functionName: "UsersQuery")
     {
-        AddParameter("Filter", request.Filter, DbType.String, size: 255);
-        AddParameter("Page", request.Page);
-        AddParameter("PageSize", request.PageSize);
+        AddParameterIfNotNullOrWhiteSpace("Filter", filter, DbType.String, size: 255);
+        AddParameterIfNotNull("Page", page);
+        AddParameterIfNotNull("PageSize", pageSize);
     }
 }
-internal sealed class UsersRequestHandler : IRequestHandler<UsersRequest, IEnumerable<User>>
+internal sealed class UsersQueryHandler : IRequestHandler<UsersQuery, IEnumerable<User>>
 {
     private readonly SqlService _sqlService;
     public UsersQueryHandler(SqlService sqlService) => _sqlService = sqlService;
-    public async Task<IEnumerable<User>> Handle(UsersRequest request, CancellationToken cancellationToken)
-    {
-        var query = new UsersQuery(request);
-        return await _sqlService.Query<User>(query, cancellationToken);
-    }
+    public async Task<IEnumerable<User>> Handle(UsersQuery request, CancellationToken cancellationToken) =>
+        await _sqlService.Query<User>(query, cancellationToken);
 }
 ```
