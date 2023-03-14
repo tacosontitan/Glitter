@@ -61,7 +61,18 @@ public void DoSomething(int? number)
 
 ## 📝 Simplified Serialization
 
-Glitter offers a common interface for serializing and deserializing objects to and from any format. This allows for a clean separation of concerns, and the ability to easily swap out the serializer. In addition to the common interface, two extension methods are provided to simplify the process of serializing and deserializing objects throughout the codebase in a consistent manner.
+Glitter offers a common interface for serializing and deserializing objects to and from any format. This allows for a clean separation of concerns, and the ability to easily swap out the serializer.
+
+```csharp
+using Newtonsoft.Json;
+internal sealed class JsonSerializationProvider : ISerializationProvider
+{
+    public string Serialize<T>(T value) => JsonConvert.SerializeObject(value);
+    public T Deserialize<T>(string value) => JsonConvert.DeserializeObject<T>(value);
+}
+```
+
+In addition to the common interface, two extension methods are provided to simplify the process of serializing and deserializing objects throughout the codebase in a consistent manner.
 
 ```csharp
 var sample = new ComplexSampleObject();
