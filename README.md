@@ -85,6 +85,8 @@ FROM [Accounting].[Users]
 WHERE [FirstName] LIKE @FirstName
 ```
 
+For more information on how to build queries, see the [Query Builder](https://github.com/tacosontitan/Glitter/wiki) documentation.
+
 ### 🗃️ Encapsulating a Function
 
 The following example shows how to encapsulate a function that returns a list of users based on a filter, page, and page size.
