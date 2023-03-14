@@ -61,7 +61,11 @@ public void DoSomething(int? number)
 
 ## 🛢️ SQL Encapsulation
 
-Glitter offers several ways to encapsulate SQL requests, including a fluent interface for building queries. The following example is the encapsulation of a function that returns a list of users based on a filter, page, and page size.
+Glitter offers several ways to encapsulate SQL requests, including a fluent interface for building queries.
+
+### 🗃️ Encapsulating a Function
+
+The following example shows how to encapsulate a function that returns a list of users based on a filter, page, and page size.
 
 ```csharp
 internal sealed class UsersQuery : SqlFunction, IRequest<IEnumerable<User>>
@@ -82,3 +86,16 @@ internal sealed class UsersQueryHandler : IRequestHandler<UsersQuery, IEnumerabl
         await _sqlService.Query<User>(query, cancellationToken);
 }
 ```
+
+### 📜 Building a Query
+
+The following example shows how to build a query that returns a list of users based on a given filter.
+
+```csharp
+public void DoSomething()
+{
+    var query = CreateQuery.For<User>()
+        .From(schema: "Accounting", target: "Users")
+        .WhereLike(user => user.FirstName, "Hazel");
+    var users = await _sqlService.Query<User>(query);
+}
