@@ -1,6 +1,6 @@
 namespace Glitter.Sql;
 
-public static class AddParameterIfNotNullExtensions
+public static class AddParameterIfExtensions
 {
     /// <summary>
     /// Adds a parameter to the request if its value meets the condition of a specified predicate.
@@ -16,7 +16,7 @@ public static class AddParameterIfNotNullExtensions
     /// <param name="scale">The scale of the parameter.</param>
     /// <typeparam name="T">The type of the parameter.</typeparam>
     /// <returns>The <see cref="SqlRequest"/> instance.</returns>
-    public static SqlRequest AddParameterIfNotNull<T>(
+    public static SqlRequest AddParameterIf<T>(
         this SqlRequest request,
         Func<T?, bool> predicate,
         string name,
