@@ -63,6 +63,28 @@ public void DoSomething(int? number)
 
 Glitter offers several ways to encapsulate SQL requests, including a fluent interface for building queries.
 
+### 📜 Building a Query
+
+The following example shows how to build a query that returns a list of users based on a given filter.
+
+```csharp
+public void DoSomething()
+{
+    var query = CreateQuery.For<User>()
+        .From(schema: "Accounting", target: "Users")
+        .WhereLike(user => user.FirstName, "Hazel");
+    var users = await _sqlService.Query<User>(query);
+}
+```
+
+This results in a query that looks like the following:
+
+```sql
+SELECT *
+FROM [Accounting].[Users]
+WHERE [FirstName] LIKE @FirstName
+```
+
 ### 🗃️ Encapsulating a Function
 
 The following example shows how to encapsulate a function that returns a list of users based on a filter, page, and page size.
@@ -85,26 +107,4 @@ internal sealed class UsersQueryHandler : IRequestHandler<UsersQuery, IEnumerabl
     public async Task<IEnumerable<User>> Handle(UsersQuery request, CancellationToken cancellationToken) =>
         await _sqlService.Query<User>(query, cancellationToken);
 }
-```
-
-### 📜 Building a Query
-
-The following example shows how to build a query that returns a list of users based on a given filter.
-
-```csharp
-public void DoSomething()
-{
-    var query = CreateQuery.For<User>()
-        .From(schema: "Accounting", target: "Users")
-        .WhereLike(user => user.FirstName, "Hazel");
-    var users = await _sqlService.Query<User>(query);
-}
-```
-
-This results in a query that looks like the following:
-
-```sql
-SELECT *
-FROM [Accounting].[Users]
-WHERE [FirstName] LIKE @FirstName
 ```
