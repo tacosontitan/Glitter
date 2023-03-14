@@ -99,3 +99,12 @@ public void DoSomething()
         .WhereLike(user => user.FirstName, "Hazel");
     var users = await _sqlService.Query<User>(query);
 }
+```
+
+This results in a query that looks like the following:
+
+```sql
+SELECT *
+FROM [Accounting].[Users]
+WHERE [FirstName] LIKE @FirstName
+```
