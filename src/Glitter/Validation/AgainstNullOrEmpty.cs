@@ -19,14 +19,14 @@ public static class AgainstNullOrEmptyExtensions
         this GuardedValue<T> guardedValue,
         string? message = "The specified value cannot be null or empty.")
     {
-        if (typeof(T) != typeof(string))
-            throw new InvalidOperationException("The specified type is not a string.");
-
         if (guardedValue is null)
             throw new ArgumentNullException(nameof(guardedValue));
 
-        if (string.IsNullOrEmpty(guardedValue.Argument as string))
-            throw new ArgumentNullException(guardedValue.ArgumentName
+        if (guardedValue.Argument is not string argumentString)
+            throw new InvalidOperationException("The specified type is not a string.");
+
+        if (string.IsNullOrEmpty(argumentString))
+            throw new ArgumentNullException(message, guardedValue.ArgumentName ?? string.Empty);
 
         return guardedValue;
     }
