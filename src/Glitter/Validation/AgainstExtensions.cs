@@ -21,7 +21,10 @@ public static class AgainstExtensions
     /// <exception cref="ArgumentException">
     /// The specified value is invalid.
     /// </exception>
-    public static GuardedValue<T> Against<T>(this GuardedValue<T> guardedValue, Func<T, bool> predicate, string? message = null)
+    public static GuardedValue<T> Against<T>(
+        this GuardedValue<T> guardedValue,
+        Func<T, bool> predicate,
+        string? message = "The specified value is invalid.")
     {
         if (guardedValue is null)
             throw new ArgumentNullException(nameof(guardedValue));
@@ -30,7 +33,7 @@ public static class AgainstExtensions
             throw new ArgumentNullException(nameof(predicate));
 
         if (predicate(guardedValue.Argument))
-            throw new ArgumentException(message ?? "The specified value is invalid.", guardedValue.ArgumentName);
+            throw new ArgumentException(message, guardedValue.ArgumentName);
             
         return guardedValue;
     }
