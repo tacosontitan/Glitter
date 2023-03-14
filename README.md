@@ -59,6 +59,16 @@ public void DoSomething(int? number)
 }
 ```
 
+## 📝 Simplified Serialization
+
+Glitter offers a common interface for serializing and deserializing objects to and from any format. This allows for a clean separation of concerns, and the ability to easily swap out the serializer. In addition to the common interface, two extension methods are provided to simplify the process of serializing and deserializing objects throughout the codebase in a consistent manner.
+
+```csharp
+var sample = new ComplexSampleObject();
+string json = sample.Serialize<JsonSerializationProvider>();
+ComplexSampleObject parsedSample = json.Deserialize<ComplexSampleObject, JsonSerializationProvider>();
+```
+
 ## 🛢️ SQL Encapsulation
 
 Glitter offers several ways to encapsulate SQL requests, including a fluent interface for building queries.
