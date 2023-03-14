@@ -64,7 +64,7 @@ public void DoSomething(int? number)
 Glitter offers several ways to encapsulate SQL requests, including a fluent interface for building queries. The following example is the encapsulation of a function that returns a list of users based on a filter, page, and page size.
 
 ```csharp
-internal sealed class UsersQuery : SqlFunction : IRequest<IEnumerable<User>>
+internal sealed class UsersQuery : SqlFunction, IRequest<IEnumerable<User>>
 {
     public UsersQuery(string filter = null, int? page = null, int? pageSize = null) :
         base(schema: "Accounting", functionName: "UsersQuery")
