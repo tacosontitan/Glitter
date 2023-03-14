@@ -7,9 +7,9 @@ namespace Glitter.Pipelines;
 public class Pipeline<T> : IPipeline<T>
 {
     private bool _recompileNeeded;
+    private PipelineProcessor<T>? _head;
     private readonly bool _optimize;
     private readonly List<PipelineStep<T>> _steps;
-    private readonly PipelineProcessor<T>? _head;
     internal Pipeline(bool optimize)
     {
         _optimize = optimize;
@@ -36,6 +36,9 @@ public class Pipeline<T> : IPipeline<T>
 
         if (head is null)
             return;
+
+        if (_optimize)
+            _head = head;
 
         await head.Invoke(input, cancellationToken);
     }
