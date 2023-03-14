@@ -43,3 +43,18 @@ IPipeline<int> fizzBuzzPipeline = Pipeline.CreateFor<int>(optimize: true)
 foreach (int number in Enumerable.Range(1, 100))
     await fizzBuzzPipeline.Process(number);
 ```
+
+## 🛡️ Guard Clauses
+
+Guard clauses are a way to encapsulate the logic for validating input parameters to a method. This allows for a clean separation of concerns, and the ability to easily add or remove guard clauses from a method.
+
+```csharp
+public void DoSomething(int? number)
+{
+    CreateGuard.For(number, nameof(number))
+        .AgainstNull()
+        .AgainstLessThan(0)
+        .AgainstGreaterThan(100)
+        .Against(x => x % 2 == 0, "Number must be odd");
+}
+```
