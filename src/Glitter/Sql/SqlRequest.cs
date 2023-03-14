@@ -58,6 +58,48 @@ public class SqlRequest
         Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
         return this;
     }
+    public virtual SqlRequest AddParameterIfNotNull<T>(
+        string name,
+        T? value,
+        DbType? type = null,
+        ParameterDirection? direction = null,
+        int? size = null,
+        byte? precision = null,
+        byte? scale = null)
+    {
+        if (value is not null)
+            Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
+
+        return this;
+    }
+    public SqlRequest AddParameterIfNotNullOrEmpty(string name, string? value, DbType? type = null, ParameterDirection? direction = null, int? size = null, byte? precision = null, byte? scale = null)
+    {
+        if (!string.IsNullOrEmpty(value))
+            Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
+
+        return this;
+    }
+    public SqlRequest AddParameterIfNotNullOrWhiteSpace(string name, string? value, DbType? type = null, ParameterDirection? direction = null, int? size = null, byte? precision = null, byte? scale = null)
+    {
+        if (!string.IsNullOrWhiteSpace(value))
+            Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
+
+        return this;
+    }
+    public SqlRequest AddParameterIf<T>(Func<T, bool> predicate, string name, T? value, DbType? type = null, ParameterDirection? direction = null, int? size = null, byte? precision = null, byte? scale = null)
+    {
+        if (predicate(value))
+            Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
+
+        return this;
+    }
+    public SqlRequest AddParameterIfNot<T>(Func<T, bool> predicate, string name, T? value, DbType? type = null, ParameterDirection? direction = null, int? size = null, byte? precision = null, byte? scale = null)
+    {
+        if (!predicate(value))
+            Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
+
+        return this;
+    }
     /// <summary>
     /// Attempts to build the command for the request.
     /// </summary>
