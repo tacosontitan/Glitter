@@ -46,16 +46,31 @@ foreach (int number in Enumerable.Range(1, 100))
 
 ## 🛡️ Guard Clauses
 
-Guard clauses are a way to encapsulate the logic for validating input parameters to a method. This allows for a clean separation of concerns, and the ability to easily add or remove guard clauses from a method.
+Guard clauses are used to validate input parameters to a method:
 
 ```csharp
-public void DoSomething(int? number)
+[HttpGet]
+public async Task<User> GetUserById(Guid id)
 {
-    CreateGuard.For(number, nameof(number))
+    if (id == Guid.Empty)
+        throw new ArgumentException($"The specified value `{id}` is invalid.", nameof(id));
+
+    ...
+}
+```
+
+Glitters offers two classes (`GuardedValue` and `CreateGuard`) that are utilized to create fluent guard clauses through extension methods which enables rapid development of guard clauses that are easy to read and maintain:
+
+```csharp
+public record Sample(int Value);
+public void ProcessSample(Sample? sample)
+{
+    CreateGuard.For(sample.Value, nameof(sample.Value))
         .AgainstNull()
         .AgainstLessThan(0)
         .AgainstGreaterThan(100)
-        .Against(x => x % 2 == 0, "Number must be odd");
+        .Against(val => val == 3)
+        .Against(val => val % 2 == 0, "Number must be odd");
 }
 ```
 
