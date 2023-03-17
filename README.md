@@ -62,15 +62,19 @@ public async Task<User> GetUserById(Guid id)
 Glitters offers two classes (`GuardedValue` and `CreateGuard`) that are utilized to create fluent guard clauses through extension methods which enables rapid development of guard clauses that are easy to read and maintain:
 
 ```csharp
-public record Sample(int Value);
-public void ProcessSample(Sample? sample)
+public record Bar(int Value);
+public record Foo(int Value, Bar Bar);
+public void ProcessFoo(Foo? foo)
 {
-    CreateGuard.For(sample.Value, nameof(sample.Value))
+    CreateGuard.For(foo, nameof(foo))
         .AgainstNull()
-        .AgainstLessThan(0)
-        .AgainstGreaterThan(100)
-        .Against(val => val == 3)
-        .Against(val => val % 2 == 0, "Number must be odd");
+        .GuardProperty(nameof(foo.Value), f => f.Value, guard => guard
+            .AgainstLessThan(0)
+            .AgainstGreaterThan(100))
+        .GuardProperty(nameof(foo.Bar), f => f.Bar, guard => guard
+            .AgainstNull()
+            .GuardProperty(nameof(foo.Bar.Value), b => b.Value, guard => guard
+                .Against(v => v % 2 != 0, "The value must be even.")));
 }
 ```
 
