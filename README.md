@@ -76,7 +76,7 @@ public void ProcessSample(Sample? sample)
 
 ## 📝 Simplified Serialization
 
-Glitter offers a common interface for serializing and deserializing objects to and from any format. This allows for a clean separation of concerns, and the ability to easily swap out the serializer.
+Glitter offers a common interface for serializing and deserializing objects to and from any format:
 
 ```csharp
 using Newtonsoft.Json;
@@ -87,10 +87,20 @@ internal sealed class JsonSerializationProvider : ISerializationProvider
 }
 ```
 
-In addition to the common interface, two extension methods are provided to simplify the process of serializing and deserializing objects throughout the codebase in a consistent manner.
+This affords consumers the ability to easily swap out the serialization provider without having to change any code:
+
+```csharp
+ISerializationProvider serializationProvider = new JsonSerializationProvider();
+...
+string serializedSample = serializationProvider.Serialize(new ComplexSampleObject());
+ComplexSampleObject parsedSample = serializationProvider.Deserialize<ComplexSampleObject>(serializedSample);
+```
+
+The driving force behind this is to allow consumers to utilize extension methods that serve to simplify the serialization process:
 
 ```csharp
 var sample = new ComplexSampleObject();
+...
 string json = sample.Serialize<JsonSerializationProvider>();
 ComplexSampleObject parsedSample = json.Deserialize<ComplexSampleObject, JsonSerializationProvider>();
 ```
