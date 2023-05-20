@@ -11,10 +11,9 @@ public class DequeueExtensionsTests
 
         // Act
         void TestDequeue() =>
-            DequeueExtensions.Dequeue(source!, 3);
+            DequeueExtensions.Dequeue(source!, count);
 
         // Assert
-        _ = Assert.Throws<ArgumentNullException>(() => DequeueExtensions.Dequeue(default(Queue<int>)!, 3));
         _ = Assert.Throws<ArgumentNullException>(TestDequeue);
     }
 

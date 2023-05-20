@@ -50,7 +50,7 @@ public class AfterExtensionsTests
         IEnumerable<int> resultPredicate = source.After(input => input == 2);
 
         // Assert
-        var expected = new[] { 3 };
+        int[] expected = new[] { 3 };
         Assert.Equal(expected, resultDirect);
         Assert.Equal(expected, resultPredicate);
     }
@@ -81,7 +81,7 @@ public class AfterExtensionsTests
         IEnumerable<int> resultPredicate = source.After(input => input == 1);
 
         // Assert
-        var expected = new[] { 2, 3 };
+        int[] expected = new[] { 2, 3 };
         Assert.Equal(expected, resultDirect);
         Assert.Equal(expected, resultPredicate);
     }
@@ -97,7 +97,7 @@ public class AfterExtensionsTests
         IEnumerable<int> resultPredicate = source.After(input => input == 2);
 
         // Assert
-        var expected = new[] { 3, 2, 3 };
+        int[] expected = new[] { 3, 2, 3 };
         Assert.Equal(expected, result);
         Assert.Equal(expected, resultPredicate);
     }

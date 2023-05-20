@@ -53,7 +53,7 @@ public static class ForEachExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> or <paramref name="action"/> is <see langword="null"/>.
     /// </exception>
-    public static async Task ForEach<T>(this IEnumerable<T> source, Action<T> action, CancellationToken cancellationToken, bool parallel) {
+    public static async Task ForEach<T>(this IEnumerable<T> source, Action<T> action, bool parallel, CancellationToken cancellationToken) {
         if (source is null)
             throw new ArgumentNullException(nameof(source));
         

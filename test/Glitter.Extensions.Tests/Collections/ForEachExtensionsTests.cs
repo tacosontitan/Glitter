@@ -36,10 +36,10 @@ public class ForEachExtensionsTests
         var expected = new List<int>();
 
         // Act
-        source.ForEach(input => expected.Add(input));
+        source.ForEach(expected.Add);
         source.ForEach((previous, current, next) => expected.Add(current));
-        await source.ForEach(input => expected.Add(input), CancellationToken.None, parallel: false).ConfigureAwait(false);
-        await source.ForEach(input => expected.Add(input), CancellationToken.None, parallel: true).ConfigureAwait(false);
+        await source.ForEach(expected.Add, CancellationToken.None, parallel: false).ConfigureAwait(false);
+        await source.ForEach(expected.Add, CancellationToken.None, parallel: true).ConfigureAwait(false);
 
         // Assert
         int testCount = 4;
