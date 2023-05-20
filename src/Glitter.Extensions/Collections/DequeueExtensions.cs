@@ -41,13 +41,14 @@ public static class DequeueExtensions
 
         if (count < 0)
             throw new ArgumentOutOfRangeException(nameof(count), "The number of elements to dequeue cannot be negative.");
-
+        
         if (count > source.Count)
             throw new ArgumentOutOfRangeException(nameof(count), "The number of elements to dequeue cannot be greater than the number of elements in the queue.");
 
+        var results = new T[count];
         for (int i = 0; i < count; i++)
-            yield return source.Dequeue();
+            results[i] = source.Dequeue();
 
-        yield break;
+        return results;
     }
 }
