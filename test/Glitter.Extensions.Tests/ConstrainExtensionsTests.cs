@@ -23,6 +23,7 @@ public class ConstrainsExtensionsTests
         // Assert
         _ = Assert.Throws<ArgumentNullException>(() => input.Constrain(lowerBound: null, upperBound: "z"));
     }
+    
     [Fact]
     public void UpperBoundIsNull()
     {
@@ -46,6 +47,7 @@ public class ConstrainsExtensionsTests
         // Assert
         _ = Assert.Throws<ArgumentException>(() => input.Constrain(lowerBound, upperBound));
     }
+    
     [Fact]
     public void InputIsLessThanLowerBound()
     {
@@ -60,6 +62,7 @@ public class ConstrainsExtensionsTests
         // Assert
         Assert.Equal(lowerBound, result);
     }
+    
     [Fact]
     public void InputIsGreaterThanUpperBound()
     {
@@ -74,6 +77,7 @@ public class ConstrainsExtensionsTests
         // Assert
         Assert.Equal(upperBound, result);
     }
+    
     [Fact]
     public void InputIsWithinBounds()
     {
