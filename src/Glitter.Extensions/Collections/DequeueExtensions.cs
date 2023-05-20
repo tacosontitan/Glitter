@@ -31,9 +31,6 @@ public static class DequeueExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> is <see langword="null"/>.
     /// </exception>
-    /// <exception cref="InvalidOperationException">
-    /// <paramref name="source"/> is empty.
-    /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="count"/> is negative.
     /// </exception>
@@ -47,9 +44,6 @@ public static class DequeueExtensions
 
         if (count > source.Count)
             throw new ArgumentOutOfRangeException(nameof(count), "The number of elements to dequeue cannot be greater than the number of elements in the queue.");
-
-        if (!source.Any())
-            throw new InvalidOperationException("The queue is empty.");
 
         for (int i = 0; i < count; i++)
             yield return source.Dequeue();
