@@ -14,6 +14,7 @@ public class ForEachExtensionsTests
         _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source!.ForEach(input => { }, CancellationToken.None, parallel: false)).ConfigureAwait(false);
         _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source!.ForEach(input => { }, CancellationToken.None, parallel: true)).ConfigureAwait(false);
     }
+
     [Fact]
     public async Task ActionIsNull()
     {
@@ -26,6 +27,7 @@ public class ForEachExtensionsTests
         _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source.ForEach(action: null!, CancellationToken.None, parallel: false)).ConfigureAwait(false);
         _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source.ForEach(action: null!, CancellationToken.None, parallel: true)).ConfigureAwait(false);
     }
+    
     [Fact]
     public async Task ActionIsInvoked()
     {
