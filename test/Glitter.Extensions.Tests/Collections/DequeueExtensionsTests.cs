@@ -10,7 +10,8 @@ public class DequeueExtensionsTests
         int count = 10;
 
         // Act
-        void TestDequeue() => source!.Dequeue(count);
+        void TestDequeue() =>
+            DequeueExtensions.Dequeue(source!, 3);
 
         // Assert
         _ = Assert.Throws<ArgumentNullException>(TestDequeue);
@@ -24,7 +25,7 @@ public class DequeueExtensionsTests
         int count = -1;
 
         // Act
-        void TestDequeue() => source!.Dequeue(count);
+        void TestDequeue() => source.Dequeue(count);
 
         // Assert
         _ = Assert.Throws<ArgumentOutOfRangeException>(TestDequeue);
@@ -38,7 +39,7 @@ public class DequeueExtensionsTests
         int count = 1;
 
         // Act
-        void TestDequeue() => source!.Dequeue(count);
+        void TestDequeue() => source.Dequeue(count);
 
         // Assert
         _ = Assert.Throws<ArgumentOutOfRangeException>(TestDequeue);
@@ -52,7 +53,7 @@ public class DequeueExtensionsTests
         int count = 0;
 
         // Act
-        _ = source!.Enqueue(Enumerable.Range(0, 10));
+        _ = source.Enqueue(Enumerable.Range(0, 10));
         _ = source.Dequeue(count);
 
         // Assert
@@ -67,7 +68,7 @@ public class DequeueExtensionsTests
         int count = 1;
 
         // Act
-        _ = source!.Enqueue(Enumerable.Range(0, 10));
+        _ = source.Enqueue(Enumerable.Range(0, 10));
         IEnumerable<int> result = source.Dequeue(count);
 
         // Assert
@@ -83,7 +84,7 @@ public class DequeueExtensionsTests
         int count = 5;
 
         // Act
-        _ = source!.Enqueue(Enumerable.Range(0, 10));
+        _ = source.Enqueue(Enumerable.Range(0, 10));
         IEnumerable<int> result = source.Dequeue(count);
 
         // Assert
