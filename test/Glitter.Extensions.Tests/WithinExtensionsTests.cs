@@ -23,6 +23,7 @@ public class WithinExtensionsTests
         // Assert
         _ = Assert.Throws<ArgumentNullException>(() => input.Within(lowerBound: null, upperBound: "z"));
     }
+    
     [Fact]
     public void UpperBoundIsNull()
     {
@@ -46,6 +47,7 @@ public class WithinExtensionsTests
         // Assert
         _ = Assert.Throws<ArgumentException>(() => input.Within(lowerBound, upperBound));
     }
+    
     [Fact]
     public void InputIsLessThanLowerBound()
     {
@@ -60,6 +62,7 @@ public class WithinExtensionsTests
         // Assert
         Assert.False(result);
     }
+    
     [Fact]
     public void InputIsEqualToLowerBound()
     {
@@ -74,6 +77,7 @@ public class WithinExtensionsTests
         // Assert
         Assert.True(result);
     }
+    
     [Fact]
     public void InputIsGreaterThanLowerBoundAndLessThanUpperBound()
     {
@@ -88,6 +92,7 @@ public class WithinExtensionsTests
         // Assert
         Assert.True(result);
     }
+    
     [Fact]
     public void InputIsEqualToUpperBound()
     {
