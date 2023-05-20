@@ -10,10 +10,10 @@ public class DequeueExtensionsTests
         int count = 10;
 
         // Act
-        Action action = () => source!.Dequeue(count);
+        void TestDequeue() => source!.Dequeue(count);
 
         // Assert
-        Assert.Throws<ArgumentNullException>(action);
+        _ = Assert.Throws<ArgumentNullException>(TestDequeue);
     }
 
     [Fact]
@@ -24,10 +24,10 @@ public class DequeueExtensionsTests
         int count = -1;
 
         // Act
-        Action action = () => source!.Dequeue(count);
+        void TestDequeue() => source!.Dequeue(count);
 
         // Assert
-        Assert.Throws<ArgumentOutOfRangeException>(action);
+        _ = Assert.Throws<ArgumentOutOfRangeException>(TestDequeue);
     }
 
     [Fact]
@@ -38,10 +38,10 @@ public class DequeueExtensionsTests
         int count = 1;
 
         // Act
-        Action action = () => source!.Dequeue(count);
+        void TestDequeue() => source!.Dequeue(count);
 
         // Assert
-        Assert.Throws<ArgumentOutOfRangeException>(action);
+        _ = Assert.Throws<ArgumentOutOfRangeException>(TestDequeue);
     }
 
     [Fact]
@@ -52,8 +52,8 @@ public class DequeueExtensionsTests
         int count = 0;
 
         // Act
-        source!.Enqueue(Enumerable.Range(0, 10));
-        source.Dequeue(count);
+        _ = source!.Enqueue(Enumerable.Range(0, 10));
+        _ = source.Dequeue(count);
 
         // Assert
         Assert.Equal(10, source.Count);
@@ -67,11 +67,11 @@ public class DequeueExtensionsTests
         int count = 1;
 
         // Act
-        source!.Enqueue(Enumerable.Range(0, 10));
+        _ = source!.Enqueue(Enumerable.Range(0, 10));
         IEnumerable<int> result = source.Dequeue(count);
 
         // Assert
-        Assert.Equal(1, result.Count());
+        _ = Assert.Single(result);
         Assert.Equal(9, source.Count);
     }
 
@@ -83,7 +83,7 @@ public class DequeueExtensionsTests
         int count = 5;
 
         // Act
-        source!.Enqueue(Enumerable.Range(0, 10));
+        _ = source!.Enqueue(Enumerable.Range(0, 10));
         IEnumerable<int> result = source.Dequeue(count);
 
         // Assert
