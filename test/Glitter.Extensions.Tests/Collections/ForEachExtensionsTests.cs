@@ -11,8 +11,8 @@ public class ForEachExtensionsTests
         // Assert
         _ = Assert.Throws<ArgumentNullException>(() => source!.ForEach(input => { }));
         _ = Assert.Throws<ArgumentNullException>(() => source!.ForEach((previous, current, next) => { }));
-        _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source!.ForEach(input => { }, CancellationToken.None, parallel: false)).ConfigureAwait(false);
-        _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source!.ForEach(input => { }, CancellationToken.None, parallel: true)).ConfigureAwait(false);
+        _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source!.ForEach(input => { }, parallel: false, CancellationToken.None)).ConfigureAwait(false);
+        _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source!.ForEach(input => { }, parallel: true, CancellationToken.None)).ConfigureAwait(false);
     }
 
     [Fact]
@@ -24,8 +24,8 @@ public class ForEachExtensionsTests
         // Assert
         _ = Assert.Throws<ArgumentNullException>(() => source.ForEach((Action<int>)null!));
         _ = Assert.Throws<ArgumentNullException>(() => source.ForEach((Action<int, int, int>)null!));
-        _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source.ForEach(action: null!, CancellationToken.None, parallel: false)).ConfigureAwait(false);
-        _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source.ForEach(action: null!, CancellationToken.None, parallel: true)).ConfigureAwait(false);
+        _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source.ForEach(action: null!, parallel: false, CancellationToken.None)).ConfigureAwait(false);
+        _ = await Assert.ThrowsAsync<ArgumentNullException>(() => source.ForEach(action: null!, parallel: true, CancellationToken.None)).ConfigureAwait(false);
     }
     
     [Fact]
@@ -38,8 +38,8 @@ public class ForEachExtensionsTests
         // Act
         source.ForEach(expected.Add);
         source.ForEach((previous, current, next) => expected.Add(current));
-        await source.ForEach(expected.Add, CancellationToken.None, parallel: false).ConfigureAwait(false);
-        await source.ForEach(expected.Add, CancellationToken.None, parallel: true).ConfigureAwait(false);
+        await source.ForEach(expected.Add, parallel: false, CancellationToken.None).ConfigureAwait(false);
+        await source.ForEach(expected.Add, parallel: true, CancellationToken.None).ConfigureAwait(false);
 
         // Assert
         int testCount = 4;
