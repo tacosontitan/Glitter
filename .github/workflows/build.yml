@@ -11,14 +11,6 @@ jobs:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v3
 
-      - name: 💀 Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.0.0
-
-      - name: ✅ Setup .NET 6
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 6.0.x
-
       - name: ✅ Setup .NET
         uses: actions/setup-dotnet@v3
         with:
