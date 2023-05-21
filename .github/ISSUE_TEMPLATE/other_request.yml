@@ -18,13 +18,15 @@ body:
       label: 🔢 Version
       description: Which version of Glitter.Extensions are you currently using?
       options:
-        - ⛔ Not Applicable
+        - 🐬 2023.5.21
+        - 💀 2023.1.0.0
         - 🐣 Pre-Release
+        - ⛔ Not Applicable
     validations:
       required: true
   - type: textarea
     attributes:
-      label: 🤔 What's hapening?
+      label: 🤔 What's happening?
       description: Please give a brief explanation and a sample implementation.
   - type: textarea
     attributes:
