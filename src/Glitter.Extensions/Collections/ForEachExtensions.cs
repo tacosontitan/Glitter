@@ -41,16 +41,19 @@ public static class ForEachExtensions
         foreach (T? item in source)
             action(item);
     }
+
     /// <summary>
     /// Executes the specified action on each element of the collection.
     /// </summary>
     /// <typeparam name="T">The type of the elements in the collection.</typeparam>
     /// <param name="source">The collection to iterate over.</param>
     /// <param name="action">The action to execute on each element.</param>
+    /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+    /// <param name="parallel">Whether to execute the action in parallel.</param>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> or <paramref name="action"/> is <see langword="null"/>.
     /// </exception>
-    public static async Task ForEach<T>(this IEnumerable<T> source, Action<T> action, CancellationToken cancellationToken, bool parallel) {
+    public static async Task ForEach<T>(this IEnumerable<T> source, Action<T> action, bool parallel, CancellationToken cancellationToken) {
         if (source is null)
             throw new ArgumentNullException(nameof(source));
         
@@ -62,6 +65,7 @@ public static class ForEachExtensions
         else
             await Task.Run(() => source.ForEach(action), cancellationToken).ConfigureAwait(false);
     }
+    
     /// <summary>
     /// Executes the specified action on each element of the collection.
     /// </summary>

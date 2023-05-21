@@ -12,6 +12,7 @@ public class IndexOfExtensionsTests
         _ = Assert.Throws<ArgumentNullException>(() => source!.IndexOf(searchValue: 1));
         _ = Assert.Throws<ArgumentNullException>(() => source!.IndexOf(input => input == 1));
     }
+    
     [Fact]
     public void SearchValueIsNull()
     {
@@ -22,6 +23,7 @@ public class IndexOfExtensionsTests
         _ = Assert.Throws<ArgumentNullException>(() => source.IndexOf(searchValue: null!));
         _ = Assert.Throws<ArgumentNullException>(() => source.IndexOf(predicate: null!));
     }
+    
     [Fact]
     public void SearchValueIsNotFound()
     {
@@ -36,6 +38,7 @@ public class IndexOfExtensionsTests
         Assert.Equal(-1, resultDirect);
         Assert.Equal(-1, resultPredicate);
     }
+    
     [Fact]
     public void SearchValueIsFound()
     {
@@ -50,6 +53,7 @@ public class IndexOfExtensionsTests
         Assert.Equal(1, resultDirect);
         Assert.Equal(1, resultPredicate);
     }
+    
     [Fact]
     public void SearchValueIsFoundAtEnd()
     {
@@ -64,6 +68,7 @@ public class IndexOfExtensionsTests
         Assert.Equal(2, resultDirect);
         Assert.Equal(2, resultPredicate);
     }
+    
     [Fact]
     public void SearchValueIsFoundAtStart()
     {

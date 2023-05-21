@@ -44,6 +44,7 @@ public static class AfterExtensions
             .SkipWhile(element => !predicate(element))
             .Skip(1);
     }
+    
     /// <summary>
     /// Returns a collection of elements from the specified collection that occur after the specified search value.
     /// </summary>
