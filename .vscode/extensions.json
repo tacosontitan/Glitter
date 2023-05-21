@@ -1,5 +1,16 @@
 {
     "recommendations": [
-        "ms-dotnettools.csharp"
+        "ms-dotnettools.csharp",
+        "EditorConfig.EditorConfig",
+        "kreativ-software.csharpextensions",
+        "DavidAnson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode-remote.remote-containers",
+        "GitHub.copilot",
+        "eamodio.gitlens",
+        "formulahendry.dotnet-test-explorer",
+        "k--kato.docomment",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "VisualStudioExptTeam.intellicode-api-usage-examples"
     ]
 }
