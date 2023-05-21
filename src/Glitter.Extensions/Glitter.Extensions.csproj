@@ -43,19 +43,16 @@
     <FileVersion>2023.5.21</FileVersion>
     <Version>2023.5.21</Version>
     <PackageReleaseNotes>
-      <h2>2023.5.21</h2>
-      <ul>
-        <li>Fixed a bug with dequeue extensions not validating until enumerated.</li>
-        <li>Added overloads for the <c>In</c> extension.</li>
-        <li>Added explicit support of <c>.NET Standard 2.1</c>.</li>
-        <li>Added explicit support of <c>.NET Framework 4.8</c>.</li>
-        <li>Added explicit support of <c>.NET 6</c>.</li>
-        <li>Added explicit support of <c>.NET 7</c>.</li>
-      </ul>
-      <h2>2023.1.0.0</h2>
-      <ul>
-        <li>Initial release.</li>
-      </ul>
+## 2023.5.21
+- Fixed a bug with dequeue extensions not validating until enumerated.
+- Added overloads for the `In` extension.
+- Added explicit support of `.NET Standard 2.1`.
+- Added explicit support of `.NET Framework 4.8`.
+- Added explicit support of `.NET 6`.
+- Added explicit support of `.NET 7`.
+
+## 2023.1.0.0
+- Initial release.
     </PackageReleaseNotes>
   </PropertyGroup>
 

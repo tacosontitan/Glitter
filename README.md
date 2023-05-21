@@ -44,3 +44,15 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 - Extension methods for `Queue<T>`.
   - [`Enqueue`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#enqueue)
   - [`Dequeue`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#dequeue)
+
+## 📝 Release Notes
+
+- 2023.5.21
+  - Fixed a bug with dequeue extensions not validating until enumerated.
+  - Added overloads for the `In` extension.
+  - Added explicit support of `.NET Standard 2.1`.
+  - Added explicit support of `.NET Framework 4.8`.
+  - Added explicit support of `.NET 6`.
+  - Added explicit support of `.NET 7`.
+- 2023.1.0.0
+  - Initial release.
