@@ -16,11 +16,14 @@
 
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net48</TargetFrameworks>
+  <PropertyGroup Label="GeneralInformation">
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net48;net6.0;net7.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Label="PackageDetails">
     <Title>Glitter.Extensions</Title>
     <Authors>tacosontitan</Authors>
     <Description>A collection of extension methods that encapsulate common boilerplate when working with concrete .NET types.</Description>
@@ -30,13 +33,30 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/tacosontitan/Glitter.Extensions</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>framework;csharp;dotnet;extensions;extensibility;extension-methods;netstandard20</PackageTags>
-    <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
-    <AssemblyVersion>2023.1.0.0</AssemblyVersion>
-    <FileVersion>2023.1.0.0</FileVersion>
+    <PackageTags>framework;csharp;dotnet;extensions;extensibility;extension-methods;netstandard20;netstandard21;net48;net6;net7</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Version>2023.1.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Label="PackageReleaseDetails">
+    <AssemblyVersion>2023.5.21</AssemblyVersion>
+    <FileVersion>2023.5.21</FileVersion>
+    <Version>2023.5.21</Version>
+    <PackageReleaseNotes>
+      <h2>2023.5.21</h2>
+      <ul>
+        <li>Fixed a bug with dequeue extensions not validating until enumerated.</li>
+        <li>Added overloads for the <c>In</c> extension.</li>
+        <li>Added explicit support of <c>.NET Standard 2.1</c>.</li>
+        <li>Added explicit support of <c>.NET Framework 4.8</c>.</li>
+        <li>Added explicit support of <c>.NET 6</c>.</li>
+        <li>Added explicit support of <c>.NET 7</c>.</li>
+      </ul>
+      <h2>2023.1.0.0</h2>
+      <ul>
+        <li>Initial release.</li>
+      </ul>
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

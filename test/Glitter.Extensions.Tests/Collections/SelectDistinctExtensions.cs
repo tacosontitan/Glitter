@@ -12,6 +12,7 @@ public class SelectDistinctExtensionsTests
         // Assert
         _ = Assert.Throws<ArgumentNullException>(() => source!.SelectDistinct(input => input));
     }
+    
     [Fact]
     public void SelectorIsNull()
     {
@@ -21,6 +22,7 @@ public class SelectDistinctExtensionsTests
         // Assert
         _ = Assert.Throws<ArgumentNullException>(() => source.SelectDistinct<int, int>(selector: null!));
     }
+    
     [Fact]
     public void SourceIsEmpty()
     {
@@ -33,6 +35,7 @@ public class SelectDistinctExtensionsTests
         // Assert
         Assert.Empty(result);
     }
+    
     [Fact]
     public void SourceHasOneItem()
     {
@@ -46,6 +49,7 @@ public class SelectDistinctExtensionsTests
         int[] expected = new[] { 1 };
         Assert.Equal(expected, result);
     }
+    
     [Fact]
     public void SourceHasMultipleItems()
     {
@@ -59,6 +63,7 @@ public class SelectDistinctExtensionsTests
         int[] expected = new[] { 1, 2, 3 };
         Assert.Equal(expected, result);
     }
+    
     [Fact]
     public void SourceHasMultipleItemsWithSelector()
     {

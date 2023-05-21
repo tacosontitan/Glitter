@@ -8,6 +8,8 @@ body:
       label: 🔢 Version
       description: Which version of Glitter.Extensions are you currently using?
       options:
+        - 🐬 2023.5.21
+        - 💀 2023.1.0.0
         - 🐣 Pre-Release
     validations:
       required: true

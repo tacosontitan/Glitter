@@ -50,6 +50,7 @@ public static class IndexOfExtensions
 
         return -1;
     }
+    
     /// <summary>
     /// Gets the index of the specified search value in the collection.
     /// </summary>

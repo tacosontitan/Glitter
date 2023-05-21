@@ -478,3 +478,6 @@ dotnet_diagnostic.CA2015.severity = error
 dotnet_diagnostic.CA2017.severity = error
 dotnet_diagnostic.CA2018.severity = error
 dotnet_diagnostic.CA2019.severity = error
+
+[/test/**]
+dotnet_diagnostic.CA1707.severity = none

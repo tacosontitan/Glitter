@@ -44,6 +44,7 @@ public static class EnqueueExtensions
 
         return source;
     }
+    
     /// <summary>
     ///  Enqueues a collection of elements to the queue.
     /// </summary>
