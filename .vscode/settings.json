@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "tacosontitan"
-    ]
+    ],
+    "dotnet.defaultSolution": "Glitter.Extensions.sln"
 }
