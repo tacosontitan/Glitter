@@ -93,37 +93,6 @@ public void ProcessFoo(Foo? foo)
 }
 ```
 
-## 📝 Simplified Serialization
-
-Glitter offers a common interface for serializing and deserializing objects to and from any format:
-
-```csharp
-using Newtonsoft.Json;
-internal sealed class JsonSerializationProvider : ISerializationProvider
-{
-    public string Serialize<T>(T value) => JsonConvert.SerializeObject(value);
-    public T Deserialize<T>(string value) => JsonConvert.DeserializeObject<T>(value);
-}
-```
-
-This affords consumers the ability to easily swap out the serialization provider without having to change any code:
-
-```csharp
-ISerializationProvider serializationProvider = new JsonSerializationProvider();
-...
-string serializedSample = serializationProvider.Serialize(new ComplexSampleObject());
-ComplexSampleObject parsedSample = serializationProvider.Deserialize<ComplexSampleObject>(serializedSample);
-```
-
-The driving force behind this is to allow consumers to utilize extension methods that serve to simplify the serialization process:
-
-```csharp
-var sample = new ComplexSampleObject();
-...
-string json = sample.Serialize<JsonSerializationProvider>();
-ComplexSampleObject parsedSample = json.Deserialize<ComplexSampleObject, JsonSerializationProvider>();
-```
-
 ## 🛢️ SQL Encapsulation
 
 Glitter offers several ways to encapsulate SQL requests, including a fluent interface for building queries.
