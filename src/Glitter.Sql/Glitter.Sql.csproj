@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFrameworks>net48;netstandard2.0;netstandard2.1;net6.0;net7.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <PackageIcon>logo-round.png</PackageIcon>
   </PropertyGroup>
