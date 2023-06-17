@@ -25,10 +25,10 @@ public class TableValuedSqlFunction :
     /// <summary>
     /// Creates a new <see cref="TableValuedSqlFunction"/> instance.
     /// </summary>
-    /// <param name="functionName">The name of the function being invoked.</param>
-    /// <exception cref="ArgumentException"><paramref name="functionName"/> is null or whitespace.</exception>
-    public TableValuedSqlFunction(string functionName) :
-        base(functionName)
+    /// <param name="name">The name of the function being invoked.</param>
+    /// <exception cref="ArgumentException"><paramref name="name"/> is null or whitespace.</exception>
+    public TableValuedSqlFunction(string name) :
+        base(name)
     { }
 
     /// <summary>
@@ -36,8 +36,8 @@ public class TableValuedSqlFunction :
     /// </summary>
     /// <param name="schema">The schema for the function.</param>
     /// <param name="functionName">The name of the function being invoked.</param>
-    /// <exception cref="ArgumentException"><paramref name="functionName"/> or <paramref name="functionName"/> is null or whitespace.</exception>
-    public TableValuedSqlFunction(string schema, string functionName) :
-        base(schema, functionName)
+    /// <exception cref="ArgumentException"><paramref name="name"/> or <paramref name="name"/> is null or whitespace.</exception>
+    public TableValuedSqlFunction(string schema, string name) :
+        base(schema, name)
     { }
 }

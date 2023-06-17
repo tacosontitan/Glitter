@@ -29,6 +29,6 @@ public class UsersQueryRequest :
     /// </summary>
     public UsersQueryRequest() : base(
         schema: "Sample",
-        functionName: "UsersQuery"
+        name: "UsersQuery"
     ) { }
 }

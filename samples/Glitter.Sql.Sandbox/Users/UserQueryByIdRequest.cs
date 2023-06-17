@@ -33,7 +33,7 @@ public class UserQueryByIdRequest :
     /// <exception cref="ArgumentException">Thrown when <paramref name="userId"/> has an empty unique identifier.</exception>
     public UserQueryByIdRequest(Guid? userId) : base(
         schema: "Sample",
-        functionName: "UserQueryById")
+        name: "UserQueryById")
     {
         if (userId == Guid.Empty)
             throw new ArgumentException("The unique identifier of the user cannot be empty.", nameof(userId));
