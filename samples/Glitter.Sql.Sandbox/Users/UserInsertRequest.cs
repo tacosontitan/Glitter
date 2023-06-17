@@ -43,7 +43,7 @@ public class UserInsertRequest :
     /// <param name="surname">The surname of the user to insert.</param>
     /// <exception cref="ArgumentException">Thrown when <paramref name="username"/>, <paramref name="givenName"/>, or <paramref name="surname"/> is null, empty, or whitespace.</exception>
     public UserInsertRequest(string? username, string? givenName, string? surname) :
-        base(procedureName: "UserInsert")
+        base(schema: "Sample", name: "UserInsert")
     {
         if (string.IsNullOrWhiteSpace(username))
             throw new ArgumentException("The username of the user to insert cannot be null, empty, or whitespace.", nameof(username));

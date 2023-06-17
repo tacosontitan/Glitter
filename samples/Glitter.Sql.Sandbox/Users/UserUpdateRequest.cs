@@ -49,7 +49,7 @@ public class UserUpdateRequest :
     /// <exception cref="ArgumentException">Thrown when <paramref name="userId"/> has an empty unique identifier.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="givenName"/> or <paramref name="surname"/> is null, empty, or whitespace.</exception>
     public UserUpdateRequest(Guid? userId, string? givenName, string? surname) :
-        base(procedureName: "UserUpdate")
+        base(schema: "Sample", name: "UserUpdate")
     {
         if (userId == Guid.Empty)
             throw new ArgumentException("The unique identifier of the user cannot be empty.", nameof(userId));
