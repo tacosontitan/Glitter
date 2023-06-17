@@ -19,7 +19,8 @@ namespace Glitter.Sql;
 /// <summary>
 /// Represents information about a connection to a SQL database.
 /// </summary>
-public class ConnectionInformation
+public class ConnectionInformation :
+    IConnectionInformation
 {
     /// <summary>
     /// Should the connection use integrated security?
