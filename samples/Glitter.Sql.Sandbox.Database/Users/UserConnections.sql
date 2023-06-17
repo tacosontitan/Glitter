@@ -16,12 +16,11 @@
 
 CREATE TABLE [Sample].[UserConnections]
 (
-  [Id] INT NOT NULL PRIMARY KEY,
+  [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
 
   [UserId] UNIQUEIDENTIFIER NOT NULL,
   FOREIGN KEY ([UserId]) REFERENCES [Sample].[Users] ([Id]),
 
-  [ConnectionId] UNIQUEIDENTIFIER NOT NULL,
   [IsActive] BIT NOT NULL,
 
   -- Standard columns for all tables.
