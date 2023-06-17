@@ -32,6 +32,28 @@ public interface ISqlRequest
     ICollection<SqlRequestParameter> Parameters { get; }
 
     /// <summary>
+    /// Adds a parameter to the request.
+    /// </summary>
+    /// <param name="name">The name of the parameter.</param>
+    /// <param name="value">The value of the parameter.</param>
+    /// <param name="type">The <see cref="DbType"/> of the parameter.</param>
+    /// <param name="direction">The direction of the parameter.</param>
+    /// <param name="size">The size of the parameter.</param>
+    /// <param name="precision">The precision of the parameter.</param>
+    /// <param name="scale">The scale of the parameter.</param>
+    /// <typeparam name="T">Specifies the type of the parameter.</typeparam>
+    /// <returns>The <see cref="ISqlRequest"/> instance.</returns>
+    ISqlRequest AddParameter<T>(
+        string name,
+        T? value,
+        DbType? type = null,
+        ParameterDirection? direction = null,
+        int? size = null,
+        byte? precision = null,
+        byte? scale = null
+    );
+
+    /// <summary>
     /// Attempts to compile the request into a command.
     /// </summary>
     /// <param name="command">The command to execute.</param>
