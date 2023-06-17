@@ -21,12 +21,14 @@ namespace Glitter.Sql.Execution;
 /// <summary>
 /// Defines methods for executing SQL queries that do not return a value.
 /// </summary>
-public interface INonQueryHandler
+/// <typeparam name="TRequest">Specifies the type of <see cref="ISqlRequest"/> to execute.</typeparam>
+public interface INonQueryHandler<TRequest>
+    where TRequest : ISqlRequest
 {
     /// <summary>
     /// Executes the specified <see cref="ISqlRequest"/> as a query and returns the number of rows affected.
     /// </summary>
     /// <param name="request">The request to execute.</param>
     /// <returns>A <see cref="Task"/> describing the state of the operation.</returns>
-    Task ExecuteNonQuery(ISqlRequest request);
+    Task ExecuteNonQuery(TRequest request);
 }

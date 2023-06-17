@@ -21,7 +21,9 @@ namespace Glitter.Sql.Execution;
 /// <summary>
 /// Defines methods for executing SQL queries that return a single value.
 /// </summary>
-public interface IScalarHandler
+/// <typeparam name="TRequest">Specifies the type of <see cref="ISqlRequest"/> to execute.</typeparam>
+public interface IScalarHandler<TRequest>
+    where TRequest : ISqlRequest
 {
     /// <summary>
     /// Executes the specified <see cref="ISqlRequest"/> as a query and returns the first column of the first row in the result set returned by the query.
@@ -29,5 +31,5 @@ public interface IScalarHandler
     /// <param name="request">The request to execute.</param>
     /// <typeparam name="T">Specifies the expected return type.</typeparam>
     /// <returns>A <see cref="Task"/> describing the state of the operation.</returns>
-    Task<T> ExecuteScalar<T>(ISqlRequest request);
+    Task<T> ExecuteScalar<T>(TRequest request);
 }

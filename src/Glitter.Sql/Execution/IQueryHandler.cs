@@ -21,7 +21,9 @@ namespace Glitter.Sql.Execution;
 /// <summary>
 /// Defines methods for executing SQL queries.
 /// </summary>
-public interface IQueryHandler
+/// <typeparam name="TRequest">Specifies the type of <see cref="ISqlRequest"/> to execute.</typeparam>
+public interface IQueryHandler<TRequest>
+    where TRequest : ISqlRequest
 {
     /// <summary>
     /// Executes the specified <see cref="ISqlRequest"/> as a query and returns the results.
@@ -29,5 +31,5 @@ public interface IQueryHandler
     /// <param name="request">The request to execute.</param>
     /// <typeparam name="T">Specifies the expected return type.</typeparam>
     /// <returns>A <see cref="Task"/> describing the state of the operation.</returns>
-    Task<IEnumerable<T>> Query<T>(ISqlRequest request);
+    Task<IEnumerable<T>> Query<T>(TRequest request);
 }
