@@ -44,7 +44,7 @@ public static class AddParameterIfNotNullExtensions
             throw new ArgumentNullException(nameof(request));
             
         if (value is not null)
-            request.Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
+            _ = request.AddParameter(name, value, type, direction, size, precision, scale);
 
         return request;
     }

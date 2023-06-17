@@ -45,12 +45,12 @@ public static class AddParameterIfExtensions
     {
         if (request is null)
             throw new ArgumentNullException(nameof(request));
-            
+
         if (predicate is null)
             throw new ArgumentNullException(nameof(predicate));
 
         if (predicate(value))
-            request.Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
+            _ = request.AddParameter(name, value, type, direction, size, precision, scale);
 
         return request;
     }

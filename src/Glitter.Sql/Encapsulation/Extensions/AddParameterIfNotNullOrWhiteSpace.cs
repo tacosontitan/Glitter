@@ -44,7 +44,7 @@ public static class AddParameterIfNotNullOrWhiteSpaceExtensions
             throw new ArgumentNullException(nameof(request));
             
         if (!string.IsNullOrWhiteSpace(value))
-            request.Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
+            _ = request.AddParameter(name, value, type, direction, size, precision, scale);
 
         return request;
     }

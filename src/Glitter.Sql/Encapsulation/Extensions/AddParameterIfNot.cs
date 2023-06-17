@@ -50,7 +50,7 @@ public static class AddParameterIfNotExtensions
             throw new ArgumentNullException(nameof(predicate));
 
         if (!predicate(value))
-            request.Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
+            _ = request.AddParameter(name, value, type, direction, size, precision, scale);
 
         return request;
     }
