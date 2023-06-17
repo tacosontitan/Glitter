@@ -19,7 +19,7 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Represents a function within SQL.
 /// </summary>
-public abstract class SqlFunction :
+public class SqlFunction :
     DefinedSqlRequest
 {
     /// <summary>
@@ -27,7 +27,7 @@ public abstract class SqlFunction :
     /// </summary>
     /// <param name="functionName">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="functionName"/> is null or whitespace.</exception>
-    public SqlFunction(string functionName) :
+    protected SqlFunction(string functionName) :
         base(
             schema: "dbo",
             name: functionName,
@@ -40,7 +40,7 @@ public abstract class SqlFunction :
     /// <param name="schema">The schema for the function.</param>
     /// <param name="functionName">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="functionName"/> or <paramref name="functionName"/> is null or whitespace.</exception>
-    public SqlFunction(string schema, string functionName) :
+    protected SqlFunction(string schema, string functionName) :
         base(
             schema: schema,
             name: functionName,

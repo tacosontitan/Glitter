@@ -27,7 +27,7 @@ public class TableValuedSqlFunction :
     /// </summary>
     /// <param name="name">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> is null or whitespace.</exception>
-    public TableValuedSqlFunction(string name) :
+    protected TableValuedSqlFunction(string name) :
         base(name)
     { }
 
@@ -37,7 +37,7 @@ public class TableValuedSqlFunction :
     /// <param name="schema">The schema for the function.</param>
     /// <param name="functionName">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> or <paramref name="name"/> is null or whitespace.</exception>
-    public TableValuedSqlFunction(string schema, string name) :
+    protected TableValuedSqlFunction(string schema, string name) :
         base(schema, name)
     { }
 }

@@ -19,7 +19,7 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Represents a scalar function within SQL.
 /// </summary>
-public abstract class ScalarValuedSqlFunction :
+public class ScalarValuedSqlFunction :
     SqlFunction
 {
     /// <summary>
@@ -27,7 +27,7 @@ public abstract class ScalarValuedSqlFunction :
     /// </summary>
     /// <param name="name">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> is null or whitespace.</exception>
-    public ScalarValuedSqlFunction(string name) :
+    protected ScalarValuedSqlFunction(string name) :
         base(name)
     { }
 
@@ -37,7 +37,7 @@ public abstract class ScalarValuedSqlFunction :
     /// <param name="schema">The schema for the function.</param>
     /// <param name="name">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> or <paramref name="name"/> is null or whitespace.</exception>
-    public ScalarValuedSqlFunction(string schema, string name) :
+    protected ScalarValuedSqlFunction(string schema, string name) :
         base(schema, name)
     { }
 }
