@@ -7,6 +7,11 @@
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <ModelCollation>1033, CI</ModelCollation>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Predeployment" />
+    <Folder Include="Security" />
+    <Folder Include="Users" />
+  </ItemGroup>
   <Target Name="BeforeBuild">
     <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
   </Target>
