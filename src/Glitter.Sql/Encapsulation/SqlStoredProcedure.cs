@@ -17,16 +17,16 @@
 namespace Glitter.Sql.Encapsulation;
 
 /// <summary>
-/// Represents a procedure within SQL.
+/// Represents a stored procedure within SQL.
 /// </summary>
-public class SqlProcedure :
+public class SqlStoredProcedure :
     SqlRequest
 {
     /// <summary>
-    /// Creates a new <see cref="SqlProcedure"/> instance.
+    /// Creates a new <see cref="SqlStoredProcedure"/> instance.
     /// </summary>
-    /// <param name="procedureName">The name of the procedure.</param>
-    public SqlProcedure(string procedureName) :
+    /// <param name="procedureName">The name of the stored procedure.</param>
+    public SqlStoredProcedure(string procedureName) :
         base(procedureName, CommandType.StoredProcedure)
     { }
 }

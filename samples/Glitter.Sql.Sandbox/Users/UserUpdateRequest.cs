@@ -23,7 +23,8 @@ namespace Glitter.Sql.Sandbox.Users;
 /// <summary>
 /// Represents a request to update a user.
 /// </summary>
-public class UserUpdateRequest : SqlProcedure
+public class UserUpdateRequest :
+    SqlStoredProcedure
 {
     /// <summary>
     /// Creates a new <see cref="UserUpdateRequest"/> instance.
