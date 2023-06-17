@@ -59,21 +59,10 @@ public class SqlRequest :
         this(commandType) =>
         Command = command;
     
-    /// <summary>
-    /// Adds a parameter to the request.
-    /// </summary>
-    /// <param name="name">The name of the parameter.</param>
-    /// <param name="value">The value of the parameter.</param>
-    /// <param name="type">The <see cref="DbType"/> of the parameter.</param>
-    /// <param name="direction">The direction of the parameter.</param>
-    /// <param name="size">The size of the parameter.</param>
-    /// <param name="precision">The precision of the parameter.</param>
-    /// <param name="scale">The scale of the parameter.</param>
-    /// <typeparam name="T">The type of the parameter.</typeparam>
-    /// <returns>The <see cref="SqlRequest"/> instance.</returns>
+    /// <inheritdoc/>
     /// <exception cref="ArgumentException">Thrown when <paramref name="name"/> is null or whitespace.</exception>
     /// <exception cref="InvalidOperationException">Thrown when <paramref name="name"/> has already been specified.</exception>
-    public virtual SqlRequest AddParameter<T>(
+    public virtual ISqlRequest AddParameter<T>(
         string name,
         T? value,
         DbType? type = null,
