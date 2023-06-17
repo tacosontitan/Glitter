@@ -8,6 +8,7 @@
     <ModelCollation>1033, CI</ModelCollation>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Diagnostics" />
     <Folder Include="Predeployment" />
     <Folder Include="Runtime" />
     <Folder Include="Security" />
