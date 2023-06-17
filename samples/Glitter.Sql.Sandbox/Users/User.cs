@@ -19,7 +19,7 @@ namespace Glitter.Sql.Sandbox.Users;
 /// <summary>
 /// Represents a user in the sandbox.
 /// </summary>
-public class User
+public class User : DatabaseRecord
 {
     /// <summary>
     /// Gets or sets the unique identifier of the user.
