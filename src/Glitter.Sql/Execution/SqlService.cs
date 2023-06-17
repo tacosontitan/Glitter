@@ -36,25 +36,25 @@ public abstract class SqlService
         ConnectionInformation = connectionInformation;
         
     /// <summary>
-    /// Executes the specified <see cref="SqlRequest"/> as a query and returns the results.
+    /// Executes the specified <see cref="ISqlRequest"/> as a query and returns the results.
     /// </summary>
     /// <param name="request">The request to execute.</param>
     /// <typeparam name="T">Specifies the expected return type.</typeparam>
     /// <returns>A <see cref="Task"/> describing the state of the operation.</returns>
-    public abstract Task<IEnumerable<T>> Query<T>(SqlRequest request);
+    public abstract Task<IEnumerable<T>> Query<T>(ISqlRequest request);
     
     /// <summary>
-    /// Executes the specified <see cref="SqlRequest"/> as a query and returns the first column of the first row in the result set returned by the query.
+    /// Executes the specified <see cref="ISqlRequest"/> as a query and returns the first column of the first row in the result set returned by the query.
     /// </summary>
     /// <param name="request">The request to execute.</param>
     /// <typeparam name="T">Specifies the expected return type.</typeparam>
     /// <returns>A <see cref="Task"/> describing the state of the operation.</returns>
-    public abstract Task<T> ExecuteScalar<T>(SqlRequest request);
+    public abstract Task<T> ExecuteScalar<T>(ISqlRequest request);
     
     /// <summary>
-    /// Executes the specified <see cref="SqlRequest"/>.
+    /// Executes the specified <see cref="ISqlRequest"/>.
     /// </summary>
     /// <param name="request">The request to execute.</param>
     /// <returns>A <see cref="Task"/> describing the state of the operation.</returns>
-    public abstract Task Execute(SqlRequest request);
+    public abstract Task Execute(ISqlRequest request);
 }
