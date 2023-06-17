@@ -25,28 +25,36 @@ public class UserInsertRequest : SqlProcedure
     /// <summary>
     /// Creates a new <see cref="UserInsertRequest"/> instance.
     /// </summary>
-    /// <param name="senderId">The unique identifier of the user sending the request.</param>
-    /// <param name="userToInsert">The user to insert.</param>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="userToInsert"/> is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when <paramref name="userToInsert"/> has a null, empty, or whitespace username, given name, or surname.</exception>
-    public UserInsertRequest(Guid senderId, User userToInsert) :
+    /// <param name="user">The user to insert.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="user"/> is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="user"/> has a null, empty, or whitespace username, given name, or surname.</exception>
+    public UserInsertRequest(User user) : this(
+        username: user.Username,
+        givenName: user.GivenName,
+        surname: user.Surname
+    ) { }
+
+    /// <summary>
+    /// Creates a new <see cref="UserInsertRequest"/> instance.
+    /// </summary>
+    /// <param name="username">The username of the user to insert.</param>
+    /// <param name="givenName">The given name of the user to insert.</param>
+    /// <param name="surname">The surname of the user to insert.</param>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="username"/>, <paramref name="givenName"/>, or <paramref name="surname"/> is null, empty, or whitespace.</exception>
+    public UserInsertRequest(string? username, string? givenName, string? surname) :
         base(procedureName: "UserInsert")
     {
-        if (userToInsert is null)
-            throw new ArgumentNullException(nameof(userToInsert), "The user to insert cannot be null.");
+        if (string.IsNullOrWhiteSpace(username))
+            throw new ArgumentException("The username of the user to insert cannot be null, empty, or whitespace.", nameof(username));
 
-        if (string.IsNullOrWhiteSpace(userToInsert.Username))
-            throw new ArgumentException("The username of the user to insert cannot be null, empty, or whitespace.", nameof(userToInsert));
+        if (string.IsNullOrWhiteSpace(givenName))
+            throw new ArgumentException("The given name of the user to insert cannot be null, empty, or whitespace.", nameof(givenName));
 
-        if (string.IsNullOrWhiteSpace(userToInsert.GivenName))
-            throw new ArgumentException("The given name of the user to insert cannot be null, empty, or whitespace.", nameof(userToInsert));
+        if (string.IsNullOrWhiteSpace(surname))
+            throw new ArgumentException("The surname of the user to insert cannot be null, empty, or whitespace.", nameof(surname));
 
-        if (string.IsNullOrWhiteSpace(userToInsert.Surname))
-            throw new ArgumentException("The surname of the user to insert cannot be null, empty, or whitespace.", nameof(userToInsert));
-
-        _ = AddParameter("SenderId", senderId, type: DbType.Guid);
-        _ = AddParameter("Username", userToInsert.Username, type: DbType.String, size: 100);
-        _ = AddParameter("GivenName", userToInsert.GivenName, type: DbType.String, size: 100);
-        _ = AddParameter("Surname", userToInsert.Surname, type: DbType.String, size: 100);
+        _ = AddParameter("Username", username, type: DbType.String, size: 100);
+        _ = AddParameter("GivenName", givenName, type: DbType.String, size: 100);
+        _ = AddParameter("Surname", surname, type: DbType.String, size: 100);
     }
 }
