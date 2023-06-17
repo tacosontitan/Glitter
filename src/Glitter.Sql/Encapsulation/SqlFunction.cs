@@ -72,7 +72,7 @@ public class SqlFunction :
             throw new ArgumentException($"The parameter `{name}` has already been specified.");
 
         _parameterNames.Add(name);
-        base.AddParameter(name, value, type, direction, size, precision, scale);
+        _ = base.AddParameter(name, value, type, direction, size, precision, scale);
         return this;
     }
 

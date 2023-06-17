@@ -66,7 +66,6 @@ public class ConnectionInformation
     /// <param name="database">The database to connect to.</param>
     /// <param name="username">The username to use when connecting.</param>
     /// <param name="password">The password to use when connecting.</param>
-    /// <param name="connectionString">The connection string to use when connecting.</param>
     /// <param name="connectionTimeout">The amount of time to wait for a connection to be established.</param>
     /// <param name="commandTimeout">The amount of time to wait for a command to execute.</param>
     public ConnectionInformation(
@@ -75,7 +74,6 @@ public class ConnectionInformation
         string? database = null,
         string? username = null,
         string? password = null,
-        string? connectionString = null,
         TimeSpan? connectionTimeout = null,
         TimeSpan? commandTimeout = null)
     {
