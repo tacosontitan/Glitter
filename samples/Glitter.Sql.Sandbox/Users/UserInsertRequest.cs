@@ -20,8 +20,8 @@ using Glitter.Sql.Encapsulation;
 
 namespace Glitter.Sql.Sandbox.Users;
 
-public class UserInsertRequest :
-    SqlStoredProcedure
+public class UserInsertRequest
+    : SqlStoredProcedure
 {
     /// <summary>
     /// Creates a new <see cref="UserInsertRequest"/> instance.
