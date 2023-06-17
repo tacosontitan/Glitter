@@ -14,7 +14,9 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql;
+using Glitter.Sql.Encapsulation;
+
+namespace Glitter.Sql.Execution;
 
 /// <summary>
 /// Represents a service for interacting with SQL.
