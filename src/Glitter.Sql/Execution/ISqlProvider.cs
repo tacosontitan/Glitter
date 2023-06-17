@@ -22,7 +22,7 @@ public interface ISqlProvider :
     INonQueryHandler
 {
     /// <summary>
-    /// The <see cref="Sql.ConnectionInformation"/> used by this service for interacting with SQL.
+    /// The <see cref="IConnectionInformation"/> used by this service for interacting with SQL.
     /// </summary>
-    ConnectionInformation? ConnectionInformation { get; set; }
+    IConnectionInformation? ConnectionInformation { get; set; }
 }
