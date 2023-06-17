@@ -1,6 +1,9 @@
 {
     "dotnet.defaultSolution": "Glitter.Sql.sln",
     "cSpell.words": [
+        "NEWID",
+        "NOCOUNT",
+        "SYSDATETIMEOFFSET",
         "tacosontitan",
         "Xunit"
     ]

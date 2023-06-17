@@ -14,18 +14,22 @@
    limitations under the License.
 */
 
-CREATE TABLE [Sample].[UserConnections]
-(
-  [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+CREATE PROCEDURE [Sample].[UserUpdate]
+  @SenderId UNIQUEIDENTIFIER,
+  @UserId UNIQUEIDENTIFIER,
+  @GivenName NVARCHAR(100) = NULL,
+  @Surname NVARCHAR(100) = NULL
+AS
+BEGIN
+  SET NOCOUNT ON;
 
-  [UserId] UNIQUEIDENTIFIER NOT NULL,
-  FOREIGN KEY ([UserId]) REFERENCES [Sample].[Users] ([Id]),
-
-  [IsActive] BIT NOT NULL,
-
-  -- Standard columns for all tables.
-  [InsertDate] DATETIMEOFFSET NOT NULL,
-  [InsertedBy] UNIQUEIDENTIFIER NOT NULL,
-  [UpdateDate] DATETIMEOFFSET NOT NULL,
-  [UpdatedBy] UNIQUEIDENTIFIER NOT NULL
-)
+  UPDATE [Sample].[Users]
+  SET
+    [GivenName] = ISNULL(@GivenName, [GivenName]),
+    [Surname] = ISNULL(@Surname, [Surname]),
+    [UpdateDate] = SYSDATETIMEOFFSET(),
+    [UpdatedBy] = @SenderId
+  WHERE
+    [Id] = @UserId;
+END
+RETURN 0

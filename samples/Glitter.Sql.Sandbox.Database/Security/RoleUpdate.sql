@@ -14,18 +14,20 @@
    limitations under the License.
 */
 
-CREATE TABLE [Sample].[UserConnections]
-(
-  [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+CREATE PROCEDURE [Sample].[RoleUpdate]
+  @SenderId UNIQUEIDENTIFIER,
+  @RoleId UNIQUEIDENTIFIER,
+  @ColorCode NVARCHAR(50)
+AS
+BEGIN
+  SET NOCOUNT ON;
 
-  [UserId] UNIQUEIDENTIFIER NOT NULL,
-  FOREIGN KEY ([UserId]) REFERENCES [Sample].[Users] ([Id]),
-
-  [IsActive] BIT NOT NULL,
-
-  -- Standard columns for all tables.
-  [InsertDate] DATETIMEOFFSET NOT NULL,
-  [InsertedBy] UNIQUEIDENTIFIER NOT NULL,
-  [UpdateDate] DATETIMEOFFSET NOT NULL,
-  [UpdatedBy] UNIQUEIDENTIFIER NOT NULL
-)
+  UPDATE [Sample].[Roles]
+  SET
+    [ColorCode] = ISNULL(@ColorCode, [ColorCode]),
+    [UpdateDate] = SYSDATETIMEOFFSET(),
+    [UpdatedBy] = @SenderId
+  WHERE
+    [Id] = @RoleId;
+END
+RETURN 0

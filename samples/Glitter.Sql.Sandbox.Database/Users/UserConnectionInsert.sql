@@ -14,18 +14,33 @@
    limitations under the License.
 */
 
-CREATE TABLE [Sample].[UserConnections]
-(
-  [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+CREATE PROCEDURE [Sample].[UserConnectionInsert]
+  @SenderId UNIQUEIDENTIFIER,
+  @UserId UNIQUEIDENTIFIER
+AS
+BEGIN
+  SET NOCOUNT ON;
 
-  [UserId] UNIQUEIDENTIFIER NOT NULL,
-  FOREIGN KEY ([UserId]) REFERENCES [Sample].[Users] ([Id]),
+  DECLARE @ConnectionId UNIQUEIDENTIFIER = NEWID();
+  INSERT INTO [Sample].[UserConnections]
+    (
+    [Id],
+    [UserId],
+    [InsertDate],
+    [InsertedBy],
+    [UpdateDate],
+    [UpdatedBy]
+    )
+  VALUES
+    (
+      @ConnectionId,
+      @UserId,
+      SYSDATETIMEOFFSET(),
+      @SenderId,
+      SYSDATETIMEOFFSET(),
+      @SenderId
+  );
 
-  [IsActive] BIT NOT NULL,
-
-  -- Standard columns for all tables.
-  [InsertDate] DATETIMEOFFSET NOT NULL,
-  [InsertedBy] UNIQUEIDENTIFIER NOT NULL,
-  [UpdateDate] DATETIMEOFFSET NOT NULL,
-  [UpdatedBy] UNIQUEIDENTIFIER NOT NULL
-)
+  SELECT @ConnectionId AS [ConnectionId];
+END
+RETURN 0

@@ -14,18 +14,16 @@
    limitations under the License.
 */
 
-CREATE TABLE [Sample].[UserConnections]
-(
-  [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-
-  [UserId] UNIQUEIDENTIFIER NOT NULL,
-  FOREIGN KEY ([UserId]) REFERENCES [Sample].[Users] ([Id]),
-
-  [IsActive] BIT NOT NULL,
-
-  -- Standard columns for all tables.
-  [InsertDate] DATETIMEOFFSET NOT NULL,
-  [InsertedBy] UNIQUEIDENTIFIER NOT NULL,
-  [UpdateDate] DATETIMEOFFSET NOT NULL,
-  [UpdatedBy] UNIQUEIDENTIFIER NOT NULL
+CREATE FUNCTION [Sample].[UsersQuery] () RETURNS TABLE AS RETURN (
+    SELECT
+        [Id],
+        [Username],
+        [GivenName],
+        [Surname],
+        [InsertDate],
+        [InsertedBy],
+        [UpdateDate],
+        [UpdatedBy]
+    FROM
+        [Sample].[Users]
 )
