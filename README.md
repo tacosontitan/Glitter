@@ -45,9 +45,7 @@ public class UserInsertRequest
     : SqlStoredProcedure
 {
     public UserInsertRequest(string username, string givenName, string surname)
-        : base(
-            schema: "Sample",
-            name: "UserInsert")
+        : base(schema: "Sample", name: "UserInsert")
     {
         _ = AddParameter("Username", username, DbType.String, length: 100);
         _ = AddParameter("GivenName", givenName, DbType.String, length: 100);
