@@ -19,8 +19,8 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Represents a SQL query.
 /// </summary>
-public class SqlQuery :
-    SqlRequest
+public class SqlQuery
+    : SqlRequest
 {
     /// <summary>
     /// Creates a new <see cref="SqlQuery"/> instance.

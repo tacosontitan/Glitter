@@ -19,8 +19,8 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Represents a table-valued function within SQL.
 /// </summary>
-public class TableValuedSqlFunction :
-    SqlFunction
+public class TableValuedSqlFunction
+    : SqlFunction
 {
     /// <summary>
     /// Creates a new <see cref="TableValuedSqlFunction"/> instance.

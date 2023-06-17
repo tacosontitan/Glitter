@@ -18,10 +18,10 @@ using Glitter.Sql.Encapsulation;
 
 namespace Glitter.Sql.Execution;
 
-public interface ISqlProvider<TRequest> :
-    IQueryHandler<TRequest>,
-    IScalarHandler<TRequest>,
-    INonQueryHandler<TRequest>
+public interface ISqlProvider<TRequest>
+    : IQueryHandler<TRequest>,
+      IScalarHandler<TRequest>,
+      INonQueryHandler<TRequest>
     where TRequest : ISqlRequest
 {
     /// <summary>

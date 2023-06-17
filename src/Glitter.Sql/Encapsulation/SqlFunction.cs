@@ -19,8 +19,8 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Represents a function within SQL.
 /// </summary>
-public class SqlFunction :
-    DefinedSqlRequest
+public class SqlFunction
+    : DefinedSqlRequest
 {
     /// <summary>
     /// Creates a new <see cref="SqlFunction"/> instance.

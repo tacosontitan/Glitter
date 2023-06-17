@@ -19,8 +19,8 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Defines a request for interacting with SQL.
 /// </summary>
-public class SqlRequest :
-    ISqlRequest
+public class SqlRequest
+    : ISqlRequest
 {
     private readonly List<SqlRequestParameter> _parameters;
 

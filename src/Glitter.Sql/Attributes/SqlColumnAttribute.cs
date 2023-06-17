@@ -20,8 +20,8 @@ namespace Glitter.Sql.Attributes;
 /// Represents an <see cref="Attribute"/> for marking properties as SQL columns.
 /// </summary>
 [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
-public sealed class SqlColumnAttribute :
-    Attribute
+public sealed class SqlColumnAttribute
+    : Attribute
 {
     /// <summary>
     /// The name of the column.

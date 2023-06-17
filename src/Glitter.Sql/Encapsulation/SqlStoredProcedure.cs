@@ -19,8 +19,8 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Represents a stored procedure within SQL.
 /// </summary>
-public class SqlStoredProcedure :
-    DefinedSqlRequest
+public class SqlStoredProcedure
+    : DefinedSqlRequest
 {
     /// <summary>
     /// Creates a new <see cref="SqlStoredProcedure"/> instance.

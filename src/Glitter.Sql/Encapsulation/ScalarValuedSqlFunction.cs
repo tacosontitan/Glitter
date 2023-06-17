@@ -19,8 +19,8 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Represents a scalar function within SQL.
 /// </summary>
-public class ScalarValuedSqlFunction :
-    SqlFunction
+public class ScalarValuedSqlFunction
+    : SqlFunction
 {
     /// <summary>
     /// Creates a new <see cref="ScalarValuedSqlFunction"/> instance.

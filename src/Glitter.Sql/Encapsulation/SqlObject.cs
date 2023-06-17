@@ -19,8 +19,8 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Represents an object within SQL.
 /// </summary>
-public class SqlObject :
-    ISqlObject
+public class SqlObject
+    : ISqlObject
 {
     /// <summary>
     /// Creates a new <see cref="SqlObject"/> instance.

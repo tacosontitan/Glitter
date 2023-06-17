@@ -19,9 +19,9 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Represents a defined request for interacting with SQL.
 /// </summary>
-public class DefinedSqlRequest :
-    SqlRequest,
-    ISqlObject
+public class DefinedSqlRequest
+    : SqlRequest,
+      ISqlObject
 {
     /// <summary>
     /// Creates a new <see cref="DefinedSqlRequest"/> instance.

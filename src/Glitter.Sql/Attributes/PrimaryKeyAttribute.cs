@@ -20,8 +20,8 @@ namespace Glitter.Sql.Attributes;
 /// Represents an <see cref="Attribute"/> that indicates a property is a primary key.
 /// </summary>
 [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
-public sealed class PrimaryKeyAttribute :
-    Attribute
+public sealed class PrimaryKeyAttribute
+    : Attribute
 {
 
 }
