@@ -37,7 +37,7 @@ public class SqlRequest :
     /// <summary>
     /// The parameters for the command.
     /// </summary>
-    public IReadOnlyCollection<SqlRequestParameter> Parameters =>
+    public ICollection<SqlRequestParameter> Parameters =>
         _parameters.AsReadOnly();
 
     /// <summary>

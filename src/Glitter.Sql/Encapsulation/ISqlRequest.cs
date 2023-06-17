@@ -29,7 +29,7 @@ public interface ISqlRequest
     /// <summary>
     /// The parameters for the command.
     /// </summary>
-    IReadOnlyCollection<SqlRequestParameter> Parameters { get; }
+    ICollection<SqlRequestParameter> Parameters { get; }
 
     /// <summary>
     /// Attempts to compile the request into a command.
