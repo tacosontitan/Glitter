@@ -32,3 +32,26 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 ## 🛢️ Working with SQL
 
 Glitter offers several ways to encapsulate SQL requests:
+
+- [SqlStoredProcedure](./src/Glitter.Sql/Encapsulation/SqlStoredProcedure.cs)
+- [TableValuedSqlFunction](./src/Glitter.Sql/Encapsulation/TableValuedSqlFunction.cs)
+- [ScalarValuedSqlFunction](./src/Glitter.Sql/Encapsulation/ScalarValuedSqlFunction.cs)
+- [SqlQuery](./src/Glitter.Sql/Encapsulation/SqlQuery.cs)
+
+The encapsulation strategy employed by Glitter is definition driven. This means that your encapsulations simply define a request to execute a stored procedure, function, or query. The encapsulation does not actually execute the request, but rather provides a means to execute the request. For example, the following encapsulation defines a request to execute a stored procedure:
+
+```csharp
+public class UserInsertRequest
+    : SqlStoredProcedure
+{
+    public UserInsertRequest(
+        string username,
+        string givenName,
+        string surname)
+    {
+        _ = AddParameter("Username", username, DbType.String, length: 100);
+        _ = AddParameter("GivenName", givenName, DbType.String, length: 100);
+        _ = AddParameter("Surname", surname, DbType.String, length: 100);
+    }
+}
+```
