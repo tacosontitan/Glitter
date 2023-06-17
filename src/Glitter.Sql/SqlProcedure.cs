@@ -19,7 +19,8 @@ namespace Glitter.Sql;
 /// <summary>
 /// Represents a procedure within SQL.
 /// </summary>
-public class SqlProcedure : SqlRequest
+public class SqlProcedure :
+    SqlRequest
 {
     /// <summary>
     /// Creates a new <see cref="SqlProcedure"/> instance.

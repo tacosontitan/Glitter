@@ -19,11 +19,13 @@ namespace Glitter.Sql;
 /// <summary>
 /// Represents a function within SQL.
 /// </summary>
-public class SqlFunction : SqlRequest
+public class SqlFunction :
+    SqlRequest
 {
     private readonly string _schema;
     private readonly string _functionName;
     private readonly ICollection<string> _parameterNames;
+
     /// <summary>
     /// Creates a new <see cref="SqlFunction"/> instance.
     /// </summary>
@@ -40,6 +42,7 @@ public class SqlFunction : SqlRequest
         _functionName = functionName;
         _parameterNames = new List<string>();
     }
+
     /// <summary>
     /// Creates a new <see cref="SqlFunction"/> instance.
     /// </summary>
@@ -49,6 +52,7 @@ public class SqlFunction : SqlRequest
     public SqlFunction(string schema, string functionName) :
         this(functionName) =>
         _schema = schema;
+
     /// <inheritdoc/>
     /// <exception cref="ArgumentException"><paramref name="name"/> is <see langword="null"/>, whitespace, or already specified.</exception>
     public override SqlRequest AddParameter<T>(
@@ -71,6 +75,7 @@ public class SqlFunction : SqlRequest
         base.AddParameter(name, value, type, direction, size, precision, scale);
         return this;
     }
+
     /// <inheritdoc/>
     public override bool TryBuildCommand(out string? command)
     {

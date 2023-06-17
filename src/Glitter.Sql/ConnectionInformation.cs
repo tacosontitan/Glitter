@@ -25,32 +25,39 @@ public class ConnectionInformation
     /// Should the connection use integrated security?
     /// </summary>
     public bool IntegratedSecurity { get; set; }
+
     /// <summary>
     /// The server to connect to.
     /// </summary>
     public string? Server { get; set; }
+
     /// <summary>
     /// The database to connect to.
     /// </summary>
     public string? Database { get; set; }
+
     /// <summary>
     /// The username to use when connecting.
     /// </summary>
     public string? Username { get; set; }
+
     /// <summary>
     /// The password to use when connecting.
     /// </summary>
     public string? Password { get; set; }
+
     /// <summary>
     /// The amount of time to wait for a connection to be established.
     /// </summary>
     /// <value></value>
     public TimeSpan? ConnectionTimeout { get; set; }
+
     /// <summary>
     /// The amount of time to wait for a command to execute.
     /// </summary>
     /// <value></value>
     public TimeSpan? CommandTimeout { get; set; }
+
     /// <summary>
     /// Creates a new <see cref="ConnectionInformation"/> with the specified values.
     /// </summary>

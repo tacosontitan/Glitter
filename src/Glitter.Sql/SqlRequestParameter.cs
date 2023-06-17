@@ -25,30 +25,37 @@ public class SqlRequestParameter
     /// The name of the parameter.
     /// </summary>
     public string Name { get; private set; }
+    
     /// <summary>
     /// The value of the parameter.
     /// </summary>
     public object? Value { get; private set; }
+    
     /// <summary>
     /// The <see cref="DbType"/> of the parameter.
     /// </summary>
     public DbType? Type { get; private set; }
+    
     /// <summary>
     /// The direction of the parameter.
     /// </summary>
     public ParameterDirection? Direction { get; private set; }
+    
     /// <summary>
     /// The size of the parameter.
     /// </summary>
     public int? Size { get; private set; }
+    
     /// <summary>
     /// The precision of the parameter.
     /// </summary>
     public byte? Precision { get; private set; }
+    
     /// <summary>
     /// The scale of the parameter.
     /// </summary>
     public byte? Scale { get; private set; }
+    
     /// <summary>
     /// Creates a new <see cref="SqlRequestParameter"/> instance.
     /// </summary>

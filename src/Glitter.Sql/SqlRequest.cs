@@ -25,14 +25,17 @@ public class SqlRequest
     /// The command to execute.
     /// </summary>
     internal string? Command { get; set; }
+    
     /// <summary>
     /// The type of command to execute.
     /// </summary>
     public CommandType CommandType { get; private set; }
+    
     /// <summary>
     /// The parameters for the command.
     /// </summary>
     public List<SqlRequestParameter> Parameters { get; private set; }
+    
     /// <summary>
     /// Creates a new <see cref="SqlRequest"/> instance.
     /// </summary>
@@ -44,6 +47,7 @@ public class SqlRequest
         CommandType = commandType;
         Parameters = new List<SqlRequestParameter>();
     }
+    
     /// <summary>
     /// Creates a new <see cref="SqlRequest"/> instance.
     /// </summary>
@@ -51,6 +55,7 @@ public class SqlRequest
     protected SqlRequest(CommandType commandType) :
         this(null, commandType)
     { }
+    
     /// <summary>
     /// Adds a parameter to the request.
     /// </summary>
@@ -74,6 +79,7 @@ public class SqlRequest
         Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
         return this;
     }
+    
     /// <summary>
     /// Attempts to build the command for the request.
     /// </summary>
