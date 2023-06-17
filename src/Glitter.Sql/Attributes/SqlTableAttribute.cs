@@ -19,7 +19,7 @@ namespace Glitter.Sql.Attributes;
 /// <summary>
 /// Represents an <see cref="Attribute"/> for marking types as SQL targets.
 /// </summary>
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = false, Inherited = false)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = false, Inherited = true)]
 public sealed class SqlTableAttribute :
     Attribute
 {
