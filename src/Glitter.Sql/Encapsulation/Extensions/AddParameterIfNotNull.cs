@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql;
+namespace Glitter.Sql.Encapsulation;
 
 public static class AddParameterIfNotNullExtensions
 {
