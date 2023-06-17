@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-CREATE PROCEDURE [dbo].[UserUpdate]
+CREATE PROCEDURE [Sample].[UserUpdate]
   @SenderId UNIQUEIDENTIFIER,
   @UserId UNIQUEIDENTIFIER,
   @GivenName NVARCHAR(100) = NULL,
