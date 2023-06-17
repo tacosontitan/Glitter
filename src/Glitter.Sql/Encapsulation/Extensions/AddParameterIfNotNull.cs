@@ -40,6 +40,9 @@ public static class AddParameterIfNotNullExtensions
         byte? precision = null,
         byte? scale = null)
     {
+        if (request is null)
+            throw new ArgumentNullException(nameof(request));
+            
         if (value is not null)
             request.Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
 

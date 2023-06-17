@@ -40,6 +40,9 @@ public static class AddParameterIfNotNullOrWhiteSpaceExtensions
         byte? precision = null,
         byte? scale = null)
     {
+        if (request is null)
+            throw new ArgumentNullException(nameof(request));
+            
         if (!string.IsNullOrWhiteSpace(value))
             request.Parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
 

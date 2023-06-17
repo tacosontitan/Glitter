@@ -43,6 +43,9 @@ public static class AddParameterIfExtensions
         byte? precision = null,
         byte? scale = null)
     {
+        if (request is null)
+            throw new ArgumentNullException(nameof(request));
+            
         if (predicate is null)
             throw new ArgumentNullException(nameof(predicate));
 
