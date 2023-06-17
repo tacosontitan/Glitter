@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-CREATE PROCEDURE [dbo].[RoleUpdate]
+CREATE PROCEDURE [Sample].[RoleUpdate]
   @SenderId UNIQUEIDENTIFIER,
   @RoleId UNIQUEIDENTIFIER,
   @ColorCode NVARCHAR(50)

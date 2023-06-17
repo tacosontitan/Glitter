@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-CREATE PROCEDURE [dbo].[UserConnectionUpdate]
+CREATE PROCEDURE [Sample].[UserConnectionUpdate]
   @SenderId UNIQUEIDENTIFIER,
   @ConnectionId UNIQUEIDENTIFIER,
   @IsActive BIT

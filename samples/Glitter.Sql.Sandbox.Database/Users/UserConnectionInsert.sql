@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-CREATE PROCEDURE [dbo].[UserConnectionInsert]
+CREATE PROCEDURE [Sample].[UserConnectionInsert]
   @SenderId UNIQUEIDENTIFIER,
   @UserId UNIQUEIDENTIFIER
 AS
