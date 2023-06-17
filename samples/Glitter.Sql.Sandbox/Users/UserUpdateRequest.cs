@@ -33,27 +33,34 @@ public class UserUpdateRequest : SqlProcedure
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="user"/> is null.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="senderId"/> or <paramref name="user"/> has an empty unique identifier.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="user"/> has a null, empty, or whitespace given name or surname.</exception>
-    public UserUpdateRequest(Guid senderId, User user) :
+    public UserUpdateRequest(User user) : this(
+        userId: user.Id,
+        givenName: user.GivenName,
+        surname: user.Surname
+    ) { }
+
+    /// <summary>
+    /// Creates a new <see cref="UserUpdateRequest"/> instance.
+    /// </summary>
+    /// <param name="userId">The unique identifier of the user to update.</param>
+    /// <param name="givenName">The given name of the user to update.</param>
+    /// <param name="surname">The surname of the user to update.</param>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="userId"/> has an empty unique identifier.</exception>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="givenName"/> or <paramref name="surname"/> is null, empty, or whitespace.</exception>
+    public UserUpdateRequest(Guid? userId, string? givenName, string? surname) :
         base(procedureName: "UserUpdate")
     {
-        if (senderId == Guid.Empty)
-            throw new ArgumentException("The unique identifier of the sender cannot be empty.", nameof(senderId));
+        if (userId == Guid.Empty)
+            throw new ArgumentException("The unique identifier of the user cannot be empty.", nameof(userId));
 
-        if (user is null)
-            throw new ArgumentNullException(nameof(user), "The user cannot be null.");
+        if (string.IsNullOrWhiteSpace(givenName))
+            throw new ArgumentException("The given name of the user cannot be null, empty, or whitespace.", nameof(givenName));
 
-        if (user.Id == Guid.Empty)
-            throw new ArgumentException("The unique identifier of the user cannot be empty.", nameof(user));
+        if (string.IsNullOrWhiteSpace(surname))
+            throw new ArgumentException("The surname of the user cannot be null, empty, or whitespace.", nameof(surname));
 
-        if (string.IsNullOrWhiteSpace(user.GivenName))
-            throw new ArgumentException("The given name of the user cannot be null, empty, or whitespace.", nameof(user));
-
-        if (string.IsNullOrWhiteSpace(user.Surname))
-            throw new ArgumentException("The surname of the user cannot be null, empty, or whitespace.", nameof(user));
-
-        _ = AddParameter("SenderId", senderId, type: DbType.Guid);
-        _ = AddParameter("UserId", user.Id, type: DbType.Guid);
-        _ = AddParameter("GivenName", user.GivenName, type: DbType.String, size: 100);
-        _ = AddParameter("Surname", user.Surname, type: DbType.String, size: 100);
+        _ = AddParameter("UserId", userId, type: DbType.Guid);
+        _ = AddParameter("GivenName", givenName, type: DbType.String, size: 100);
+        _ = AddParameter("Surname", surname, type: DbType.String, size: 100);
     }
 }
