@@ -21,40 +21,34 @@ namespace Glitter.Sql.Execution;
 /// <summary>
 /// Represents a service for interacting with SQL.
 /// </summary>
-public abstract class SqlService
+public abstract class SqlService :
+    IQueryHandler,
+    IScalarHandler,
+    INonQueryHandler
 {
+    private readonly ISqlProvider _sqlProvider;
+
     /// <summary>
-    /// The <see cref="Sql.ConnectionInformation"/> used by this service for interacting with SQL.
+    /// Creates a new <see cref="SqlService"/> instance.
     /// </summary>
-    protected ConnectionInformation? ConnectionInformation { get; set; }
-    
-    /// <summary>
-    /// Creates a new <see cref="SqlService"/> with the specified <see cref="ISqlProvider"/>.
-    /// </summary>
-    /// <param name="connectionInformation">The <see cref="Sql.ConnectionInformation"/> used by this service for interacting with SQL.</param>
-    public SqlService(ConnectionInformation connectionInformation) =>
-        ConnectionInformation = connectionInformation;
-        
-    /// <summary>
-    /// Executes the specified <see cref="ISqlRequest"/> as a query and returns the results.
-    /// </summary>
-    /// <param name="request">The request to execute.</param>
-    /// <typeparam name="T">Specifies the expected return type.</typeparam>
-    /// <returns>A <see cref="Task"/> describing the state of the operation.</returns>
-    public abstract Task<IEnumerable<T>> Query<T>(ISqlRequest request);
-    
-    /// <summary>
-    /// Executes the specified <see cref="ISqlRequest"/> as a query and returns the first column of the first row in the result set returned by the query.
-    /// </summary>
-    /// <param name="request">The request to execute.</param>
-    /// <typeparam name="T">Specifies the expected return type.</typeparam>
-    /// <returns>A <see cref="Task"/> describing the state of the operation.</returns>
-    public abstract Task<T> ExecuteScalar<T>(ISqlRequest request);
-    
-    /// <summary>
-    /// Executes the specified <see cref="ISqlRequest"/>.
-    /// </summary>
-    /// <param name="request">The request to execute.</param>
-    /// <returns>A <see cref="Task"/> describing the state of the operation.</returns>
-    public abstract Task Execute(ISqlRequest request);
+    /// <param name="provider">The <see cref="ISqlProvider"/> to use for interacting with SQL.</param>
+    public SqlService(ISqlProvider provider)
+    {
+        if (provider is null)
+            throw new ArgumentNullException(nameof(provider), "The SQL provider cannot be null.");
+
+        _sqlProvider = provider;
+    }
+
+    /// <inheritdoc/>
+    public virtual Task<IEnumerable<T>> Query<T>(ISqlRequest request) =>
+        _sqlProvider.Query<T>(request);
+
+    /// <inheritdoc/>
+    public virtual Task<T> ExecuteScalar<T>(ISqlRequest request) =>
+        _sqlProvider.ExecuteScalar<T>(request);
+
+    /// <inheritdoc/>
+    public virtual Task ExecuteNonQuery(ISqlRequest request) =>
+        _sqlProvider.ExecuteNonQuery(request);
 }
