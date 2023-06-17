@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql;
+namespace Glitter.Sql.Attributes;
 
 /// <summary>
 /// Represents an <see cref="Attribute"/> for marking properties as SQL columns.
