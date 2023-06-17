@@ -29,7 +29,7 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 ![Size](https://img.shields.io/github/languages/code-size/tacosontitan/Glitter.Sql?logo=github&style=for-the-badge)
 ![Line Count](https://img.shields.io/tokei/lines/github/tacosontitan/Glitter.Sql?logo=github&style=for-the-badge)
 
-## 🛢️ Working with SQL
+## 🛢️ Encapsulating SQL Requests
 
 Glitter offers several ways to encapsulate SQL requests:
 
@@ -44,10 +44,10 @@ The encapsulation strategy employed by Glitter is definition driven. This means 
 public class UserInsertRequest
     : SqlStoredProcedure
 {
-    public UserInsertRequest(
-        string username,
-        string givenName,
-        string surname)
+    public UserInsertRequest(string username, string givenName, string surname)
+        : base(
+            schema: "Sample",
+            name: "UserInsert")
     {
         _ = AddParameter("Username", username, DbType.String, length: 100);
         _ = AddParameter("GivenName", givenName, DbType.String, length: 100);
