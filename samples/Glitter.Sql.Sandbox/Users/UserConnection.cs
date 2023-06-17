@@ -35,10 +35,12 @@ public class UserConnection
     /// <summary>
     /// Gets or sets the unique identifier of the connection.
     /// </summary>
+    [SqlColumn("Id", DbType.Guid)]
     public Guid? Id { get; set; }
 
     /// <summary>
     /// Gets or sets the unique identifier of the user.
     /// </summary>
+    [SqlColumn("UserId", DbType.Guid)]
     public Guid? UserId { get; set; }
 }
