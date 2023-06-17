@@ -9,6 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Predeployment" />
+    <Folder Include="Runtime" />
     <Folder Include="Security" />
     <Folder Include="Users" />
   </ItemGroup>
