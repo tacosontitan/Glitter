@@ -29,9 +29,9 @@ public static class AddParameterIfNotNullExtensions
     /// <param name="precision">The precision of the parameter.</param>
     /// <param name="scale">The scale of the parameter.</param>
     /// <typeparam name="T">The type of the parameter.</typeparam>
-    /// <returns>The <see cref="SqlRequest"/> instance.</returns>
-    public static SqlRequest AddParameterIfNotNull<T>(
-        this SqlRequest request,
+    /// <returns>The <see cref="ISqlRequest"/> instance.</returns>
+    public static ISqlRequest AddParameterIfNotNull<T>(
+        this ISqlRequest request,
         string name,
         T? value,
         DbType? type = null,

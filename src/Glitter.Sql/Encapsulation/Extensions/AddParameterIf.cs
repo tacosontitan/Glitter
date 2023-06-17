@@ -21,7 +21,7 @@ public static class AddParameterIfExtensions
     /// <summary>
     /// Adds a parameter to the request if its value meets the condition of a specified predicate.
     /// </summary>
-    /// <param name="request">The <see cref="SqlRequest"/> instance.</param>
+    /// <param name="request">The <see cref="ISqlRequest"/> instance.</param>
     /// <param name="predicate">The predicate that determines whether the parameter should be added.</param>
     /// <param name="name">The name of the parameter.</param>
     /// <param name="value">The value of the parameter.</param>
@@ -31,9 +31,9 @@ public static class AddParameterIfExtensions
     /// <param name="precision">The precision of the parameter.</param>
     /// <param name="scale">The scale of the parameter.</param>
     /// <typeparam name="T">The type of the parameter.</typeparam>
-    /// <returns>The <see cref="SqlRequest"/> instance.</returns>
-    public static SqlRequest AddParameterIf<T>(
-        this SqlRequest request,
+    /// <returns>The <see cref="ISqlRequest"/> instance.</returns>
+    public static ISqlRequest AddParameterIf<T>(
+        this ISqlRequest request,
         Func<T?, bool> predicate,
         string name,
         T? value,
