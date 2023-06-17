@@ -17,6 +17,6 @@
 // Disable CA1852 since this is a console app using top-level statements.
 // We have no control over whether or not Program is sealed.
 // See: https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1852
-#pragma warning disable 1852
+#pragma warning disable CA1852
 
 Console.WriteLine("Hello, World!");
