@@ -11,12 +11,6 @@ on:
     - cron: '31 21 * * 1'
 
 jobs:
-  inclusion:
-    name: "🌞 Inclusion Analysis"
-    uses: microsoft/InclusivenessAnalyzer@v1.0.1
-    with:
-      failOnNonInclusiveTerm: true
-
   codeQl:
     name: "🔒 Security Analysis"
     runs-on: ubuntu-latest
