@@ -21,7 +21,8 @@ namespace Glitter.Sql.Attributes;
 /// </summary>
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = false, Inherited = false)]
 public sealed class SqlTableAttribute
-    : Attribute
+    : Attribute,
+      ISqlTableAttribute
 {
     /// <summary>
     /// Creates a new <see cref="SqlTableAttribute"/> instance.
@@ -42,13 +43,9 @@ public sealed class SqlTableAttribute
         Name = name;
     }
 
-    /// <summary>
-    /// Gets or sets the name of the table.
-    /// </summary>
+    /// <inheritdoc/>
     public string Name { get; set; }
 
-    /// <summary>
-    /// Gets or sets the schema of the table.
-    /// </summary>
+    /// <inheritdoc/>
     public string Schema { get; set; }
 }
