@@ -16,6 +16,9 @@
 
 namespace Glitter.Sql.Encapsulation;
 
+/// <summary>
+/// Defines extension methods for <see cref="ISqlRequest"/>.
+/// </summary>
 public static class AddParameterIfNotNullOrEmptyExtensions
 {
     /// <summary>
