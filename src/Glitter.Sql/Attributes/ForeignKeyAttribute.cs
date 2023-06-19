@@ -20,7 +20,7 @@ namespace Glitter.Sql.Attributes;
 /// Represents an <see cref="Attribute"/> for marking properties as foreign keys.
 /// </summary>
 [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
-public class ForeignKeyAttribute
+public sealed class ForeignKeyAttribute
     : Attribute
 {
     /// <summary>
