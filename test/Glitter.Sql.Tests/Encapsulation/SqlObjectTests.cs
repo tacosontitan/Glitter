@@ -23,8 +23,14 @@ using Glitter.Sql.Encapsulation;
 
 namespace Glitter.Sql.Tests.Encapsulation;
 
+/// <summary>
+/// Defines unit tests for the <see cref="SqlObject"/> class.
+/// </summary>
 public class SqlObjectTests
 {
+    /// <summary>
+    /// Tests that the constructor throws an <see cref="ArgumentException"/> when the name is invalid.
+    /// </summary>
     [Theory]
     [InlineData(null)]
     [InlineData("")]
@@ -32,6 +38,9 @@ public class SqlObjectTests
     public void Constructor_InvalidName_ThrowsArgumentException(string name) =>
         Assert.Throws<ArgumentException>(() => new TestSqlObject(name));
 
+    /// <summary>
+    /// Tests that the constructor throws an <see cref="ArgumentException"/> when the schema is invalid.
+    /// </summary>
     [Theory]
     [InlineData(null)]
     [InlineData("")]
