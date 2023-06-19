@@ -24,31 +24,6 @@ public sealed class SqlColumnAttribute
     : Attribute
 {
     /// <summary>
-    /// The name of the column.
-    /// </summary>
-    public string Name { get; private set; }
-
-    /// <summary>
-    /// The type of the column.
-    /// </summary>k
-    public DbType? Type { get; private set; }
-
-    /// <summary>
-    /// The size of the column.
-    /// </summary>
-    public int? Size { get; private set; }
-
-    /// <summary>
-    /// The precision of the column.
-    /// </summary>
-    public byte? Precision { get; private set; }
-
-    /// <summary>
-    /// The scale of the column.
-    /// </summary>
-    public byte? Scale { get; private set; }
-
-    /// <summary>
     /// Creates a new <see cref="SqlColumnAttribute"/> instance.
     /// </summary>
     /// <param name="name">The name of the column.</param>
@@ -108,4 +83,29 @@ public sealed class SqlColumnAttribute
         Precision = precision;
         Scale = scale;
     }
+
+    /// <summary>
+    /// Gets the name of the column.
+    /// </summary>
+    public string Name { get; private set; }
+
+    /// <summary>
+    /// Gets the type of the column.
+    /// </summary>
+    public DbType? Type { get; private set; }
+
+    /// <summary>
+    /// Gets the size of the column.
+    /// </summary>
+    public int? Size { get; private set; }
+
+    /// <summary>
+    /// Gets the precision of the column.
+    /// </summary>
+    public byte? Precision { get; private set; }
+
+    /// <summary>
+    /// Gets the scale of the column.
+    /// </summary>
+    public byte? Scale { get; private set; }
 }
