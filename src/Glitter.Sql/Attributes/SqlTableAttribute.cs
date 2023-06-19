@@ -19,19 +19,36 @@ namespace Glitter.Sql.Attributes;
 /// <summary>
 /// Represents an <see cref="Attribute"/> for marking types as SQL targets.
 /// </summary>
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = false, Inherited = true)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = false, Inherited = false)]
 public sealed class SqlTableAttribute
     : Attribute
 {
     /// <summary>
-    /// The name of the table.
+    /// Creates a new <see cref="SqlTableAttribute"/> instance.
     /// </summary>
-    public string Name { get; private set; }
+    /// <param name="name">The name of the table.</param>
+    public SqlTableAttribute(string name)
+        : this(schema: "dbo", name)
+    { }
 
     /// <summary>
-    /// Creates a new <see cref="SqlTargetAttribute"/> instance.
+    /// Creates a new <see cref="SqlTableAttribute"/> instance.
     /// </summary>
-    /// <param name="name">The name of the target.</param>
-    public SqlTableAttribute(string name) =>
+    /// <param name="schema">The schema of the table.</param>
+    /// <param name="name">The name of the table.</param>
+    public SqlTableAttribute(string schema, string name)
+    {
+        Schema = schema;
         Name = name;
+    }
+
+    /// <summary>
+    /// Gets or sets the name of the table.
+    /// </summary>
+    public string Name { get; set; }
+
+    /// <summary>
+    /// Gets or sets the schema of the table.
+    /// </summary>
+    public string Schema { get; set; }
 }
