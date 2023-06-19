@@ -42,5 +42,6 @@ public class UserConnection
     /// Gets or sets the unique identifier of the user.
     /// </summary>
     [SqlColumn("UserId", DbType.Guid)]
+    [ForeignKey(typeof(User), nameof(User.Id))]
     public Guid? UserId { get; set; }
 }
