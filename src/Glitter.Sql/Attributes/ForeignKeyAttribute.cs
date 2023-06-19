@@ -21,7 +21,8 @@ namespace Glitter.Sql.Attributes;
 /// </summary>
 [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
 public sealed class ForeignKeyAttribute
-    : Attribute
+    : Attribute,
+      IForeignKeyAttribute
 {
     /// <summary>
     /// Creates a new <see cref="ForeignKeyAttribute"/> instance.
@@ -36,13 +37,9 @@ public sealed class ForeignKeyAttribute
         ColumnName = columnName;
     }
 
-    /// <summary>
-    /// Gets or sets the name of the column to which the foreign key refers.
-    /// </summary>
+    /// <inheritdoc/>
     public string ColumnName { get; set; }
 
-    /// <summary>
-    /// Gets or sets the type of the table containing the foreign key.
-    /// </summary>
+    /// <inheritdoc/>
     public Type ContainingTableType { get; set; }
 }
