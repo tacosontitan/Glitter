@@ -27,8 +27,8 @@ public class ScalarValuedSqlFunction
     /// </summary>
     /// <param name="name">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> is null or whitespace.</exception>
-    protected ScalarValuedSqlFunction(string name) :
-        base(name)
+    protected ScalarValuedSqlFunction(string name)
+        : base(name)
     { }
 
     /// <summary>
@@ -37,7 +37,7 @@ public class ScalarValuedSqlFunction
     /// <param name="schema">The schema for the function.</param>
     /// <param name="name">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> or <paramref name="name"/> is null or whitespace.</exception>
-    protected ScalarValuedSqlFunction(string schema, string name) :
-        base(schema, name)
+    protected ScalarValuedSqlFunction(string schema, string name)
+        : base(schema, name)
     { }
 }

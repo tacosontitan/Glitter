@@ -27,8 +27,8 @@ public class SqlFunction
     /// </summary>
     /// <param name="functionName">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="functionName"/> is null or whitespace.</exception>
-    protected SqlFunction(string functionName) :
-        base(
+    protected SqlFunction(string functionName)
+        : base(
             schema: "dbo",
             name: functionName,
             commandType: CommandType.Text)
@@ -40,8 +40,8 @@ public class SqlFunction
     /// <param name="schema">The schema for the function.</param>
     /// <param name="functionName">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="functionName"/> or <paramref name="functionName"/> is null or whitespace.</exception>
-    protected SqlFunction(string schema, string functionName) :
-        base(
+    protected SqlFunction(string schema, string functionName)
+        : base(
             schema: schema,
             name: functionName,
             commandType: CommandType.Text)

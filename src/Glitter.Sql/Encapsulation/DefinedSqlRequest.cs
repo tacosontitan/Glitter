@@ -32,8 +32,8 @@ public class DefinedSqlRequest
     protected DefinedSqlRequest(
         string schema,
         string name,
-        CommandType commandType) :
-        base(commandType)
+        CommandType commandType)
+        : base(commandType)
     {
         Schema = schema;
         Name = name;

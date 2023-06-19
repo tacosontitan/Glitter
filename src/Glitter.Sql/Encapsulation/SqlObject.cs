@@ -27,10 +27,11 @@ public class SqlObject
     /// </summary>
     /// <param name="name">The name of the object.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> is null or whitespace.</exception>
-    protected SqlObject(string name) : this(
+    protected SqlObject(string name)
+        : this(
         schema: "dbo",
-        name: name
-    ) { }
+        name: name)
+    { }
 
     /// <summary>
     /// Creates a new <see cref="SqlObject"/> instance.

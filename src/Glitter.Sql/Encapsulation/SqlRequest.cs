@@ -25,22 +25,6 @@ public class SqlRequest
     private readonly List<SqlRequestParameter> _parameters;
 
     /// <summary>
-    /// The command to execute.
-    /// </summary>
-    internal string? Command { get; set; }
-    
-    /// <summary>
-    /// The type of command to execute.
-    /// </summary>
-    public CommandType CommandType { get; set; }
-    
-    /// <summary>
-    /// The parameters for the command.
-    /// </summary>
-    public ICollection<SqlRequestParameter> Parameters =>
-        _parameters.AsReadOnly();
-
-    /// <summary>
     /// Creates a new <see cref="SqlRequest"/> instance.
     /// </summary>
     /// <param name="commandType">The type of command to execute.</param>
@@ -49,16 +33,32 @@ public class SqlRequest
         CommandType = commandType;
         _parameters = new List<SqlRequestParameter>();
     }
-    
+
     /// <summary>
     /// Creates a new <see cref="SqlRequest"/> instance.
     /// </summary>
     /// <param name="command">The command to execute.</param>
     /// <param name="commandType">The type of command to execute.</param>
-    public SqlRequest(string? command, CommandType commandType) :
-        this(commandType) =>
+    public SqlRequest(string? command, CommandType commandType)
+        : this(commandType) =>
         Command = command;
-    
+
+    /// <summary>
+    /// Gets or sets the command to execute.
+    /// </summary>
+    internal string? Command { get; set; }
+
+    /// <summary>
+    /// Gets or sets the type of command to execute.
+    /// </summary>
+    public CommandType CommandType { get; set; }
+
+    /// <summary>
+    /// Gets the parameters for the command.
+    /// </summary>
+    public ICollection<SqlRequestParameter> Parameters =>
+        _parameters.AsReadOnly();
+
     /// <inheritdoc/>
     /// <exception cref="ArgumentException">Thrown when <paramref name="name"/> is null or whitespace.</exception>
     /// <exception cref="InvalidOperationException">Thrown when <paramref name="name"/> has already been specified.</exception>
@@ -76,11 +76,11 @@ public class SqlRequest
 
         if (_parameters.Any(parameter => parameter.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)))
             throw new InvalidOperationException($"The parameter `{name}` has already been specified.");
-            
+
         _parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
         return this;
     }
-    
+
     /// <inheritdoc/>
     public virtual bool TryCompile(out string? command)
     {

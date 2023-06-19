@@ -26,8 +26,11 @@ public class SqlStoredProcedure
     /// Creates a new <see cref="SqlStoredProcedure"/> instance.
     /// </summary>
     /// <param name="name">The name of the stored procedure.</param>
-    protected SqlStoredProcedure(string name) :
-        base(schema: "dbo", name, CommandType.StoredProcedure)
+    protected SqlStoredProcedure(string name)
+        : base(
+            schema: "dbo",
+            name,
+            CommandType.StoredProcedure)
     { }
 
     /// <summary>
@@ -37,7 +40,10 @@ public class SqlStoredProcedure
     /// <param name="name">The name of the stored procedure.</param>
     protected SqlStoredProcedure(
         string schema,
-        string name) :
-        base(schema, name, CommandType.StoredProcedure)
+        string name)
+        : base(
+            schema,
+            name,
+            CommandType.StoredProcedure)
     { }
 }

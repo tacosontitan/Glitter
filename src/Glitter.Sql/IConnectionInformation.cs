@@ -22,39 +22,37 @@ namespace Glitter.Sql;
 public interface IConnectionInformation
 {
     /// <summary>
-    /// Should the connection use integrated security?
+    /// Gets or sets whether or not the connection should use integrated security.
     /// </summary>
     bool IntegratedSecurity { get; set; }
 
     /// <summary>
-    /// The server to connect to.
+    /// Gets or sets the server to connect to.
     /// </summary>
     string? Server { get; set; }
 
     /// <summary>
-    /// The database to connect to.
+    /// Gets or sets the database to connect to.
     /// </summary>
     string? Database { get; set; }
 
     /// <summary>
-    /// The username to use when connecting.
+    /// Gets or sets the username to use when connecting.
     /// </summary>
     string? Username { get; set; }
 
     /// <summary>
-    /// The password to use when connecting.
+    /// Gets or sets the password to use when connecting.
     /// </summary>
     string? Password { get; set; }
 
     /// <summary>
-    /// The amount of time to wait for a connection to be established.
+    /// Gets or sets the amount of time to wait for a connection to be established.
     /// </summary>
-    /// <value></value>
     TimeSpan? ConnectionTimeout { get; set; }
 
     /// <summary>
-    /// The amount of time to wait for a command to execute.
+    /// Gets or sets the amount of time to wait for a command to execute.
     /// </summary>
-    /// <value></value>
     TimeSpan? CommandTimeout { get; set; }
 }

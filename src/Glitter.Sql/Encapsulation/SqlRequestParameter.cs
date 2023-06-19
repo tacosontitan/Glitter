@@ -22,41 +22,6 @@ namespace Glitter.Sql.Encapsulation;
 public class SqlRequestParameter
 {
     /// <summary>
-    /// The name of the parameter.
-    /// </summary>
-    public string Name { get; private set; }
-    
-    /// <summary>
-    /// The value of the parameter.
-    /// </summary>
-    public object? Value { get; private set; }
-    
-    /// <summary>
-    /// The <see cref="DbType"/> of the parameter.
-    /// </summary>
-    public DbType? Type { get; private set; }
-    
-    /// <summary>
-    /// The direction of the parameter.
-    /// </summary>
-    public ParameterDirection? Direction { get; private set; }
-    
-    /// <summary>
-    /// The size of the parameter.
-    /// </summary>
-    public int? Size { get; private set; }
-    
-    /// <summary>
-    /// The precision of the parameter.
-    /// </summary>
-    public byte? Precision { get; private set; }
-    
-    /// <summary>
-    /// The scale of the parameter.
-    /// </summary>
-    public byte? Scale { get; private set; }
-    
-    /// <summary>
     /// Creates a new <see cref="SqlRequestParameter"/> instance.
     /// </summary>
     /// <param name="name">The name of the parameter.</param>
@@ -83,4 +48,39 @@ public class SqlRequestParameter
         Precision = precision;
         Scale = scale;
     }
+
+    /// <summary>
+    /// Gets or sets the name of the parameter.
+    /// </summary>
+    public string Name { get; set; }
+
+    /// <summary>
+    /// Gets or sets the value of the parameter.
+    /// </summary>
+    public object? Value { get; set; }
+
+    /// <summary>
+    /// Gets or sets the <see cref="DbType"/> of the parameter.
+    /// </summary>
+    public DbType? Type { get; set; }
+
+    /// <summary>
+    /// Gets or sets the direction of the parameter.
+    /// </summary>
+    public ParameterDirection? Direction { get; set; }
+
+    /// <summary>
+    /// Gets or sets the size of the parameter.
+    /// </summary>
+    public int? Size { get; set; }
+
+    /// <summary>
+    /// Gets or sets the precision of the parameter.
+    /// </summary>
+    public byte? Precision { get; set; }
+
+    /// <summary>
+    /// Gets or sets the scale of the parameter.
+    /// </summary>
+    public byte? Scale { get; set; }
 }

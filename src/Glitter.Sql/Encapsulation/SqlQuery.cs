@@ -26,7 +26,7 @@ public class SqlQuery
     /// Creates a new <see cref="SqlQuery"/> instance.
     /// </summary>
     /// <param name="query">The query to execute in the request.</param>
-    public SqlQuery(string query) :
-        base(query, CommandType.Text)
+    public SqlQuery(string query)
+        : base(query, CommandType.Text)
     { }
 }
