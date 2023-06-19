@@ -22,6 +22,7 @@ namespace Glitter.Sql.Sandbox.Users;
 /// <summary>
 /// Represents a user in the sandbox.
 /// </summary>
+[SqlTable(schema: "Sample", name: "Users")]
 public class User
     : DatabaseRecord
 {

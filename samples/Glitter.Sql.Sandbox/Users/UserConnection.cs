@@ -23,6 +23,7 @@ namespace Glitter.Sql.Sandbox.Users;
 /// <summary>
 /// Represents a user's connection to the sandbox.
 /// </summary>
+[SqlTable(schema: "Sample", name: "UserConnections")]
 public class UserConnection
     : DatabaseRecord
 {
