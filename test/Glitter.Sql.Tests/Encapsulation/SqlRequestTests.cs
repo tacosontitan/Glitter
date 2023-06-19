@@ -23,8 +23,14 @@ using Glitter.Sql.Encapsulation;
 
 namespace Glitter.Sql.Tests.Encapsulation;
 
+/// <summary>
+/// Defines unit tests for the <see cref="SqlRequest"/> class.
+/// </summary>
 public class SqlRequestTests
 {
+    /// <summary>
+    /// Tests that the constructor throws an <see cref="ArgumentException"/> when the command text is invalid.
+    /// </summary>
     [Theory]
     [InlineData(null)]
     [InlineData("")]
@@ -35,6 +41,9 @@ public class SqlRequestTests
         _ = Assert.Throws<ArgumentException>(() => request.AddParameter(name, "value"));
     }
 
+    /// <summary>
+    /// Tests that the constructor throws an <see cref="InvalidOperationException"/> when the parameter name is already in use.
+    /// </summary>
     [Fact]
     public void AddParameter_DuplicateName_ThrowsInvalidOperationException()
     {
@@ -43,6 +52,9 @@ public class SqlRequestTests
         _ = Assert.Throws<InvalidOperationException>(() => request.AddParameter("name", "value"));
     }
 
+    /// <summary>
+    /// Tests that the constructor throws an <see cref="ArgumentException"/> when the parameter value is null.
+    /// </summary>
     [Theory]
     [InlineData(null)]
     [InlineData("")]
