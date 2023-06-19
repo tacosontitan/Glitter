@@ -32,15 +32,15 @@ public class SqlRequestTests
     public void AddParameter_InvalidName_ThrowsArgumentException(string name)
     {
         var request = new TestSqlRequest("command", CommandType.Text);
-        Assert.Throws<ArgumentException>(() => request.AddParameter(name, "value"));
+        _ = Assert.Throws<ArgumentException>(() => request.AddParameter(name, "value"));
     }
 
     [Fact]
     public void AddParameter_DuplicateName_ThrowsInvalidOperationException()
     {
         var request = new TestSqlRequest("command", CommandType.Text);
-        request.AddParameter("name", "value");
-        Assert.Throws<InvalidOperationException>(() => request.AddParameter("name", "value"));
+        _ = request.AddParameter("name", "value");
+        _ = Assert.Throws<InvalidOperationException>(() => request.AddParameter("name", "value"));
     }
 
     [Theory]
