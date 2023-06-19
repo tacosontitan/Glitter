@@ -21,7 +21,8 @@ namespace Glitter.Sql.Attributes;
 /// </summary>
 [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
 public sealed class SqlColumnAttribute
-    : Attribute
+    : Attribute,
+      ISqlColumnAttribute
 {
     /// <summary>
     /// Creates a new <see cref="SqlColumnAttribute"/> instance.
@@ -84,28 +85,18 @@ public sealed class SqlColumnAttribute
         Scale = scale;
     }
 
-    /// <summary>
-    /// Gets the name of the column.
-    /// </summary>
+    /// <inheritdoc/>
     public string Name { get; private set; }
 
-    /// <summary>
-    /// Gets the type of the column.
-    /// </summary>
+    /// <inheritdoc/>
     public DbType? Type { get; private set; }
 
-    /// <summary>
-    /// Gets the size of the column.
-    /// </summary>
+    /// <inheritdoc/>
     public int? Size { get; private set; }
 
-    /// <summary>
-    /// Gets the precision of the column.
-    /// </summary>
+    /// <inheritdoc/>
     public byte? Precision { get; private set; }
 
-    /// <summary>
-    /// Gets the scale of the column.
-    /// </summary>
+    /// <inheritdoc/>
     public byte? Scale { get; private set; }
 }
