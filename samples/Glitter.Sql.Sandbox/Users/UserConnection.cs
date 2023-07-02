@@ -28,14 +28,9 @@ public class UserConnection
     : DatabaseRecord
 {
     /// <summary>
-    /// Gets or sets whether or not the connection is active.
-    /// </summary>
-    [SqlColumn("IsActive", DbType.Boolean)]
-    public bool? IsActive { get; set; }
-
-    /// <summary>
     /// Gets or sets the unique identifier of the connection.
     /// </summary>
+    [PrimaryKey]
     [SqlColumn("Id", DbType.Guid)]
     public Guid? Id { get; set; }
 
@@ -45,4 +40,10 @@ public class UserConnection
     [SqlColumn("UserId", DbType.Guid)]
     [ForeignKey(typeof(User), nameof(User.Id))]
     public Guid? UserId { get; set; }
+
+    /// <summary>
+    /// Gets or sets whether or not the connection is active.
+    /// </summary>
+    [SqlColumn("IsActive", DbType.Boolean)]
+    public bool? IsActive { get; set; }
 }
