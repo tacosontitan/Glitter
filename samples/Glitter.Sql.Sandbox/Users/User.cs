@@ -29,6 +29,7 @@ public class User
     /// <summary>
     /// Gets or sets the unique identifier of the user.
     /// </summary>
+    [PrimaryKey]
     [SqlColumn("Id", DbType.Guid)]
     public Guid? Id { get; set; }
 
