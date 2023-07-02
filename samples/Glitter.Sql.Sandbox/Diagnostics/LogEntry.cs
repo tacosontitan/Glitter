@@ -25,7 +25,15 @@ namespace Glitter.Sql.Sandbox.Diagnostics;
 /// </summary>
 [SqlTable(schema: "Sample", name: "Logs")]
 public class LogEntry
+    : DatabaseRecord
 {
+    /// <summary>
+    /// Gets or sets the ID of the log entry.
+    /// </summary>
+    [PrimaryKey]
+    [SqlColumn("Id", DbType.Int32)]
+    public int? Id { get; set; }
+
     /// <summary>
     /// Gets or sets the level of the log entry.
     /// </summary>
