@@ -14,15 +14,18 @@
    limitations under the License.
 */
 
+// This interface is defining an attribute, so it should be named as such.
+// The reason for this convention is to improve proxy support for consumers who desire it.
+// This violates CA1711, but is something this repository stands firm on.
+// See: https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-type-members#nouns-and-noun-phrases
+#pragma warning disable CA1711
+
 namespace Glitter.Sql.Attributes;
 
 /// <summary>
-/// Represents an <see cref="Attribute"/> that indicates a property is a primary key.
+/// Defines a foreign key attribute.
 /// </summary>
-[AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
-public sealed class PrimaryKeyAttribute
-    : Attribute,
-      IPrimaryKeyAttribute
+public interface IPrimaryKeyAttribute
 {
 
 }
