@@ -34,6 +34,7 @@ public class Job
     /// <summary>
     /// Gets or sets the unique identifier of the job.
     /// </summary>
+    [PrimaryKey]
     [SqlColumn("Id", DbType.Guid)]
     public Guid? Id { get; set; }
 
