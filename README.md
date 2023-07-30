@@ -8,11 +8,11 @@ Named after the second largest mountain in Norway, Glitter is a simple framework
 
 Glitter is comprised of multiple repositories, each with their own purpose and responsibility. This allows for a more focused approach to development, and a more modular approach to implementation. The following repositories are part of the Glitter framework:
 
-- [`Glitter`](https://github.com/tacosontitan/Glitter)
-  - [`Glitter.Sql`](https://github.com/tacosontitan/Glitter.Sql)
-  - [`Glitter.Api`](https://github.com/tacosontitan/Glitter.Api)
-  - [`Glitter.Pipelines`](https://github.com/tacosontitan/Glitter.Pipelines)
-- [`Glitter.Extensions`](https://github.com/tacosontitan/Glitter.Extensions)
+- [Glitter](https://github.com/tacosontitan/Glitter)
+  - [Glitter.Sql](https://github.com/tacosontitan/Glitter.Sql)
+  - [Glitter.Api](https://github.com/tacosontitan/Glitter.Api)
+  - [Glitter.Pipelines](https://github.com/tacosontitan/Glitter.Pipelines)
+- [Glitter.Extensions](https://github.com/tacosontitan/Glitter.Extensions)
 
 ## 💁‍♀️ Getting Started
 
