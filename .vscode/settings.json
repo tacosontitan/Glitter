@@ -1,3 +1,6 @@
 {
-    "dotnet.defaultSolution": "Glitter.sln"
+    "dotnet.defaultSolution": "Glitter.sln",
+    "cSpell.words": [
+        "Validatable"
+    ]
 }
