@@ -16,8 +16,8 @@ public sealed class NotFoundException : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="NotFoundException"/> class.
     /// </summary>
-    /// <param name="addtionalInformation">Additional information about the exception.</param>
-    public NotFoundException(string? addtionalInformation) :
+    /// <param name="additionalInformation">Additional information about the exception.</param>
+    public NotFoundException(string? additionalInformation) :
         base("The requested resource was not found.") =>
-        AdditionalInformation = addtionalInformation;
+        AdditionalInformation = additionalInformation;
 }
