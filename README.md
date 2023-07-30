@@ -4,9 +4,7 @@ Named after the second largest mountain in Norway, Glitter is a simple framework
 
 ![License](https://img.shields.io/github/license/tacosontitan/Glitter?logo=github&style=for-the-badge)
 
-## 📦 Separate Repositories
-
-Glitter is comprised of multiple repositories, each with their own purpose and responsibility. This allows for a more focused approach to development, and a more modular approach to implementation. The following repositories are part of the Glitter framework:
+Comprised of multiple repositories, Glitter offers a flexible package experience. Each repository serves their own purpose and responsibility, allowing for a more focused approach to development, and a more modular approach to implementation. The following repositories are part of the framework:
 
 - [Glitter](https://github.com/tacosontitan/Glitter)
   - [Glitter.Sql](https://github.com/tacosontitan/Glitter.Sql)
