@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace Glitter.Validation;
 
 /// <summary>
@@ -15,13 +10,6 @@ public interface IValidator
     /// </summary>
     /// <param name="value">The value to validate.</param>
     ValidationResult<object> Validate(object? value);
-
-    /// <summary>
-    /// Attempts to validate the specified value.
-    /// </summary>
-    /// <param name="value">The value to validate.</param>
-    /// <returns><see langword="true"/> if the validation was successful; otherwise, <see langword="false"/>.</returns>
-    ValidationResult<object> TryValidate(object? value);
 }
 
 /// <summary>
@@ -36,11 +24,4 @@ public interface IValidator<T>
     /// </summary>
     /// <param name="value">The value to validate.</param>
     ValidationResult<T> Validate(T? value);
-
-    /// <summary>
-    /// Attempts to validate the specified value.
-    /// </summary>
-    /// <param name="value">The value to validate.</param>
-    /// <returns><see langword="true"/> if the validation was successful; otherwise, <see langword="false"/>.</returns>
-    bool TryValidate(T? value, out ValidationResult<T> result);
 }
