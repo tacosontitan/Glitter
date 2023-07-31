@@ -10,18 +10,63 @@ on:
     branches: ["main", "dev"]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-48:
+    runs-on: windows-2019
+    name: "🧪 Build and Test .NET Framework"
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
 
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+      
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1.1
+    
+    - name: Restore Packages
+      run: nuget restore Glitter.sln
+    
+    - name: Build solution
+      run: msbuild Glitter.sln -t:rebuild -property:Configuration=Release
+
+  build-6:
+    runs-on: ubuntu-latest
+    name: "🧪 Build and Test .NET 6"
     steps:
       - uses: actions/checkout@v3
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.0.x
+
       - name: Restore dependencies
         run: dotnet restore
+
       - name: Build
-        run: dotnet build -c Release --no-restore
+        run: dotnet build --framwork net6.0 -c Release --no-restore
+
       - name: Test
-        run: dotnet test -c Release --no-build
+        run: dotnet test --framwork net6.0 -c Release --no-build
+
+  build-7:
+    runs-on: ubuntu-latest
+    name: "🧪 Build and Test .NET 7"
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --framwork net7.0 -c Release --no-restore
+
+      - name: Test
+        run: dotnet test --framwork net7.0 -c Release --no-build
