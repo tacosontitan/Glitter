@@ -18,9 +18,10 @@ public sealed class SubstringReader
     }
 
     /// <summary>
-    /// Gets the length of the source string.
+    /// Gets the current length of the <see cref="SubstringReader"/>.
     /// </summary>
-    public int Length => _source.Length;
+    public int Length =>
+        _source.Length - CurrentIndex;
 
     /// <summary>
     /// Gets the current index of the <see cref="SubstringReader"/>.
@@ -32,7 +33,14 @@ public sealed class SubstringReader
     /// </summary>
     public void Reset() =>
         CurrentIndex = 0;
-    
+
+    /// <summary>
+    /// Peeks ahead in the source string without advancing the current index.
+    /// </summary>
+    /// <returns>The substring that was peeked at.</returns>
+    public string Peek() =>
+        _source.Substring(CurrentIndex);
+
     /// <summary>
     /// Peeks ahead in the source string without advancing the current index.
     /// </summary>
@@ -94,16 +102,48 @@ public sealed class SubstringReader
     /// <typeparam name="T">Specifies the type to parse the substring as.</typeparam>
     /// <param name="length">The length of the substring to query.</param>
     /// <param name="result">The parsed substring.</param>
-    /// <returns>The <see cref="SubstringReader"/> instance.</returns>
-    public SubstringReader Next<T>(int length, out T? result)
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    public SubstringReader Next<T>(int length, out T? result, bool trim = true)
     {
         string substring = _source.Substring(CurrentIndex, length);
+        if (trim)
+            substring = substring.Trim();
+
         result = (T)Convert.ChangeType(substring, typeof(T));
         CurrentIndex += length;
         return this;
     }
 
-    public SubstringReader TakeTo<T>(char searchValue, out T? result)
+    /// <summary>
+    /// Queries the next substring of length <c>1</c> and parses it out as a specified type.
+    /// </summary>
+    /// <param name="length">The length of the substring to query.</param>
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    public SubstringReader Next<T>(out T? result) =>
+        Next(1, out result);
+
+    /// <summary>
+    /// Takes from the current index to the next occurrence of a specified search value and parses it out as a specified type.
+    /// </summary>
+    /// <typeparam name="T">Specifies the type to parse the substring as.</typeparam>
+    /// <param name="searchValue">The character to search for.</param>
+    /// <param name="result">The parsed substring.</param>
+    /// <param name="trim">Whether or not to trim the substring prior to parsing.</param>
+    /// <returns>The <see cref="SubstringReader"/> instance.</returns>
+    /// <remarks>This method will trim the substring prior to parsing by default.</remarks>
+    public SubstringReader TakeTo<T>(char searchValue, out T? result, bool trim = true) =>
+        TakeTo(searchValue.ToString(), out result, trim);
+
+    /// <summary>
+    /// Takes from the current index to the next occurrence of a specified search value and parses it out as a specified type.
+    /// </summary>
+    /// <typeparam name="T">Specifies the type to parse the substring as.</typeparam>
+    /// <param name="searchValue">The value to search for.</param>
+    /// <param name="result">The parsed substring.</param>
+    /// <param name="trim">Whether or not to trim the substring prior to parsing.</param>
+    /// <returns>The <see cref="SubstringReader"/> instance.</returns>
+    /// <remarks>This method will trim the substring prior to parsing by default.</remarks>
+    public SubstringReader TakeTo<T>(string searchValue, out T? result, bool trim = true)
     {
         int index = _source.IndexOf(searchValue, CurrentIndex);
         if (index == -1)
@@ -112,7 +152,10 @@ public sealed class SubstringReader
             return this;
         }
 
-        string substring = _source[CurrentIndex..index];
+        string substring = _source.Substring(CurrentIndex, index - CurrentIndex);
+        if (trim)
+            substring = substring.Trim();
+
         result = (T)Convert.ChangeType(substring, typeof(T));
         CurrentIndex = index;
         return this;
