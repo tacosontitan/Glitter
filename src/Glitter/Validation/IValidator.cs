@@ -9,5 +9,5 @@ public interface IValidator
     /// Validates the specified value.
     /// </summary>
     /// <param name="value">The value to validate.</param>
-    ValidationResult<object> Validate(object? value);
+    ValidationResult Validate(object? value);
 }

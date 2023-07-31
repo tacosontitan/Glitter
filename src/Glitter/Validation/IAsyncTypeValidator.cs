@@ -5,7 +5,8 @@ namespace Glitter.Validation;
 /// </summary>
 /// <typeparam name="T">The type of value to validate.</typeparam>
 public interface IAsyncTypeValidator<T>
-    : IAsyncValidator
+    : IAsyncValidator,
+      ITypeValidator<T>
 {
     /// <summary>
     /// Validates the specified value.
