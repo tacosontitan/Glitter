@@ -3,15 +3,15 @@ namespace Glitter.Text;
 /// <summary>
 /// Represents a highly flexible system for working with substrings.
 /// </summary>
-public sealed class SubstringQueue
+public sealed class SubstringReader
 {
     private readonly string _source;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SubstringQueue"/>.
+    /// Initializes a new instance of the <see cref="SubstringReader"/>.
     /// </summary>
     /// <param name="value">The string to be used as the source.</param>
-    public SubstringQueue(string source)
+    public SubstringReader(string source)
     {
         _source = source;
         CurrentIndex = 0;
@@ -23,7 +23,7 @@ public sealed class SubstringQueue
     public int Length => _source.Length;
 
     /// <summary>
-    /// Gets the current index of the <see cref="SubstringQueue"/>.
+    /// Gets the current index of the <see cref="SubstringReader"/>.
     /// </summary>
     public int CurrentIndex { get; private set; }
 
@@ -94,13 +94,27 @@ public sealed class SubstringQueue
     /// <typeparam name="T">Specifies the type to parse the substring as.</typeparam>
     /// <param name="length">The length of the substring to query.</param>
     /// <param name="result">The parsed substring.</param>
-    /// <returns>The <see cref="SubstringQueue"/> instance.</returns>
-    public SubstringQueue Next<T>(int length, out T result)
+    /// <returns>The <see cref="SubstringReader"/> instance.</returns>
+    public SubstringReader Next<T>(int length, out T? result)
     {
         string substring = _source.Substring(CurrentIndex, length);
-        CurrentIndex += length;
-
         result = (T)Convert.ChangeType(substring, typeof(T));
+        CurrentIndex += length;
+        return this;
+    }
+
+    public SubstringReader TakeTo<T>(char searchValue, out T? result)
+    {
+        int index = _source.IndexOf(searchValue, CurrentIndex);
+        if (index == -1)
+        {
+            result = default;
+            return this;
+        }
+
+        string substring = _source[CurrentIndex..index];
+        result = (T)Convert.ChangeType(substring, typeof(T));
+        CurrentIndex = index;
         return this;
     }
 
@@ -109,6 +123,6 @@ public sealed class SubstringQueue
     /// </summary>
     /// <typeparam name="T">Specifies the type to parse the substring as.</typeparam>
     /// <param name="result">The parsed substring.</param>
-    public void Remainder<T>(out T result) =>
+    public void Remainder<T>(out T? result) =>
         Next(_source.Length - CurrentIndex, out result);
 }
