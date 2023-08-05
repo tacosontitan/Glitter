@@ -42,11 +42,9 @@ public static class Session
     public static T? Get<T>()
     {
         lock (_bagLock)
-        {
             return _bag is null
                 ? throw new InvalidOperationException("The session has not been initialized.")
                 : _bag.Get<T>();
-        }
     }
 
     /// <summary>
