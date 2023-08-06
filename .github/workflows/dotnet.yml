@@ -14,22 +14,19 @@ jobs:
     runs-on: windows-2019
     name: "🧪 Build and Test .NET Framework"
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
     
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1
-
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.5
-      
-    - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v1.1
+      - name: Setup .NET Framework 4.8
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '4.8.x'
     
-    - name: Restore Packages
-      run: nuget restore Glitter.sln
-    
-    - name: Build solution
-      run: msbuild Glitter.sln -t:rebuild -property:TargetFrameworkVersion=v2.0;Configuration=Release
+      - name: Build
+        run: dotnet build --framework net48 -c Release --no-restore
+        
+      - name: Test
+        run: dotnet test --framework net48 -c Release --no-build
 
   build-6:
     runs-on: ubuntu-latest
