@@ -13,7 +13,7 @@ public class SubstringReaderOptions
     public SubstringReaderOptions()
     {
         FormatProvider = CultureInfo.InvariantCulture;
-        TrimOptions = null;
+        TrimInstructions = null;
     }
 
     /// <summary>
@@ -24,5 +24,5 @@ public class SubstringReaderOptions
     /// <summary>
     /// Gets or sets the trimming options for the <see cref="SubstringReader"/>.
     /// </summary>
-    public TrimOptions? TrimOptions { get; set; }
+    public IEnumerable<TrimInstruction>? TrimInstructions { get; set; }
 }
