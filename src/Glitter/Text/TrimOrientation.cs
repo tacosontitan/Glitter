@@ -11,12 +11,12 @@ public enum TrimOrientation
     Full = 0,
     
     /// <summary>
-    /// Indicates that trimming should be applied to the left side of the target.
+    /// Indicates that trimming should be applied to the start of the target.
     /// </summary>
-    Left = 1,
+    Start = 1,
     
     /// <summary>
-    /// Indicates that trimming should be applied to the right side of the target.
+    /// Indicates that trimming should be applied to the end of the target.
     /// </summary>
-    Right = 2
+    End = 2
 }
