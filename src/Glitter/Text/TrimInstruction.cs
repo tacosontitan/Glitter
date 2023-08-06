@@ -21,7 +21,7 @@ public class TrimInstruction
     /// <summary>
     /// Gets or sets the characters to trim.
     /// </summary>
-    public IReadOnlyCollection<char>? Values { get; set; }
+    public IEnumerable<char> Values { get; set; }
     
     /// <summary>
     /// Gets preconfigured instructions for trimming whitespace from the beginning and end of a string.
