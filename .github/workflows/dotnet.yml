@@ -29,7 +29,7 @@ jobs:
       run: nuget restore Glitter.sln
     
     - name: Build solution
-      run: msbuild Glitter.sln -t:rebuild -property:Configuration=Release
+      run: msbuild Glitter.sln -t:rebuild -property:TargetFrameworkVersion=v2.0;Configuration=Release
 
   build-6:
     runs-on: ubuntu-latest
@@ -46,10 +46,10 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --framwork net6.0 -c Release --no-restore
+        run: dotnet build --framework net6.0 -c Release --no-restore
 
       - name: Test
-        run: dotnet test --framwork net6.0 -c Release --no-build
+        run: dotnet test --framework net6.0 -c Release --no-build
 
   build-7:
     runs-on: ubuntu-latest
@@ -66,7 +66,7 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --framwork net7.0 -c Release --no-restore
+        run: dotnet build --framework net7.0 -c Release --no-restore
 
       - name: Test
-        run: dotnet test --framwork net7.0 -c Release --no-build
+        run: dotnet test --framework net7.0 -c Release --no-build
