@@ -11,22 +11,17 @@ on:
 
 jobs:
   build-48:
-    runs-on: windows-2019
+    runs-on: windows-latest
     name: "🧪 Build and Test .NET Framework"
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-    
-      - name: Setup .NET Framework 4.8
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '4.8.x'
-    
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.0.2
+
       - name: Build
-        run: dotnet build --framework net48 -c Release --no-restore
-        
-      - name: Test
-        run: dotnet test --framework net48 -c Release --no-build
+        run: msbuild Glitter.sln /p:Configuration=Release /p:TargetFrameworkVersion=v4.8
 
   build-6:
     runs-on: ubuntu-latest
