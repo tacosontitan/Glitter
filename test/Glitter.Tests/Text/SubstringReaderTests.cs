@@ -327,4 +327,83 @@ public class SubstringReaderTests
         int expectedPosition = skipSearchValue ? sample.IndexOf(',') + 1 : sample.IndexOf(',');
         Assert.Equal(expected: expectedPosition, actual: reader.Position);
     }
+    
+    [Fact]
+    public void Read_PriorToEndOfSource_ReturnsSubstring()
+    {
+        // Arrange
+        const int testLength = 5;
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        _ = reader.Read(length: testLength, out string? result);
+        
+        // Assert
+        Assert.Equal(expected: "Hello", actual: result);
+        Assert.Equal(expected: testLength, actual: reader.Position);
+    }
+    
+    [Fact]
+    public void Read_NegativeLength_ThrowsArgumentOutOfRangeException()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        void TestAction() =>
+            _ = reader.Read(length: -1, out string? result);
+        
+        // Assert
+        Assert.Throws<ArgumentOutOfRangeException>(TestAction);
+        Assert.Equal(expected: 0, actual: reader.Position);
+    }
+    
+    [Fact]
+    public void Read_ExceedsLengthOfSource_ThrowsArgumentOutOfRangeException()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        void TestAction() =>
+            _ = reader.Read(length: sample.Length + 1, out string? result);
+        
+        // Assert
+        Assert.Throws<ArgumentOutOfRangeException>(TestAction);
+        Assert.Equal(expected: 0, actual: reader.Position);
+    }
+    
+    [Fact]
+    public void Read_FailureToParseResult_ThrowsFormatException()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        void TestAction() =>
+            _ = reader.Read(length: sample.Length, out int result);
+        
+        // Assert
+        Assert.Throws<FormatException>(TestAction);
+        Assert.Equal(expected: 0, actual: reader.Position);
+    }
+    
+    [Fact]
+    public void Read_SuccessfulParseResult_ReturnsParsedValue()
+    {
+        // Arrange
+        const string sample = "123";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        _ = reader.Read(length: sample.Length, out int result);
+        
+        // Assert
+        Assert.Equal(expected: 123, actual: result);
+        Assert.Equal(expected: sample.Length, actual: reader.Position);
+    }
 }

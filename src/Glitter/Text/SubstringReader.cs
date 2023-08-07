@@ -288,6 +288,41 @@ public sealed class SubstringReader
         return this;
     }
 
+    /// <summary>
+    /// Reads the specified number of characters from the source string and attempts to parse the substring to the specified type.
+    /// </summary>
+    /// <typeparam name="T">The type to parse the substring to.</typeparam>
+    /// <param name="length">The number of characters to read.</param>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> cannot cause the reader to step outside of the source string.</exception>
+    /// <exception cref="FormatException">The substring cannot be parsed to the specified type.</exception>
+    /// <exception cref="OverflowException">The substring cannot be parsed to the specified type.</exception>
+    public SubstringReader Read<T>(int length, out T? result) where T : IConvertible
+    {
+        string substring = GetSubstring(length);
+        result = (T)Convert.ChangeType(substring, typeof(T), _options.FormatProvider);
+        _currentIndex.Value += length;
+        return this;
+    }
+    
+    /// <summary>
+    /// Reads the specified number of characters from the source string and attempts to deserialize the substring to the specified type.
+    /// </summary>
+    /// <typeparam name="T">The type to deserialize the substring to.</typeparam>
+    /// <param name="length">The number of characters to read.</param>
+    /// <param name="serializationProvider">The serialization provider to use for deserialization.</param>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> cannot cause the reader to step outside of the source string.</exception>
+    public SubstringReader Read<T>(int length, ISerializationProvider serializationProvider, out T? result)
+    {
+        string substring = GetSubstring(length);
+        result = serializationProvider.Deserialize<T>(substring, _options.FormatProvider);
+        _currentIndex.Value += length;
+        return this;
+    }
+
     private string GetSubstring() =>
         GetSubstring(length: _source.Length - _currentIndex.Value);
     
