@@ -441,4 +441,18 @@ public class SubstringReaderTests
         Assert.Null(result);
         Assert.Equal(expected: 0, actual: reader.Position);
     }
+    
+    [Fact]
+    public void Reset_ReaderPositionIsNotZero_SetsReaderPositionToZero()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        _ = reader.Skip().Reset();
+        
+        // Assert
+        Assert.Equal(expected: 0, actual: reader.Position);
+    }
 }

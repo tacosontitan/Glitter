@@ -45,8 +45,12 @@ public sealed class SubstringReader
     /// <summary>
     /// Resets the current index to <c>0</c>.
     /// </summary>
-    public void Reset() =>
+    /// <returns>The current <see cref="SubstringReader"/>.</returns>
+    public SubstringReader Reset()
+    {
         _currentIndex.Value = 0;
+        return this;
+    }
 
     /// <summary>
     /// Peeks forward to the end of the source string.
