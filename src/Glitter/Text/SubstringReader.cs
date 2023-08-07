@@ -301,13 +301,8 @@ public sealed class SubstringReader
     };
 
     /*
-     * Create
-     * Peek
-     * TryPeek
      * Read
      * ReadTo
      * ReadToEnd
-     * Reset
-     * Skip
      */
 }
