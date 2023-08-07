@@ -52,7 +52,7 @@ public sealed class SubstringReader
     /// Peeks forward to the end of the source string.
     /// </summary>
     /// <returns><see langword="null"/> if the current index beyond the end of the source string; otherwise, the substring from the current position of the reader to the end of the source string.</returns>
-    public string? Peek() =>
+    public string Peek() =>
         GetSubstring();
 
     /// <summary>
@@ -61,7 +61,7 @@ public sealed class SubstringReader
     /// <typeparam name="T">The type to convert the substring to.</typeparam>
     /// <exception cref="FormatException">The resulting substring is not in the correct format for <typeparamref name="T"/>.</exception>
     /// <exception cref="OverflowException">The resulting substring exceeds the range of <typeparamref name="T"/>.</exception>
-    public T? Peek<T>() where T : IConvertible
+    public T Peek<T>() where T : IConvertible
     {
         string substring = GetSubstring();
         return (T)Convert.ChangeType(substring, typeof(T), _options.FormatProvider);
@@ -87,7 +87,7 @@ public sealed class SubstringReader
     /// <param name="length">The length to peek forward.</param>
     /// <returns>The substring from the current position of the reader to the end of the source string.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="length"/> is negative or exceeds the length of the source string when added to the current position of the reader.</exception>
-    public string? Peek(int length) =>
+    public string Peek(int length) =>
         GetSubstring(length);
 
     /// <summary>
@@ -99,7 +99,7 @@ public sealed class SubstringReader
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="length"/> is negative or exceeds the length of the source string when added to the current position of the reader.</exception>
     /// <exception cref="FormatException">The resulting substring is not in the correct format for <typeparamref name="T"/>.</exception>
     /// <exception cref="OverflowException">The resulting substring exceeds the range of <typeparamref name="T"/>.</exception>
-    public T? Peek<T>(int length) where T : IConvertible
+    public T Peek<T>(int length) where T : IConvertible
     {
         string substring = GetSubstring(length);
         return (T)Convert.ChangeType(substring, typeof(T), _options.FormatProvider);
@@ -323,6 +323,51 @@ public sealed class SubstringReader
         return this;
     }
 
+    /// <summary>
+    /// Reads all characters from the current position of the reader to the end of the source string and attempts to parse the substring to the specified type.
+    /// </summary>
+    /// <typeparam name="T">The type to parse the substring to.</typeparam>
+    /// <param name="searchValue">The character to search for.</param>
+    /// <param name="includeSearchValue">Whether to skip the specified character if found.</param>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    /// <exception cref="FormatException">The substring cannot be parsed to the specified type.</exception>
+    /// <exception cref="OverflowException">The substring cannot be parsed to the specified type.</exception>
+    public SubstringReader ReadTo<T>(char searchValue, out T? result, bool includeSearchValue = false) where T : IConvertible
+    {
+        int searchValueIndex = _source.IndexOf(searchValue, _currentIndex.Value);
+        if (searchValueIndex == -1)
+        {
+            result = default;
+            return this;
+        }
+        
+        int offset = includeSearchValue ? 1 : 0;
+        return Read(length: searchValueIndex - _currentIndex.Value + offset, out result);
+    }
+    
+    /// <summary>
+    /// Reads all characters from the current position of the reader to the end of the source string and attempts to deserialize the substring to the specified type.
+    /// </summary>
+    /// <typeparam name="T">The type to deserialize the substring to.</typeparam>
+    /// <param name="searchValue">The character to search for.</param>
+    /// <param name="includeSearchValue">Whether to skip the specified character if found.</param>
+    /// <param name="serializationProvider">The serialization provider to use for deserialization.</param>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    public SubstringReader ReadTo<T>(char searchValue, ISerializationProvider serializationProvider, out T? result, bool includeSearchValue = false)
+    {
+        int searchValueIndex = _source.IndexOf(searchValue, _currentIndex.Value);
+        if (searchValueIndex == -1)
+        {
+            result = default;
+            return this;
+        }
+        
+        int offset = includeSearchValue ? 1 : 0;
+        return Read(length: searchValueIndex - _currentIndex.Value + offset, serializationProvider, out result);
+    }
+
     private string GetSubstring() =>
         GetSubstring(length: _source.Length - _currentIndex.Value);
     
@@ -356,8 +401,6 @@ public sealed class SubstringReader
     }
 
     /*
-     * Read
-     * ReadTo
      * ReadToEnd
      */
 }

@@ -406,4 +406,39 @@ public class SubstringReaderTests
         Assert.Equal(expected: 123, actual: result);
         Assert.Equal(expected: sample.Length, actual: reader.Position);
     }
+    
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void ReadTo_SearchValueFound_ReturnsSubstring(bool includeSearchValue)
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        _ = reader.ReadTo(',', out string? result, includeSearchValue);
+        
+        // Assert
+        string expectedResult = includeSearchValue ? "Hello," : "Hello";
+        Assert.Equal(expected: expectedResult, actual: result);
+        
+        int expectedPosition = includeSearchValue ? sample.IndexOf(',') + 1 : sample.IndexOf(',');
+        Assert.Equal(expected: expectedPosition, actual: reader.Position);
+    }
+    
+    [Fact]
+    public void ReadTo_SearchValueNotFound_ReturnsSubstring()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        _ = reader.ReadTo('.', out string? result);
+        
+        // Assert
+        Assert.Null(result);
+        Assert.Equal(expected: 0, actual: reader.Position);
+    }
 }
