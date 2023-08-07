@@ -122,6 +122,129 @@ public sealed class SubstringReader
         string substring = GetSubstring(length);
         return serializationProvider.Deserialize<T>(substring, _options.FormatProvider);
     }
+    
+    /// <summary>
+    /// Attempts to peek forward to the end of the source string.
+    /// </summary>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns><see langword="true"/> if the current index is not beyond the end of the source string; otherwise, <see langword="false"/>.</returns>
+    public bool TryPeek(out string? result)
+    {
+        try
+        {
+            result = Peek();
+            return true;
+        }
+        catch
+        {
+            result = null;
+            return false;
+        }
+    }
+    
+    /// <summary>
+    /// Attempts to peek forward to the end of the source string and convert the substring to the specified type.
+    /// </summary>
+    /// <typeparam name="T">The type to convert the substring to.</typeparam>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns><see langword="true"/> if the current index is not beyond the end of the source string; otherwise, <see langword="false"/>.</returns>
+    public bool TryPeek<T>(out T? result) where T : IConvertible
+    {
+        try
+        {
+            result = Peek<T>();
+            return true;
+        }
+        catch
+        {
+            result = default;
+            return false;
+        }
+    }
+    
+    /// <summary>
+    /// Attempts to peek forward to the end of the source string and deserialize the substring to the specified type.
+    /// </summary>
+    /// <typeparam name="T">The type to deserialize the substring to.</typeparam>
+    /// <param name="serializationProvider">The serialization provider to use for deserialization.</param>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns><see langword="true"/> if the current index is not beyond the end of the source string; otherwise, <see langword="false"/>.</returns>
+    public bool TryPeek<T>(ISerializationProvider serializationProvider, out T? result)
+    {
+        try
+        {
+            result = Peek<T>(serializationProvider);
+            return true;
+        }
+        catch
+        {
+            result = default;
+            return false;
+        }
+    }
+    
+    /// <summary>
+    /// Attempts to peek forward in the specified source string by the specified length.
+    /// </summary>
+    /// <param name="length">The length to peek forward.</param>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns><see langword="true"/> if the current index is not beyond the end of the source string; otherwise, <see langword="false"/>.</returns>
+    public bool TryPeek(int length, out string? result)
+    {
+        try
+        {
+            result = Peek(length);
+            return true;
+        }
+        catch
+        {
+            result = null;
+            return false;
+        }
+    }
+    
+    /// <summary>
+    /// Attempts to peek forward in the specified source string by the specified length and convert the substring to the specified type.
+    /// </summary>
+    /// <typeparam name="T">The type to convert the substring to.</typeparam>
+    /// <param name="length">The length to peek forward.</param>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns><see langword="true"/> if the current index is not beyond the end of the source string; otherwise, <see langword="false"/>.</returns>
+    public bool TryPeek<T>(int length, out T? result) where T : IConvertible
+    {
+        try
+        {
+            result = Peek<T>(length);
+            return true;
+        }
+        catch
+        {
+            result = default;
+            return false;
+        }
+    }
+    
+    /// <summary>
+    /// Attempts to peek forward in the specified source string by the specified length and deserialize the substring to the specified type.
+    /// </summary>
+    /// <typeparam name="T">The type to deserialize the substring to.</typeparam>
+    /// <param name="length">The length to peek forward.</param>
+    /// <param name="serializationProvider">The serialization provider to use for deserialization.</param>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns><see langword="true"/> if the current index is not beyond the end of the source string; otherwise, <see langword="false"/>.</returns>
+    public bool TryPeek<T>(int length, ISerializationProvider serializationProvider, out T? result)
+    {
+        try
+        {
+            result = Peek<T>(length, serializationProvider);
+            return true;
+        }
+        catch
+        {
+            result = default;
+            return false;
+        }
+    }
 
     private string GetSubstring() =>
         GetSubstring(length: _source.Length - _currentIndex.Value);

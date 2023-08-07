@@ -96,7 +96,7 @@ public class SubstringReaderTests
     }
     
     [Fact]
-    public void PeekAndConvert_TryConvertToInvalidType_ThrowsFormatException()
+    public void Peek_TryConvertToInvalidType_ThrowsFormatException()
     {
         // Arrange
         const string sample = "Hello, world!";
@@ -111,7 +111,7 @@ public class SubstringReaderTests
     }
     
     [Fact]
-    public void PeekAndConvert_TryConvertToValidType_ReturnsConvertedValue()
+    public void Peek_TryConvertToValidType_ReturnsConvertedValue()
     {
         // Arrange
         const string sample = "123";
@@ -125,7 +125,7 @@ public class SubstringReaderTests
     }
     
     [Fact]
-    public void PeekAndConvert_SubstringExceedsRange_ThrowsOverflowException()
+    public void Peek_SubstringExceedsRange_ThrowsOverflowException()
     {
         // Arrange
         const string sample = "12345678";
@@ -137,5 +137,97 @@ public class SubstringReaderTests
 
         // Assert
         Assert.Throws<OverflowException>(TestAction);
+    }
+    
+    [Fact]
+    public void TryPeek_PriorToEndOfSource_ReturnsSubstring()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+
+        // Act
+        bool result = reader.TryPeek(out string? substring);
+
+        // Assert
+        Assert.True(result);
+        Assert.Equal(expected: sample, actual: substring);
+    }
+    
+    [Fact]
+    public void TryPeek_NegativeLength_ReturnsFalse()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+
+        // Act
+        bool result = reader.TryPeek(length: -1, out string? substring);
+
+        // Assert
+        Assert.False(result);
+        Assert.Null(substring);
+    }
+    
+    [Fact]
+    public void TryPeek_ExceedsLengthOfSource_ReturnsFalse()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+
+        // Act
+        bool result = reader.TryPeek(length: sample.Length + 1, out string? substring);
+
+        // Assert
+        Assert.False(result);
+        Assert.Null(substring);
+    }
+    
+    [Fact]
+    public void TryPeek_ValidLength_ReturnsSubstring()
+    {
+        // Arrange
+        const int testLength = 5;
+        const string sample = "Hello, world!";
+        string expectedSubstring = sample.Substring(startIndex: 0, length: testLength);
+        var reader = new SubstringReader(source: sample);
+
+        // Act
+        bool result = reader.TryPeek(length: testLength, out string? substring);
+
+        // Assert
+        Assert.True(result);
+        Assert.Equal(expected: expectedSubstring, actual: substring);
+    }
+    
+    [Fact]
+    public void TryPeek_TryConvertToInvalidType_ReturnsFalse()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+
+        // Act
+        bool result = reader.TryPeek(out bool value);
+
+        // Assert
+        Assert.False(result);
+        Assert.False(value);
+    }
+    
+    [Fact]
+    public void TryPeek_TryConvertToValidType_ReturnsConvertedValue()
+    {
+        // Arrange
+        const string sample = "123";
+        var reader = new SubstringReader(source: sample);
+
+        // Act
+        bool result = reader.TryPeek(out int value);
+
+        // Assert
+        Assert.True(result);
+        Assert.Equal(expected: 123, actual: value);
     }
 }
