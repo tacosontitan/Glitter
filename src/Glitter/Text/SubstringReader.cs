@@ -245,6 +245,31 @@ public sealed class SubstringReader
             return false;
         }
     }
+    
+    /// <summary>
+    /// Skips the next character in the source string.
+    /// </summary>
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    public SubstringReader Skip() =>
+        Seek(length: 1);
+    
+    /// <summary>
+    /// Skips the specified number of characters in the source string.
+    /// </summary>
+    /// <param name="length">The number of characters to skip.</param>
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> cannot cause the reader to step outside of the source string.</exception>
+    public SubstringReader Seek(int length)
+    {
+        if (_currentIndex.Value + length > _source.Length)
+            throw new ArgumentOutOfRangeException(nameof(length), length, "The length cannot cause the reader to step outside of the source string.");
+        
+        if (_currentIndex.Value + length < 0)
+            throw new ArgumentOutOfRangeException(nameof(length), length, "The length cannot cause the reader to step outside of the source string.");
+
+        _currentIndex.Value += length;
+        return this;
+    }
 
     private string GetSubstring() =>
         GetSubstring(length: _source.Length - _currentIndex.Value);

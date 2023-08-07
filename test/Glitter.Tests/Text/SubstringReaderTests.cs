@@ -230,4 +230,51 @@ public class SubstringReaderTests
         Assert.True(result);
         Assert.Equal(expected: 123, actual: value);
     }
+
+    [Fact]
+    public void Skip_PriorToEndOfSource_SkipsNextCharacter()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        reader.Skip();
+        string? result = reader.Peek();
+        
+        // Assert
+        Assert.Equal(expected: "ello, world!", actual: result);
+    }
+    
+    [Theory]
+    [InlineData(-100)]
+    [InlineData(100)]
+    public void Seek_InvalidLength_ThrowsArgumentOutOfRangeException(int length)
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        void TestAction() =>
+            reader.Seek(length);
+        
+        // Assert
+        Assert.Throws<ArgumentOutOfRangeException>(TestAction);
+    }
+    
+    [Fact]
+    public void Seek_PriorToEndOfSource_SkipsNextCharacter()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        reader.Seek(1);
+        string? result = reader.Peek();
+        
+        // Assert
+        Assert.Equal(expected: "ello, world!", actual: result);
+    }
 }
