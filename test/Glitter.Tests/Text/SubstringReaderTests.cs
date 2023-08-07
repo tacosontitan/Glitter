@@ -47,6 +47,7 @@ public class SubstringReaderTests
 
         // Assert
         Assert.Equal(expected: sample, actual: result);
+        Assert.Equal(expected: 0, actual: reader.Position);
     }
     
     [Fact]
@@ -93,6 +94,7 @@ public class SubstringReaderTests
 
         // Assert
         Assert.Equal(expected: expectedSubstring, actual: result);
+        Assert.Equal(expected: 0, actual: reader.Position);
     }
     
     [Fact]
@@ -122,6 +124,7 @@ public class SubstringReaderTests
 
         // Assert
         Assert.Equal(expected: 123, actual: result);
+        Assert.Equal(expected: 0, actual: reader.Position);
     }
     
     [Fact]
@@ -152,6 +155,7 @@ public class SubstringReaderTests
         // Assert
         Assert.True(result);
         Assert.Equal(expected: sample, actual: substring);
+        Assert.Equal(expected: 0, actual: reader.Position);
     }
     
     [Fact]
@@ -167,6 +171,7 @@ public class SubstringReaderTests
         // Assert
         Assert.False(result);
         Assert.Null(substring);
+        Assert.Equal(expected: 0, actual: reader.Position);
     }
     
     [Fact]
@@ -182,6 +187,7 @@ public class SubstringReaderTests
         // Assert
         Assert.False(result);
         Assert.Null(substring);
+        Assert.Equal(expected: 0, actual: reader.Position);
     }
     
     [Fact]
@@ -199,6 +205,7 @@ public class SubstringReaderTests
         // Assert
         Assert.True(result);
         Assert.Equal(expected: expectedSubstring, actual: substring);
+        Assert.Equal(expected: 0, actual: reader.Position);
     }
     
     [Fact]
@@ -214,6 +221,7 @@ public class SubstringReaderTests
         // Assert
         Assert.False(result);
         Assert.False(value);
+        Assert.Equal(expected: 0, actual: reader.Position);
     }
     
     [Fact]
@@ -229,6 +237,7 @@ public class SubstringReaderTests
         // Assert
         Assert.True(result);
         Assert.Equal(expected: 123, actual: value);
+        Assert.Equal(expected: 0, actual: reader.Position);
     }
 
     [Fact]
@@ -244,6 +253,7 @@ public class SubstringReaderTests
         
         // Assert
         Assert.Equal(expected: "ello, world!", actual: result);
+        Assert.Equal(expected: 1, actual: reader.Position);
     }
     
     [Theory]
@@ -276,5 +286,45 @@ public class SubstringReaderTests
         
         // Assert
         Assert.Equal(expected: "ello, world!", actual: result);
+        Assert.Equal(expected: 1, actual: reader.Position);
+    }
+    
+    [Fact]
+    public void Seek_NegativeLength_SkipsPreviousCharacter()
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act & Assert 1
+        reader.Skip();
+        Assert.Equal(expected: "ello, world!", actual: reader.Peek());
+        Assert.Equal(expected: 1, actual: reader.Position);
+        
+        // Act & Assert 2
+        reader.Seek(-1);
+        Assert.Equal(expected: sample, actual: reader.Peek());
+        Assert.Equal(expected: 0, actual: reader.Position);
+    }
+    
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void SkipTo_SearchValueFound_SkipsToSearchValue(bool skipSearchValue)
+    {
+        // Arrange
+        const string sample = "Hello, world!";
+        var reader = new SubstringReader(source: sample);
+        
+        // Act
+        reader.SkipTo(',', skipSearchValue);
+        string? result = reader.Peek();
+        
+        // Assert
+        string expectedResult = skipSearchValue ? " world!" : ", world!";
+        Assert.Equal(expected: expectedResult, actual: result);
+        
+        int expectedPosition = skipSearchValue ? sample.IndexOf(',') + 1 : sample.IndexOf(',');
+        Assert.Equal(expected: expectedPosition, actual: reader.Position);
     }
 }

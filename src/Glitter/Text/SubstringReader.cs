@@ -39,7 +39,7 @@ public sealed class SubstringReader
     /// <summary>
     /// Gets the current index of the <see cref="SubstringReader"/>.
     /// </summary>
-    public int CurrentPosition =>
+    public int Position =>
         _currentIndex.Value;
 
     /// <summary>
@@ -252,6 +252,23 @@ public sealed class SubstringReader
     /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
     public SubstringReader Skip() =>
         Seek(length: 1);
+    
+    /// <summary>
+    /// Skips all characters in the source string until the specified character is found.
+    /// </summary>
+    /// <param name="searchValue">The character to search for.</param>
+    /// <param name="skipSearchValue">Whether to skip the specified character if found.</param>
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    /// <remarks>If the specified character is not found, the reader will not advance.</remarks>
+    public SubstringReader SkipTo(char searchValue, bool skipSearchValue = false)
+    {
+        int searchValueIndex = _source.IndexOf(searchValue, _currentIndex.Value);
+        if (searchValueIndex == -1)
+            return this;
+        
+        int offset = skipSearchValue ? 1 : 0;
+        return Seek(length: searchValueIndex - _currentIndex.Value + offset);
+    }
     
     /// <summary>
     /// Skips the specified number of characters in the source string.
