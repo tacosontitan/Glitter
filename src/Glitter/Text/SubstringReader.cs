@@ -283,22 +283,25 @@ public sealed class SubstringReader
             throw new ArgumentOutOfRangeException(nameof(length), length, "The length cannot exceed the length of the source string.");
 
         string substring = _source.Substring(_currentIndex.Value, length);
-        if (_options.TrimInstructions?.Any() != true)
-            return substring;
-        
-        foreach (TrimInstruction instruction in _options.TrimInstructions)
-            substring = Trim(substring, instruction);
-
-        return substring;
+        return Trim(substring);
     }
 
-    private static string Trim(string source, TrimInstruction instruction) => instruction.Orientation switch
+    private string Trim(string source)
     {
-        TrimOrientation.Start => source.TrimStart(instruction.Values.ToArray()),
-        TrimOrientation.End => source.TrimEnd(instruction.Values.ToArray()),
-        TrimOrientation.Full => source.Trim(instruction.Values.ToArray()),
-        _ => throw new ArgumentOutOfRangeException(nameof(instruction), instruction, "The trim orientation is not supported.")
-    };
+        if (_options.TrimInstructions?.Any() != true)
+            return source;
+        
+        string ApplyTrimInstruction(string input, TrimInstruction instruction) =>
+            instruction.Orientation switch
+            {
+                TrimOrientation.Start => input.TrimStart(instruction.Values.ToArray()),
+                TrimOrientation.End => input.TrimEnd(instruction.Values.ToArray()),
+                TrimOrientation.Full => input.Trim(instruction.Values.ToArray()),
+                _ => throw new ArgumentOutOfRangeException(nameof(instruction), instruction, "The trim orientation is not supported.")
+            };
+
+        return _options.TrimInstructions.Aggregate(source, ApplyTrimInstruction);
+    }
 
     /*
      * Read
