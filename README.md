@@ -34,5 +34,3 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 ![Contributors](https://img.shields.io/github/contributors/tacosontitan/Glitter?logo=github&style=for-the-badge)
 ![Issues](https://img.shields.io/github/issues/tacosontitan/Glitter?logo=github&style=for-the-badge)
 ![Stars](https://img.shields.io/github/stars/tacosontitan/Glitter?logo=github&style=for-the-badge)
-![Size](https://img.shields.io/github/languages/code-size/tacosontitan/Glitter?logo=github&style=for-the-badge)
-![Line Count](https://img.shields.io/tokei/lines/github/tacosontitan/Glitter?logo=github&style=for-the-badge)
