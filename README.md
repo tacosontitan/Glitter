@@ -4,6 +4,14 @@ Named after the second largest mountain in Norway, Glitter is a simple framework
 
 ![License](https://img.shields.io/github/license/tacosontitan/Glitter?logo=github&style=for-the-badge)
 
+Comprised of multiple repositories, Glitter offers a flexible package experience. Each repository serves their own purpose and responsibility, allowing for a more focused approach to development, and a more modular approach to implementation. The following repositories are part of the framework:
+
+- [Glitter](https://github.com/tacosontitan/Glitter)
+  - [Glitter.Sql](https://github.com/tacosontitan/Glitter.Sql)
+  - [Glitter.Api](https://github.com/tacosontitan/Glitter.Api)
+  - [Glitter.Pipelines](https://github.com/tacosontitan/Glitter.Pipelines)
+- [Glitter.Extensions](https://github.com/tacosontitan/Glitter.Extensions)
+
 ## 💁‍♀️ Getting Started
 
 Get started by reviewing the answers to the following questions:
@@ -26,5 +34,3 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 ![Contributors](https://img.shields.io/github/contributors/tacosontitan/Glitter?logo=github&style=for-the-badge)
 ![Issues](https://img.shields.io/github/issues/tacosontitan/Glitter?logo=github&style=for-the-badge)
 ![Stars](https://img.shields.io/github/stars/tacosontitan/Glitter?logo=github&style=for-the-badge)
-![Size](https://img.shields.io/github/languages/code-size/tacosontitan/Glitter?logo=github&style=for-the-badge)
-![Line Count](https://img.shields.io/tokei/lines/github/tacosontitan/Glitter?logo=github&style=for-the-badge)
