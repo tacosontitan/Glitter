@@ -28,7 +28,7 @@
         <Description>A simple framework for encapsulating functionality to keep implementations clean, concise, and optimized.</Description>
         <Copyright>Copyright © 2023 tacosontitan and contibutors</Copyright>
         <Company>tacosontitan</Company>
-        <Authors>tacosontitan and contributors</Authors>
+        <Authors>tacosontitan</Authors>
 
         <PackageIcon>logo-round.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -40,8 +40,8 @@
     </PropertyGroup>
     
     <PropertyGroup Label="VersionInformation">
-        <Version>$(AssemblyVersion)</Version>
         <AssemblyVersion>2023.8.1.0</AssemblyVersion>
+        <Version>$(AssemblyVersion)</Version>
         <PackageReleaseNotes>
             ## 2023.8.1.0
             - Initial release.
