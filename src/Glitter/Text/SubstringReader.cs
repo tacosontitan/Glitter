@@ -420,7 +420,16 @@ public sealed class SubstringReader
         return _options.TrimInstructions.Aggregate(source, ApplyTrimInstruction);
     }
 
-    /*
-     * ReadToEnd
-     */
+    /// <summary>
+    /// Reads all characters from the current position of the reader to the end of the source string and attempts to parse the substring to the specified type.
+    /// </summary>
+    /// <typeparam name="T">The type to parse the substring to.</typeparam>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    /// <exception cref="FormatException">The substring cannot be parsed to the specified type.</exception>
+    /// <exception cref="OverflowException">The substring cannot be parsed to the specified type.</exception>
+    public SubstringReader ReadToEnd<T>(out T? result) where T : IConvertible
+    {
+        return Read(length: _source.Length - _currentIndex.Value, out result);
+    }
 }
