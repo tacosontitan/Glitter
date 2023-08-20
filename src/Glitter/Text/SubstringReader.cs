@@ -428,8 +428,5 @@ public sealed class SubstringReader
     /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
     /// <exception cref="FormatException">The substring cannot be parsed to the specified type.</exception>
     /// <exception cref="OverflowException">The substring cannot be parsed to the specified type.</exception>
-    public SubstringReader ReadToEnd<T>(out T? result) where T : IConvertible
-    {
-        return Read(length: _source.Length - _currentIndex.Value, out result);
-    }
+    public SubstringReader ReadToEnd<T>(out T? result) where T : IConvertible => Read(length: _source.Length - _currentIndex.Value, out result);
 }
