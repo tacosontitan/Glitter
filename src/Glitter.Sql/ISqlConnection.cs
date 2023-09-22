@@ -14,18 +14,12 @@
    limitations under the License.
 */
 
-using Glitter.Sql.Encapsulation;
+namespace Glitter.Sql;
 
-namespace Glitter.Sql.Execution;
-
-public interface ISqlProvider<TRequest>
-    : IQueryHandler<TRequest>,
-      IScalarHandler<TRequest>,
-      INonQueryHandler<TRequest>
-    where TRequest : ISqlRequest
+/// <summary>
+/// Defines information about a connection to a SQL database.
+/// </summary>
+public interface ISqlConnection
 {
-    /// <summary>
-    /// The <see cref="IConnectionInformation"/> used by this service for interacting with SQL.
-    /// </summary>
-    IConnectionInformation? ConnectionInformation { get; set; }
+
 }

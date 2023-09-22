@@ -19,11 +19,11 @@ namespace Glitter.Sql;
 /// <summary>
 /// Represents information about a connection to a SQL database.
 /// </summary>
-public class ConnectionInformation
-    : IConnectionInformation
+public class SqlConnectionInfo
+    : ISqlConnection
 {
     /// <summary>
-    /// Creates a new <see cref="ConnectionInformation"/> with the specified values.
+    /// Creates a new <see cref="SqlConnectionInfo"/> with the specified values.
     /// </summary>
     /// <param name="integratedSecurity">Should the connection use integrated security?</param>
     /// <param name="server">The server to connect to.</param>
@@ -32,7 +32,7 @@ public class ConnectionInformation
     /// <param name="password">The password to use when connecting.</param>
     /// <param name="connectionTimeout">The amount of time to wait for a connection to be established.</param>
     /// <param name="commandTimeout">The amount of time to wait for a command to execute.</param>
-    public ConnectionInformation(
+    public SqlConnectionInfo(
         bool? integratedSecurity = null,
         string? server = null,
         string? database = null,

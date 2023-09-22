@@ -18,18 +18,14 @@ using Glitter.Sql.Encapsulation;
 
 namespace Glitter.Sql.Execution;
 
-/// <summary>
-/// Defines methods for executing SQL queries.
-/// </summary>
-/// <typeparam name="TRequest">Specifies the type of <see cref="ISqlRequest"/> to execute.</typeparam>
-public interface IQueryHandler<TRequest>
+public interface ISqlProvider<TRequest>
+    : IQueryHandler<TRequest>,
+      IScalarHandler<TRequest>,
+      INonQueryHandler<TRequest>
     where TRequest : ISqlRequest
 {
     /// <summary>
-    /// Executes the specified <see cref="ISqlRequest"/> as a query and returns the results.
+    /// The <see cref="ISqlConnection"/> used by this service for interacting with SQL.
     /// </summary>
-    /// <param name="request">The request to execute.</param>
-    /// <typeparam name="T">Specifies the expected return type.</typeparam>
-    /// <returns>A <see cref="Task"/> describing the state of the operation.</returns>
-    Task<IEnumerable<T>> Query<T>(TRequest request);
+    ISqlConnection? ConnectionDefinition { get; set; }
 }
