@@ -14,6 +14,8 @@
    limitations under the License.
 */
 
+// ReSharper disable once CheckNamespace
+// This class defines extension methods for ISqlRequest to keep the interface clean.
 namespace Glitter.Sql.Encapsulation;
 
 /// <summary>
@@ -24,6 +26,7 @@ public static class AddParameterIfNotNullExtensions
     /// <summary>
     /// Adds a parameter to the request if its value is not <see langword="null"/>.
     /// </summary>
+    /// <param name="request">The <see cref="ISqlRequest"/> instance.</param>
     /// <param name="name">The name of the parameter.</param>
     /// <param name="value">The value of the parameter.</param>
     /// <param name="type">The <see cref="DbType"/> of the parameter.</param>
@@ -45,6 +48,9 @@ public static class AddParameterIfNotNullExtensions
     {
         if (request is null)
             throw new ArgumentNullException(nameof(request));
+        
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException(message: "The name of the parameter cannot be null or whitespace.");
             
         if (value is not null)
             _ = request.AddParameter(name, value, type, direction, size, precision, scale);
