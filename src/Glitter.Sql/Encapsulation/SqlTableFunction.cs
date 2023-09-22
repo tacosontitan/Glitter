@@ -35,7 +35,7 @@ public class SqlTableFunction
     /// Creates a new <see cref="SqlTableFunction"/> instance.
     /// </summary>
     /// <param name="schema">The schema for the function.</param>
-    /// <param name="functionName">The name of the function being invoked.</param>
+    /// <param name="name">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> or <paramref name="name"/> is null or whitespace.</exception>
     protected SqlTableFunction(string schema, string name)
         : base(schema, name)
