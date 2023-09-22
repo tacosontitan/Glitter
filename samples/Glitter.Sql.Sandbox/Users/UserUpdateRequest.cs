@@ -29,10 +29,9 @@ public class UserUpdateRequest
     /// <summary>
     /// Creates a new <see cref="UserUpdateRequest"/> instance.
     /// </summary>
-    /// <param name="senderId">The unique identifier of the user sending the request.</param>
     /// <param name="user">The user to update.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="user"/> is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when <paramref name="senderId"/> or <paramref name="user"/> has an empty unique identifier.</exception>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="user"/> has an empty unique identifier.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="user"/> has a null, empty, or whitespace given name or surname.</exception>
     public UserUpdateRequest(User user) : this(
         userId: user.Id,

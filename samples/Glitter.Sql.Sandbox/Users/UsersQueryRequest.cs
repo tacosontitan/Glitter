@@ -22,7 +22,7 @@ namespace Glitter.Sql.Sandbox.Users;
 /// Represents a query request for users.
 /// </summary>
 public class UsersQueryRequest
-    : TableValuedSqlFunction
+    : SqlTableFunction
 {
     /// <summary>
     /// Creates a new <see cref="UsersQueryRequest"/> instance.

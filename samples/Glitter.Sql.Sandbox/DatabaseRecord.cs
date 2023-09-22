@@ -14,9 +14,6 @@
    limitations under the License.
 */
 
-using System.Data;
-using Glitter.Sql.Attributes;
-
 namespace Glitter.Sql.Sandbox;
 
 /// <summary>
@@ -27,24 +24,20 @@ public class DatabaseRecord
     /// <summary>
     /// Gets or sets the date and time the record was inserted.
     /// </summary>
-    [SqlColumn("InsertDate", DbType.DateTimeOffset)]
     public DateTimeOffset? InsertDate { get; set; }
 
     /// <summary>
     /// Gets or sets the unique identifier of the user inserted the record.
     /// </summary>
-    [SqlColumn("InsertedBy", DbType.Guid)]
     public Guid? InsertedBy { get; set; }
 
     /// <summary>
     /// Gets or sets the date and time the record was last updated.
     /// </summary>
-    [SqlColumn("UpdateDate", DbType.DateTimeOffset)]
     public DateTimeOffset? UpdateDate { get; set; }
 
     /// <summary>
     /// Gets or sets the unique identifier of the user updated the record.
     /// </summary>
-    [SqlColumn("UpdatedBy", DbType.Guid)]
     public Guid? UpdatedBy { get; set; }
 }

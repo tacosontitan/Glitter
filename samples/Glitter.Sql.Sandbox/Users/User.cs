@@ -14,40 +14,31 @@
    limitations under the License.
 */
 
-using System.Data;
-using Glitter.Sql.Attributes;
-
 namespace Glitter.Sql.Sandbox.Users;
 
 /// <summary>
 /// Represents a user in the sandbox.
 /// </summary>
-[SqlTable(schema: "Sample", name: "Users")]
 public class User
     : DatabaseRecord
 {
     /// <summary>
     /// Gets or sets the unique identifier of the user.
     /// </summary>
-    [PrimaryKey]
-    [SqlColumn("Id", DbType.Guid)]
     public Guid? Id { get; set; }
 
     /// <summary>
     /// Gets or sets the username of the user.
     /// </summary>
-    [SqlColumn("Username", DbType.String, size: 100)]
     public string? Username { get; set; }
 
     /// <summary>
     /// Gets or sets the given name of the user.
     /// </summary>
-    [SqlColumn("GivenName", DbType.String, size: 100)]
     public string? GivenName { get; set; }
 
     /// <summary>
     /// Gets or sets the surname of the user.
     /// </summary>
-    [SqlColumn("Surname", DbType.String, size: 100)]
     public string? Surname { get; set; }
 }

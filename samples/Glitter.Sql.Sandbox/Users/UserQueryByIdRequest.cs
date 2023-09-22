@@ -24,7 +24,7 @@ namespace Glitter.Sql.Sandbox.Users;
 /// Represents a query request for a user by their unique identifier.
 /// </summary>
 public class UserQueryByIdRequest
-    : TableValuedSqlFunction
+    : SqlTableFunction
 {
     /// <summary>
     /// Creates a new <see cref="UserQueryByIdRequest"/> instance.
