@@ -22,17 +22,14 @@ namespace Glitter.Sql.Encapsulation;
 public class SqlRequest
     : ISqlRequest
 {
-    private readonly List<SqlRequestParameter> _parameters;
+    private readonly List<SqlRequestParameter> _parameters = new();
 
     /// <summary>
     /// Creates a new <see cref="SqlRequest"/> instance.
     /// </summary>
     /// <param name="commandType">The type of command to execute.</param>
-    public SqlRequest(CommandType commandType)
-    {
+    public SqlRequest(CommandType commandType) =>
         CommandType = commandType;
-        _parameters = new List<SqlRequestParameter>();
-    }
 
     /// <summary>
     /// Creates a new <see cref="SqlRequest"/> instance.
@@ -56,13 +53,13 @@ public class SqlRequest
     /// <summary>
     /// Gets the parameters for the command.
     /// </summary>
-    public ICollection<SqlRequestParameter> Parameters =>
+    public IReadOnlyCollection<SqlRequestParameter> Parameters =>
         _parameters.AsReadOnly();
 
     /// <inheritdoc/>
     /// <exception cref="ArgumentException">Thrown when <paramref name="name"/> is null or whitespace.</exception>
     /// <exception cref="InvalidOperationException">Thrown when <paramref name="name"/> has already been specified.</exception>
-    public virtual ISqlRequest AddParameter<T>(
+    public ISqlRequest AddParameter<T>(
         string name,
         T? value,
         DbType? type = null,
@@ -73,11 +70,12 @@ public class SqlRequest
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException($"The name of the parameter cannot be null or whitespace.");
-
+        
         if (_parameters.Any(parameter => parameter.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)))
             throw new InvalidOperationException($"The parameter `{name}` has already been specified.");
 
-        _parameters.Add(new SqlRequestParameter(name, value, type, direction, size, precision, scale));
+        var parameter = new SqlRequestParameter(name, value, type, direction, size, precision, scale);
+        _parameters.Add(item: parameter);
         return this;
     }
 
