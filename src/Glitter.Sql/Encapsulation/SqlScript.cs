@@ -19,14 +19,14 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Represents a SQL query.
 /// </summary>
-public class SqlQuery
+public class SqlScript
     : SqlRequest
 {
     /// <summary>
-    /// Creates a new <see cref="SqlQuery"/> instance.
+    /// Creates a new <see cref="SqlScript"/> instance.
     /// </summary>
     /// <param name="query">The query to execute in the request.</param>
-    public SqlQuery(string query)
+    public SqlScript(string query)
         : base(query, CommandType.Text)
     { }
 }

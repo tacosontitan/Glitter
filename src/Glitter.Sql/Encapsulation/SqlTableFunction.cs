@@ -19,25 +19,25 @@ namespace Glitter.Sql.Encapsulation;
 /// <summary>
 /// Represents a table-valued function within SQL.
 /// </summary>
-public class TableValuedSqlFunction
+public class SqlTableFunction
     : SqlFunction
 {
     /// <summary>
-    /// Creates a new <see cref="TableValuedSqlFunction"/> instance.
+    /// Creates a new <see cref="SqlTableFunction"/> instance.
     /// </summary>
     /// <param name="name">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> is null or whitespace.</exception>
-    protected TableValuedSqlFunction(string name)
+    protected SqlTableFunction(string name)
         : base(name)
     { }
 
     /// <summary>
-    /// Creates a new <see cref="TableValuedSqlFunction"/> instance.
+    /// Creates a new <see cref="SqlTableFunction"/> instance.
     /// </summary>
     /// <param name="schema">The schema for the function.</param>
     /// <param name="functionName">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> or <paramref name="name"/> is null or whitespace.</exception>
-    protected TableValuedSqlFunction(string schema, string name)
+    protected SqlTableFunction(string schema, string name)
         : base(schema, name)
     { }
 }
