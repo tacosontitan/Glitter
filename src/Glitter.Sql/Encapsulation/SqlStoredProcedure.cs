@@ -46,4 +46,12 @@ public class SqlStoredProcedure
             name,
             CommandType.StoredProcedure)
     { }
+    
+    /// <inheritdoc/>
+    public override bool TryCompile(out string? command)
+    {
+        string parameters = string.Join(", ", Parameters.Select(x => $"@{x.Name}"));
+        Command = $"[{Schema}].[{Name}] ({parameters})";
+        return base.TryCompile(out command);
+    }
 }
