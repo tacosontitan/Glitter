@@ -14,7 +14,6 @@
    limitations under the License.
 */
 
-using System.Threading;
 using Glitter.Sql.Encapsulation;
 
 namespace Glitter.Sql;
