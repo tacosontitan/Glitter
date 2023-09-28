@@ -102,7 +102,7 @@ public class SubstringReaderTests
         // Arrange
         const int testLength = 5;
         const string sample = "Hello, world!";
-        string expectedSubstring = sample[..testLength];
+        string expectedSubstring = sample.Substring(startIndex: 0, length: testLength);
         var reader = new SubstringReader(source: sample);
 
         // Act
@@ -212,7 +212,7 @@ public class SubstringReaderTests
         // Arrange
         const int testLength = 5;
         const string sample = "Hello, world!";
-        string expectedSubstring = sample[..testLength];
+        string expectedSubstring = sample.Substring(startIndex: 0, length: testLength);
         var reader = new SubstringReader(source: sample);
 
         // Act
