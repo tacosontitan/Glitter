@@ -41,9 +41,12 @@
     </PropertyGroup>
     
     <PropertyGroup Label="VersionInformation">
-        <AssemblyVersion>2023.8.1.0</AssemblyVersion>
+        <AssemblyVersion>2023.9.1.0</AssemblyVersion>
         <Version>$(AssemblyVersion)</Version>
         <PackageReleaseNotes>
+            ## 2023.9.1.0
+            - Added validation support.
+            
             ## 2023.8.1.0
             - Initial release.
         </PackageReleaseNotes>
