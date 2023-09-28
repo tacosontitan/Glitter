@@ -19,7 +19,7 @@ namespace Glitter.Tests.Core;
 public class ClampedTests
 {
     [Fact]
-    public void Constructor_LessThanLowerBound_ConstrainsToLowerBound()
+    public void Constructor_LessThanLowerBound_ClampsToLowerBound()
     {
         // Arrange
         int value = 0;
@@ -34,7 +34,7 @@ public class ClampedTests
     }
     
     [Fact]
-    public void Constructor_GreaterThanUpperBound_ConstrainsToUpperBound()
+    public void Constructor_GreaterThanUpperBound_ClampsToUpperBound()
     {
         // Arrange
         int value = 100;
@@ -64,7 +64,7 @@ public class ClampedTests
     }
     
     [Fact]
-    public void LowerBoundSet_GreaterThanValue_ConstrainsToLowerBound()
+    public void LowerBoundSet_GreaterThanValue_ClampsToLowerBound()
     {
         // Arrange
         int value = 5;
@@ -96,7 +96,7 @@ public class ClampedTests
     }
     
     [Fact]
-    public void UpperBoundSet_LessThanValue_ConstrainsToUpperBound()
+    public void UpperBoundSet_LessThanValue_ClampsToUpperBound()
     {
         // Arrange
         int value = 5;

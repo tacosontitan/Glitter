@@ -37,7 +37,7 @@ public class Clamped<T>
     {
         _lowerBound = lowerBound;
         _upperBound = upperBound;
-        _value = Constrain(value);
+        _value = Clamp(value);
     }
 
     /// <summary>
@@ -76,10 +76,10 @@ public class Clamped<T>
     public T Value
     {
         get => _value;
-        set => _value = Constrain(value);
+        set => _value = Clamp(value);
     }
 
-    private T Constrain(T value)
+    private T Clamp(T value)
     {
         if (value.CompareTo(_lowerBound) < 0)
             return _lowerBound;
