@@ -20,44 +20,76 @@ namespace Glitter.Validation;
 /// Represents the result of a validation.
 /// </summary>
 public class ValidationResult
+    : IValidationResult
 {
+    private readonly IValidationOptions _options;
+    private readonly List<IValidationMessage> _messages;
+    private readonly IValidationMessageApprovalStrategy _messageApprovalStrategy;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="ValidationResult"/> class.
     /// </summary>
-    /// <param name="exceptions">The validation exceptions.</param>
-    public ValidationResult(IEnumerable<Exception>? exceptions) =>
-        Exceptions = exceptions;
+    /// <param name="options">The options to use for validation.</param>
+    /// <param name="approvalStrategy">The strategy to use for determining if a validation message is approved.</param>
+    public ValidationResult(
+        IValidationOptions? options = null,
+        IValidationMessageApprovalStrategy? approvalStrategy = null)
+    {
+        _messages = new List<IValidationMessage>();
+        _options = options ?? new ValidationOptions();
+        _messageApprovalStrategy = approvalStrategy ?? new ValidationMessageLevelApprovalStrategy(_options);
+    }
 
-    /// <summary>
-    /// Gets the validation exceptions.
-    /// </summary>
-    public IEnumerable<Exception>? Exceptions { get; }
-
-    /// <summary>
-    /// Gets a value indicating whether the validation was successful.
-    /// </summary>
+    /// <inheritdoc />
     public bool Successful =>
-        Exceptions?.Any() != true;
-}
+        _messages.All(_messageApprovalStrategy.IsApproved);
 
-/// <summary>
-/// Represents the result of a validation.
-/// </summary>
-/// <typeparam name="T">The type of the validated value.</typeparam>
-public class ValidationResult<T>
-    : ValidationResult
-{
+    /// <inheritdoc />
+    public IEnumerable<IValidationMessage> Messages => _messages;
+    
     /// <summary>
-    /// Initializes a new instance of the <see cref="ValidationResult{T}"/> class.
+    /// Adds a critical level validation message to the result.
     /// </summary>
-    /// <param name="value">The validated value.</param>
-    /// <param name="exceptions">The validation exceptions.</param>
-    public ValidationResult(T? value, IEnumerable<Exception>? exceptions)
-        : base(exceptions) =>
-        Value = value;
-
+    /// <param name="value">The message describing the validation message.</param>
+    public virtual void AddCritical(string? value) =>
+        AddMessage(ValidationLevel.Critical, value);
+    
     /// <summary>
-    /// Gets the validated value.
+    /// Adds an error level validation message to the result.
     /// </summary>
-    public T? Value { get; }
+    /// <param name="value">The message describing the validation message.</param>
+    public virtual void AddFailure(string? value) =>
+        AddMessage(ValidationLevel.Failure, value);
+    
+    /// <summary>
+    /// Adds a validation message to the result.
+    /// </summary>
+    /// <param name="message">The message describing the validation message.</param>
+    public virtual void AddMessage(IValidationMessage message) =>
+        _messages.Add(message);
+    
+    /// <summary>
+    /// Adds a validation message to the result.
+    /// </summary>
+    /// <param name="level">The level of the validation message.</param>
+    /// <param name="value">The message describing the validation message.</param>
+    public virtual void AddMessage(ValidationLevel level, string? value)
+    {
+        IValidationMessage validationMessage = new ValidationMessage(level, value);
+        _messages.Add(validationMessage);
+    }
+    
+    /// <summary>
+    /// Adds an information level validation message to the result.
+    /// </summary>
+    /// <param name="value">The message describing the validation message.</param>
+    public virtual void AddSuccess(string? value) =>
+        AddMessage(ValidationLevel.Success, value);
+    
+    /// <summary>
+    /// Adds a warning level validation message to the result.
+    /// </summary>
+    /// <param name="value">The message describing the validation message.</param>
+    public virtual void AddWarning(string? value) =>
+        AddMessage(ValidationLevel.Warning, value);
 }

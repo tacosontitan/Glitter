@@ -1,4 +1,4 @@
-/*
+﻿/*
    Copyright 2023 tacosontitan and contributors
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,13 +17,24 @@
 namespace Glitter.Validation;
 
 /// <summary>
-/// Defines methods for providing basic validation.
+/// Represents the result of a validation.
 /// </summary>
-public interface IValidatable
+public class ValidationMessage
+    : IValidationMessage
 {
     /// <summary>
-    /// Attempts to validate the implementing instance.
+    /// Initializes a new instance of the <see cref="ValidationMessage"/> class.
     /// </summary>
-    /// <param name="result">The result of the validation.</param>
-    IValidationResult Validate();
+    /// <param name="value">The message describing the validation result.</param>
+    public ValidationMessage(ValidationLevel level, string? value)
+    {
+        Level = level;
+        Value = value;
+    }
+    
+    /// <inheritdoc />
+    public ValidationLevel Level { get; }
+    
+    /// <inheritdoc />
+    public string? Value { get; }
 }

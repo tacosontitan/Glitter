@@ -19,11 +19,14 @@ namespace Glitter.Validation;
 /// <summary>
 /// Defines methods for providing basic validation.
 /// </summary>
-public interface IValidator
+/// <typeparam name="T">Specifies the type of value to validate.</typeparam>
+public interface IValidator<in T>
 {
     /// <summary>
     /// Validates the specified value.
     /// </summary>
     /// <param name="value">The value to validate.</param>
-    ValidationResult Validate(object? value);
+    /// <param name="result">The result of the validation.</param>
+    /// <returns><see langword="true"/> if the validation was successful; otherwise, <see langword="false"/>.</returns>
+    IValidationResult Validate(T? value);
 }

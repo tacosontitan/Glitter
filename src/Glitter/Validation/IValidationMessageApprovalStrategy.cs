@@ -1,4 +1,4 @@
-/*
+﻿/*
    Copyright 2023 tacosontitan and contributors
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,13 +17,14 @@
 namespace Glitter.Validation;
 
 /// <summary>
-/// Defines methods for providing basic validation.
+/// Defines members for approving validation messages.
 /// </summary>
-public interface IValidatable
+public interface IValidationMessageApprovalStrategy
 {
     /// <summary>
-    /// Attempts to validate the implementing instance.
+    /// Determines whether the specified message is approved.
     /// </summary>
-    /// <param name="result">The result of the validation.</param>
-    IValidationResult Validate();
+    /// <param name="message">The message to check.</param>
+    /// <returns><see langword="true"/> if the message is approved; otherwise, <see langword="false"/>.</returns>
+    bool IsApproved(IValidationMessage message);
 }

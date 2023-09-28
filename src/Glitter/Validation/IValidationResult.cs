@@ -1,4 +1,4 @@
-/*
+﻿/*
    Copyright 2023 tacosontitan and contributors
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,15 +17,17 @@
 namespace Glitter.Validation;
 
 /// <summary>
-/// Defines methods for providing type specific validation.
+/// Describes the result of validation.
 /// </summary>
-/// <typeparam name="T">The type of the value to validate.</typeparam>
-public interface ITypeValidator<T>
-    : IValidator
+public interface IValidationResult
 {
     /// <summary>
-    /// Validates the specified value.
+    /// Gets whether or not validation was successful.
     /// </summary>
-    /// <param name="value">The value to validate.</param>
-    ValidationResult<T> Validate(T? value);
+    bool Successful { get; }
+    
+    /// <summary>
+    /// Gets the messages associated with the result.
+    /// </summary>
+    IEnumerable<IValidationMessage> Messages { get; }
 }

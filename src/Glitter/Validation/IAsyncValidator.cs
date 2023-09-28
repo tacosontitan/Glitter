@@ -19,8 +19,8 @@ namespace Glitter.Validation;
 /// <summary>
 /// Defines methods for providing asynchronous validation.
 /// </summary>
-public interface IAsyncValidator
-    : IValidator
+/// <typeparam name="T">Specifies the type of value to validate.</typeparam>
+public interface IAsyncValidator<in T>
 {
     /// <summary>
     /// Validates the specified value.
@@ -28,5 +28,5 @@ public interface IAsyncValidator
     /// <param name="value">The value to validate.</param>
     /// <param name="cancellationToken">A cancellation token.</param>
     /// <returns>A task that represents the asynchronous validation operation.</returns>
-    Task<ValidationResult> Validate(object? value, CancellationToken cancellationToken = default);
+    Task<IValidationResult> Validate(T? value, CancellationToken cancellationToken = default);
 }

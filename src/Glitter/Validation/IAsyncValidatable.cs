@@ -1,4 +1,4 @@
-/*
+﻿/*
    Copyright 2023 tacosontitan and contributors
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,13 +17,15 @@
 namespace Glitter.Validation;
 
 /// <summary>
-/// Defines methods for providing basic validation.
+/// Defines methods for providing asynchronous validation.
 /// </summary>
-public interface IValidatable
+public interface IAsyncValidatable
 {
     /// <summary>
     /// Attempts to validate the implementing instance.
     /// </summary>
     /// <param name="result">The result of the validation.</param>
-    IValidationResult Validate();
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task that represents the asynchronous validation operation.</returns>
+    Task<IValidationResult> Validate(CancellationToken cancellationToken = default);
 }

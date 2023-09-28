@@ -1,4 +1,4 @@
-/*
+﻿/*
    Copyright 2023 tacosontitan and contributors
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,18 +17,27 @@
 namespace Glitter.Validation;
 
 /// <summary>
-/// Defines methods for providing asynchronous validation.
+/// Defines validation levels.
 /// </summary>
-/// <typeparam name="T">The type of value to validate.</typeparam>
-public interface IAsyncTypeValidator<T>
-    : IAsyncValidator,
-      ITypeValidator<T>
+public enum ValidationLevel
 {
     /// <summary>
-    /// Validates the specified value.
+    /// Indicates that the validation was successful.
     /// </summary>
-    /// <param name="value">The value to validate.</param>
-    /// <param name="cancellationToken">A cancellation token.</param>
-    /// <returns>A task that represents the asynchronous validation operation.</returns>
-    Task<ValidationResult<T?>> Validate(T? value, CancellationToken cancellationToken = default);
+    Success = 0,
+    
+    /// <summary>
+    /// Indicates that the validation was successful, but with a warning.
+    /// </summary>
+    Warning = 1,
+    
+    /// <summary>
+    /// Indicates that the validation was unsuccessful.
+    /// </summary>
+    Failure = 2,
+    
+    /// <summary>
+    /// Indicates that the validation was unsuccessful, and that the application should not continue.
+    /// </summary>
+    Critical = 3
 }

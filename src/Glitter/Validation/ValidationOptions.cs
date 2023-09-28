@@ -1,4 +1,4 @@
-/*
+﻿/*
    Copyright 2023 tacosontitan and contributors
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,13 +17,17 @@
 namespace Glitter.Validation;
 
 /// <summary>
-/// Defines methods for providing basic validation.
+/// Defines options for validation.
 /// </summary>
-public interface IValidatable
+public class ValidationOptions
+    : IValidationOptions
 {
     /// <summary>
-    /// Attempts to validate the implementing instance.
+    /// Creates a new instance of the <see cref="ValidationOptions"/> class.
     /// </summary>
-    /// <param name="result">The result of the validation.</param>
-    IValidationResult Validate();
+    public ValidationOptions() =>
+        TreatWarningsAsFailures = false;
+    
+    /// <inheritdoc />
+    public bool TreatWarningsAsFailures { get; set; }
 }
