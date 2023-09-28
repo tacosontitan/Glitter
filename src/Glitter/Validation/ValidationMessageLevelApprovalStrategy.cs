@@ -32,7 +32,7 @@ public class ValidationMessageLevelApprovalStrategy
         _options = options ?? new ValidationOptions();
     
     /// <inheritdoc />
-    public bool IsApproved(IValidationMessage message) => _options.TreatWarningsAsFailures
+    public virtual bool IsApproved(IValidationMessage message) => _options.TreatWarningsAsFailures
         ? message.Level < ValidationLevel.Warning
         : message.Level < ValidationLevel.Failure;
 }
