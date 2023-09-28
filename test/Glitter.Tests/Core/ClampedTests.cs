@@ -126,4 +126,20 @@ public class ClampedTests
         // Assert
         Assert.Equal(expected: value, actual: clamped.Value);
     }
+
+    [Fact]
+    public void ImplicitConversion_NullInput_ThrowsArgumentNullException()
+    {
+        // Arrange
+        Clamped<int> clamped = null!;
+        
+        // Act
+        void TestAction()
+        {
+            int value = clamped;
+        }
+        
+        // Assert
+        Assert.Throws<ArgumentNullException>(TestAction);
+    }
 }
