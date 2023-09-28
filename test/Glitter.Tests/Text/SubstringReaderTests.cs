@@ -31,7 +31,7 @@ public class SubstringReaderTests
             _ = new SubstringReader(source: sample!);
 
         // Assert
-        Assert.Throws<ArgumentException>(TestAction);
+        _ = Assert.Throws<ArgumentException>(TestAction);
     }
     
     [Theory]
@@ -48,7 +48,7 @@ public class SubstringReaderTests
             _ = new SubstringReader(source: sample!);
 
         // Assert
-        Assert.Throws<ArgumentException>(TestAction);
+        _ = Assert.Throws<ArgumentException>(TestAction);
     }
     
     [Fact]
@@ -78,7 +78,7 @@ public class SubstringReaderTests
             _ = reader.Peek(length: -1);
 
         // Assert
-        Assert.Throws<ArgumentOutOfRangeException>(TestAction);
+        _ = Assert.Throws<ArgumentOutOfRangeException>(TestAction);
     }
     
     [Fact]
@@ -93,7 +93,7 @@ public class SubstringReaderTests
             _ = reader.Peek(length: sample.Length + 1);
 
         // Assert
-        Assert.Throws<ArgumentOutOfRangeException>(TestAction);
+        _ = Assert.Throws<ArgumentOutOfRangeException>(TestAction);
     }
     
     [Fact]
@@ -102,7 +102,7 @@ public class SubstringReaderTests
         // Arrange
         const int testLength = 5;
         const string sample = "Hello, world!";
-        string expectedSubstring = sample.Substring(startIndex: 0, length: testLength);
+        string expectedSubstring = sample[..testLength];
         var reader = new SubstringReader(source: sample);
 
         // Act
@@ -125,7 +125,7 @@ public class SubstringReaderTests
             _ = reader.Peek<bool>();
 
         // Assert
-        Assert.Throws<FormatException>(TestAction);
+        _ = Assert.Throws<FormatException>(TestAction);
     }
     
     [Fact]
@@ -155,7 +155,7 @@ public class SubstringReaderTests
             _ = reader.Peek<byte>();
 
         // Assert
-        Assert.Throws<OverflowException>(TestAction);
+        _ = Assert.Throws<OverflowException>(TestAction);
     }
     
     [Fact]
@@ -212,7 +212,7 @@ public class SubstringReaderTests
         // Arrange
         const int testLength = 5;
         const string sample = "Hello, world!";
-        string expectedSubstring = sample.Substring(startIndex: 0, length: testLength);
+        string expectedSubstring = sample[..testLength];
         var reader = new SubstringReader(source: sample);
 
         // Act
@@ -264,7 +264,7 @@ public class SubstringReaderTests
         var reader = new SubstringReader(source: sample);
         
         // Act
-        reader.Skip();
+        _ = reader.Skip();
         string? result = reader.Peek();
         
         // Assert
@@ -286,7 +286,7 @@ public class SubstringReaderTests
             reader.Seek(length);
         
         // Assert
-        Assert.Throws<ArgumentOutOfRangeException>(TestAction);
+        _ = Assert.Throws<ArgumentOutOfRangeException>(TestAction);
     }
     
     [Fact]
@@ -297,7 +297,7 @@ public class SubstringReaderTests
         var reader = new SubstringReader(source: sample);
         
         // Act
-        reader.Seek(1);
+        _ = reader.Seek(1);
         string? result = reader.Peek();
         
         // Assert
@@ -313,12 +313,12 @@ public class SubstringReaderTests
         var reader = new SubstringReader(source: sample);
         
         // Act & Assert 1
-        reader.Skip();
+        _ = reader.Skip();
         Assert.Equal(expected: "ello, world!", actual: reader.Peek());
         Assert.Equal(expected: 1, actual: reader.Position);
         
         // Act & Assert 2
-        reader.Seek(-1);
+        _ = reader.Seek(-1);
         Assert.Equal(expected: sample, actual: reader.Peek());
         Assert.Equal(expected: 0, actual: reader.Position);
     }
@@ -333,7 +333,7 @@ public class SubstringReaderTests
         var reader = new SubstringReader(source: sample);
         
         // Act
-        reader.SkipTo(',', skipSearchValue);
+        _ = reader.SkipTo(',', skipSearchValue);
         string? result = reader.Peek();
         
         // Assert
@@ -372,7 +372,7 @@ public class SubstringReaderTests
             _ = reader.Read(length: -1, out string? result);
         
         // Assert
-        Assert.Throws<ArgumentOutOfRangeException>(TestAction);
+        _ = Assert.Throws<ArgumentOutOfRangeException>(TestAction);
         Assert.Equal(expected: 0, actual: reader.Position);
     }
     
@@ -388,7 +388,7 @@ public class SubstringReaderTests
             _ = reader.Read(length: sample.Length + 1, out string? result);
         
         // Assert
-        Assert.Throws<ArgumentOutOfRangeException>(TestAction);
+        _ = Assert.Throws<ArgumentOutOfRangeException>(TestAction);
         Assert.Equal(expected: 0, actual: reader.Position);
     }
     
@@ -404,7 +404,7 @@ public class SubstringReaderTests
             _ = reader.Read(length: sample.Length, out int result);
         
         // Assert
-        Assert.Throws<FormatException>(TestAction);
+        _ = Assert.Throws<FormatException>(TestAction);
         Assert.Equal(expected: 0, actual: reader.Position);
     }
     

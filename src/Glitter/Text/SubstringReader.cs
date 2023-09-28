@@ -429,7 +429,7 @@ public sealed class SubstringReader
         if (_options.TrimInstructions?.Any() != true)
             return source;
         
-        string ApplyTrimInstruction(string input, TrimInstruction instruction) =>
+        static string ApplyTrimInstruction(string input, TrimInstruction instruction) =>
             instruction.Orientation switch
             {
                 TrimOrientation.Start => input.TrimStart(instruction.Values.ToArray()),
