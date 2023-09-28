@@ -4,6 +4,8 @@ Named after the second largest mountain in Norway, Glitter is a simple framework
 
 ![License](https://img.shields.io/github/license/tacosontitan/Glitter?logo=github&style=for-the-badge)
 
+***Note**: This repository is undergoing a consolidation effort. As a result some things may feel out of place, or incomplete. Please be patient as we work to bring everything together.*
+
 ## 💁‍♀️ Getting Started
 
 Get started by reviewing the answers to the following questions:
@@ -51,3 +53,31 @@ public class UserInsertRequest
     }
 }
 ```
+
+## 🔥 What `Glitter.Extensions` has to offer
+
+- Select extension methods for generic types.
+  - [`In`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Generics#in)
+- Extension methods for `IEnumerable<T>`.
+  - [`After`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#after)
+  - [`ForEach`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#foreach)
+  - [`IndexOf`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#indexof)
+  - [`SelectDistinct`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#selectdistinct)
+- Extension methods for `IComparable`.
+  - [`Constrain`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions#constrain)
+  - [`WithinRange`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions#withinrange)
+- Extension methods for `Queue<T>`.
+  - [`Enqueue`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#enqueue)
+  - [`Dequeue`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#dequeue)
+
+## 📝 Release Notes (Glitter.Extensions)
+
+- 2023.5.21
+  - Fixed a bug with dequeue extensions not validating until enumerated.
+  - Added overloads for the `In` extension.
+  - Added explicit support of `.NET Standard 2.1`.
+  - Added explicit support of `.NET Framework 4.8`.
+  - Added explicit support of `.NET 6`.
+  - Added explicit support of `.NET 7`.
+- 2023.1.0.0
+  - Initial release.
