@@ -16,7 +16,7 @@
 
 namespace Glitter.Tests.Core;
 
-public class ConstrainedTests
+public class ClampedTests
 {
     [Fact]
     public void Constructor_LessThanLowerBound_ConstrainsToLowerBound()
