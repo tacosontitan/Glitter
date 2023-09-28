@@ -89,4 +89,17 @@ public class Clamped<T>
 
         return value;
     }
+
+    /// <summary>
+    /// Implicitly converts a <see cref="Clamped{T}"/> to a <typeparamref name="T"/>.
+    /// </summary>
+    /// <param name="input">The <see cref="Clamped{T}"/> to convert.</param>
+    /// <returns>The value of the <see cref="Clamped{T}"/>.</returns>
+    public static implicit operator T(Clamped<T> input)
+    {
+        if (input is null)
+            throw new ArgumentNullException(nameof(input));
+        
+        return input.Value;
+    }
 }
