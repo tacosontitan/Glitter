@@ -6,7 +6,7 @@ body:
     id: version
     attributes:
       label: 🔢 Version
-      description: Which version of Glitter are you currently using?
+      description: Which version are you currently using?
       options:
         - 🐣 Pre-Release
     validations:

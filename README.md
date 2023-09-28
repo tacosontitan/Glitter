@@ -4,14 +4,6 @@ Named after the second largest mountain in Norway, Glitter is a simple framework
 
 ![License](https://img.shields.io/github/license/tacosontitan/Glitter?logo=github&style=for-the-badge)
 
-Comprised of multiple repositories, Glitter offers a flexible package experience. Each repository serves their own purpose and responsibility, allowing for a more focused approach to development, and a more modular approach to implementation. The following repositories are part of the framework:
-
-- [Glitter](https://github.com/tacosontitan/Glitter)
-  - [Glitter.Sql](https://github.com/tacosontitan/Glitter.Sql)
-  - [Glitter.Api](https://github.com/tacosontitan/Glitter.Api)
-  - [Glitter.Pipelines](https://github.com/tacosontitan/Glitter.Pipelines)
-- [Glitter.Extensions](https://github.com/tacosontitan/Glitter.Extensions)
-
 ## 💁‍♀️ Getting Started
 
 Get started by reviewing the answers to the following questions:
@@ -34,3 +26,34 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 ![Contributors](https://img.shields.io/github/contributors/tacosontitan/Glitter?logo=github&style=for-the-badge)
 ![Issues](https://img.shields.io/github/issues/tacosontitan/Glitter?logo=github&style=for-the-badge)
 ![Stars](https://img.shields.io/github/stars/tacosontitan/Glitter?logo=github&style=for-the-badge)
+
+![Contributors](https://img.shields.io/github/contributors/tacosontitan/Glitter.Sql?logo=github&style=for-the-badge)
+![Issues](https://img.shields.io/github/issues/tacosontitan/Glitter.Sql?logo=github&style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/tacosontitan/Glitter.Sql?logo=github&style=for-the-badge)
+![Size](https://img.shields.io/github/languages/code-size/tacosontitan/Glitter.Sql?logo=github&style=for-the-badge)
+![Line Count](https://img.shields.io/tokei/lines/github/tacosontitan/Glitter.Sql?logo=github&style=for-the-badge)
+
+## 🛢️ Encapsulating SQL Requests
+
+Glitter offers several ways to encapsulate SQL requests:
+
+- [SqlStoredProcedure](./src/Glitter.Sql/Encapsulation/SqlStoredProcedure.cs)
+- [SqlTableFunction](./src/Glitter.Sql/Encapsulation/SqlTableFunction.cs)
+- [SqlScalarFunction](./src/Glitter.Sql/Encapsulation/SqlScalarFunction.cs)
+- [SqlScript](./src/Glitter.Sql/Encapsulation/SqlScript.cs)
+
+The encapsulation strategy employed by Glitter is definition driven. This means that your encapsulations simply define a request to execute a stored procedure, function, or query. The encapsulation does not actually execute the request, but rather provides a means to execute the request. For example, the following encapsulation defines a request to execute a stored procedure:
+
+```csharp
+public class UserInsertRequest
+    : SqlStoredProcedure
+{
+    public UserInsertRequest(string username, string givenName, string surname)
+        : base(schema: "Sample", name: "UserInsert")
+    {
+        _ = AddParameter("Username", username, DbType.String, length: 100);
+        _ = AddParameter("GivenName", givenName, DbType.String, length: 100);
+        _ = AddParameter("Surname", surname, DbType.String, length: 100);
+    }
+}
+```
