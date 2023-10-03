@@ -29,6 +29,31 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 ![Issues](https://img.shields.io/github/issues/tacosontitan/Glitter?logo=github&style=for-the-badge)
 ![Stars](https://img.shields.io/github/stars/tacosontitan/Glitter?logo=github&style=for-the-badge)
 
+## 🛣️ What does the future hold
+
+The future of Glitter is bright, and we're excited to share our roadmap with you. It all starts with a simple consolidation effort:
+
+- [ ] Import the old `Glitter.Extensions` repo.
+  - [ ] Add the old repo to this one.
+  - [ ] Find proper namespaces for existing extensions.
+  - [ ] Move files from the dedicated project into the primary project.
+  - [ ] Consolidate unit tests.
+- [ ] Import the old `Glitter.Sql` repo.
+  - [ ] Add the old repo to this one.
+  - [ ] Create the official `Glitter.Sql` namespace in the `Glitter` project.
+  - [ ] Move files from the dedicated project into the primary project.
+  - [ ] Consolidate unit tests.
+
+Our next steps involve adding new features to the consolidated repo:
+
+- [ ] Add support for encapsulation of individual workloads.
+- [ ] Complete support for encapsulated SQL interactions.
+- [ ] Add support for pipelines.
+- [ ] Add support for encapsulated API interactions.
+- [ ] Add support for encapsulated file interactions.
+
+These particular features have a long way to go, but we're excited to discuss them and get your feedback in our discussions area.
+
 ## 🛢️ Encapsulating SQL Requests
 
 Glitter offers several ways to encapsulate SQL requests:
