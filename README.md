@@ -56,6 +56,9 @@ public class UserInsertRequest
 
 ## 🔥 What `Glitter.Extensions` has to offer
 
+> [!WARNING]
+> This section contains broken links. Please be patient as we work to bring this repo up-to standards and determine our roadmap.
+
 - Select extension methods for generic types.
   - [`In`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Generics#in)
 - Extension methods for `IEnumerable<T>`.
