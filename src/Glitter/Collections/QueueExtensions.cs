@@ -14,13 +14,44 @@
    limitations under the License.
 */
 
-namespace Glitter.Extensions.Collections;
+namespace Glitter.Collections;
 
 /// <summary>
 /// Defines a collection of extension methods.
 /// </summary>
-public static class EnqueueExtensions
+public static class QueueExtensions
 {
+    /// <summary>
+    /// Dequeues a specified number of elements from the queue.
+    /// </summary>
+    /// <typeparam name="T">The type of the elements in the queue.</typeparam>
+    /// <param name="source">The queue to dequeue from.</param>
+    /// <param name="count">The number of elements to dequeue.</param>
+    /// <returns>A collection of elements from the queue.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="source"/> is <see langword="null"/>.
+    /// </exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="count"/> is negative.
+    /// </exception>
+    public static IEnumerable<T> Dequeue<T>(this Queue<T> source, int count)
+    {
+        if (source is null)
+            throw new ArgumentNullException(nameof(source));
+
+        if (count < 0)
+            throw new ArgumentOutOfRangeException(nameof(count), "The number of elements to dequeue cannot be negative.");
+        
+        if (count > source.Count)
+            throw new ArgumentOutOfRangeException(nameof(count), "The number of elements to dequeue cannot be greater than the number of elements in the queue.");
+
+        var results = new T[count];
+        for (int i = 0; i < count; i++)
+            results[i] = source.Dequeue();
+
+        return results;
+    }
+    
     /// <summary>
     /// Enqueues a collection of elements to the queue.
     /// </summary>

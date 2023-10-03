@@ -1,6 +1,8 @@
-namespace Glitter.Extensions.Tests.Collections;
+using Glitter.Collections;
 
-public class AfterExtensionsTests
+namespace Glitter.Tests.Collections;
+
+public class EnumerableAfterExtensionsTests
 {
     [Fact]
     public void SourceIsNull()

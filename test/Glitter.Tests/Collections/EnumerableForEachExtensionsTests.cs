@@ -1,6 +1,8 @@
+using Glitter.Collections;
+
 namespace Glitter.Extensions.Tests.Collections;
 
-public class ForEachExtensionsTests
+public class EnumerableForEachExtensionsTests
 {
     [Fact]
     public async Task SourceIsNull()

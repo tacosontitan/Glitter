@@ -14,12 +14,12 @@
    limitations under the License.
 */
 
-namespace Glitter.Extensions.Collections;
+namespace Glitter.Collections;
 
 /// <summary>
 /// Defines a collection of extension methods.
 /// </summary>
-public static class IndexOfExtensions
+public static class EnumerableIndexOfExtensions
 {
     /// <summary>
     /// Gets the index of the specified search value in the collection.

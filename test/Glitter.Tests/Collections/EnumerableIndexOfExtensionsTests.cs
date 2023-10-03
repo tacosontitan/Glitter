@@ -1,6 +1,8 @@
+using Glitter.Collections;
+
 namespace Glitter.Extensions.Collections.Tests;
 
-public class IndexOfExtensionsTests
+public class EnumerableIndexOfExtensionsTests
 {
     [Fact]
     public void SourceIsNull()

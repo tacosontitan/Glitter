@@ -14,12 +14,12 @@
    limitations under the License.
 */
 
-namespace Glitter.Extensions.Collections;
+namespace Glitter.Collections;
 
 /// <summary>
 /// Defines a collection of extension methods.
 /// </summary>
-public static class ForEachExtensions
+public static class EnumerableForEachExtensions
 {
     /// <summary>
     /// Executes the specified action on each element of the collection.

@@ -19,7 +19,10 @@
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
+
     </ItemGroup>
+
+
 
 
     <PropertyGroup Label="PackageInformation">

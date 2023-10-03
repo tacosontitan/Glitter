@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-namespace Glitter.Extensions.Generics;
+namespace Glitter.Generics;
 
 /// <summary>
 /// Defines a collection of extension methods for supporting clean in clauses on the fly.
