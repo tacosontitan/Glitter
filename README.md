@@ -4,7 +4,8 @@ Named after the second largest mountain in Norway, Glitter is a simple framework
 
 ![License](https://img.shields.io/github/license/tacosontitan/Glitter?logo=github&style=for-the-badge)
 
-***Note**: This repository is undergoing a consolidation effort. As a result some things may feel out of place, or incomplete. Please be patient as we work to bring everything together.*
+> [!INFORMATION]
+> This repository is undergoing a consolidation effort. As a result some things may feel out of place, or incomplete. Please be patient as we work to bring everything together.*
 
 ## 💁‍♀️ Getting Started
 
