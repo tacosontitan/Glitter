@@ -34,12 +34,12 @@ We believe in keeping the community informed, so here's a few more tidbits of in
 The future of Glitter is bright, and we're excited to share our roadmap with you. It all starts with a simple consolidation effort:
 
 - [ ] Import the old `Glitter.Extensions` repo.
-  - [ ] Add the old repo to this one.
+  - [x] Add the old repo to this one.
   - [ ] Find proper namespaces for existing extensions.
   - [ ] Move files from the dedicated project into the primary project.
   - [ ] Consolidate unit tests.
 - [ ] Import the old `Glitter.Sql` repo.
-  - [ ] Add the old repo to this one.
+  - [x] Add the old repo to this one.
   - [ ] Create the official `Glitter.Sql` namespace in the `Glitter` project.
   - [ ] Move files from the dedicated project into the primary project.
   - [ ] Consolidate unit tests.
