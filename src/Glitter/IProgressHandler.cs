@@ -22,13 +22,13 @@ namespace Glitter;
 public interface IProgressHandler
 {
     /// <summary>
-    /// Reports an update in progress.
+    /// Appends the specified amount of progress to the progress handler.
     /// </summary>
     /// <param name="amount">The amount of progress made this step.</param>
     /// <param name="message">The message to report, if any.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    Task Step(
+    Task Append(
         double amount,
         string? message = null,
         CancellationToken cancellationToken = default);
