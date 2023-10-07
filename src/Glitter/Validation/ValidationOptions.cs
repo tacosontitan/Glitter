@@ -22,12 +22,6 @@ namespace Glitter.Validation;
 public class ValidationOptions
     : IValidationOptions
 {
-    /// <summary>
-    /// Creates a new instance of the <see cref="ValidationOptions"/> class.
-    /// </summary>
-    public ValidationOptions() =>
-        TreatWarningsAsFailures = false;
-    
     /// <inheritdoc />
-    public bool TreatWarningsAsFailures { get; set; }
+    public bool TreatWarningsAsFailures { get; set; } = false;
 }
