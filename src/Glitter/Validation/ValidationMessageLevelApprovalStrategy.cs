@@ -19,17 +19,12 @@ namespace Glitter.Validation;
 /// <summary>
 /// Defines members for approving validation messages.
 /// </summary>
-public class ValidationMessageLevelApprovalStrategy
+/// <param name="options">Options for validating message levels.</param>
+public class ValidationMessageLevelApprovalStrategy(
+    IValidationOptions? options = null)
     : IValidationMessageApprovalStrategy
 {
-    private readonly IValidationOptions _options;
-    
-    /// <summary>
-    /// Creates a new instance of the <see cref="ValidationMessageLevelApprovalStrategy"/> class.
-    /// </summary>
-    /// <param name="options">The validation options.</param>
-    public ValidationMessageLevelApprovalStrategy(IValidationOptions? options = null) =>
-        _options = options ?? new ValidationOptions();
+    private readonly IValidationOptions _options = options ?? new ValidationOptions();
     
     /// <inheritdoc />
     public virtual bool IsApproved(IValidationMessage message) => _options.TreatWarningsAsFailures
