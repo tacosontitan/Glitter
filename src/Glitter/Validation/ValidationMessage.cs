@@ -17,24 +17,18 @@
 namespace Glitter.Validation;
 
 /// <summary>
-/// Represents the result of a validation.
+/// Represents a simple validation message.
 /// </summary>
-public class ValidationMessage
+/// <param name="level">The level of the validation message.</param>
+/// <param name="value">The message associated with the validation.</param>
+public class ValidationMessage(
+    ValidationLevel level,
+    string? value)
     : IValidationMessage
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ValidationMessage"/> class.
-    /// </summary>
-    /// <param name="value">The message describing the validation result.</param>
-    public ValidationMessage(ValidationLevel level, string? value)
-    {
-        Level = level;
-        Value = value;
-    }
+    /// <inheritdoc />
+    public ValidationLevel Level { get; } = level;
     
     /// <inheritdoc />
-    public ValidationLevel Level { get; }
-    
-    /// <inheritdoc />
-    public string? Value { get; }
+    public string? Value { get; } = value;
 }
