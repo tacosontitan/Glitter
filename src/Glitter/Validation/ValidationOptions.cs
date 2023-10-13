@@ -23,5 +23,5 @@ public class ValidationOptions
     : IValidationOptions
 {
     /// <inheritdoc />
-    public bool TreatWarningsAsFailures { get; set; } = false;
+    public bool TreatWarningsAsFailures { get; set; }
 }
