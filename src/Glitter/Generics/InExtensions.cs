@@ -28,16 +28,26 @@ public static class InExtensions
     /// <param name="value">The value to check.</param>
     /// <param name="values">The values to check against.</param>
     /// <returns><see langword="true"/> if the specified value is in the specified values; otherwise, <see langword="false"/>.</returns>
-    /// <exception cref="ArgumentException">
-    /// <paramref name="values"/> is <see langword="null"/> or empty.
+    /// <exception cref="ArgumentNullException">
+    ///     <paramref name="value"/> is <see langword="null"/> -or-
+    ///     <paramref name="values"/> is <see langword="null"/>.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
+    /// <exception cref="ArgumentException">
+    ///     <paramref name="values"/> is empty.
+    /// </exception>
     public static bool In<T>(this T value, IEnumerable<T> values)
     {
-        if (values?.Any() != true)
+        if (value is null)
+            throw new ArgumentNullException(nameof(value));
+
+        if (values is null)
+            throw new ArgumentNullException(nameof(values));
+
+        IEnumerable<T> enumerable = values as T[] ?? values.ToArray();
+        if (!enumerable.Any())
             throw new ArgumentException("At least one value is required to evaluate the in clause.", nameof(values));
 
-        return values.Contains(value);
+        return enumerable.Contains(value);
     }
 
     /// <summary>
@@ -47,13 +57,22 @@ public static class InExtensions
     /// <param name="value">The value to check.</param>
     /// <param name="values">The values to check against.</param>
     /// <returns><see langword="true"/> if the specified value is in the specified values; otherwise, <see langword="false"/>.</returns>
-    /// <exception cref="ArgumentException">
-    /// <paramref name="values"/> is <see langword="null"/> or empty.
+    /// <exception cref="ArgumentNullException">
+    ///     <paramref name="value"/> is <see langword="null"/> -or-
+    ///     <paramref name="values"/> is <see langword="null"/>.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
+    /// <exception cref="ArgumentException">
+    ///     <paramref name="values"/> is empty.
+    /// </exception>
     public static bool In<T>(this T value, params T[] values)
     {
-        if (values?.Any() != true)
+        if (value is null)
+            throw new ArgumentNullException(nameof(value));
+
+        if (values is null)
+            throw new ArgumentNullException(nameof(values));
+
+        if (!values.Any())
             throw new ArgumentException("At least one value is required to evaluate the in clause.", nameof(values));
 
         return values.Contains(value);
@@ -68,24 +87,32 @@ public static class InExtensions
     /// <param name="values">The values to check against.</param>
     /// <returns><see langword="true"/> if the specified value is in the specified values; otherwise, <see langword="false"/>.</returns>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="comparer"/> is <see langword="null"/>.
+    ///     <paramref name="comparer"/> is <see langword="null"/> -or-
+    ///     <paramref name="value"/> is <see langword="null"/> -or-
+    ///     <paramref name="values"/> is <see langword="null"/>.
     /// </exception>
     /// <exception cref="ArgumentException">
-    /// <paramref name="values"/> is <see langword="null"/> or empty.
+    ///     <paramref name="values"/> is empty.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static bool In<T>(this T value, IEqualityComparer<T> comparer, IEnumerable<T> values)
     {
         if (comparer is null)
             throw new ArgumentNullException(nameof(comparer));
 
-        if (values?.Any() != true)
+        if (value is null)
+            throw new ArgumentNullException(nameof(value));
+
+        if (values is null)
+            throw new ArgumentNullException(nameof(values));
+
+        IEnumerable<T> enumerable = values as T[] ?? values.ToArray();
+        if (!enumerable.Any())
             throw new ArgumentException("At least one value is required to evaluate the in clause.", nameof(values));
 
-        return values.Contains(value, comparer);
+        return enumerable.Contains(value, comparer);
     }
 
-        /// <summary>
+    /// <summary>
     /// Determines whether the specified value is in a collection of specified values.
     /// </summary>
     /// <typeparam name="T">The type of the value.</typeparam>
@@ -94,18 +121,25 @@ public static class InExtensions
     /// <param name="values">The values to check against.</param>
     /// <returns><see langword="true"/> if the specified value is in the specified values; otherwise, <see langword="false"/>.</returns>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="comparer"/> is <see langword="null"/>.
+    ///     <paramref name="comparer"/> is <see langword="null"/> -or-
+    ///     <paramref name="value"/> is <see langword="null"/> -or-
+    ///     <paramref name="values"/> is <see langword="null"/>.
     /// </exception>
     /// <exception cref="ArgumentException">
-    /// <paramref name="values"/> is <see langword="null"/> or empty.
+    ///     <paramref name="values"/> is empty.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
     public static bool In<T>(this T value, IEqualityComparer<T> comparer, params T[] values)
     {
         if (comparer is null)
             throw new ArgumentNullException(nameof(comparer));
 
-        if (values?.Any() != true)
+        if (value is null)
+            throw new ArgumentNullException(nameof(value));
+
+        if (values is null)
+            throw new ArgumentNullException(nameof(values));
+
+        if (!values.Any())
             throw new ArgumentException("At least one value is required to evaluate the in clause.", nameof(values));
 
         return values.Contains(value, comparer);
