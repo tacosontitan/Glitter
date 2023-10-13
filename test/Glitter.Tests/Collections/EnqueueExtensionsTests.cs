@@ -1,4 +1,4 @@
-namespace Glitter.Extensions.Tests.Collections;
+namespace Glitter.Tests.Collections;
 
 public class EnqueueExtensionsTests
 {

@@ -1,6 +1,6 @@
 using Glitter.Collections;
 
-namespace Glitter.Extensions.Collections.Tests;
+namespace Glitter.Tests.Collections;
 
 public class EnumerableIndexOfExtensionsTests
 {
