@@ -13,7 +13,7 @@ public interface IApiProvider
     /// <param name="request">The request to send to the API.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the request.</param>
     /// <returns>The response from the API.</returns>
-    Task<TResponse> Get<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default);
+    Task<TResponse> ExecuteGet<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default);
     
     /// <summary>
     /// Posts the specified resource.
@@ -22,7 +22,7 @@ public interface IApiProvider
     /// <param name="request">The request to send to the API.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the request.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    Task Post<TRequest>(TRequest request, CancellationToken cancellationToken = default)
+    Task ExecutePost<TRequest>(TRequest request, CancellationToken cancellationToken = default)
         where TRequest : IRequest;
     
     /// <summary>
@@ -32,7 +32,7 @@ public interface IApiProvider
     /// <param name="request">The request to send to the API.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the request.</param>
     /// <returns>The response from the API.</returns>
-    Task<TResponse> Post<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default);
+    Task<TResponse> ExecutePost<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default);
     
     /// <summary>
     /// Patches the specified resource.
@@ -41,7 +41,7 @@ public interface IApiProvider
     /// <param name="request">The request to send to the API.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the request.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    Task Patch<TRequest>(TRequest request, CancellationToken cancellationToken = default)
+    Task ExecutePatch<TRequest>(TRequest request, CancellationToken cancellationToken = default)
         where TRequest : IRequest;
     
     /// <summary>
@@ -51,7 +51,7 @@ public interface IApiProvider
     /// <param name="request">The request to send to the API.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the request.</param>
     /// <returns>The response from the API.</returns>
-    Task<TResponse> Patch<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default);
+    Task<TResponse> ExecutePatch<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default);
     
     /// <summary>
     /// Updates or creates the specified resource.
@@ -60,7 +60,7 @@ public interface IApiProvider
     /// <param name="request">The request to send to the API.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the request.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    Task Put<TRequest>(TRequest request, CancellationToken cancellationToken = default)
+    Task ExecutePut<TRequest>(TRequest request, CancellationToken cancellationToken = default)
         where TRequest : IRequest;
     
     /// <summary>
@@ -70,7 +70,7 @@ public interface IApiProvider
     /// <param name="request">The request to send to the API.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the request.</param>
     /// <returns>The response from the API.</returns>
-    Task<TResponse> Put<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default);
+    Task<TResponse> ExecutePut<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default);
     
     /// <summary>
     /// Deletes the specified resource.
@@ -79,7 +79,7 @@ public interface IApiProvider
     /// <param name="request">The request to send to the API.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the request.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    Task Delete<TRequest>(TRequest request, CancellationToken cancellationToken = default)
+    Task ExecuteDelete<TRequest>(TRequest request, CancellationToken cancellationToken = default)
         where TRequest : IRequest;
     
     /// <summary>
@@ -89,5 +89,5 @@ public interface IApiProvider
     /// <param name="request">The request to send to the API.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the request.</param>
     /// <returns>The response from the API.</returns>
-    Task<TResponse> Delete<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default);
+    Task<TResponse> ExecuteDelete<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default);
 }
