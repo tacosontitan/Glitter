@@ -19,16 +19,11 @@
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
-
-
     </ItemGroup>
-
-
-
 
     <PropertyGroup Label="PackageInformation">
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-
+        
         <Title>Glitter</Title>
         <Description>A simple framework for encapsulating functionality to keep implementations clean, concise, and optimized.</Description>
         <Copyright>Copyright © 2023 tacosontitan and contibutors</Copyright>
