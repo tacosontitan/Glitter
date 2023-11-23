@@ -29,5 +29,5 @@ public interface IValidationResult
     /// <summary>
     /// Gets the messages associated with the result.
     /// </summary>
-    IEnumerable<IValidationMessage> Messages { get; }
+    IEnumerable<ValidationMessage> Messages { get; }
 }

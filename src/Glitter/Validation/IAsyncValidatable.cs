@@ -24,7 +24,6 @@ public interface IAsyncValidatable
     /// <summary>
     /// Attempts to validate the implementing instance.
     /// </summary>
-    /// <param name="result">The result of the validation.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous validation operation.</returns>
     Task<IValidationResult> Validate(CancellationToken cancellationToken = default);

@@ -24,6 +24,6 @@ public interface IValidatable
     /// <summary>
     /// Attempts to validate the implementing instance.
     /// </summary>
-    /// <param name="result">The result of the validation.</param>
+    /// <returns>The result of the validation.</returns>
     IValidationResult Validate();
 }

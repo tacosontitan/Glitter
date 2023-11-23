@@ -23,7 +23,7 @@ public class ValidationResult
     : IValidationResult
 {
     private readonly IValidationOptions _options;
-    private readonly List<IValidationMessage> _messages;
+    private readonly List<ValidationMessage> _messages;
     private readonly IValidationMessageApprovalStrategy _messageApprovalStrategy;
 
     /// <summary>
@@ -35,7 +35,7 @@ public class ValidationResult
         IValidationOptions? options = null,
         IValidationMessageApprovalStrategy? approvalStrategy = null)
     {
-        _messages = new List<IValidationMessage>();
+        _messages = new List<ValidationMessage>();
         _options = options ?? new ValidationOptions();
         _messageApprovalStrategy = approvalStrategy ?? new ValidationMessageLevelApprovalStrategy(_options);
     }
@@ -45,7 +45,7 @@ public class ValidationResult
         _messages.All(_messageApprovalStrategy.IsApproved);
 
     /// <inheritdoc />
-    public IEnumerable<IValidationMessage> Messages => _messages;
+    public IEnumerable<ValidationMessage> Messages => _messages;
     
     /// <summary>
     /// Adds a critical level validation message to the result.
@@ -65,7 +65,7 @@ public class ValidationResult
     /// Adds a validation message to the result.
     /// </summary>
     /// <param name="message">The message describing the validation message.</param>
-    public virtual void AddMessage(IValidationMessage message) =>
+    public virtual void AddMessage(ValidationMessage message) =>
         _messages.Add(message);
     
     /// <summary>
@@ -75,7 +75,7 @@ public class ValidationResult
     /// <param name="value">The message describing the validation message.</param>
     public virtual void AddMessage(ValidationLevel level, string? value)
     {
-        IValidationMessage validationMessage = new ValidationMessage(level, value);
+        var validationMessage = new ValidationMessage(level, value);
         _messages.Add(validationMessage);
     }
     

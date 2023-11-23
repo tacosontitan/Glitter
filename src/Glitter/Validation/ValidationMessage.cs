@@ -24,11 +24,14 @@ namespace Glitter.Validation;
 public class ValidationMessage(
     ValidationLevel level,
     string? value)
-    : IValidationMessage
 {
-    /// <inheritdoc />
+    /// <summary>
+    /// Gets the level of the validation result.
+    /// </summary>
     public ValidationLevel Level { get; } = level;
     
-    /// <inheritdoc />
+    /// <summary>
+    /// Gets the message describing the validation result.
+    /// </summary>
     public string? Value { get; } = value;
 }

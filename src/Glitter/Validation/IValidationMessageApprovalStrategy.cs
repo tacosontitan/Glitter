@@ -26,5 +26,5 @@ public interface IValidationMessageApprovalStrategy
     /// </summary>
     /// <param name="message">The message to check.</param>
     /// <returns><see langword="true"/> if the message is approved; otherwise, <see langword="false"/>.</returns>
-    bool IsApproved(IValidationMessage message);
+    bool IsApproved(ValidationMessage message);
 }

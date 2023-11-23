@@ -26,7 +26,6 @@ public interface IValidator<in T>
     /// Validates the specified value.
     /// </summary>
     /// <param name="value">The value to validate.</param>
-    /// <param name="result">The result of the validation.</param>
     /// <returns><see langword="true"/> if the validation was successful; otherwise, <see langword="false"/>.</returns>
     IValidationResult Validate(T? value);
 }
