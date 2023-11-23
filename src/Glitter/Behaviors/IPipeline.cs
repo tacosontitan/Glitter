@@ -19,4 +19,30 @@ namespace Glitter.Behaviors;
 /// <summary>
 /// Represents a pipeline for processing requests.
 /// </summary>
-public interface IPipeline;
+/// <typeparam name="TRequest">Specifies the type of the request.</typeparam>
+public interface IPipeline<in TRequest>
+{
+    /// <summary>
+    /// Processes the specified request.
+    /// </summary>
+    /// <param name="request">The request to process.</param>
+    /// <param name="cancellationToken">A token for cancelling the request.</param>
+    /// <returns>A task that represents the asynchronous processing operation.</returns>
+    Task Process(TRequest request, CancellationToken cancellationToken = default);
+}
+
+/// <summary>
+/// Represents a pipeline for processing requests.
+/// </summary>
+/// <typeparam name="TRequest">Specifies the type of the request.</typeparam>
+/// <typeparam name="TResponse">Specifies the type of the response.</typeparam>
+public interface IPipeline<in TRequest, TResponse>
+{
+    /// <summary>
+    /// Processes the specified request.
+    /// </summary>
+    /// <param name="request">The request to process.</param>
+    /// <param name="cancellationToken">A token for cancelling the request.</param>
+    /// <returns>A task that represents the asynchronous processing operation.</returns>
+    Task<TResponse> Process(TRequest request, CancellationToken cancellationToken = default);
+}

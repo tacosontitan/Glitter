@@ -21,7 +21,6 @@ namespace Glitter.Behaviors;
 /// </summary>
 /// <typeparam name="TRequest">Specifies the type of the request.</typeparam>
 public interface IPipe<in TRequest>
-    where TRequest : IRequest
 {
     /// <summary>
     /// Gets the next pipe in the pipeline.
@@ -40,7 +39,6 @@ public interface IPipe<in TRequest>
 /// <typeparam name="TRequest">Specifies the type of the request.</typeparam>
 /// <typeparam name="TResponse">Specifies the type of the response.</typeparam>
 public interface IPipe<in TRequest, TResponse>
-    where TRequest : IRequest<TResponse>
 {
     /// <summary>
     /// Gets the next pipe in the pipeline.
