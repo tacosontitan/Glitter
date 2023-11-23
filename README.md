@@ -41,7 +41,7 @@ The future of Glitter is bright, and we're excited to share our roadmap with you
   - [x] Consolidate unit tests.
 - [ ] Import the old `Glitter.Sql` repo.
   - [x] Add the old repo to this one.
-  - [ ] Create the official `Glitter.Sql` namespace in the `Glitter` project.
+  - [x] Create the official `Glitter.Data.Sql` namespace in the `Glitter` project.
   - [ ] Move files from the dedicated project into the primary project.
   - [ ] Consolidate unit tests.
 
