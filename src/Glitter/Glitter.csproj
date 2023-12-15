@@ -23,7 +23,7 @@
 
     <PropertyGroup Label="PackageInformation">
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        
+
         <Title>Glitter</Title>
         <Description>A simple framework for encapsulating functionality to keep implementations clean, concise, and optimized.</Description>
         <Copyright>Copyright © 2023 tacosontitan and contibutors</Copyright>
@@ -38,14 +38,14 @@
         <RepositoryUrl>https://github.com/tacosontitan/Glitter</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
     </PropertyGroup>
-    
+
     <PropertyGroup Label="VersionInformation">
         <AssemblyVersion>2023.9.1.0</AssemblyVersion>
         <Version>$(AssemblyVersion)</Version>
         <PackageReleaseNotes>
             ## 2023.9.1.0
             - Added validation support.
-            
+
             ## 2023.8.1.0
             - Initial release.
         </PackageReleaseNotes>

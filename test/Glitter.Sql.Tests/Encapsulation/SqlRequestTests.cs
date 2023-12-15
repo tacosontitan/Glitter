@@ -17,6 +17,7 @@
 // All unit tests follow the naming convention of MethodName_StateUnderTest_ExpectedBehavior.
 // This violates CA1707, but is common practice and widely accepted.
 // See: https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1707-identifiers-should-not-contain-underscores?view=vs-2019
+
 #pragma warning disable CA1707
 
 using Glitter.Sql.Encapsulation;
@@ -78,6 +79,7 @@ public class SqlRequestTests
         /// <param name="commandType">The command type.</param>
         public TestSqlRequest(string? command, CommandType commandType)
             : base(command, commandType)
-        { }
+        {
+        }
     }
 }

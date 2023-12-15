@@ -13,7 +13,7 @@ public class SqlConnectionInstructions
         ConnectionTimeout = connectionTimeout ?? TimeSpan.FromSeconds(30);
         CommandTimeout = commandTimeout ?? TimeSpan.FromSeconds(30);
     }
-    
+
     /// <summary>
     /// Gets or sets whether or not the connection should use integrated security.
     /// </summary>

@@ -29,7 +29,7 @@ public class ValidationMessage(
     /// Gets the level of the validation result.
     /// </summary>
     public ValidationLevel Level { get; } = level;
-    
+
     /// <summary>
     /// Gets the message describing the validation result.
     /// </summary>

@@ -26,7 +26,7 @@ namespace Glitter.Data.Io;
 public interface IFileQueryHandler<in TRequest, TResponse>
     : IDataRequestHandler<IFileProvider, TRequest, IEnumerable<TResponse>>
     where TRequest : IRequest<IEnumerable<TResponse>>;
-    
+
 /// <summary>
 /// Represents a handler for a file query.
 /// </summary>

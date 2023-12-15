@@ -25,7 +25,7 @@ public interface IValidationMessage
     /// Gets the level of the validation result.
     /// </summary>
     ValidationLevel Level { get; }
-    
+
     /// <summary>
     /// Gets the message describing the validation result.
     /// </summary>

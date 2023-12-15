@@ -25,7 +25,7 @@ namespace Glitter.Data.Api;
 public interface IApiPostHandler<in TRequest>
     : IDataRequestHandler<IApiProvider, TRequest>
     where TRequest : IRequest;
-    
+
 /// <summary>
 /// Represents a handler for a POST request.
 /// </summary>

@@ -25,12 +25,12 @@ public interface IFile
     /// Gets or sets the name of the file.
     /// </summary>
     string Name { get; set; }
-    
+
     /// <summary>
     /// Gets or sets the extension of the file.
     /// </summary>
     string Extension { get; set; }
-    
+
     /// <summary>
     /// Gets or sets the content of the file.
     /// </summary>

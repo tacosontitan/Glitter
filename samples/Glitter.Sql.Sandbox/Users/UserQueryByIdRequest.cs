@@ -15,7 +15,6 @@
 */
 
 using System.Data;
-
 using Glitter.Sql.Encapsulation;
 
 namespace Glitter.Sql.Sandbox.Users;
@@ -32,12 +31,12 @@ public class UserQueryByIdRequest
     /// <param name="userId">The unique identifier of the user to query.</param>
     /// <exception cref="ArgumentException">Thrown when <paramref name="userId"/> has an empty unique identifier.</exception>
     public UserQueryByIdRequest(Guid? userId) : base(
-        schema: "Sample",
-        name: "UserQueryById")
+        "Sample",
+        "UserQueryById")
     {
         if (userId == Guid.Empty)
             throw new ArgumentException("The unique identifier of the user cannot be empty.", nameof(userId));
 
-        _ = AddParameter("UserId", userId, type: DbType.Guid);
+        _ = AddParameter("UserId", userId, DbType.Guid);
     }
 }

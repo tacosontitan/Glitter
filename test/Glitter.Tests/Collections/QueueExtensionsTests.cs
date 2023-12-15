@@ -12,8 +12,10 @@ public class QueueExtensionsTests
         int count = 10;
 
         // Act
-        void TestDequeue() =>
+        void TestDequeue()
+        {
             QueueExtensions.Dequeue(source!, count);
+        }
 
         // Assert
         _ = Assert.Throws<ArgumentNullException>(TestDequeue);
@@ -27,7 +29,10 @@ public class QueueExtensionsTests
         int count = -1;
 
         // Act
-        void TestDequeue() => source.Dequeue(count);
+        void TestDequeue()
+        {
+            source.Dequeue(count);
+        }
 
         // Assert
         _ = Assert.Throws<ArgumentOutOfRangeException>(TestDequeue);
@@ -41,7 +46,10 @@ public class QueueExtensionsTests
         int count = 1;
 
         // Act
-        void TestDequeue() => source.Dequeue(count);
+        void TestDequeue()
+        {
+            source.Dequeue(count);
+        }
 
         // Assert
         _ = Assert.Throws<ArgumentOutOfRangeException>(TestDequeue);
@@ -93,8 +101,8 @@ public class QueueExtensionsTests
         Assert.Equal(5, result.Count());
         Assert.Equal(5, source.Count);
     }
-    
-        [Fact]
+
+    [Fact]
     public void EnqueueEnumerable_ThrowsArgumentNullException_WhenSourceIsNull()
     {
         // Arrange
@@ -102,7 +110,10 @@ public class QueueExtensionsTests
         IEnumerable<int>? items = Enumerable.Range(0, 10);
 
         // Act
-        void TestEnqueue() => source!.Enqueue(items!);
+        void TestEnqueue()
+        {
+            source!.Enqueue(items!);
+        }
 
         // Assert
         _ = Assert.Throws<ArgumentNullException>(TestEnqueue);
@@ -116,7 +127,10 @@ public class QueueExtensionsTests
         IEnumerable<int>? items = null;
 
         // Act
-        void TestEnqueue() => source!.Enqueue(items!);
+        void TestEnqueue()
+        {
+            source!.Enqueue(items!);
+        }
 
         // Assert
         _ = Assert.Throws<ArgumentNullException>(TestEnqueue);
@@ -157,7 +171,10 @@ public class QueueExtensionsTests
         Queue<int>? source = null;
 
         // Act
-        void TestEnqueue() => source!.Enqueue(0, 1, 2);
+        void TestEnqueue()
+        {
+            source!.Enqueue(0, 1, 2);
+        }
 
         // Assert
         _ = Assert.Throws<ArgumentNullException>(TestEnqueue);
@@ -170,7 +187,10 @@ public class QueueExtensionsTests
         Queue<int>? source = new();
 
         // Act
-        void TestEnqueue() => source!.Enqueue(null!);
+        void TestEnqueue()
+        {
+            source!.Enqueue(null!);
+        }
 
         // Assert
         _ = Assert.Throws<ArgumentNullException>(TestEnqueue);

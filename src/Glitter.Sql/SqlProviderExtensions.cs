@@ -29,7 +29,7 @@ public static class SqlProviderExtensions
 
         if (function is null)
             throw new ArgumentNullException(nameof(function));
-        
+
         return source.ExecuteScalar<T>(function, cancellationToken);
     }
 }

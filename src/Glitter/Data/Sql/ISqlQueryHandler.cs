@@ -26,7 +26,7 @@ namespace Glitter.Data.Sql;
 public interface ISqlQueryHandler<in TRequest, TResponse>
     : IDataRequestHandler<ISqlProvider, TRequest, IEnumerable<TResponse>>
     where TRequest : IRequest<IEnumerable<TResponse>>;
-    
+
 /// <summary>
 /// Represents a handler for a SQL query.
 /// </summary>

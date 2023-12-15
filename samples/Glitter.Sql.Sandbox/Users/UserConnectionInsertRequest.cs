@@ -31,7 +31,7 @@ public class UserConnectionInsertRequest
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="userId"/> is <see langword="null"/>.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="userId"/> is <see cref="Guid.Empty"/>.</exception>
     public UserConnectionInsertRequest(Guid? userId)
-        : base(schema: "Sample", "UserConnectionInsert")
+        : base("Sample", "UserConnectionInsert")
     {
         if (userId is null)
             throw new ArgumentNullException(nameof(userId), "The user identifier cannot be null.");
@@ -50,5 +50,6 @@ public class UserConnectionInsertRequest
     /// <exception cref="ArgumentException">Thrown when <paramref name="userId"/> is <see cref="Guid.Empty"/>.</exception>
     public UserConnectionInsertRequest(User user)
         : this(user?.Id)
-    { }
+    {
+    }
 }

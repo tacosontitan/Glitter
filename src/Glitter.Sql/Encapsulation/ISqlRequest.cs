@@ -25,7 +25,7 @@ public interface ISqlRequest
     /// The type of command to execute.
     /// </summary>
     CommandType CommandType { get; set; }
-    
+
     /// <summary>
     /// The parameters for the command.
     /// </summary>

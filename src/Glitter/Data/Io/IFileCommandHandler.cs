@@ -25,7 +25,7 @@ namespace Glitter.Data.Io;
 public interface IFileCommandHandler<in TRequest>
     : IDataRequestHandler<IFileProvider, TRequest>
     where TRequest : IRequest;
-    
+
 /// <summary>
 /// Represents a handler for a file command.
 /// </summary>

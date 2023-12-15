@@ -53,19 +53,21 @@ public static class EnumerableForEachExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> or <paramref name="action"/> is <see langword="null"/>.
     /// </exception>
-    public static async Task ForEach<T>(this IEnumerable<T> source, Action<T> action, bool parallel, CancellationToken cancellationToken) {
+    public static async Task ForEach<T>(this IEnumerable<T> source, Action<T> action, bool parallel,
+        CancellationToken cancellationToken)
+    {
         if (source is null)
             throw new ArgumentNullException(nameof(source));
-        
+
         if (action is null)
             throw new ArgumentNullException(nameof(action));
-        
+
         if (parallel)
             _ = Parallel.ForEach(source, new ParallelOptions { CancellationToken = cancellationToken }, action);
         else
             await Task.Run(() => source.ForEach(action), cancellationToken).ConfigureAwait(false);
     }
-    
+
     /// <summary>
     /// Executes the specified action on each element of the collection.
     /// </summary>

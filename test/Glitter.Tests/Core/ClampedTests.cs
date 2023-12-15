@@ -25,14 +25,14 @@ public class ClampedTests
         int value = 0;
         int lowerBound = 1;
         int upperBound = 10;
-        
+
         // Act
         Clamped<int> clamped = new(value, lowerBound, upperBound);
-        
+
         // Assert
-        Assert.Equal(expected: lowerBound, actual: clamped.Value);
+        Assert.Equal(lowerBound, clamped.Value);
     }
-    
+
     [Fact]
     public void Constructor_GreaterThanUpperBound_ClampsToUpperBound()
     {
@@ -40,14 +40,14 @@ public class ClampedTests
         int value = 100;
         int lowerBound = 1;
         int upperBound = 10;
-        
+
         // Act
         Clamped<int> clamped = new(value, lowerBound, upperBound);
-        
+
         // Assert
-        Assert.Equal(expected: upperBound, actual: clamped.Value);
+        Assert.Equal(upperBound, clamped.Value);
     }
-    
+
     [Fact]
     public void Constructor_WithinBounds_DoesNotAdjust()
     {
@@ -55,14 +55,14 @@ public class ClampedTests
         int value = 5;
         int lowerBound = 1;
         int upperBound = 10;
-        
+
         // Act
         Clamped<int> clamped = new(value, lowerBound, upperBound);
-        
+
         // Assert
-        Assert.Equal(expected: value, actual: clamped.Value);
+        Assert.Equal(value, clamped.Value);
     }
-    
+
     [Fact]
     public void LowerBoundSet_GreaterThanValue_ClampsToLowerBound()
     {
@@ -71,14 +71,14 @@ public class ClampedTests
         int lowerBound = 1;
         int upperBound = 15;
         Clamped<int> clamped = new(value, lowerBound, upperBound);
-        
+
         // Act
         clamped.LowerBound = value + 1;
-        
+
         // Assert
-        Assert.Equal(expected: clamped.LowerBound, actual: clamped.Value);
+        Assert.Equal(clamped.LowerBound, clamped.Value);
     }
-    
+
     [Fact]
     public void LowerBoundSet_LessThanValue_DoesNotAdjust()
     {
@@ -87,14 +87,14 @@ public class ClampedTests
         int lowerBound = 1;
         int upperBound = 15;
         Clamped<int> clamped = new(value, lowerBound, upperBound);
-        
+
         // Act
         clamped.LowerBound = value - 1;
-        
+
         // Assert
-        Assert.Equal(expected: value, actual: clamped.Value);
+        Assert.Equal(value, clamped.Value);
     }
-    
+
     [Fact]
     public void UpperBoundSet_LessThanValue_ClampsToUpperBound()
     {
@@ -103,14 +103,14 @@ public class ClampedTests
         int lowerBound = 1;
         int upperBound = 15;
         Clamped<int> clamped = new(value, lowerBound, upperBound);
-        
+
         // Act
         clamped.UpperBound = value - 1;
-        
+
         // Assert
-        Assert.Equal(expected: clamped.UpperBound, actual: clamped.Value);
+        Assert.Equal(clamped.UpperBound, clamped.Value);
     }
-    
+
     [Fact]
     public void UpperBoundSet_GreaterThanValue_DoesNotAdjust()
     {
@@ -119,12 +119,12 @@ public class ClampedTests
         int lowerBound = 1;
         int upperBound = 15;
         Clamped<int> clamped = new(value, lowerBound, upperBound);
-        
+
         // Act
         clamped.UpperBound = value + 1;
-        
+
         // Assert
-        Assert.Equal(expected: value, actual: clamped.Value);
+        Assert.Equal(value, clamped.Value);
     }
 
     [Fact]
@@ -132,13 +132,13 @@ public class ClampedTests
     {
         // Arrange
         Clamped<int> clamped = null!;
-        
+
         // Act
         void TestAction()
         {
             int value = clamped;
         }
-        
+
         // Assert
         Assert.Throws<ArgumentNullException>(TestAction);
     }

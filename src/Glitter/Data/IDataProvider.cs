@@ -22,7 +22,7 @@ namespace Glitter.Data;
 /// Represents a data provider.
 /// </summary>
 public interface IDataProvider
-{    
+{
     /// <summary>
     /// Executes the specified request.
     /// </summary>
@@ -32,7 +32,7 @@ public interface IDataProvider
     /// <returns>A task that represents the asynchronous operation.</returns>
     Task Execute<TRequest>(TRequest request, CancellationToken cancellationToken = default)
         where TRequest : IRequest;
-    
+
     /// <summary>
     /// Executes the specified request.
     /// </summary>

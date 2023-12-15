@@ -15,7 +15,6 @@
 */
 
 using System.Data;
-
 using Glitter.Sql.Encapsulation;
 
 namespace Glitter.Sql.Sandbox.Users;
@@ -34,7 +33,7 @@ public class UserConnectionUpdateRequest
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="connectionId"/> is <see langword="null"/>.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="connectionId"/> is <see cref="Guid.Empty"/>.</exception>
     public UserConnectionUpdateRequest(Guid? connectionId, bool? isActive)
-        : base(schema: "Sample", "UserConnectionUpdate")
+        : base("Sample", "UserConnectionUpdate")
     {
         if (connectionId is null)
             throw new ArgumentNullException(nameof(connectionId), "The connection identifier cannot be null.");
@@ -54,5 +53,6 @@ public class UserConnectionUpdateRequest
     /// <exception cref="ArgumentException">Thrown when <paramref name="connectionId"/> is <see cref="Guid.Empty"/>.</exception>
     public UserConnectionUpdateRequest(UserConnection connection)
         : this(connection?.Id, connection?.IsActive)
-    { }
+    {
+    }
 }

@@ -31,7 +31,8 @@ public static class EnumerableAfterExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> or <paramref name="predicate"/> is <see langword="null"/>.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression",
+        Justification = "Validation logic should not be nested.")]
     public static IEnumerable<T> After<T>(this IEnumerable<T> source, Func<T, bool> predicate)
     {
         if (source is null)
@@ -44,7 +45,7 @@ public static class EnumerableAfterExtensions
             .SkipWhile(element => !predicate(element))
             .Skip(1);
     }
-    
+
     /// <summary>
     /// Returns a collection of elements from the specified collection that occur after the specified search value.
     /// </summary>
@@ -55,7 +56,8 @@ public static class EnumerableAfterExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> or <paramref name="searchValue"/> is <see langword="null"/>.
     /// </exception>
-    [SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Validation logic should not be nested.")]
+    [SuppressMessage("Style", "IDE0046:Convert to conditional expression",
+        Justification = "Validation logic should not be nested.")]
     public static IEnumerable<T> After<T>(this IEnumerable<T> source, T searchValue)
     {
         if (source is null)

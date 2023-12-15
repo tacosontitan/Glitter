@@ -21,5 +21,4 @@ namespace Glitter.Sql;
 /// </summary>
 public interface ISqlConnection
 {
-
 }

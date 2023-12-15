@@ -29,7 +29,8 @@ public class SqlTableFunction
     /// <exception cref="ArgumentException"><paramref name="name"/> is null or whitespace.</exception>
     protected SqlTableFunction(string name)
         : base(name)
-    { }
+    {
+    }
 
     /// <summary>
     /// Creates a new <see cref="SqlTableFunction"/> instance.
@@ -39,5 +40,6 @@ public class SqlTableFunction
     /// <exception cref="ArgumentException"><paramref name="name"/> or <paramref name="name"/> is null or whitespace.</exception>
     protected SqlTableFunction(string schema, string name)
         : base(schema, name)
-    { }
+    {
+    }
 }

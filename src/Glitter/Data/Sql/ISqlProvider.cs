@@ -46,7 +46,7 @@ public interface ISqlProvider
     Task<TResponse> ExecuteScalar<TResponse>(
         IRequest<TResponse> request,
         CancellationToken cancellationToken = default);
-    
+
     /// <summary>
     /// Executes a query.
     /// </summary>

@@ -28,10 +28,11 @@ public class SqlStoredProcedure
     /// <param name="name">The name of the stored procedure.</param>
     protected SqlStoredProcedure(string name)
         : base(
-            schema: "dbo",
+            "dbo",
             name,
             CommandType.StoredProcedure)
-    { }
+    {
+    }
 
     /// <summary>
     /// Creates a new <see cref="SqlStoredProcedure"/> instance.
@@ -45,8 +46,9 @@ public class SqlStoredProcedure
             schema,
             name,
             CommandType.StoredProcedure)
-    { }
-    
+    {
+    }
+
     /// <inheritdoc/>
     public override bool TryCompile(out string? command)
     {

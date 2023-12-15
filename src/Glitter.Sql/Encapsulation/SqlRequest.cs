@@ -70,12 +70,12 @@ public class SqlRequest
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException($"The name of the parameter cannot be null or whitespace.");
-        
+
         if (_parameters.Any(parameter => parameter.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)))
             throw new InvalidOperationException($"The parameter `{name}` has already been specified.");
 
         var parameter = new SqlRequestParameter(name, value, type, direction, size, precision, scale);
-        _parameters.Add(item: parameter);
+        _parameters.Add(parameter);
         return this;
     }
 

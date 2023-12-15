@@ -16,17 +16,17 @@
 
 CREATE TABLE [Sample].[Users]
 (
-  [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    [Id]         UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
 
-  [Username] VARCHAR(100) NOT NULL,
-  [GivenName] VARCHAR(100) NOT NULL,
-  [Surname] VARCHAR(100) NOT NULL,
-  
-  -- Standard columns for all tables.
-  [InsertDate] DATETIMEOFFSET NOT NULL,
-  [InsertedBy] UNIQUEIDENTIFIER NOT NULL,
-  [UpdateDate] DATETIMEOFFSET NOT NULL,
-  [UpdatedBy] UNIQUEIDENTIFIER NOT NULL,
+    [Username]   VARCHAR(100)     NOT NULL,
+    [GivenName]  VARCHAR(100)     NOT NULL,
+    [Surname]    VARCHAR(100)     NOT NULL,
 
-  CONSTRAINT [UQ_Users_Username] UNIQUE ([Username])
+    -- Standard columns for all tables.
+    [InsertDate] DATETIMEOFFSET   NOT NULL,
+    [InsertedBy] UNIQUEIDENTIFIER NOT NULL,
+    [UpdateDate] DATETIMEOFFSET   NOT NULL,
+    [UpdatedBy]  UNIQUEIDENTIFIER NOT NULL,
+
+    CONSTRAINT [UQ_Users_Username] UNIQUE ([Username])
 )

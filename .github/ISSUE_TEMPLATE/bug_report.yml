@@ -1,6 +1,6 @@
 name: 😭 Report a problem
 description: If you're encountering a problem, then you can report it here.
-labels: [bug,under review]
+labels: [ bug,under review ]
 body:
   - type: dropdown
     id: version

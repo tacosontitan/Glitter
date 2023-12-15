@@ -40,10 +40,12 @@ public static class QueueExtensions
             throw new ArgumentNullException(nameof(source));
 
         if (count < 0)
-            throw new ArgumentOutOfRangeException(nameof(count), "The number of elements to dequeue cannot be negative.");
-        
+            throw new ArgumentOutOfRangeException(nameof(count),
+                "The number of elements to dequeue cannot be negative.");
+
         if (count > source.Count)
-            throw new ArgumentOutOfRangeException(nameof(count), "The number of elements to dequeue cannot be greater than the number of elements in the queue.");
+            throw new ArgumentOutOfRangeException(nameof(count),
+                "The number of elements to dequeue cannot be greater than the number of elements in the queue.");
 
         var results = new T[count];
         for (int i = 0; i < count; i++)
@@ -51,7 +53,7 @@ public static class QueueExtensions
 
         return results;
     }
-    
+
     /// <summary>
     /// Enqueues a collection of elements to the queue.
     /// </summary>
@@ -75,7 +77,7 @@ public static class QueueExtensions
 
         return source;
     }
-    
+
     /// <summary>
     ///  Enqueues a collection of elements to the queue.
     /// </summary>

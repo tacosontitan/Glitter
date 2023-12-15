@@ -5,19 +5,19 @@ This document describes the style guide for the C# code in this project.
 ## Table of Contents
 
 - [Naming Conventions](#naming-conventions)
-  - [File Names](#file-names)
-  - [Type Names](#type-names)
-  - [Member Names](#member-names)
-  - [Constant Names](#constant-names)
-  - [Namespace Names](#namespace-names)
+    - [File Names](#file-names)
+    - [Type Names](#type-names)
+    - [Member Names](#member-names)
+    - [Constant Names](#constant-names)
+    - [Namespace Names](#namespace-names)
 - [Layout Conventions](#layout-conventions)
-  - [Indentation](#indentation)
-  - [Line Length](#line-length)
-  - [Braces](#braces)
-  - [Blank Lines](#blank-lines)
-  - [Comments](#comments)
-  - [Documentation](#documentation)
-  - [Layout of Elements](#layout-of-elements)
+    - [Indentation](#indentation)
+    - [Line Length](#line-length)
+    - [Braces](#braces)
+    - [Blank Lines](#blank-lines)
+    - [Comments](#comments)
+    - [Documentation](#documentation)
+    - [Layout of Elements](#layout-of-elements)
 
 ## Naming Conventions
 
@@ -25,19 +25,23 @@ The following naming conventions apply to all C# code in this project.
 
 ### File Names
 
-File names should be descriptive and use pascal case. The file name should match the name of the single type declared in the file.
+File names should be descriptive and use pascal case. The file name should match the name of the single type declared in
+the file.
 
 ### Type Names
 
-Type names should be descriptive and use pascal case. Type names should be singular unless they are explicitly declared as a collection.
+Type names should be descriptive and use pascal case. Type names should be singular unless they are explicitly declared
+as a collection.
 
 ### Member Names
 
-Member names should be descriptive and use pascal case. Member names should be singular unless they are explicitly declared as a collection.
+Member names should be descriptive and use pascal case. Member names should be singular unless they are explicitly
+declared as a collection.
 
 ### Constant Names
 
-Constant names should be descriptive and use pascal case. Constant names should be singular unless they are explicitly declared as a collection.
+Constant names should be descriptive and use pascal case. Constant names should be singular unless they are explicitly
+declared as a collection.
 
 ### Namespace Names
 
@@ -99,9 +103,12 @@ Within a class, struct, or interface, elements must be positioned in the followi
 - Structs
 - Classes
 
-Complying with a standard ordering scheme based on element type can increase the readability and maintainability of the file and encourage code reuse.
+Complying with a standard ordering scheme based on element type can increase the readability and maintainability of the
+file and encourage code reuse.
 
-When implementing an interface, it is sometimes desirable to group all members of the interface next to one another. This will sometimes require violating this rule, if the interface contains elements of different types. This problem can be solved through the use of partial classes.
+When implementing an interface, it is sometimes desirable to group all members of the interface next to one another.
+This will sometimes require violating this rule, if the interface contains elements of different types. This problem can
+be solved through the use of partial classes.
 
 - Add the partial attribute to the class, if the class is not already partial.
 - Add a second partial class with the same name within a second file.

@@ -30,7 +30,7 @@ public interface IMediator
     /// <returns>A task that represents the asynchronous operation.</returns>
     Task Send<TRequest>(IRequest request, CancellationToken cancellationToken = default)
         where TRequest : IRequest;
-    
+
     /// <summary>
     /// Sends the specified request.
     /// </summary>

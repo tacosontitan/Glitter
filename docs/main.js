@@ -26,6 +26,7 @@ changeMessage();
 
 // Change the message every three seconds.
 setInterval(changeMessage, 3000);
+
 function changeMessage() {
     mainElement.className = 'is-loading';
     setTimeout(removeLoadingClass, 1000);

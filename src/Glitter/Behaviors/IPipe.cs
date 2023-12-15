@@ -26,7 +26,7 @@ public interface IPipe<in TRequest>
     /// Gets the next pipe in the pipeline.
     /// </summary>
     IPipe<TRequest> Successor { get; }
-    
+
     /// <summary>
     /// Processes the specified request.
     /// </summary>
@@ -44,7 +44,7 @@ public interface IPipe<in TRequest, TResponse>
     /// Gets the next pipe in the pipeline.
     /// </summary>
     IPipe<TRequest, TResponse> Successor { get; }
-    
+
     /// <summary>
     /// Processes the specified request.
     /// </summary>

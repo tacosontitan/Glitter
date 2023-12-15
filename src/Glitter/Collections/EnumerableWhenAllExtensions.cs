@@ -37,18 +37,18 @@ public static class EnumerableWhenAllExtensions
     {
         if (source is null)
             throw new ArgumentNullException(nameof(source));
-        
+
         if (action is null)
             throw new ArgumentNullException(nameof(action));
 
         IEnumerable<T> enumerable = source as T[] ?? source.ToArray();
         if (!enumerable.Any())
             return Task.CompletedTask;
-        
+
         IEnumerable<Task> tasks = enumerable.Select(item => action(item, cancellationToken));
         return Task.WhenAll(tasks);
     }
-    
+
     /// <summary>
     /// Performs the specified action on each element of the <see cref="IEnumerable{T}"/> in parallel.
     /// </summary>
@@ -66,14 +66,14 @@ public static class EnumerableWhenAllExtensions
     {
         if (source is null)
             throw new ArgumentNullException(nameof(source));
-        
+
         if (action is null)
             throw new ArgumentNullException(nameof(action));
 
         IEnumerable<T> enumerable = source as T[] ?? source.ToArray();
         if (!enumerable.Any())
             return Enumerable.Empty<TOut>();
-        
+
         IEnumerable<Task<TOut>> tasks = enumerable.Select(item => action(item, cancellationToken));
         IEnumerable<TOut> results = await Task.WhenAll(tasks).ConfigureAwait(false);
         return results;

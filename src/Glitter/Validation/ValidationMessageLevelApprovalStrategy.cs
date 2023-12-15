@@ -25,7 +25,7 @@ public class ValidationMessageLevelApprovalStrategy(
     : IValidationMessageApprovalStrategy
 {
     private readonly IValidationOptions _options = options ?? new ValidationOptions();
-    
+
     /// <inheritdoc />
     public virtual bool IsApproved(ValidationMessage message) => _options.TreatWarningsAsFailures
         ? message.Level < ValidationLevel.Warning

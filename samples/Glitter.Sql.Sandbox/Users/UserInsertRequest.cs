@@ -15,7 +15,6 @@
 */
 
 using System.Data;
-
 using Glitter.Sql.Encapsulation;
 
 namespace Glitter.Sql.Sandbox.Users;
@@ -30,10 +29,12 @@ public class UserInsertRequest
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="user"/> is null.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="user"/> has a null, empty, or whitespace username, given name, or surname.</exception>
     public UserInsertRequest(User user) : this(
-        username: user.Username,
-        givenName: user.GivenName,
-        surname: user.Surname
-    ) { }
+        user.Username,
+        user.GivenName,
+        user.Surname
+    )
+    {
+    }
 
     /// <summary>
     /// Creates a new <see cref="UserInsertRequest"/> instance.
@@ -43,19 +44,22 @@ public class UserInsertRequest
     /// <param name="surname">The surname of the user to insert.</param>
     /// <exception cref="ArgumentException">Thrown when <paramref name="username"/>, <paramref name="givenName"/>, or <paramref name="surname"/> is null, empty, or whitespace.</exception>
     public UserInsertRequest(string? username, string? givenName, string? surname) :
-        base(schema: "Sample", name: "UserInsert")
+        base("Sample", "UserInsert")
     {
         if (string.IsNullOrWhiteSpace(username))
-            throw new ArgumentException("The username of the user to insert cannot be null, empty, or whitespace.", nameof(username));
+            throw new ArgumentException("The username of the user to insert cannot be null, empty, or whitespace.",
+                nameof(username));
 
         if (string.IsNullOrWhiteSpace(givenName))
-            throw new ArgumentException("The given name of the user to insert cannot be null, empty, or whitespace.", nameof(givenName));
+            throw new ArgumentException("The given name of the user to insert cannot be null, empty, or whitespace.",
+                nameof(givenName));
 
         if (string.IsNullOrWhiteSpace(surname))
-            throw new ArgumentException("The surname of the user to insert cannot be null, empty, or whitespace.", nameof(surname));
+            throw new ArgumentException("The surname of the user to insert cannot be null, empty, or whitespace.",
+                nameof(surname));
 
-        _ = AddParameter("Username", username, type: DbType.String, size: 100);
-        _ = AddParameter("GivenName", givenName, type: DbType.String, size: 100);
-        _ = AddParameter("Surname", surname, type: DbType.String, size: 100);
+        _ = AddParameter("Username", username, DbType.String, size: 100);
+        _ = AddParameter("GivenName", givenName, DbType.String, size: 100);
+        _ = AddParameter("Surname", surname, DbType.String, size: 100);
     }
 }

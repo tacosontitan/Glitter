@@ -28,5 +28,6 @@ public class SqlScript
     /// <param name="text">The text representing the script to execute in the request.</param>
     public SqlScript(string text)
         : base(text, CommandType.Text)
-    { }
+    {
+    }
 }

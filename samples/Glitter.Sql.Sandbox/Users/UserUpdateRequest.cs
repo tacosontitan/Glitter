@@ -15,7 +15,6 @@
 */
 
 using System.Data;
-
 using Glitter.Sql.Encapsulation;
 
 namespace Glitter.Sql.Sandbox.Users;
@@ -34,10 +33,12 @@ public class UserUpdateRequest
     /// <exception cref="ArgumentException">Thrown when <paramref name="user"/> has an empty unique identifier.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="user"/> has a null, empty, or whitespace given name or surname.</exception>
     public UserUpdateRequest(User user) : this(
-        userId: user.Id,
-        givenName: user.GivenName,
-        surname: user.Surname
-    ) { }
+        user.Id,
+        user.GivenName,
+        user.Surname
+    )
+    {
+    }
 
     /// <summary>
     /// Creates a new <see cref="UserUpdateRequest"/> instance.
@@ -48,19 +49,21 @@ public class UserUpdateRequest
     /// <exception cref="ArgumentException">Thrown when <paramref name="userId"/> has an empty unique identifier.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="givenName"/> or <paramref name="surname"/> is null, empty, or whitespace.</exception>
     public UserUpdateRequest(Guid? userId, string? givenName, string? surname) :
-        base(schema: "Sample", name: "UserUpdate")
+        base("Sample", "UserUpdate")
     {
         if (userId == Guid.Empty)
             throw new ArgumentException("The unique identifier of the user cannot be empty.", nameof(userId));
 
         if (string.IsNullOrWhiteSpace(givenName))
-            throw new ArgumentException("The given name of the user cannot be null, empty, or whitespace.", nameof(givenName));
+            throw new ArgumentException("The given name of the user cannot be null, empty, or whitespace.",
+                nameof(givenName));
 
         if (string.IsNullOrWhiteSpace(surname))
-            throw new ArgumentException("The surname of the user cannot be null, empty, or whitespace.", nameof(surname));
+            throw new ArgumentException("The surname of the user cannot be null, empty, or whitespace.",
+                nameof(surname));
 
-        _ = AddParameter("UserId", userId, type: DbType.Guid);
-        _ = AddParameter("GivenName", givenName, type: DbType.String, size: 100);
-        _ = AddParameter("Surname", surname, type: DbType.String, size: 100);
+        _ = AddParameter("UserId", userId, DbType.Guid);
+        _ = AddParameter("GivenName", givenName, DbType.String, size: 100);
+        _ = AddParameter("Surname", surname, DbType.String, size: 100);
     }
 }

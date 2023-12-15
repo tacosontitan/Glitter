@@ -38,7 +38,7 @@ public interface ISqlProvider
     Task<IEnumerable<T>> Execute<T>(
         ISqlRequest request,
         CancellationToken cancellationToken = default);
-    
+
     /// <summary>
     /// Executes a request and returns the number of rows affected.
     /// </summary>
@@ -48,7 +48,7 @@ public interface ISqlProvider
     Task<int> ExecuteNonQuery(
         ISqlRequest request,
         CancellationToken cancellationToken = default);
-    
+
     /// <summary>
     /// Executes a request and returns the first column of the first row in the result set returned.
     /// </summary>

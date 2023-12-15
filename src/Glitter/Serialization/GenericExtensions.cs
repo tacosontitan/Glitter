@@ -6,7 +6,7 @@ public static class GenericExtensions
     {
         if (source is null)
             throw new ArgumentNullException(nameof(source));
-        
+
         if (serializationProvider is null)
             throw new ArgumentNullException(nameof(serializationProvider));
 

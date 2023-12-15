@@ -28,7 +28,9 @@ public class UsersQueryRequest
     /// Creates a new <see cref="UsersQueryRequest"/> instance.
     /// </summary>
     public UsersQueryRequest() : base(
-        schema: "Sample",
-        name: "UsersQuery"
-    ) { }
+        "Sample",
+        "UsersQuery"
+    )
+    {
+    }
 }

@@ -50,7 +50,7 @@ public static class EnumerableIndexOfExtensions
 
         return -1;
     }
-    
+
     /// <summary>
     /// Gets the index of the specified search value in the collection.
     /// </summary>

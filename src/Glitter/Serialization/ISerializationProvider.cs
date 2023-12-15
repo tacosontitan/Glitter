@@ -28,7 +28,7 @@ public interface ISerializationProvider
     /// <param name="formatProvider">An object providing culture-specific formatting information.</param>
     /// <returns>The result of the serialization operation.</returns>
     string Serialize<T>(T? value, IFormatProvider? formatProvider = null);
-    
+
     /// <summary>
     /// Deserializes the specified value.
     /// </summary>

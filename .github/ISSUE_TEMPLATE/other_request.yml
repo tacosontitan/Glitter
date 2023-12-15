@@ -1,6 +1,6 @@
 name: 🧠 It's something else
 description: Need to open an issue for something that isn't a bug, feature, or command? This template has you covered!
-labels: [needs categorization,under review]
+labels: [ needs categorization,under review ]
 body:
   - type: dropdown
     id: category

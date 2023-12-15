@@ -14,16 +14,13 @@
    limitations under the License.
 */
 
-CREATE FUNCTION [Sample].[UsersQuery] () RETURNS TABLE AS RETURN (
-    SELECT
-        [Id],
-        [Username],
-        [GivenName],
-        [Surname],
-        [InsertDate],
-        [InsertedBy],
-        [UpdateDate],
-        [UpdatedBy]
-    FROM
-        [Sample].[Users]
-)
+CREATE FUNCTION [Sample].[UsersQuery]()
+    RETURNS TABLE AS RETURN(SELECT [Id],
+                                   [Username],
+                                   [GivenName],
+                                   [Surname],
+                                   [InsertDate],
+                                   [InsertedBy],
+                                   [UpdateDate],
+                                   [UpdatedBy]
+                            FROM [Sample].[Users])

@@ -25,17 +25,17 @@ public enum ValidationLevel
     /// Indicates that the validation was successful.
     /// </summary>
     Success = 0,
-    
+
     /// <summary>
     /// Indicates that the validation was successful, but with a warning.
     /// </summary>
     Warning = 1,
-    
+
     /// <summary>
     /// Indicates that the validation was unsuccessful.
     /// </summary>
     Failure = 2,
-    
+
     /// <summary>
     /// Indicates that the validation was unsuccessful, and that the application should not continue.
     /// </summary>

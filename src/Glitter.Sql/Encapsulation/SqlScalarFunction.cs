@@ -29,7 +29,8 @@ public class SqlScalarFunction
     /// <exception cref="ArgumentException"><paramref name="name"/> is null or whitespace.</exception>
     protected SqlScalarFunction(string name)
         : base(name)
-    { }
+    {
+    }
 
     /// <summary>
     /// Creates a new <see cref="SqlScalarFunction"/> instance.
@@ -39,5 +40,6 @@ public class SqlScalarFunction
     /// <exception cref="ArgumentException"><paramref name="name"/> or <paramref name="name"/> is null or whitespace.</exception>
     protected SqlScalarFunction(string schema, string name)
         : base(schema, name)
-    { }
+    {
+    }
 }

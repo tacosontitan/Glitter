@@ -14,18 +14,14 @@
    limitations under the License.
 */
 
-CREATE FUNCTION [Sample].[UserQueryById] (@UserId UNIQUEIDENTIFIER) RETURNS TABLE AS RETURN (
-    SELECT
-        [Id],
-        [Username],
-        [GivenName],
-        [Surname],
-        [InsertDate],
-        [InsertedBy],
-        [UpdateDate],
-        [UpdatedBy]
-    FROM
-        [Sample].[Users]
-    WHERE
-        [Id] = @UserId
-)
+CREATE FUNCTION [Sample].[UserQueryById](@UserId UNIQUEIDENTIFIER)
+    RETURNS TABLE AS RETURN(SELECT [Id],
+                                   [Username],
+                                   [GivenName],
+                                   [Surname],
+                                   [InsertDate],
+                                   [InsertedBy],
+                                   [UpdateDate],
+                                   [UpdatedBy]
+                            FROM [Sample].[Users]
+                            WHERE [Id] = @UserId)

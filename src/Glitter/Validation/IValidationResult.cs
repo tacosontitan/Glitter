@@ -25,7 +25,7 @@ public interface IValidationResult
     /// Gets whether or not validation was successful.
     /// </summary>
     bool Successful { get; }
-    
+
     /// <summary>
     /// Gets the messages associated with the result.
     /// </summary>

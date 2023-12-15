@@ -81,6 +81,6 @@ h3:after {
     display: inline-flex;
 }
 
-.gems>img {
+.gems > img {
     margin: 5px;
 }

@@ -1,6 +1,6 @@
 name: ⭐ Request a new feature
 description: Have an idea? You can request a new feature here.
-labels: [enhancement,under review]
+labels: [ enhancement,under review ]
 body:
   - type: dropdown
     id: version

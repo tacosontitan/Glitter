@@ -26,7 +26,7 @@ namespace Glitter.Data.Sql;
 public interface ISqlScalarQueryHandler<in TRequest, TResponse>
     : IDataRequestHandler<ISqlProvider, TRequest, TResponse>
     where TRequest : IRequest<TResponse>;
-    
+
 /// <summary>
 /// Defines a handler for a SQL query that returns a scalar value.
 /// </summary>

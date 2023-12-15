@@ -32,7 +32,7 @@ public interface IDataService
     /// <returns>A task that represents the asynchronous operation.</returns>
     Task Execute<TRequest>(TRequest request, CancellationToken cancellationToken = default)
         where TRequest : IRequest;
-    
+
     /// <summary>
     /// Executes the specified request.
     /// </summary>

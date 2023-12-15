@@ -46,28 +46,28 @@ public class ValidationResult
 
     /// <inheritdoc />
     public IEnumerable<ValidationMessage> Messages => _messages;
-    
+
     /// <summary>
     /// Adds a critical level validation message to the result.
     /// </summary>
     /// <param name="value">The message describing the validation message.</param>
     public virtual void AddCritical(string? value) =>
         AddMessage(ValidationLevel.Critical, value);
-    
+
     /// <summary>
     /// Adds an error level validation message to the result.
     /// </summary>
     /// <param name="value">The message describing the validation message.</param>
     public virtual void AddFailure(string? value) =>
         AddMessage(ValidationLevel.Failure, value);
-    
+
     /// <summary>
     /// Adds a validation message to the result.
     /// </summary>
     /// <param name="message">The message describing the validation message.</param>
     public virtual void AddMessage(ValidationMessage message) =>
         _messages.Add(message);
-    
+
     /// <summary>
     /// Adds a validation message to the result.
     /// </summary>
@@ -78,14 +78,14 @@ public class ValidationResult
         var validationMessage = new ValidationMessage(level, value);
         _messages.Add(validationMessage);
     }
-    
+
     /// <summary>
     /// Adds an information level validation message to the result.
     /// </summary>
     /// <param name="value">The message describing the validation message.</param>
     public virtual void AddSuccess(string? value) =>
         AddMessage(ValidationLevel.Success, value);
-    
+
     /// <summary>
     /// Adds a warning level validation message to the result.
     /// </summary>

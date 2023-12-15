@@ -11,9 +11,9 @@ name: "💖 Lint Codebase"
 #############################
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 ###############
 # Set the Job #

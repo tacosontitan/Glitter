@@ -28,7 +28,7 @@ public interface IServiceFactory
     /// <param name="parameters">The parameters to use when constructing the service.</param>
     /// <returns>The service of the specified type.</returns>
     TService GetService<TService>(params object[] parameters);
-    
+
     /// <summary>
     /// Gets the service of the specified type.
     /// </summary>

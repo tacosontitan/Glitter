@@ -69,7 +69,7 @@ public class Clamped<T>
                 _value = _upperBound;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the value.
     /// </summary>
@@ -99,7 +99,7 @@ public class Clamped<T>
     {
         if (input is null)
             throw new ArgumentNullException(nameof(input));
-        
+
         return input.Value;
     }
 }

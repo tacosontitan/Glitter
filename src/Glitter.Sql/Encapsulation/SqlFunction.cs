@@ -29,10 +29,11 @@ public class SqlFunction
     /// <exception cref="ArgumentException"><paramref name="functionName"/> is null or whitespace.</exception>
     protected SqlFunction(string functionName)
         : base(
-            schema: "dbo",
-            name: functionName,
-            commandType: CommandType.Text)
-    { }
+            "dbo",
+            functionName,
+            CommandType.Text)
+    {
+    }
 
     /// <summary>
     /// Creates a new <see cref="SqlFunction"/> instance.
@@ -42,10 +43,11 @@ public class SqlFunction
     /// <exception cref="ArgumentException"><paramref name="functionName"/> or <paramref name="functionName"/> is null or whitespace.</exception>
     protected SqlFunction(string schema, string functionName)
         : base(
-            schema: schema,
-            name: functionName,
-            commandType: CommandType.Text)
-    { }
+            schema,
+            functionName,
+            CommandType.Text)
+    {
+    }
 
     /// <inheritdoc/>
     public override bool TryCompile(out string? command)
