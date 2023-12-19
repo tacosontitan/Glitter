@@ -14,24 +14,37 @@
    limitations under the License.
 */
 
-namespace Glitter.Behaviors;
+namespace Glitter;
 
 /// <summary>
-/// Represents a command.
+/// Represents a request handler.
 /// </summary>
-public interface ICommand
+/// <typeparam name="TRequest">Specifies the type of the request.</typeparam>
+public interface IRequestHandler<in TRequest>
+    where TRequest : IRequest
 {
     /// <summary>
-    /// Executes the command.
+    /// Handles the specified request.
     /// </summary>
+    /// <param name="request">The request to handle.</param>
     /// <param name="cancellationToken">A cancellation token to support cancellation of the request.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    Task Execute(CancellationToken cancellationToken = default);
+    Task Handle(TRequest request, CancellationToken cancellationToken = default);
+}
 
+/// <summary>
+/// Represents a request handler.
+/// </summary>
+/// <typeparam name="TRequest">Specifies the type of the request.</typeparam>
+/// <typeparam name="TResponse">Specifies the type of the response.</typeparam>
+public interface IRequestHandler<in TRequest, TResponse>
+    where TRequest : IRequest<TResponse>
+{
     /// <summary>
-    /// Rolls back the command.
+    /// Handles the specified request.
     /// </summary>
+    /// <param name="request">The request to handle.</param>
     /// <param name="cancellationToken">A cancellation token to support cancellation of the request.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
-    Task Rollback(CancellationToken cancellationToken = default);
+    /// <returns>The result of the request.</returns>
+    Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken = default);
 }

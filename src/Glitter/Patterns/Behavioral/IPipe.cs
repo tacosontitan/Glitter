@@ -14,37 +14,41 @@
    limitations under the License.
 */
 
-namespace Glitter.Behaviors;
+namespace Glitter.Patterns.Behavioral;
 
 /// <summary>
-/// Represents a request handler.
+/// Represents a pipe in a pipeline.
 /// </summary>
 /// <typeparam name="TRequest">Specifies the type of the request.</typeparam>
-public interface IRequestHandler<in TRequest>
+public interface IPipe<in TRequest>
     where TRequest : IRequest
 {
     /// <summary>
-    /// Handles the specified request.
+    /// Gets the next pipe in the pipeline.
     /// </summary>
-    /// <param name="request">The request to handle.</param>
-    /// <param name="cancellationToken">A cancellation token to support cancellation of the request.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
-    Task Handle(TRequest request, CancellationToken cancellationToken = default);
+    IPipe<TRequest> Successor { get; }
+
+    /// <summary>
+    /// Processes the specified request.
+    /// </summary>
+    Task Process(TRequest request, CancellationToken cancellationToken = default);
 }
 
 /// <summary>
-/// Represents a request handler.
+/// Represents a pipe in a pipeline.
 /// </summary>
 /// <typeparam name="TRequest">Specifies the type of the request.</typeparam>
 /// <typeparam name="TResponse">Specifies the type of the response.</typeparam>
-public interface IRequestHandler<in TRequest, TResponse>
+public interface IPipe<in TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {
     /// <summary>
-    /// Handles the specified request.
+    /// Gets the next pipe in the pipeline.
     /// </summary>
-    /// <param name="request">The request to handle.</param>
-    /// <param name="cancellationToken">A cancellation token to support cancellation of the request.</param>
-    /// <returns>The result of the request.</returns>
-    Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken = default);
+    IPipe<TRequest, TResponse> Successor { get; }
+
+    /// <summary>
+    /// Processes the specified request.
+    /// </summary>
+    Task<TResponse> Process(TRequest request, CancellationToken cancellationToken = default);
 }
