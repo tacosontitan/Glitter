@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C# Sandbox",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "Build C# Sandbox",
+            "program": "${workspaceFolder}/samples/Glitter.Sql.Sandbox/bin/Debug/${input:csharpTargetFramework}/Glitter.Sql.Sandbox.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}/samples/Glitter.Sql.Sandbox",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        }
+    ],
+    "inputs": [
+        {
+          "id": "csharpTargetFramework",
+          "type": "pickString",
+          "description": "Choose a target framework.",
+          "options": [
+            { "label": ".NET Framework 4.8", "value": "net48" },
+            { "label": ".NET 6", "value": "net6.0" },
+            { "label": ".NET 7", "value": "net7.0" },
+            { "label": ".NET 8", "value": "net8.0" }
+          ],
+          "default": "net8.0"
+        }
+      ]
+}
