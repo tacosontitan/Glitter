@@ -40,9 +40,13 @@
     </PropertyGroup>
 
     <PropertyGroup Label="VersionInformation">
-        <AssemblyVersion>2023.9.1.0</AssemblyVersion>
+        <AssemblyVersion>2024.1.1.0</AssemblyVersion>
         <Version>$(AssemblyVersion)</Version>
         <PackageReleaseNotes>
+            ## 2024.1.1.0
+            - Added support for .NET 8.0.
+            - Added extensions for `string` instances.
+            
             ## 2023.9.1.0
             - Added validation support.
 

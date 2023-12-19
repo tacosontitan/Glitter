@@ -8,6 +8,10 @@ implementations clean, concise, and optimized.
 > [!IMPORTANT]
 > This repository is undergoing a consolidation effort. As a result some things may feel out of place, or incomplete.
 > Please be patient as we work to bring everything together.*
+> 
+> [!WARNING]
+> The `Glitter.Data.Sql` and `Glitter.Validation` namespaces and the objects defined within them are not ready for public consumption.
+> As a result, they are subject to change without notice. Use at your own risk.
 
 ## 💁‍♀️ Getting Started
 
@@ -44,11 +48,11 @@ consolidation effort:
     - [x] Find proper namespaces for existing extensions.
     - [x] Move files from the dedicated project into the primary project.
     - [x] Consolidate unit tests.
-- [ ] Import the old `Glitter.Sql` repo.
+- [x] Import the old `Glitter.Sql` repo.
     - [x] Add the old repo to this one.
     - [x] Create the official `Glitter.Data.Sql` namespace in the `Glitter` project.
-    - [ ] Move files from the dedicated project into the primary project.
-    - [ ] Consolidate unit tests.
+    - [x] Move files from the dedicated project into the primary project.
+    - [x] Consolidate unit tests.
 
 Our next steps involve adding new features to the consolidated repo:
 
@@ -111,6 +115,9 @@ public class UserInsertRequest
 
 ## 📝 Release Notes (Glitter.Extensions)
 
+- 2024.1.1.0
+    - Added support for .NET 8.0.
+    - Added extensions for `string` instances.
 - 2023.5.21
     - Fixed a bug with dequeue extensions not validating until enumerated.
     - Added overloads for the `In` extension.

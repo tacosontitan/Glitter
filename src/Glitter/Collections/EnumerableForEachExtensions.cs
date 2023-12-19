@@ -53,7 +53,7 @@ public static class EnumerableForEachExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> or <paramref name="action"/> is <see langword="null"/>.
     /// </exception>
-    public static async Task ForEach<T>(this IEnumerable<T> source, Action<T> action, bool parallel,
+    public static Task ForEach<T>(this IEnumerable<T> source, Action<T> action, bool parallel,
         CancellationToken cancellationToken)
     {
         if (source is null)
@@ -63,9 +63,13 @@ public static class EnumerableForEachExtensions
             throw new ArgumentNullException(nameof(action));
 
         if (parallel)
-            _ = Parallel.ForEach(source, new ParallelOptions { CancellationToken = cancellationToken }, action);
-        else
-            await Task.Run(() => source.ForEach(action), cancellationToken).ConfigureAwait(false);
+        {
+            var parallelOptions = new ParallelOptions { CancellationToken = cancellationToken };
+            _ = Parallel.ForEach(source, parallelOptions, action);
+            return Task.CompletedTask;
+        }
+        
+        return Task.Run(() => source.ForEach(action), cancellationToken);
     }
 
     /// <summary>

@@ -40,6 +40,7 @@ public static class ComparableExtensions
 
         if (input.CompareTo(lowerBound) < 0)
             input = lowerBound;
+        
         else if (input.CompareTo(upperBound) > 0)
             input = upperBound;
     }
@@ -66,6 +67,7 @@ public static class ComparableExtensions
 
         if (input.Value.CompareTo(lowerBound) < 0)
             input = lowerBound;
+        
         else if (input.Value.CompareTo(upperBound) > 0)
             input = upperBound;
     }
