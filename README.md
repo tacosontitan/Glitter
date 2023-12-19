@@ -8,7 +8,7 @@ implementations clean, concise, and optimized.
 > [!IMPORTANT]
 > This repository is undergoing a consolidation effort. As a result some things may feel out of place, or incomplete.
 > Please be patient as we work to bring everything together.*
-> 
+
 > [!WARNING]
 > The `Glitter.Data.Sql` and `Glitter.Validation` namespaces and the objects defined within them are not ready for public consumption.
 > As a result, they are subject to change without notice. Use at your own risk.
