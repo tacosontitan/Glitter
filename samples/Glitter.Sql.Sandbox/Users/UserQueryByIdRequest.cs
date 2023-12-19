@@ -15,7 +15,7 @@
 */
 
 using System.Data;
-using Glitter.Sql.Encapsulation;
+using Glitter.Data.Sql;
 
 namespace Glitter.Sql.Sandbox.Users;
 
