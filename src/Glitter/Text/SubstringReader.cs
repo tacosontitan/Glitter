@@ -1,3 +1,19 @@
+/*
+   Copyright 2023 tacosontitan and contributors
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+
 using Glitter.Serialization;
 
 namespace Glitter.Text;
@@ -10,7 +26,7 @@ public sealed class SubstringReader
     private readonly string _source;
     private readonly Clamped<int> _currentIndex;
     private readonly SubstringReaderOptions _options;
-    
+
     /// <summary>
     /// Creates a new <see cref="SubstringReader"/> with the specified source and options.
     /// </summary>
@@ -24,10 +40,7 @@ public sealed class SubstringReader
 
         _source = source;
         _options = options ?? new SubstringReaderOptions();
-        _currentIndex = new Clamped<int>(
-            value: 0,
-            lowerBound: 0,
-            upperBound: source.Length);
+        _currentIndex = source.CreateClamp();
     }
 
     /// <summary>
@@ -70,7 +83,7 @@ public sealed class SubstringReader
         string substring = GetSubstring();
         return (T)Convert.ChangeType(substring, typeof(T), _options.FormatProvider);
     }
-    
+
     /// <summary>
     /// Peeks forward in the specified source string by the specified length and attempts to deserialize the substring to the specified type.
     /// </summary>
@@ -80,7 +93,7 @@ public sealed class SubstringReader
     {
         if (serializationProvider is null)
             throw new ArgumentNullException(nameof(serializationProvider));
-        
+
         string substring = GetSubstring();
         return serializationProvider.Deserialize<T>(substring, _options.FormatProvider);
     }
@@ -122,11 +135,11 @@ public sealed class SubstringReader
     {
         if (serializationProvider is null)
             throw new ArgumentNullException(nameof(serializationProvider));
-        
+
         string substring = GetSubstring(length);
         return serializationProvider.Deserialize<T>(substring, _options.FormatProvider);
     }
-    
+
     /// <summary>
     /// Attempts to peek forward to the end of the source string.
     /// </summary>
@@ -145,7 +158,7 @@ public sealed class SubstringReader
             return false;
         }
     }
-    
+
     /// <summary>
     /// Attempts to peek forward to the end of the source string and convert the substring to the specified type.
     /// </summary>
@@ -165,7 +178,7 @@ public sealed class SubstringReader
             return false;
         }
     }
-    
+
     /// <summary>
     /// Attempts to peek forward to the end of the source string and deserialize the substring to the specified type.
     /// </summary>
@@ -186,7 +199,7 @@ public sealed class SubstringReader
             return false;
         }
     }
-    
+
     /// <summary>
     /// Attempts to peek forward in the specified source string by the specified length.
     /// </summary>
@@ -206,7 +219,7 @@ public sealed class SubstringReader
             return false;
         }
     }
-    
+
     /// <summary>
     /// Attempts to peek forward in the specified source string by the specified length and convert the substring to the specified type.
     /// </summary>
@@ -227,7 +240,7 @@ public sealed class SubstringReader
             return false;
         }
     }
-    
+
     /// <summary>
     /// Attempts to peek forward in the specified source string by the specified length and deserialize the substring to the specified type.
     /// </summary>
@@ -249,14 +262,14 @@ public sealed class SubstringReader
             return false;
         }
     }
-    
+
     /// <summary>
     /// Skips the next character in the source string.
     /// </summary>
     /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
     public SubstringReader Skip() =>
-        Seek(length: 1);
-    
+        Seek(1);
+
     /// <summary>
     /// Skips all characters in the source string until the specified character is found.
     /// </summary>
@@ -269,11 +282,11 @@ public sealed class SubstringReader
         int searchValueIndex = _source.IndexOf(searchValue, _currentIndex.Value);
         if (searchValueIndex == -1)
             return this;
-        
+
         int offset = skipSearchValue ? 1 : 0;
-        return Seek(length: searchValueIndex - _currentIndex.Value + offset);
+        return Seek(searchValueIndex - _currentIndex.Value + offset);
     }
-    
+
     /// <summary>
     /// Skips the specified number of characters in the source string.
     /// </summary>
@@ -283,10 +296,12 @@ public sealed class SubstringReader
     public SubstringReader Seek(int length)
     {
         if (_currentIndex.Value + length > _source.Length)
-            throw new ArgumentOutOfRangeException(nameof(length), length, "The length cannot cause the reader to step outside of the source string.");
-        
+            throw new ArgumentOutOfRangeException(nameof(length), length,
+                "The length cannot cause the reader to step outside of the source string.");
+
         if (_currentIndex.Value + length < 0)
-            throw new ArgumentOutOfRangeException(nameof(length), length, "The length cannot cause the reader to step outside of the source string.");
+            throw new ArgumentOutOfRangeException(nameof(length), length,
+                "The length cannot cause the reader to step outside of the source string.");
 
         _currentIndex.Value += length;
         return this;
@@ -309,7 +324,7 @@ public sealed class SubstringReader
         _currentIndex.Value += length;
         return this;
     }
-    
+
     /// <summary>
     /// Reads the specified number of characters from the source string and attempts to deserialize the substring to the specified type.
     /// </summary>
@@ -337,7 +352,8 @@ public sealed class SubstringReader
     /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
     /// <exception cref="FormatException">The substring cannot be parsed to the specified type.</exception>
     /// <exception cref="OverflowException">The substring cannot be parsed to the specified type.</exception>
-    public SubstringReader ReadTo<T>(char searchValue, out T? result, bool includeSearchValue = false) where T : IConvertible
+    public SubstringReader ReadTo<T>(char searchValue, out T? result, bool includeSearchValue = false)
+        where T : IConvertible
     {
         int searchValueIndex = _source.IndexOf(searchValue, _currentIndex.Value);
         if (searchValueIndex == -1)
@@ -345,11 +361,11 @@ public sealed class SubstringReader
             result = default;
             return this;
         }
-        
+
         int offset = includeSearchValue ? 1 : 0;
-        return Read(length: searchValueIndex - _currentIndex.Value + offset, out result);
+        return Read(searchValueIndex - _currentIndex.Value + offset, out result);
     }
-    
+
     /// <summary>
     /// Reads all characters from the current position of the reader to the end of the source string and attempts to deserialize the substring to the specified type.
     /// </summary>
@@ -359,7 +375,8 @@ public sealed class SubstringReader
     /// <param name="serializationProvider">The serialization provider to use for deserialization.</param>
     /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
     /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
-    public SubstringReader ReadTo<T>(char searchValue, ISerializationProvider serializationProvider, out T? result, bool includeSearchValue = false)
+    public SubstringReader ReadTo<T>(char searchValue, ISerializationProvider serializationProvider, out T? result,
+        bool includeSearchValue = false)
     {
         int searchValueIndex = _source.IndexOf(searchValue, _currentIndex.Value);
         if (searchValueIndex == -1)
@@ -367,21 +384,45 @@ public sealed class SubstringReader
             result = default;
             return this;
         }
-        
+
         int offset = includeSearchValue ? 1 : 0;
-        return Read(length: searchValueIndex - _currentIndex.Value + offset, serializationProvider, out result);
+        return Read(searchValueIndex - _currentIndex.Value + offset, serializationProvider, out result);
     }
 
+    /// <summary>
+    /// Reads all characters from the current position of the reader to the end of the source string and attempts to parse the substring to the specified type.
+    /// </summary>
+    /// <typeparam name="T">The type to parse the substring to.</typeparam>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    /// <exception cref="FormatException">The substring cannot be parsed to the specified type.</exception>
+    /// <exception cref="OverflowException">The substring cannot be parsed to the specified type.</exception>
+    public SubstringReader ReadToEnd<T>(out T? result) where T : IConvertible =>
+        Read(_source.Length - _currentIndex.Value, out result);
+
+    /// <summary>
+    /// Reads all characters from the current position of the reader to the end of the source string and attempts to deserialize the substring to the specified type.
+    /// </summary>
+    /// <typeparam name="T">The type to deserialize the substring to.</typeparam>
+    /// <param name="serializationProvider">The serialization provider to use for deserialization.</param>
+    /// <param name="result">The substring from the current position of the reader to the end of the source string.</param>
+    /// <returns>The current <see cref="SubstringReader"/> instance.</returns>
+    /// <exception cref="FormatException">The substring cannot be parsed to the specified type.</exception>
+    /// <exception cref="OverflowException">The substring cannot be parsed to the specified type.</exception>
+    public SubstringReader ReadToEnd<T>(ISerializationProvider serializationProvider, out T? result) =>
+        Read(_source.Length - _currentIndex.Value, serializationProvider, out result);
+
     private string GetSubstring() =>
-        GetSubstring(length: _source.Length - _currentIndex.Value);
-    
+        GetSubstring(_source.Length - _currentIndex.Value);
+
     private string GetSubstring(int length)
     {
         if (length < 0)
             throw new ArgumentOutOfRangeException(nameof(length), length, "The length cannot be negative.");
-        
+
         if (_currentIndex.Value + length > _source.Length)
-            throw new ArgumentOutOfRangeException(nameof(length), length, "The length cannot exceed the length of the source string.");
+            throw new ArgumentOutOfRangeException(nameof(length), length,
+                "The length cannot exceed the length of the source string.");
 
         string substring = _source.Substring(_currentIndex.Value, length);
         return Trim(substring);
@@ -391,20 +432,19 @@ public sealed class SubstringReader
     {
         if (_options.TrimInstructions?.Any() != true)
             return source;
-        
-        string ApplyTrimInstruction(string input, TrimInstruction instruction) =>
-            instruction.Orientation switch
+
+        static string ApplyTrimInstruction(string input, TrimInstruction instruction)
+        {
+            return instruction.Orientation switch
             {
                 TrimOrientation.Start => input.TrimStart(instruction.Values.ToArray()),
                 TrimOrientation.End => input.TrimEnd(instruction.Values.ToArray()),
                 TrimOrientation.Full => input.Trim(instruction.Values.ToArray()),
-                _ => throw new ArgumentOutOfRangeException(nameof(instruction), instruction, "The trim orientation is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(instruction), instruction,
+                    "The trim orientation is not supported.")
             };
+        }
 
         return _options.TrimInstructions.Aggregate(source, ApplyTrimInstruction);
     }
-
-    /*
-     * ReadToEnd
-     */
 }

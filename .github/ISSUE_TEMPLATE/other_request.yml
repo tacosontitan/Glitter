@@ -1,6 +1,6 @@
 name: 🧠 It's something else
 description: Need to open an issue for something that isn't a bug, feature, or command? This template has you covered!
-labels: [needs categorization,under review]
+labels: [ needs categorization,under review ]
 body:
   - type: dropdown
     id: category
@@ -16,7 +16,7 @@ body:
     id: version
     attributes:
       label: 🔢 Version
-      description: Which version of Glitter are you currently using?
+      description: Which version are you currently using?
       options:
         - ⛔ Not Applicable
         - 🐣 Pre-Release
@@ -24,7 +24,7 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: 🤔 What's hapening?
+      label: 🤔 What's happening?
       description: Please give a brief explanation and a sample implementation.
   - type: textarea
     attributes:

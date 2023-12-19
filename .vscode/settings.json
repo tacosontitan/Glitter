@@ -1,6 +1,11 @@
 {
-    "dotnet.defaultSolution": "Glitter.sln",
-    "cSpell.words": [
-        "Validatable"
-    ]
+  "dotnet.defaultSolution": "Glitter.sln",
+  "cSpell.words": [
+    "Validatable",
+    "NEWID",
+    "NOCOUNT",
+    "SYSDATETIMEOFFSET",
+    "tacosontitan",
+    "Xunit"
+  ]
 }

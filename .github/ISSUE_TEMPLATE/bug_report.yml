@@ -1,19 +1,19 @@
 name: 😭 Report a problem
 description: If you're encountering a problem, then you can report it here.
-labels: [bug,under review]
+labels: [ bug,under review ]
 body:
   - type: dropdown
     id: version
     attributes:
       label: 🔢 Version
-      description: Which version of Glitter are you currently using?
+      description: Which version are you currently using?
       options:
         - 🐣 Pre-Release
     validations:
       required: true
   - type: textarea
     attributes:
-      label: 🤔 What's hapening?
+      label: 🤔 What's happening?
       description: Please give a brief explanation and a sample implementation.
   - type: textarea
     attributes:

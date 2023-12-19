@@ -1,4 +1,20 @@
-﻿namespace Glitter;
+﻿/*
+   Copyright 2023 tacosontitan and contributors
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+
+namespace Glitter;
 
 /// <summary>
 /// Represents a constrained value.
@@ -21,7 +37,7 @@ public class Clamped<T>
     {
         _lowerBound = lowerBound;
         _upperBound = upperBound;
-        _value = Constrain(value);
+        _value = Clamp(value);
     }
 
     /// <summary>
@@ -53,17 +69,17 @@ public class Clamped<T>
                 _value = _upperBound;
         }
     }
-    
+
     /// <summary>
     /// Gets or sets the value.
     /// </summary>
     public T Value
     {
         get => _value;
-        set => _value = Constrain(value);
+        set => _value = Clamp(value);
     }
 
-    private T Constrain(T value)
+    private T Clamp(T value)
     {
         if (value.CompareTo(_lowerBound) < 0)
             return _lowerBound;
@@ -72,5 +88,18 @@ public class Clamped<T>
             return _upperBound;
 
         return value;
+    }
+
+    /// <summary>
+    /// Implicitly converts a <see cref="Clamped{T}"/> to a <typeparamref name="T"/>.
+    /// </summary>
+    /// <param name="input">The <see cref="Clamped{T}"/> to convert.</param>
+    /// <returns>The value of the <see cref="Clamped{T}"/>.</returns>
+    public static implicit operator T(Clamped<T> input)
+    {
+        if (input is null)
+            throw new ArgumentNullException(nameof(input));
+
+        return input.Value;
     }
 }

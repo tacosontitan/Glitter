@@ -1,0 +1,40 @@
+name: "📊 Analyze the Repository"
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+  schedule:
+    - cron: '31 21 * * 1'
+
+jobs:
+  codeQl:
+    name: "🔒 Security Analysis"
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'csharp' ]
+    steps:
+      - name: "✅ Checkout Repository"
+        uses: actions/checkout@v3
+
+      - name: "🔑 Initialize CodeQL"
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: "📦 Autobuild"
+        uses: github/codeql-action/autobuild@v2
+
+      - name: "👁️ Analize"
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:${{matrix.language}}"
