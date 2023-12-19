@@ -4,6 +4,7 @@ Named after the second largest mountain in Norway, Glitter is a simple framework
 implementations clean, concise, and optimized.
 
 ![License](https://img.shields.io/github/license/tacosontitan/Glitter?logo=github&style=for-the-badge)
+![Release Notes](./resources/RELEASE_NOTES.md)
 
 > [!IMPORTANT]
 > This repository is undergoing a consolidation effort. As a result some things may feel out of place, or incomplete.
@@ -112,18 +113,3 @@ public class UserInsertRequest
 - Extension methods for `Queue<T>`.
     - [`Enqueue`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#enqueue)
     - [`Dequeue`](https://github.com/tacosontitan/Glitter.Extensions/wiki/Glitter.Extensions.Collections#dequeue)
-
-## 📝 Release Notes (Glitter.Extensions)
-
-- 2024.1.1.0
-    - Added support for .NET 8.0.
-    - Added extensions for `string` instances.
-- 2023.5.21
-    - Fixed a bug with dequeue extensions not validating until enumerated.
-    - Added overloads for the `In` extension.
-    - Added explicit support of `.NET Standard 2.1`.
-    - Added explicit support of `.NET Framework 4.8`.
-    - Added explicit support of `.NET 6`.
-    - Added explicit support of `.NET 7`.
-- 2023.1.0.0
-    - Initial release.

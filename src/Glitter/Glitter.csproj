@@ -43,6 +43,9 @@
         <AssemblyVersion>2024.2.1.0</AssemblyVersion>
         <Version>$(AssemblyVersion)</Version>
         <PackageReleaseNotes>
+            ## 2024.2.1.0
+            - Moved pattern abstractions.
+            
             ## 2024.1.1.0
             - Added support for .NET 8.0.
             - Added extensions for `string` instances.
