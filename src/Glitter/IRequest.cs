@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-namespace Glitter.Behaviors;
+namespace Glitter;
 
 /// <summary>
 /// Represents a request.
