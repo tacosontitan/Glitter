@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-namespace Glitter.Behaviors;
+namespace Glitter.Patterns.Behavioral;
 
 /// <summary>
 /// Represents a pipeline for processing requests.
