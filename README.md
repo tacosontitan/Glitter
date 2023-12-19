@@ -19,9 +19,9 @@ implementations clean, concise, and optimized.
 Get started by reviewing the answers to the following questions:
 
 - [How do I navigate the codebase with confidence?](http://glitter.tacosontitan.com)
-- [How can I help?](./CONTRIBUTING.md)
-- [How should I behave here?](./CODE_OF_CONDUCT.md)
-- [How do I report security concerns?](./SECURITY.md)
+- [How can I help?](./resources/CONTRIBUTING.md)
+- [How should I behave here?](./resources/CODE_OF_CONDUCT.md)
+- [How do I report security concerns?](./resources/SECURITY.md)
 
 ### ✅ Small changes, continuously integrated
 
@@ -70,10 +70,10 @@ discussions area.
 
 Glitter offers several ways to encapsulate SQL requests:
 
-- [SqlStoredProcedure](./src/Glitter.Sql/Encapsulation/SqlStoredProcedure.cs)
-- [SqlTableFunction](./src/Glitter.Sql/Encapsulation/SqlTableFunction.cs)
-- [SqlScalarFunction](./src/Glitter.Sql/Encapsulation/SqlScalarFunction.cs)
-- [SqlScript](./src/Glitter.Sql/Encapsulation/SqlScript.cs)
+- [SqlStoredProcedure](./src/Glitter/Data/Sql/SqlStoredProcedure.cs)
+- [SqlTableFunction](./src/Glitter/Data/Sql/SqlTableFunction.cs)
+- [SqlScalarFunction](./src/Glitter/Data/Sql/SqlScalarFunction.cs)
+- [SqlScript](./src/Glitter/Data/Sql/SqlScript.cs)
 
 The encapsulation strategy employed by Glitter is definition driven. This means that your encapsulations simply define a
 request to execute a stored procedure, function, or query. The encapsulation does not actually execute the request, but
