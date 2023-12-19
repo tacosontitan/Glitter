@@ -14,20 +14,20 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql.Encapsulation;
+namespace Glitter.Data.Sql;
 
 /// <summary>
-/// Defines a SQL object.
+/// Represents a SQL script.
 /// </summary>
-public interface ISqlObject
+public class SqlScript
+    : SqlRequest
 {
     /// <summary>
-    /// Gets the schema for the object.
+    /// Creates a new <see cref="SqlScript"/> instance.
     /// </summary>
-    string Schema { get; }
-
-    /// <summary>
-    /// Gets the name of the object.
-    /// </summary>
-    string Name { get; }
+    /// <param name="text">The text representing the script to execute in the request.</param>
+    public SqlScript(string text)
+        : base(text, System.Data.CommandType.Text)
+    {
+    }
 }

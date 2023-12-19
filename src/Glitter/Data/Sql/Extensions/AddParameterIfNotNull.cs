@@ -17,18 +17,19 @@
 // ReSharper disable once CheckNamespace
 // This class defines extension methods for ISqlRequest to keep the interface clean.
 
-namespace Glitter.Sql.Encapsulation;
+using System.Data;
+
+namespace Glitter.Data.Sql;
 
 /// <summary>
 /// Defines extension methods for <see cref="ISqlRequest"/>.
 /// </summary>
-public static class AddParameterIfExtensions
+public static class AddParameterIfNotNullExtensions
 {
     /// <summary>
-    /// Adds a parameter to the request if its value meets the condition of a specified predicate.
+    /// Adds a parameter to the request if its value is not <see langword="null"/>.
     /// </summary>
     /// <param name="request">The <see cref="ISqlRequest"/> instance.</param>
-    /// <param name="predicate">The predicate that determines whether the parameter should be added.</param>
     /// <param name="name">The name of the parameter.</param>
     /// <param name="value">The value of the parameter.</param>
     /// <param name="type">The <see cref="DbType"/> of the parameter.</param>
@@ -38,9 +39,8 @@ public static class AddParameterIfExtensions
     /// <param name="scale">The scale of the parameter.</param>
     /// <typeparam name="T">The type of the parameter.</typeparam>
     /// <returns>The <see cref="ISqlRequest"/> instance.</returns>
-    public static ISqlRequest AddParameterIf<T>(
+    public static ISqlRequest AddParameterIfNotNull<T>(
         this ISqlRequest request,
-        Func<T?, bool> predicate,
         string name,
         T? value,
         DbType? type = null,
@@ -52,13 +52,10 @@ public static class AddParameterIfExtensions
         if (request is null)
             throw new ArgumentNullException(nameof(request));
 
-        if (predicate is null)
-            throw new ArgumentNullException(nameof(predicate));
-
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("The name of the parameter cannot be null or whitespace.");
 
-        if (predicate(value))
+        if (value is not null)
             _ = request.AddParameter(name, value, type, direction, size, precision, scale);
 
         return request;

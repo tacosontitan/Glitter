@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql.Encapsulation;
+namespace Glitter.Data.Sql;
 
 /// <summary>
 /// Represents a function within SQL.
@@ -31,8 +31,9 @@ public class SqlFunction
         : base(
             "dbo",
             functionName,
-            CommandType.Text)
+            System.Data.CommandType.Text)
     {
+        
     }
 
     /// <summary>
@@ -45,8 +46,9 @@ public class SqlFunction
         : base(
             schema,
             functionName,
-            CommandType.Text)
+            System.Data.CommandType.Text)
     {
+        
     }
 
     /// <inheritdoc/>

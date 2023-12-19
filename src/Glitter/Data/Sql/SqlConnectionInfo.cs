@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql;
+namespace Glitter.Data.Sql;
 
 /// <summary>
 /// Represents information about a connection to a SQL database.

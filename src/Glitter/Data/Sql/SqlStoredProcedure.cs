@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql.Encapsulation;
+namespace Glitter.Data.Sql;
 
 /// <summary>
 /// Represents a stored procedure within SQL.
@@ -30,7 +30,7 @@ public class SqlStoredProcedure
         : base(
             "dbo",
             name,
-            CommandType.StoredProcedure)
+            System.Data.CommandType.StoredProcedure)
     {
     }
 
@@ -45,7 +45,7 @@ public class SqlStoredProcedure
         : base(
             schema,
             name,
-            CommandType.StoredProcedure)
+            System.Data.CommandType.StoredProcedure)
     {
     }
 

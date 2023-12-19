@@ -14,9 +14,7 @@
    limitations under the License.
 */
 
-using Glitter.Sql.Encapsulation;
-
-namespace Glitter.Sql;
+namespace Glitter.Data.Sql;
 
 /// <summary>
 /// Defines members for providing SQL services.

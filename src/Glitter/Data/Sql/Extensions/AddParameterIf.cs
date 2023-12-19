@@ -14,16 +14,23 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql.Encapsulation;
+// ReSharper disable once CheckNamespace
+// This class defines extension methods for ISqlRequest to keep the interface clean.
+
+using System.Data;
+
+namespace Glitter.Data.Sql;
 
 /// <summary>
-/// Represents a parameter for a SQL request.
+/// Defines extension methods for <see cref="ISqlRequest"/>.
 /// </summary>
-public class SqlRequestParameter
+public static class AddParameterIfExtensions
 {
     /// <summary>
-    /// Creates a new <see cref="SqlRequestParameter"/> instance.
+    /// Adds a parameter to the request if its value meets the condition of a specified predicate.
     /// </summary>
+    /// <param name="request">The <see cref="ISqlRequest"/> instance.</param>
+    /// <param name="predicate">The predicate that determines whether the parameter should be added.</param>
     /// <param name="name">The name of the parameter.</param>
     /// <param name="value">The value of the parameter.</param>
     /// <param name="type">The <see cref="DbType"/> of the parameter.</param>
@@ -31,56 +38,31 @@ public class SqlRequestParameter
     /// <param name="size">The size of the parameter.</param>
     /// <param name="precision">The precision of the parameter.</param>
     /// <param name="scale">The scale of the parameter.</param>
-    public SqlRequestParameter(
+    /// <typeparam name="T">The type of the parameter.</typeparam>
+    /// <returns>The <see cref="ISqlRequest"/> instance.</returns>
+    public static ISqlRequest AddParameterIf<T>(
+        this ISqlRequest request,
+        Func<T?, bool> predicate,
         string name,
-        object? value = null,
+        T? value,
         DbType? type = null,
         ParameterDirection? direction = null,
         int? size = null,
         byte? precision = null,
         byte? scale = null)
     {
-        Name = name;
-        Value = value;
-        Type = type;
-        Direction = direction;
-        Size = size;
-        Precision = precision;
-        Scale = scale;
+        if (request is null)
+            throw new ArgumentNullException(nameof(request));
+
+        if (predicate is null)
+            throw new ArgumentNullException(nameof(predicate));
+
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException("The name of the parameter cannot be null or whitespace.");
+
+        if (predicate(value))
+            _ = request.AddParameter(name, value, type, direction, size, precision, scale);
+
+        return request;
     }
-
-    /// <summary>
-    /// Gets or sets the name of the parameter.
-    /// </summary>
-    public string Name { get; set; }
-
-    /// <summary>
-    /// Gets or sets the value of the parameter.
-    /// </summary>
-    public object? Value { get; set; }
-
-    /// <summary>
-    /// Gets or sets the <see cref="DbType"/> of the parameter.
-    /// </summary>
-    public DbType? Type { get; set; }
-
-    /// <summary>
-    /// Gets or sets the direction of the parameter.
-    /// </summary>
-    public ParameterDirection? Direction { get; set; }
-
-    /// <summary>
-    /// Gets or sets the size of the parameter.
-    /// </summary>
-    public int? Size { get; set; }
-
-    /// <summary>
-    /// Gets or sets the precision of the parameter.
-    /// </summary>
-    public byte? Precision { get; set; }
-
-    /// <summary>
-    /// Gets or sets the scale of the parameter.
-    /// </summary>
-    public byte? Scale { get; set; }
 }

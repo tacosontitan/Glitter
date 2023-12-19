@@ -1,6 +1,4 @@
-using Glitter.Sql.Encapsulation;
-
-namespace Glitter.Sql;
+namespace Glitter.Data.Sql;
 
 /// <summary>
 /// Defines extension methods for <see cref="ISqlProvider"/>.

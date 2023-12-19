@@ -20,9 +20,10 @@
 
 #pragma warning disable CA1707
 
-using Glitter.Sql.Encapsulation;
+using System.Data;
+using Glitter.Data.Sql;
 
-namespace Glitter.Sql.Tests.Encapsulation;
+namespace Glitter.Tests.Data.Sql;
 
 /// <summary>
 /// Defines unit tests for the <see cref="SqlRequest"/> class.

@@ -14,25 +14,17 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql.Encapsulation;
+using System.Data;
+
+namespace Glitter.Data.Sql;
 
 /// <summary>
-/// Defines a request for interacting with SQL.
+/// Represents a parameter for a SQL request.
 /// </summary>
-public interface ISqlRequest
+public class SqlRequestParameter
 {
     /// <summary>
-    /// The type of command to execute.
-    /// </summary>
-    CommandType CommandType { get; set; }
-
-    /// <summary>
-    /// The parameters for the command.
-    /// </summary>
-    IReadOnlyCollection<SqlRequestParameter> Parameters { get; }
-
-    /// <summary>
-    /// Adds a parameter to the request.
+    /// Creates a new <see cref="SqlRequestParameter"/> instance.
     /// </summary>
     /// <param name="name">The name of the parameter.</param>
     /// <param name="value">The value of the parameter.</param>
@@ -41,22 +33,56 @@ public interface ISqlRequest
     /// <param name="size">The size of the parameter.</param>
     /// <param name="precision">The precision of the parameter.</param>
     /// <param name="scale">The scale of the parameter.</param>
-    /// <typeparam name="T">Specifies the type of the parameter.</typeparam>
-    /// <returns>The <see cref="ISqlRequest"/> instance.</returns>
-    ISqlRequest AddParameter<T>(
+    public SqlRequestParameter(
         string name,
-        T? value,
+        object? value = null,
         DbType? type = null,
         ParameterDirection? direction = null,
         int? size = null,
         byte? precision = null,
-        byte? scale = null
-    );
+        byte? scale = null)
+    {
+        Name = name;
+        Value = value;
+        Type = type;
+        Direction = direction;
+        Size = size;
+        Precision = precision;
+        Scale = scale;
+    }
 
     /// <summary>
-    /// Attempts to compile the request into a command.
+    /// Gets or sets the name of the parameter.
     /// </summary>
-    /// <param name="command">The command to execute.</param>
-    /// <returns><see langword="true"/> if the request was successfully compiled; otherwise, <see langword="false"/>.</returns>
-    bool TryCompile(out string? command);
+    public string Name { get; set; }
+
+    /// <summary>
+    /// Gets or sets the value of the parameter.
+    /// </summary>
+    public object? Value { get; set; }
+
+    /// <summary>
+    /// Gets or sets the <see cref="DbType"/> of the parameter.
+    /// </summary>
+    public DbType? Type { get; set; }
+
+    /// <summary>
+    /// Gets or sets the direction of the parameter.
+    /// </summary>
+    public ParameterDirection? Direction { get; set; }
+
+    /// <summary>
+    /// Gets or sets the size of the parameter.
+    /// </summary>
+    public int? Size { get; set; }
+
+    /// <summary>
+    /// Gets or sets the precision of the parameter.
+    /// </summary>
+    public byte? Precision { get; set; }
+
+    /// <summary>
+    /// Gets or sets the scale of the parameter.
+    /// </summary>
+    public byte? Scale { get; set; }
 }

@@ -1,4 +1,4 @@
-﻿namespace Glitter.Sql;
+﻿namespace Glitter.Data.Sql;
 
 public class SqlConnectionInstructions
 {

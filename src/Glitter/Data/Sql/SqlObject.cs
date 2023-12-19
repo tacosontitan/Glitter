@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql.Encapsulation;
+namespace Glitter.Data.Sql;
 
 /// <summary>
 /// Represents an object within SQL.

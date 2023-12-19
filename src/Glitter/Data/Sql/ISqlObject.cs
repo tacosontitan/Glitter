@@ -1,4 +1,4 @@
-﻿/*
+/*
    Copyright 2023 tacosontitan and contributors
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +14,20 @@
    limitations under the License.
 */
 
-global using System;
-global using System.Collections.Generic;
-global using System.Data;
-global using System.Linq;
-global using System.Threading;
-global using System.Threading.Tasks;
+namespace Glitter.Data.Sql;
+
+/// <summary>
+/// Defines a SQL object.
+/// </summary>
+public interface ISqlObject
+{
+    /// <summary>
+    /// Gets the schema for the object.
+    /// </summary>
+    string Schema { get; }
+
+    /// <summary>
+    /// Gets the name of the object.
+    /// </summary>
+    string Name { get; }
+}

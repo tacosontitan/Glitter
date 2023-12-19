@@ -14,31 +14,31 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql.Encapsulation;
+namespace Glitter.Data.Sql;
 
 /// <summary>
-/// Represents a table-valued function within SQL.
+/// Represents a scalar function within SQL.
 /// </summary>
-public class SqlTableFunction
+public class SqlScalarFunction
     : SqlFunction
 {
     /// <summary>
-    /// Creates a new <see cref="SqlTableFunction"/> instance.
+    /// Creates a new <see cref="SqlScalarFunction"/> instance.
     /// </summary>
     /// <param name="name">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> is null or whitespace.</exception>
-    protected SqlTableFunction(string name)
+    protected SqlScalarFunction(string name)
         : base(name)
     {
     }
 
     /// <summary>
-    /// Creates a new <see cref="SqlTableFunction"/> instance.
+    /// Creates a new <see cref="SqlScalarFunction"/> instance.
     /// </summary>
     /// <param name="schema">The schema for the function.</param>
     /// <param name="name">The name of the function being invoked.</param>
     /// <exception cref="ArgumentException"><paramref name="name"/> or <paramref name="name"/> is null or whitespace.</exception>
-    protected SqlTableFunction(string schema, string name)
+    protected SqlScalarFunction(string schema, string name)
         : base(schema, name)
     {
     }

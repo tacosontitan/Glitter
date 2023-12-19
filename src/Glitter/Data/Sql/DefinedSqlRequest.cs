@@ -14,7 +14,9 @@
    limitations under the License.
 */
 
-namespace Glitter.Sql.Encapsulation;
+using System.Data;
+
+namespace Glitter.Data.Sql;
 
 /// <summary>
 /// Represents a defined request for interacting with SQL.

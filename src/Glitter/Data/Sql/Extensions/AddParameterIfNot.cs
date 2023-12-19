@@ -17,17 +17,21 @@
 // ReSharper disable once CheckNamespace
 // This class defines extension methods for ISqlRequest to keep the interface clean.
 
+using System.Data;
+using Glitter.Data.Sql;
+
 namespace Glitter.Sql.Encapsulation;
 
 /// <summary>
 /// Defines extension methods for <see cref="ISqlRequest"/>.
 /// </summary>
-public static class AddParameterIfNotNullOrWhiteSpaceExtensions
+public static class AddParameterIfNotExtensions
 {
     /// <summary>
-    /// Adds a parameter to the request if its value is not <see langword="null"/>, empty, or white space.
+    /// Adds a parameter to the request if its value does not meet the condition of a specified predicate.
     /// </summary>
     /// <param name="request">The <see cref="ISqlRequest"/> instance.</param>
+    /// <param name="predicate">The predicate that determines whether the parameter should be added.</param>
     /// <param name="name">The name of the parameter.</param>
     /// <param name="value">The value of the parameter.</param>
     /// <param name="type">The <see cref="DbType"/> of the parameter.</param>
@@ -35,11 +39,13 @@ public static class AddParameterIfNotNullOrWhiteSpaceExtensions
     /// <param name="size">The size of the parameter.</param>
     /// <param name="precision">The precision of the parameter.</param>
     /// <param name="scale">The scale of the parameter.</param>
+    /// <typeparam name="T">The type of the parameter.</typeparam>
     /// <returns>The <see cref="ISqlRequest"/> instance.</returns>
-    public static ISqlRequest AddParameterIfNotNullOrWhiteSpace(
+    public static ISqlRequest AddParameterIfNot<T>(
         this ISqlRequest request,
+        Func<T?, bool> predicate,
         string name,
-        string? value,
+        T? value,
         DbType? type = null,
         ParameterDirection? direction = null,
         int? size = null,
@@ -49,10 +55,13 @@ public static class AddParameterIfNotNullOrWhiteSpaceExtensions
         if (request is null)
             throw new ArgumentNullException(nameof(request));
 
+        if (predicate is null)
+            throw new ArgumentNullException(nameof(predicate));
+
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("The name of the parameter cannot be null or whitespace.");
 
-        if (!string.IsNullOrWhiteSpace(value))
+        if (!predicate(value))
             _ = request.AddParameter(name, value, type, direction, size, precision, scale);
 
         return request;

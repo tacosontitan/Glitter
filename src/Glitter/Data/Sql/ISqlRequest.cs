@@ -14,20 +14,28 @@
    limitations under the License.
 */
 
-// ReSharper disable once CheckNamespace
-// This class defines extension methods for ISqlRequest to keep the interface clean.
+using System.Data;
 
-namespace Glitter.Sql.Encapsulation;
+namespace Glitter.Data.Sql;
 
 /// <summary>
-/// Defines extension methods for <see cref="ISqlRequest"/>.
+/// Defines a request for interacting with SQL.
 /// </summary>
-public static class AddParameterIfNotNullOrEmptyExtensions
+public interface ISqlRequest
 {
     /// <summary>
-    /// Adds a parameter to the request if its value is not <see langword="null"/> or empty.
+    /// The type of command to execute.
     /// </summary>
-    /// <param name="request">The <see cref="ISqlRequest"/> instance.</param>
+    CommandType CommandType { get; set; }
+
+    /// <summary>
+    /// The parameters for the command.
+    /// </summary>
+    IReadOnlyCollection<SqlRequestParameter> Parameters { get; }
+
+    /// <summary>
+    /// Adds a parameter to the request.
+    /// </summary>
     /// <param name="name">The name of the parameter.</param>
     /// <param name="value">The value of the parameter.</param>
     /// <param name="type">The <see cref="DbType"/> of the parameter.</param>
@@ -35,26 +43,22 @@ public static class AddParameterIfNotNullOrEmptyExtensions
     /// <param name="size">The size of the parameter.</param>
     /// <param name="precision">The precision of the parameter.</param>
     /// <param name="scale">The scale of the parameter.</param>
+    /// <typeparam name="T">Specifies the type of the parameter.</typeparam>
     /// <returns>The <see cref="ISqlRequest"/> instance.</returns>
-    public static ISqlRequest AddParameterIfNotNullOrEmpty(
-        this ISqlRequest request,
+    ISqlRequest AddParameter<T>(
         string name,
-        string? value,
+        T? value,
         DbType? type = null,
         ParameterDirection? direction = null,
         int? size = null,
         byte? precision = null,
-        byte? scale = null)
-    {
-        if (request is null)
-            throw new ArgumentNullException(nameof(request));
+        byte? scale = null
+    );
 
-        if (string.IsNullOrWhiteSpace(name))
-            throw new ArgumentException("The name of the parameter cannot be null or whitespace.");
-
-        if (!string.IsNullOrEmpty(name))
-            _ = request.AddParameter(name, value, type, direction, size, precision, scale);
-
-        return request;
-    }
+    /// <summary>
+    /// Attempts to compile the request into a command.
+    /// </summary>
+    /// <param name="command">The command to execute.</param>
+    /// <returns><see langword="true"/> if the request was successfully compiled; otherwise, <see langword="false"/>.</returns>
+    bool TryCompile(out string? command);
 }
