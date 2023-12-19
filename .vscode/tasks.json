@@ -1,0 +1,16 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Sandbox",
+            "detail": "Builds the sandbox project.",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "samples/Glitter.Sql.Sandbox/Glittr.Sql.Sandbox.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
