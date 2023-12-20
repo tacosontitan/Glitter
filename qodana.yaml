@@ -4,3 +4,12 @@ profile:
   name: qodana.starter
 
 linter: jetbrains/qodana-dotnet:latest
+
+exclude:
+  - name: All
+    paths:
+      - resources
+      - test
+      - samples
+      - src/Glitter/bin
+      - src/Glitter/obj
