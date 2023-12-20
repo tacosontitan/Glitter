@@ -1,0 +1,6 @@
+version: "1.0"
+
+profile:
+  name: qodana.starter
+
+linter: jetbrains/qodana-dotnet:latest
