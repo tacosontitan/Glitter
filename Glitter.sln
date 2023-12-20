@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{38BC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glitter.Sql.Sandbox", "samples\Glitter.Sql.Sandbox\Glitter.Sql.Sandbox.csproj", "{08EB4644-8F19-4DF3-B617-0F2739EF32BC}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Glitter.Sql.Sandbox.Database", "samples\Glitter.Sql.Sandbox.Database\Glitter.Sql.Sandbox.Database.sqlproj", "{15D5DEC0-5414-469E-A21B-A397A76BC214}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,8 +33,6 @@ Global
 		{08EB4644-8F19-4DF3-B617-0F2739EF32BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08EB4644-8F19-4DF3-B617-0F2739EF32BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08EB4644-8F19-4DF3-B617-0F2739EF32BC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{15D5DEC0-5414-469E-A21B-A397A76BC214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15D5DEC0-5414-469E-A21B-A397A76BC214}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,7 +41,6 @@ Global
 		{A327EA06-4867-4D25-9B6E-268693190EAC} = {31ACAAAC-38E7-4121-989E-F8B22DD810BC}
 		{0858ED2F-E509-4AEB-B1E4-AE1E2EBF9313} = {1E50AE95-EFED-448E-916D-5B4FE4FE346C}
 		{08EB4644-8F19-4DF3-B617-0F2739EF32BC} = {38BCCC81-76F5-47C1-AD1C-780B9D2C7BB9}
-		{15D5DEC0-5414-469E-A21B-A397A76BC214} = {38BCCC81-76F5-47C1-AD1C-780B9D2C7BB9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A2CC85D-B6DE-4BE8-ACA6-B2EBACAA58B6}
