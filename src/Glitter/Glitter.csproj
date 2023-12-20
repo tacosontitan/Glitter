@@ -39,7 +39,7 @@
     </PropertyGroup>
 
     <PropertyGroup Label="VersionInformation">
-        <AssemblyVersion>2024.2.1.0</AssemblyVersion>
+        <AssemblyVersion>2024.3.1.0</AssemblyVersion>
         <Version>$(AssemblyVersion)</Version>
         <PackageReleaseNotes>
             ## 2024.3.1.0
