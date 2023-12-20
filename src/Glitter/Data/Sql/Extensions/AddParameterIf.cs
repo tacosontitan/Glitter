@@ -19,7 +19,7 @@
 
 using System.Data;
 
-namespace Glitter.Data.Sql;
+namespace Glitter.Data.Sql.Test;
 
 /// <summary>
 /// Defines extension methods for <see cref="ISqlRequest"/>.
