@@ -25,7 +25,7 @@ Get started by reviewing the answers to the following questions:
 Glitter employs workflows for continuous integration to ensure the repository is held to industry standards; here's the
 current state of those workflows:
 
-![.NET Workflow](https://img.shields.io/github/actions/workflow/status/tacosontitan/Glitter/dotnet.yml?label=Build%20and%20Test&logo=dotnet&style=for-the-badge)
+![.NET Workflow](https://img.shields.io/github/actions/workflow/status/tacosontitan/Glitter/build.yml?label=Build%20and%20Test&logo=dotnet&style=for-the-badge)
 
 ### 💎 A few more gems
 
