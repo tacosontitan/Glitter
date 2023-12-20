@@ -42,7 +42,8 @@
         <AssemblyVersion>2024.2.1.0</AssemblyVersion>
         <Version>$(AssemblyVersion)</Version>
         <PackageReleaseNotes>
-            ## 2024.2.1.0
+            ## 2024.3.1.0
+            - Removed support for .NET 5.0.
             - Moved pattern abstractions.
             
             ## 2024.1.1.0
