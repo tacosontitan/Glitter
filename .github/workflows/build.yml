@@ -1,6 +1,8 @@
 name: "🏗️ Build and Test 🧪"
 
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
     branches: [ "main", "support/*" ]
 
