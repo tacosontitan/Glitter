@@ -9,6 +9,10 @@ implementations clean, concise, and optimized.
 > This repository is undergoing a consolidation effort. As a result some things may feel out of place, or incomplete.
 > Please be patient as we work to bring everything together.*
 
+## 2024.3.1.0
+
+- Removed support for .NET 5.0.
+
 ## 2024.2.1.0
 
 The pattern abstractions have been moved to the following namespaces for clarity:
