@@ -18,9 +18,8 @@
 // This class defines extension methods for ISqlRequest to keep the interface clean.
 
 using System.Data;
-using Glitter.Data.Sql;
 
-namespace Glitter.Sql.Encapsulation;
+namespace Glitter.Data.Sql;
 
 /// <summary>
 /// Defines extension methods for <see cref="ISqlRequest"/>.
