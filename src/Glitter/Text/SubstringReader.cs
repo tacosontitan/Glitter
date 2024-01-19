@@ -33,6 +33,7 @@ public sealed class SubstringReader
     /// <param name="source">The string to be used as the source.</param>
     /// <param name="options">The options to be used for the <see cref="SubstringReader"/>.</param>
     /// <exception cref="ArgumentException">Thrown when <paramref name="source"/> is <see langword="null"/>, empty, or whitespace.</exception>
+    [Obsolete("This constructor will be removed in a future release. Use SubstringReader.Create(string, SubstringReaderOptions?) instead.")]
     public SubstringReader(string source, SubstringReaderOptions? options = null)
     {
         if (string.IsNullOrWhiteSpace(source))
