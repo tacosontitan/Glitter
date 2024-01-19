@@ -42,6 +42,15 @@ public sealed class SubstringReader
         _options = options ?? new SubstringReaderOptions();
         _currentIndex = source.CreateClamp();
     }
+    
+    /// <summary>
+    /// Creates a new <see cref="SubstringReader"/> with the specified source and options.
+    /// </summary>
+    /// <param name="source">The string to be used as the source.</param>
+    /// <param name="options">The options to be used for the <see cref="SubstringReader"/>.</param>
+    /// <returns>A new <see cref="SubstringReader"/> with the specified source and options.</returns>
+    public static SubstringReader Create(string source, SubstringReaderOptions? options = null) =>
+        new(source, options);
 
     /// <summary>
     /// Gets the current length of the <see cref="SubstringReader"/>.
