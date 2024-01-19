@@ -1,7 +1,13 @@
 ﻿namespace Glitter.Data.Sql;
 
+/// <summary>
+/// Represents instructions for connecting to a SQL server.
+/// </summary>
 public class SqlConnectionInstructions
 {
+    /// <summary>
+    /// Creates a new set of connection instructions.
+    /// </summary>
     public SqlConnectionInstructions(
         string server,
         string database,
