@@ -51,7 +51,9 @@ public sealed class SubstringReader
     /// <param name="options">The options to be used for the <see cref="SubstringReader"/>.</param>
     /// <returns>A new <see cref="SubstringReader"/> with the specified source and options.</returns>
     public static SubstringReader Create(string source, SubstringReaderOptions? options = null) =>
+#pragma warning disable CS0618 // Type or member is obsolete
         new(source, options);
+#pragma warning restore CS0618 // Type or member is obsolete
 
     /// <summary>
     /// Gets the current length of the <see cref="SubstringReader"/>.
