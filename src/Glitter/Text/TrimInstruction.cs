@@ -32,6 +32,9 @@ public class TrimInstruction
         Values = values;
     }
 
+    /// <summary>
+    /// Gets or sets the orientation of the trim.
+    /// </summary>
     public TrimOrientation Orientation { get; set; }
 
     /// <summary>
