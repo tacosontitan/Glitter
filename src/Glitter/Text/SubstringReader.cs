@@ -41,7 +41,7 @@ public sealed class SubstringReader
 
         _source = source;
         _options = options ?? new SubstringReaderOptions();
-        _currentIndex = source.CreateClamp();
+        _currentIndex = new Clamped<int>(value: 0, lowerBound: 0, upperBound: source.Length);
     }
     
     /// <summary>
