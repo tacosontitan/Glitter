@@ -27,6 +27,7 @@ public static class StringExtensions
     /// if <paramref name="value"/> is <see langword="null"/> or empty;
     /// otherwise <see langword="false"/>.
     /// </returns>
+    [Obsolete(message: "This extension will be removed in the next major release. Use string.IsNullOrEmpty instead.")]
     public static bool IsNullOrEmpty(this string value) =>
         string.IsNullOrEmpty(value);
 }
