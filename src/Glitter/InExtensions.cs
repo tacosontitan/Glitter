@@ -35,6 +35,7 @@ public static class InExtensions
     /// <exception cref="ArgumentException">
     ///     <paramref name="values"/> is empty.
     /// </exception>
+    [Obsolete(message: "This extension will be removed in the next major release. Use IEnumerable.Contains instead.")]
     public static bool In<T>(this T value, IEnumerable<T> values)
     {
         if (value is null)
@@ -94,6 +95,7 @@ public static class InExtensions
     /// <exception cref="ArgumentException">
     ///     <paramref name="values"/> is empty.
     /// </exception>
+    [Obsolete(message: "This extension will be removed in the next major release. Use IEnumerable.Contains instead.")]
     public static bool In<T>(this T value, IEqualityComparer<T> comparer, IEnumerable<T> values)
     {
         if (comparer is null)
