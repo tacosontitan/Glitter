@@ -14,6 +14,7 @@ public static class StringExtensions
     /// if <paramref name="value"/> is <see langword="null"/>, empty, or consists only of white-space characters;
     /// otherwise <see langword="false"/>.
     /// </returns>
+    [Obsolete(message: "This extension will be removed in the next major release. Use string.IsNullOrWhiteSpace instead.")]
     public static bool IsNullOrWhiteSpace(this string value) =>
         string.IsNullOrWhiteSpace(value);
     
