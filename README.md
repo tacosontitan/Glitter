@@ -6,8 +6,7 @@ implementations clean, concise, and optimized.
 ![License](https://img.shields.io/github/license/tacosontitan/Glitter?logo=github&style=for-the-badge)
 
 > [!IMPORTANT]
-> This repository is undergoing a consolidation effort. As a result some things may feel out of place, or incomplete.
-> Please be patient as we work to bring everything together.*
+> This repository has been deprecated.
 
 ## 💁‍♀️ Getting Started
 
